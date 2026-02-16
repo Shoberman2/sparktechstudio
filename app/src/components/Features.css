@@ -1,0 +1,24 @@
+.features { border-top: 1px solid var(--gray-200); }
+
+.features-inner { max-width: 1280px; margin: 0 auto; padding: 80px 40px; }
+
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+
+.feature-card { padding: 40px 36px; border-right: 1px solid var(--gray-200); }
+.feature-card:last-child { border-right: none; }
+
+.feature-icon { width: 48px; height: 48px; margin-bottom: 24px; }
+.feature-icon svg { width: 48px; height: 48px; stroke: var(--gray-900); fill: none; stroke-width: 1.5; }
+
+.feature-card h3 { font-size: 1.15rem; font-weight: 600; color: var(--gray-900); margin-bottom: 10px; letter-spacing: -0.01em; }
+.feature-card p { font-size: 0.938rem; line-height: 1.65; color: var(--gray-500); }
+
+@media (max-width: 1024px) {
+  .features-grid { grid-template-columns: 1fr; gap: 0; }
+  .feature-card { border-right: none; border-bottom: 1px solid var(--gray-200); padding: 32px 0; }
+  .feature-card:last-child { border-bottom: none; }
+}
+
+@media (max-width: 640px) {
+  .features-inner { padding: 80px 20px; }
+}
