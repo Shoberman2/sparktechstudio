@@ -1,11 +1,5 @@
 import './Footer.css'
 
-const BoltIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-)
-
 export default function Footer() {
   return (
     <footer>
@@ -13,7 +7,6 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#" className="logo">
-              <div className="logo-mark"><BoltIcon /></div>
               <span className="logo-text">SparkTech Studios</span>
             </a>
             <p>A venture studio that builds, validates, and scales high-leverage software products.</p>

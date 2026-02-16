@@ -50,7 +50,7 @@ export default function Hero() {
       <div className="hero-inner">
         <div className="hero-content">
           <div className="hero-badge">
-            Something new is coming &nbsp;<strong>2025</strong>
+            Something new is coming &nbsp;<strong>2026</strong>
           </div>
           <h1>We turn ideas into real software, fast</h1>
           <p className="hero-sub">
