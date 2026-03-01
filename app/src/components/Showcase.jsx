@@ -1,43 +1,61 @@
 import './Showcase.css'
 
-const CheckIcon = () => (
-  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-)
+const projects = [
+  {
+    num: '01',
+    name: 'BallotWatch',
+    url: 'https://ballotwatch.io',
+    desc: 'A civic tech platform that makes local government transparent and accessible. Track legislation, representatives, and voting records — all in one place.',
+    tags: ['Civic Tech', 'Public Data', 'Full-Stack'],
+  },
+  {
+    num: '02',
+    name: 'Rate My Divorce Lawyer',
+    url: 'https://ratemydivorcelawyer.com',
+    desc: 'A review and discovery platform helping people find the right divorce attorney. Real reviews, real experiences, better decisions during a difficult time.',
+    tags: ['Legal Tech', 'Reviews', 'Consumer App'],
+  },
+]
 
-const tags = ['Civic Tech', 'Creator Tools', 'SMB Software', 'AI-Native Apps']
+const ArrowIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="7" y1="17" x2="17" y2="7" />
+    <polyline points="7 7 17 7 17 17" />
+  </svg>
+)
 
 export default function Showcase() {
   return (
     <section className="showcase-section" id="portfolio">
-      <div className="showcase-inner">
-        <div className="showcase-text">
-          <div className="showcase-label">What We Build</div>
-          <h2>Software that solves real problems</h2>
-          <p>
-            We focus on high-leverage ideas across industries where software can create outsized impact — civic tech, creator tools, small business infrastructure, and more.
-          </p>
-          <ul className="feature-list">
-            {tags.map(tag => (
-              <li key={tag}>
-                <CheckIcon />
-                {tag}
-              </li>
-            ))}
-          </ul>
-          <a href="#waitlist" className="btn btn-primary">Get in touch</a>
-        </div>
-        <div className="showcase-visual">
-          <div className="visual-placeholder">
-            <div className="vp-header" />
-            <div className="vp-row"><div className="vp-block dark w50" /><div className="vp-block w30" /></div>
-            <div className="vp-row"><div className="vp-block w70" /></div>
-            <div className="vp-row"><div className="vp-block w40" /><div className="vp-block dark w30" /></div>
-            <div className="vp-row"><div className="vp-block w60" /></div>
-            <div className="vp-grid">
-              {[1, 2, 3, 4].map(i => <div key={i} className="vp-grid-item" />)}
+      <div className="showcase-header reveal">
+        <div className="showcase-label">Selected Work</div>
+        <h2>Things we've built</h2>
+        <p>Real products, live in production — built with AI-powered craft.</p>
+      </div>
+      <div className="projects-grid reveal-stagger">
+        {projects.map(project => (
+          <a
+            key={project.name}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card reveal"
+          >
+            <span className="project-number">{project.num}</span>
+            <div className="project-card-top">
+              <h3>
+                {project.name}
+                <ArrowIcon />
+              </h3>
+              <p>{project.desc}</p>
             </div>
-          </div>
-        </div>
+            <ul className="project-tags">
+              {project.tags.map(tag => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </a>
+        ))}
       </div>
     </section>
   )

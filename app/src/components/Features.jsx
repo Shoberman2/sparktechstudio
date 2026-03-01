@@ -2,26 +2,29 @@ import './Features.css'
 
 const features = [
   {
+    num: '01',
     icon: (
       <svg viewBox="0 0 48 48" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 6L9 17l11 11" />
         <path d="M28 6l11 11-11 11" />
       </svg>
     ),
-    title: 'Rapid Prototyping',
-    desc: 'From concept to working prototype in weeks, not months. We move fast to test assumptions and find product-market fit early.',
+    title: 'Code as Medium',
+    desc: 'We treat code the way a painter treats oil — it\'s our medium, not just a tool. Every line serves the experience. AI amplifies the craft, it doesn\'t replace it.',
   },
   {
+    num: '02',
     icon: (
       <svg viewBox="0 0 48 48" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="24" cy="24" r="16" />
         <polyline points="24 14 24 24 32 28" />
       </svg>
     ),
-    title: 'Validation-First',
-    desc: "Every idea goes through a rigorous validation process. We build with real users from day one to ensure we're solving problems that matter.",
+    title: 'Speed as Art',
+    desc: 'Full platforms in weeks, not months. AI-powered development lets us move at a pace that would have been impossible a year ago — and we ship things that last.',
   },
   {
+    num: '03',
     icon: (
       <svg viewBox="0 0 48 48" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="36 18 24 6 12 18" />
@@ -29,18 +32,19 @@ const features = [
         <path d="M12 42h24" />
       </svg>
     ),
-    title: 'Scale What Works',
-    desc: 'When a venture proves real value, we double down. Dedicated resources, proper infrastructure, and the team to take it to market.',
+    title: 'End-to-End Craft',
+    desc: 'We don\'t just design surfaces. We build complete systems — databases, APIs, auth, dashboards. Real software for real users, from concept to deploy.',
   },
 ]
 
 export default function Features() {
   return (
-    <section className="features" id="ventures">
+    <section className="features" id="capabilities">
       <div className="features-inner">
-        <div className="features-grid">
+        <div className="features-grid reveal-stagger">
           {features.map((f, i) => (
-            <div className="feature-card" key={i}>
+            <div className="feature-card reveal" key={i}>
+              <div className="feature-num">{f.num}</div>
               <div className="feature-icon">{f.icon}</div>
               <h3>{f.title}</h3>
               <p>{f.desc}</p>

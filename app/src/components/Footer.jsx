@@ -7,23 +7,22 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#" className="logo">
-              <span className="logo-text">SparkTech Studios</span>
+              <span className="logo-text gradient-text">SparkTech Studios</span>
             </a>
-            <p>A venture studio that builds, validates, and scales high-leverage software products.</p>
+            <p>A creative development studio building full-stack platforms with AI-powered craft.</p>
           </div>
           <div className="footer-col">
-            <h4>Ventures</h4>
+            <h4>Work</h4>
             <ul>
-              <li><a href="#portfolio">Civic Tech</a></li>
-              <li><a href="#portfolio">Creator Tools</a></li>
-              <li><a href="#portfolio">SMB Software</a></li>
+              <li><a href="https://ballotwatch.io" target="_blank" rel="noopener noreferrer">BallotWatch</a></li>
+              <li><a href="https://ratemydivorcelawyer.com" target="_blank" rel="noopener noreferrer">Rate My Divorce Lawyer</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Company</h4>
+            <h4>Studio</h4>
             <ul>
               <li><a href="#about">About</a></li>
-              <li><a href="#approach">Our Approach</a></li>
+              <li><a href="#approach">Approach</a></li>
               <li><a href="#waitlist">Contact</a></li>
             </ul>
           </div>
@@ -37,7 +36,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} SparkTech Studios, LLC. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} SparkTech Studios, LLC.</p>
           <div className="footer-socials">
             <a href="#" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" /></svg>
