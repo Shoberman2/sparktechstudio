@@ -18,7 +18,7 @@
 .hero-orb-1 {
   width: 500px;
   height: 500px;
-  background: rgba(123, 97, 255, 0.15);
+  background: rgba(123, 97, 255, 0.1);
   top: 10%;
   left: -10%;
   animation: float 20s ease-in-out infinite;
@@ -27,7 +27,7 @@
 .hero-orb-2 {
   width: 400px;
   height: 400px;
-  background: rgba(255, 107, 157, 0.1);
+  background: rgba(184, 134, 11, 0.1);
   bottom: 10%;
   right: -5%;
   animation: float 20s ease-in-out infinite reverse;

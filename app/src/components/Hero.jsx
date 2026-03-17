@@ -25,7 +25,7 @@ export default function Hero() {
         </h1>
         <p className="hero-sub">
           SparkTech Studios is where code meets craft. We build full-stack platforms
-          with AI-powered tools — shipping real products in weeks, not months.
+          with AI-powered tools — shipping real products in days, not months.
         </p>
         <div className="hero-buttons">
           <a href="#waitlist" className="btn btn-primary">Start a project</a>

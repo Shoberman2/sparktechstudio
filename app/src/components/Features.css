@@ -21,8 +21,9 @@
   border-radius: 16px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 /* Gradient border hover effect */
