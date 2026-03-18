@@ -48,7 +48,7 @@
 .feature-num {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--accent-violet);
+  color: var(--accent-yellow);
   letter-spacing: 0.1em;
   margin-bottom: 24px;
   opacity: 0.7;
@@ -67,7 +67,7 @@
   stroke-width: 1.5;
   stroke: url(#icon-gradient);
   /* fallback */
-  stroke: var(--accent-violet);
+  stroke: var(--accent-yellow);
 }
 
 .feature-card h3 {

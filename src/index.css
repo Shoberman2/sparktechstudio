@@ -10,11 +10,11 @@
   --text-muted: #8a8a95;
   --border-subtle: rgba(0, 0, 0, 0.06);
   --border-light: rgba(0, 0, 0, 0.12);
-  --accent-violet: #7b61ff;
-  --accent-gold: #b8860b;
+  --accent-yellow: #e6b800;
+  --accent-gold: #c49a00;
   --accent-mint: #00d4aa;
-  --gradient-primary: linear-gradient(135deg, var(--accent-violet), var(--accent-gold));
-  --gradient-accent: linear-gradient(135deg, var(--accent-violet), var(--accent-mint));
+  --gradient-primary: linear-gradient(135deg, var(--accent-yellow), var(--accent-gold));
+  --gradient-accent: linear-gradient(135deg, var(--accent-yellow), var(--accent-mint));
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Mono', 'Courier New', monospace;
@@ -71,7 +71,7 @@ body::after {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 30px rgba(123, 97, 255, 0.3), 0 0 60px rgba(184, 134, 11, 0.15);
+  box-shadow: 0 0 30px rgba(230, 184, 0, 0.3), 0 0 60px rgba(184, 134, 11, 0.15);
   transform: translateY(-1px);
 }
 
@@ -85,8 +85,8 @@ body::after {
 }
 
 .btn-outline:hover {
-  border-color: var(--accent-violet);
-  box-shadow: 0 0 20px rgba(123, 97, 255, 0.15);
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 20px rgba(230, 184, 0, 0.15);
 }
 
 /* Scroll reveal system */

@@ -28,7 +28,7 @@
   font-size: 1.35rem;
   line-height: 1.6;
   color: var(--text-primary);
-  border-left: 3px solid var(--accent-violet);
+  border-left: 3px solid var(--accent-yellow);
   padding-left: 24px;
   margin-bottom: 32px;
 }
