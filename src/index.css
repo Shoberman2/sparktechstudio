@@ -10,8 +10,8 @@
   --text-muted: #8a8a95;
   --border-subtle: rgba(0, 0, 0, 0.06);
   --border-light: rgba(0, 0, 0, 0.12);
-  --accent-yellow: #e6b800;
-  --accent-gold: #c49a00;
+  --accent-yellow: #c9a200;
+  --accent-gold: #a68500;
   --accent-mint: #00d4aa;
   --gradient-primary: linear-gradient(135deg, var(--accent-yellow), var(--accent-gold));
   --gradient-accent: linear-gradient(135deg, var(--accent-yellow), var(--accent-mint));
@@ -71,7 +71,7 @@ body::after {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 30px rgba(230, 184, 0, 0.3), 0 0 60px rgba(184, 134, 11, 0.15);
+  box-shadow: 0 0 30px rgba(201, 162, 0, 0.3), 0 0 60px rgba(184, 134, 11, 0.15);
   transform: translateY(-1px);
 }
 
@@ -86,7 +86,7 @@ body::after {
 
 .btn-outline:hover {
   border-color: var(--accent-yellow);
-  box-shadow: 0 0 20px rgba(230, 184, 0, 0.15);
+  box-shadow: 0 0 20px rgba(201, 162, 0, 0.15);
 }
 
 /* Scroll reveal system */

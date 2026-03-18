@@ -71,7 +71,7 @@ footer {
 
 .footer-socials a:hover {
   color: var(--accent-yellow);
-  filter: drop-shadow(0 0 8px rgba(230, 184, 0, 0.3));
+  filter: drop-shadow(0 0 8px rgba(201, 162, 0, 0.3));
 }
 
 .footer-socials svg { width: 20px; height: 20px; fill: currentColor; }

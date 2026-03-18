@@ -3,7 +3,7 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at center, rgba(230, 184, 0, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at center, rgba(201, 162, 0, 0.05) 0%, transparent 60%),
     var(--bg-primary);
 }
 
@@ -27,7 +27,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 400px;
-  background: radial-gradient(ellipse, rgba(230, 184, 0, 0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(201, 162, 0, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -79,7 +79,7 @@
 
 .waitlist-form input[type="email"]:focus {
   border-color: var(--accent-yellow);
-  box-shadow: 0 0 20px rgba(230, 184, 0, 0.15);
+  box-shadow: 0 0 20px rgba(201, 162, 0, 0.15);
 }
 
 .waitlist-form .btn-primary {
