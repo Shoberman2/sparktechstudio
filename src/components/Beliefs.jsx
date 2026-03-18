@@ -12,13 +12,13 @@ export default function Beliefs() {
             Software development just had its biggest shift in decades, and we're not waiting for the industry to catch up.
           </blockquote>
           <p className="reveal">
-            New tools have made it possible for us to build what used to take entire engineering teams and months of runway. We're building with these tools right now, every day, pushing them to their limits.
+            The code can be written fast now. Really fast. And that changes what matters. When the engineering isn't the bottleneck anymore, you get to spend your time where it actually counts: the concept, the feel, the details that make someone stop scrolling.
           </p>
           <p className="reveal">
-            This isn't a gimmick. It's a fundamentally different way to create software. Faster iteration, lower cost, and the ability to ship complete platforms in weeks instead of quarters. That's the advantage we bring to every project.
+            That's what excites us. We're not just shipping faster. We're using that speed to obsess over the things that used to get cut for time. The art of it. The craft. The difference between something that works and something that stays with you.
           </p>
           <p className="reveal">
-            You shouldn't need a $2M seed round to get a real platform off the ground. With the right tools and the right eye for design, you just need a team that gives a damn. That's SparkTech Studios.
+            You shouldn't need a $2M seed round to get a real platform off the ground. You just need a team that treats every pixel like it matters. That's SparkTech Studios.
           </p>
         </div>
       </div>
