@@ -16,7 +16,7 @@ export default function Waitlist() {
           <input type="email" name="email" placeholder="you@email.com" required />
           <button type="submit" className="btn btn-primary">Get in touch</button>
         </form>
-        <p className="waitlist-note">No spam, no fluff — just a conversation about what you want to build.</p>
+        <p className="waitlist-note">No spam, no fluff. Just a conversation about what you want to build.</p>
       </div>
     </section>
   )

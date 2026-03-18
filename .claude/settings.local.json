@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open:*)",
+      "WebFetch(domain:www.hellobonsai.com)",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "WebFetch(domain:muz.li)",
+      "WebFetch(domain:www.thewebfactory.us)",
+      "WebFetch(domain:nathatype.com)",
+      "WebFetch(domain:css-tricks.com)",
+      "Bash(npx vite:*)"
+    ]
+  }
+}

@@ -10,7 +10,7 @@ const features = [
       </svg>
     ),
     title: 'Code as Medium',
-    desc: 'We treat code the way a painter treats oil — it\'s our medium, not just a tool. Every line serves the experience. AI amplifies the craft, it doesn\'t replace it.',
+    desc: 'We treat code the way a painter treats oil. It\'s our medium, not just a tool. Every line serves the experience.',
   },
   {
     num: '02',
@@ -21,7 +21,7 @@ const features = [
       </svg>
     ),
     title: 'Speed as Art',
-    desc: 'Full platforms in weeks, not months. AI-powered development lets us move at a pace that would have been impossible a year ago — and we ship things that last.',
+    desc: 'Full platforms in weeks, not months. We move at a pace that would have been impossible a year ago, and we ship things that last.',
   },
   {
     num: '03',
@@ -33,7 +33,7 @@ const features = [
       </svg>
     ),
     title: 'End-to-End Craft',
-    desc: 'We don\'t just design surfaces. We build complete systems — databases, APIs, auth, dashboards. Real software for real users, from concept to deploy.',
+    desc: 'We don\'t just design surfaces. We build complete systems: databases, APIs, auth, dashboards. Real software for real users, from concept to deploy.',
   },
 ]
 

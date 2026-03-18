@@ -5,7 +5,7 @@ const projects = [
     num: '01',
     name: 'BallotWatch',
     url: 'https://ballotwatch.io',
-    desc: 'A civic tech platform that makes local government transparent and accessible. Track legislation, representatives, and voting records — all in one place.',
+    desc: 'A civic tech platform that makes local government transparent and accessible. Track legislation, representatives, and voting records all in one place.',
     tags: ['Civic Tech', 'Public Data', 'Full-Stack'],
   },
   {
@@ -30,7 +30,7 @@ export default function Showcase() {
       <div className="showcase-header reveal">
         <div className="showcase-label">Selected Work</div>
         <h2>Things we've built</h2>
-        <p>Real products, live in production — built with AI-powered craft.</p>
+        <p>Real products, live in production. Built with care.</p>
       </div>
       <div className="projects-grid reveal-stagger">
         {projects.map(project => (

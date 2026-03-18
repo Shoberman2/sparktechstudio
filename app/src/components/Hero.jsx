@@ -15,7 +15,7 @@ export default function Hero() {
             <span className="word" style={{ animationDelay: '0.2s' }}>design</span>
           </span>
           <span className="word-line">
-            <span className="word" style={{ animationDelay: '0.3s' }}>experiences</span>{' '}
+            <span className="word" style={{ animationDelay: '0.3s' }}>websites</span>{' '}
             <span className="word" style={{ animationDelay: '0.4s' }}>that</span>
           </span>
           <span className="word-line">
@@ -25,7 +25,7 @@ export default function Hero() {
         </h1>
         <p className="hero-sub">
           SparkTech Studios is where code meets craft. We build full-stack platforms
-          with AI-powered tools — shipping real products in days, not months.
+          and ship real products in days, not months.
         </p>
         <div className="hero-buttons">
           <a href="#waitlist" className="btn btn-primary">Start a project</a>

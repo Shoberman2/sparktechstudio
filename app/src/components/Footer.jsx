@@ -9,7 +9,7 @@ export default function Footer() {
             <a href="#" className="logo">
               <span className="logo-text gradient-text">SparkTech Studios</span>
             </a>
-            <p>A creative development studio building full-stack platforms with AI-powered craft.</p>
+            <p>A creative development studio building full-stack platforms with care.</p>
           </div>
           <div className="footer-col">
             <h4>Work</h4>

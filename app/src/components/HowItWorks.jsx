@@ -1,9 +1,9 @@
 import './HowItWorks.css'
 
 const steps = [
-  { num: 1, title: 'We talk', desc: 'You bring the vision — the idea, the problem, the insight. We listen, ask the right questions, and map the fastest path to something real.' },
-  { num: 2, title: 'We build', desc: 'Using AI-powered development tools, we build your platform at a pace that would\'ve been impossible a year ago. Real code, real architecture, real fast.' },
-  { num: 3, title: 'We refine', desc: 'We get it live quickly, then iterate together based on what users actually do. No six-month roadmaps — just continuous craft.' },
+  { num: 1, title: 'We talk', desc: 'You bring the vision. The idea, the problem, the insight. We listen, ask the right questions, and map the fastest path to something real.' },
+  { num: 2, title: 'We build', desc: 'We build your platform at a pace that would\'ve been impossible a year ago. Real code, real architecture, real fast.' },
+  { num: 3, title: 'We refine', desc: 'We get it live quickly, then iterate together based on what users actually do. No six-month roadmaps. Just continuous craft.' },
   { num: 4, title: 'It launches', desc: 'Your product goes live with solid infrastructure, ready to grow. We stick around to help scale when traction hits.' },
 ]
 
@@ -13,7 +13,7 @@ export default function HowItWorks() {
       <div className="how-inner">
         <div className="how-header reveal">
           <h2>Our Process</h2>
-          <p>From conversation to launch — here's how it works.</p>
+          <p>From conversation to launch. Here's how it works.</p>
         </div>
         <div className="timeline">
           <div className="timeline-line" />
