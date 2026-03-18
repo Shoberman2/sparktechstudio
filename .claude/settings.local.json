@@ -15,7 +15,8 @@
       "WebFetch(domain:www.thewebfactory.us)",
       "WebFetch(domain:nathatype.com)",
       "WebFetch(domain:css-tricks.com)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(npx vercel:*)"
     ]
   }
 }
