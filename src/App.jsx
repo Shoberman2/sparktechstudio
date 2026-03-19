@@ -32,10 +32,10 @@ export default function App() {
     <>
       <Navbar />
       <Hero />
+      <Beliefs />
       <Features />
       <Showcase />
       <HowItWorks />
-      <Beliefs />
       <Hiring />
       <Waitlist />
       <Footer />

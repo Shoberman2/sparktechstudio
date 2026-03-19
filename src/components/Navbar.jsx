@@ -10,10 +10,10 @@ export default function Navbar() {
             <span className="logo-text gradient-text">SparkTech Studios</span>
           </a>
           <ul className="nav-links">
+            <li><a href="#about">About</a></li>
             <li><a href="#capabilities">Studio</a></li>
             <li><a href="#portfolio">Work</a></li>
             <li><a href="#approach">Approach</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#careers">Careers</a></li>
           </ul>
         </div>
