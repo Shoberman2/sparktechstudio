@@ -16,7 +16,10 @@
       "WebFetch(domain:nathatype.com)",
       "WebFetch(domain:css-tricks.com)",
       "Bash(npx vite:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''''ok''''\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)"
     ]
   }
 }
