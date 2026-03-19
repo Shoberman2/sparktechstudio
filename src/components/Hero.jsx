@@ -12,20 +12,17 @@ export default function Hero() {
         <h1>
           <span className="word-line">
             <span className="word" style={{ animationDelay: '0.1s' }}>We</span>{' '}
-            <span className="word" style={{ animationDelay: '0.2s' }}>design</span>
+            <span className="word" style={{ animationDelay: '0.2s' }}>build</span>{' '}
+            <span className="word" style={{ animationDelay: '0.3s' }}>your</span>
           </span>
           <span className="word-line">
-            <span className="word" style={{ animationDelay: '0.3s' }}>websites</span>{' '}
-            <span className="word" style={{ animationDelay: '0.4s' }}>that</span>
-          </span>
-          <span className="word-line">
-            <span className="word" style={{ animationDelay: '0.5s' }}>feel</span>{' '}
-            <span className="word word-alive" style={{ animationDelay: '0.6s' }}><em>alive</em></span>
+            <span className="word word-alive" style={{ animationDelay: '0.4s' }}><em>crazy</em></span>{' '}
+            <span className="word" style={{ animationDelay: '0.5s' }}>idea</span>
           </span>
         </h1>
         <p className="hero-sub">
-          SparkTech Studios is where code meets craft. We build full-stack platforms
-          and ship real products in days, not months.
+          You've got that idea everyone says is too ambitious, too weird, too out there.
+          Good. Bring it to us. We'll make it real, and we'll make it fast.
         </p>
         <div className="hero-buttons">
           <a href="#waitlist" className="btn btn-primary">Start a project</a>

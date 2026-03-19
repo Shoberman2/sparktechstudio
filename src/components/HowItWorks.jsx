@@ -1,10 +1,10 @@
 import './HowItWorks.css'
 
 const steps = [
-  { num: 1, title: 'We talk', desc: 'You bring the vision. The idea, the problem, the insight. We listen, ask the right questions, and map the fastest path to something real.' },
-  { num: 2, title: 'We build', desc: 'We build your platform at a pace that would\'ve been impossible a year ago. Real code, real architecture, real fast.' },
-  { num: 3, title: 'We refine', desc: 'We get it live quickly, then iterate together based on what users actually do. No six-month roadmaps. Just continuous craft.' },
-  { num: 4, title: 'It launches', desc: 'Your product goes live with solid infrastructure, ready to grow. We stick around to help scale when traction hits.' },
+  { num: 1, title: 'You tell us the idea', desc: 'The weirder the better. You explain what you\'re imagining, we figure out how to make it real. No judgment, no "that\'s not possible."' },
+  { num: 2, title: 'We build it, fast', desc: 'We get to work immediately. Not wireframes and decks. Actual code, actual product. You\'ll see something working before you expect to.' },
+  { num: 3, title: 'We make it right', desc: 'Once it\'s live, we refine it together. Tweak the feel, dial in the details, make it something you\'re proud to show off.' },
+  { num: 4, title: 'It\'s yours', desc: 'Your product launches with solid infrastructure, ready to grow. And when people ask how you built it so fast, you can just smile.' },
 ]
 
 export default function HowItWorks() {
@@ -13,7 +13,7 @@ export default function HowItWorks() {
       <div className="how-inner">
         <div className="how-header reveal">
           <h2>Our Process</h2>
-          <p>From conversation to launch. Here's how it works.</p>
+          <p>From wild idea to live product. Here's how it works.</p>
         </div>
         <div className="timeline">
           <div className="timeline-line" />

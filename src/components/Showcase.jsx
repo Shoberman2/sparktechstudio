@@ -29,8 +29,8 @@ export default function Showcase() {
     <section className="showcase-section" id="portfolio">
       <div className="showcase-header reveal">
         <div className="showcase-label">Selected Work</div>
-        <h2>Things we've built</h2>
-        <p>Real products, live in production. Built with care.</p>
+        <h2>Crazy ideas we've shipped</h2>
+        <p>Real products, live in production. Someone said "what if..." and we built it.</p>
       </div>
       <div className="projects-grid reveal-stagger">
         {projects.map(project => (

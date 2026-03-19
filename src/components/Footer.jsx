@@ -10,7 +10,7 @@ export default function Footer() {
               <img src="/logo.png" alt="SparkTech Studios" className="logo-icon" />
               <span className="logo-text gradient-text">SparkTech Studios</span>
             </a>
-            <p>A creative development studio building full-stack platforms with care.</p>
+            <p>We build the crazy ideas other studios won't touch. Fast, efficient, real.</p>
           </div>
           <div className="footer-col">
             <h4>Work</h4>

@@ -9,8 +9,8 @@ const features = [
         <path d="M28 6l11 11-11 11" />
       </svg>
     ),
-    title: 'Code as Medium',
-    desc: 'We treat code the way a painter treats oil. It\'s our medium, not just a tool. Every line serves the experience.',
+    title: 'No Idea Too Wild',
+    desc: 'That thing you\'ve been sketching on napkins? The concept everyone told you was impossible? That\'s exactly what we want to build.',
   },
   {
     num: '02',
@@ -20,8 +20,8 @@ const features = [
         <polyline points="24 14 24 24 32 28" />
       </svg>
     ),
-    title: 'Speed as Art',
-    desc: 'Full platforms in weeks, not months. We move at a pace that would have been impossible a year ago, and we ship things that last.',
+    title: 'Absurdly Fast',
+    desc: 'Full platforms in weeks, not months. We don\'t do six-month timelines. You bring the vision, we bring the speed.',
   },
   {
     num: '03',
@@ -32,8 +32,8 @@ const features = [
         <path d="M12 42h24" />
       </svg>
     ),
-    title: 'End-to-End Craft',
-    desc: 'We don\'t just design surfaces. We build complete systems: databases, APIs, auth, dashboards. Real software for real users, from concept to deploy.',
+    title: 'The Whole Thing',
+    desc: 'We don\'t hand you a mockup and wish you luck. We build the entire product: front end, back end, database, deployment. Done.',
   },
 ]
 
