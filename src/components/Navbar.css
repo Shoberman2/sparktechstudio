@@ -28,6 +28,12 @@ nav {
   text-decoration: none;
 }
 
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 .logo-text {
   font-weight: 700;
   font-size: 1.2rem;

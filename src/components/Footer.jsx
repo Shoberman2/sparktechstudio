@@ -7,6 +7,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#" className="logo">
+              <img src="/logo.png" alt="SparkTech Studios" className="logo-icon" />
               <span className="logo-text gradient-text">SparkTech Studios</span>
             </a>
             <p>A creative development studio building full-stack platforms with care.</p>
