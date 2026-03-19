@@ -29,8 +29,8 @@ nav {
 }
 
 .logo-icon {
-  width: 32px;
-  height: 32px;
+  height: 1.2rem;
+  width: auto;
   object-fit: contain;
 }
 
