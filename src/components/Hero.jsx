@@ -6,9 +6,6 @@ export default function Hero() {
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />
       <div className="hero-inner">
-        <div className="hero-badge">
-          <span>Creative studio, <strong>2026</strong></span>
-        </div>
         <h1>
           <span className="word-line">
             <span className="word" style={{ animationDelay: '0.1s' }}>We</span>{' '}
