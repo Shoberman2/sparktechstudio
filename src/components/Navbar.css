@@ -73,6 +73,13 @@ nav {
 }
 
 @media (max-width: 640px) {
-  .nav-inner { padding: 0 20px; height: 60px; }
+  .nav-inner { padding: 0 16px; height: 60px; }
   .nav-links { display: none; }
+  .logo-icon { height: 2rem; }
+  .logo-text { font-size: 0.9rem; }
+  .btn-nav {
+    padding: 8px 16px !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap;
+  }
 }
