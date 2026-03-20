@@ -88,6 +88,12 @@
   flex-shrink: 0;
 }
 
+.btn-email {
+  padding: 16px 36px !important;
+  font-size: 1.05rem !important;
+  margin-bottom: 20px;
+}
+
 .waitlist-note {
   font-size: 0.8rem;
   color: var(--text-muted);

@@ -6,16 +6,8 @@ export default function Waitlist() {
       <div className="waitlist-glow" />
       <div className="waitlist-inner reveal">
         <h2>Got A Crazy Idea? Tell Us.</h2>
-        <p>Drop your email and we'll reach out. The wilder the concept, the more excited we get.</p>
-        <form
-          className="waitlist-form"
-          action="https://tally.so/r/kd6VAj"
-          method="GET"
-          target="_blank"
-        >
-          <input type="email" name="email" placeholder="you@email.com" required />
-          <button type="submit" className="btn btn-primary">Get in touch</button>
-        </form>
+        <p>The wilder the concept, the more excited we get. Send us an email and let's talk.</p>
+        <a href="mailto:contactus@sparktechstudio.com" className="btn btn-primary btn-email">contactus@sparktechstudio.com</a>
         <p className="waitlist-note">No spam, no fluff. Just a conversation about what you want to build.</p>
       </div>
     </section>

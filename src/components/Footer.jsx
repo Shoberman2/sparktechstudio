@@ -32,7 +32,7 @@ export default function Footer() {
             <ul>
               <li><a href="#">LinkedIn</a></li>
               <li><a href="#">Twitter / X</a></li>
-              <li><a href="mailto:hello@sparktechstudios.com">Email</a></li>
+              <li><a href="mailto:contactus@sparktechstudio.com">Email</a></li>
             </ul>
           </div>
         </div>
