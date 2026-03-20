@@ -25,7 +25,7 @@
 
 .hiring-header h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
   font-weight: 400;
   color: var(--text-primary);
   letter-spacing: -0.02em;
