@@ -29,7 +29,7 @@ export default function Hiring() {
       <div className="hiring-inner">
         <div className="hiring-header reveal">
           <div className="hiring-label">Join Us</div>
-          <h2>We're hiring people who build things</h2>
+          <h2>We're Hiring People Who Build Things</h2>
           <p>No corporate nonsense. No whiteboard interviews. Just show us what you've made and tell us what excites you.</p>
         </div>
         <div className="hiring-grid reveal-stagger">

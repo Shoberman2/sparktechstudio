@@ -9,12 +9,12 @@ export default function Hero() {
         <h1>
           <span className="word-line">
             <span className="word" style={{ animationDelay: '0.1s' }}>We</span>{' '}
-            <span className="word" style={{ animationDelay: '0.2s' }}>build</span>{' '}
-            <span className="word" style={{ animationDelay: '0.3s' }}>your</span>
+            <span className="word" style={{ animationDelay: '0.2s' }}>Build</span>{' '}
+            <span className="word" style={{ animationDelay: '0.3s' }}>Your</span>
           </span>
           <span className="word-line">
-            <span className="word word-alive" style={{ animationDelay: '0.4s' }}><em>crazy</em></span>{' '}
-            <span className="word" style={{ animationDelay: '0.5s' }}>idea</span>
+            <span className="word word-alive" style={{ animationDelay: '0.4s' }}><em>Crazy</em></span>{' '}
+            <span className="word" style={{ animationDelay: '0.5s' }}>Idea</span>
           </span>
         </h1>
         <p className="hero-sub">

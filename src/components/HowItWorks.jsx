@@ -1,10 +1,10 @@
 import './HowItWorks.css'
 
 const steps = [
-  { num: 1, title: 'You tell us the idea', desc: 'The weirder the better. You explain what you\'re imagining, we figure out how to make it real. No judgment, no "that\'s not possible."' },
-  { num: 2, title: 'We build it, fast', desc: 'We get to work immediately. Not wireframes and decks. Actual code, actual product. You\'ll see something working before you expect to.' },
-  { num: 3, title: 'We make it right', desc: 'Once it\'s live, we refine it together. Tweak the feel, dial in the details, make it something you\'re proud to show off.' },
-  { num: 4, title: 'It\'s yours', desc: 'Your product launches with solid infrastructure, ready to grow. And when people ask how you built it so fast, you can just smile.' },
+  { num: 1, title: 'You Tell Us The Idea', desc: 'The weirder the better. You explain what you\'re imagining, we figure out how to make it real. No judgment, no "that\'s not possible."' },
+  { num: 2, title: 'We Build It, Fast', desc: 'We get to work immediately. Not wireframes and decks. Actual code, actual product. You\'ll see something working before you expect to.' },
+  { num: 3, title: 'We Make It Right', desc: 'Once it\'s live, we refine it together. Tweak the feel, dial in the details, make it something you\'re proud to show off.' },
+  { num: 4, title: 'It\'s Yours', desc: 'Your product launches with solid infrastructure, ready to grow. And when people ask how you built it so fast, you can just smile.' },
 ]
 
 export default function HowItWorks() {

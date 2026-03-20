@@ -5,7 +5,7 @@ export default function Beliefs() {
     <section className="beliefs" id="about">
       <div className="beliefs-inner">
         <div className="beliefs-header reveal">
-          <h2>Why we exist</h2>
+          <h2>Why We Exist</h2>
         </div>
         <div className="beliefs-text">
           <blockquote className="beliefs-quote reveal">

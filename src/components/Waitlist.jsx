@@ -5,7 +5,7 @@ export default function Waitlist() {
     <section className="waitlist" id="waitlist">
       <div className="waitlist-glow" />
       <div className="waitlist-inner reveal">
-        <h2>Got a crazy idea? Tell us.</h2>
+        <h2>Got A Crazy Idea? Tell Us.</h2>
         <p>Drop your email and we'll reach out. The wilder the concept, the more excited we get.</p>
         <form
           className="waitlist-form"

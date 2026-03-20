@@ -29,7 +29,7 @@ export default function Showcase() {
     <section className="showcase-section" id="portfolio">
       <div className="showcase-header reveal">
         <div className="showcase-label">Selected Work</div>
-        <h2>Crazy ideas we've shipped</h2>
+        <h2>Crazy Ideas We've Shipped</h2>
         <p>Real products, live in production. Someone said "what if..." and we built it.</p>
       </div>
       <div className="projects-grid reveal-stagger">
