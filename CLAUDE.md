@@ -25,3 +25,9 @@ SparkTech Studios exists to build the crazy ideas that people think can't be don
 - `src/index.css` - Global styles, CSS variables, animations
 - `public/logo.png` - Lightning bolt logo (transparent background)
 - Accent color is a muted yellow/gold (`--accent-yellow`, `--accent-gold`)
+
+## Design System
+Always read DESIGN.md before making any visual or UI decisions.
+All font choices, colors, spacing, and aesthetic direction are defined there.
+Do not deviate without explicit user approval.
+In QA mode, flag any code that doesn't match DESIGN.md.
