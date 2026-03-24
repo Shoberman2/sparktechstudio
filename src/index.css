@@ -11,10 +11,8 @@
   --border-subtle: rgba(0, 0, 0, 0.06);
   --border-light: rgba(0, 0, 0, 0.12);
   --accent-yellow: #c9a200;
-  --accent-gold: #a68500;
-  --accent-mint: #00d4aa;
+  --accent-gold: #8a7000;
   --gradient-primary: linear-gradient(135deg, var(--accent-yellow), var(--accent-gold));
-  --gradient-accent: linear-gradient(135deg, var(--accent-yellow), var(--accent-mint));
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Mono', 'Courier New', monospace;
