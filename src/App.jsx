@@ -5,7 +5,6 @@ import Features from './components/Features'
 import Showcase from './components/Showcase'
 import HowItWorks from './components/HowItWorks'
 import Beliefs from './components/Beliefs'
-import Hiring from './components/Hiring'
 import Waitlist from './components/Waitlist'
 import Footer from './components/Footer'
 
@@ -46,7 +45,6 @@ export default function App() {
       <Features />
       <Showcase />
       <HowItWorks />
-      <Hiring />
       <Waitlist />
       <Footer />
     </>
