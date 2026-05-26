@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className="nav-left">
           <a href="#" className="logo">
             <img src="/logo.svg" alt="SparkTech Studios" className="logo-icon" />
-            <span className="logo-text gradient-text">SparkTech Studios</span>
+            <span className="logo-text">SparkTech Studios</span>
           </a>
           <ul className="nav-links">
             <li><a href="#about">About</a></li>
@@ -17,7 +17,10 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="nav-right">
-          <a href="#waitlist" className="btn btn-primary btn-nav">Start a project</a>
+          <a href="#waitlist" className="nav-cta">
+            Start a project
+            <span className="nav-cta-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </nav>

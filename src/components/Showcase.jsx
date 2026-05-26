@@ -2,60 +2,85 @@ import './Showcase.css'
 
 const projects = [
   {
-    num: '01',
     name: 'BallotWatch',
     url: 'https://ballotwatch.io',
+    logo: '/logo-ballotwatch.svg',
     desc: 'A civic tech platform that makes local government transparent and accessible. Track legislation, representatives, and voting records all in one place.',
     tags: ['Civic Tech', 'Public Data', 'Full-Stack'],
   },
   {
-    num: '02',
-    name: 'Rate My Divorce Lawyer',
-    url: 'https://ratemydivorcelawyer.com',
-    desc: 'A review and discovery platform helping people find the right divorce attorney. Real reviews, real experiences, better decisions during a difficult time.',
-    tags: ['Legal Tech', 'Reviews', 'Consumer App'],
+    name: 'Utern.ai',
+    url: 'https://utern.ai',
+    logo: '/logo-utern.png',
+    desc: 'Swipe for internships. A web and mobile app that turns the internship hunt into something fast, fun, and actually usable.',
+    tags: ['Career Tech', 'Mobile + Web', 'Consumer App'],
   },
 ]
-
-const ArrowIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="7" y1="17" x2="17" y2="7" />
-    <polyline points="7 7 17 7 17 17" />
-  </svg>
-)
 
 export default function Showcase() {
   return (
     <section className="showcase-section" id="portfolio">
-      <div className="showcase-header reveal">
-        <div className="showcase-label">Selected Work</div>
-        <h2>Crazy Ideas We've Shipped</h2>
-        <p>Real products, live in production. Someone said "what if..." and we built it.</p>
-      </div>
-      <div className="projects-grid reveal-stagger">
-        {projects.map(project => (
-          <a
-            key={project.name}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-card reveal"
+      <div className="showcase-inner">
+        <header className="showcase-header reveal">
+          <h2>
+            Selected <em>work</em>.
+          </h2>
+          <p>
+            Real products, live in production. Someone said "what if..."
+            and we built it.
+          </p>
+        </header>
+
+        <div className="family-tree">
+          <div className="tree-root reveal">
+            <img src="/logo.svg" alt="" className="tree-root-logo" />
+            <span className="tree-root-name">SparkTech Studios</span>
+          </div>
+
+          <svg
+            className="tree-branches"
+            viewBox="0 0 100 56"
+            preserveAspectRatio="none"
+            aria-hidden="true"
           >
-            <span className="project-number">{project.num}</span>
-            <div className="project-card-top">
-              <h3>
-                {project.name}
-                <ArrowIcon />
-              </h3>
-              <p>{project.desc}</p>
-            </div>
-            <ul className="project-tags">
-              {project.tags.map(tag => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-          </a>
-        ))}
+            <path
+              d="M 50 0 V 28 H 25 V 56 M 50 28 H 75 V 56"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+
+          <div className="tree-children reveal-stagger">
+            {projects.map(p => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tree-node reveal"
+              >
+                <div className="tree-logo">
+                  <img src={p.logo} alt="" loading="lazy" />
+                </div>
+                <div className="tree-body">
+                  <h3>
+                    {p.name}
+                    <span className="tree-arrow" aria-hidden="true">↗</span>
+                  </h3>
+                  <p>{p.desc}</p>
+                  <div className="tree-tags">
+                    {p.tags.map(t => (
+                      <span className="tree-tag" key={t}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

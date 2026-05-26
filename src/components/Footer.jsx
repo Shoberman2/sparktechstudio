@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="footer-brand">
             <a href="#" className="logo">
               <img src="/logo.svg" alt="SparkTech Studios" className="logo-icon" />
-              <span className="logo-text gradient-text">SparkTech Studios</span>
+              <span className="logo-text">SparkTech Studios</span>
             </a>
             <p>We build the crazy ideas other studios won't touch. Fast, efficient, real.</p>
           </div>
@@ -16,7 +16,7 @@ export default function Footer() {
             <h4>Work</h4>
             <ul>
               <li><a href="https://ballotwatch.io" target="_blank" rel="noopener noreferrer">BallotWatch</a></li>
-              <li><a href="https://ratemydivorcelawyer.com" target="_blank" rel="noopener noreferrer">Rate My Divorce Lawyer</a></li>
+              <li><a href="https://utern.ai" target="_blank" rel="noopener noreferrer">Utern.ai</a></li>
             </ul>
           </div>
           <div className="footer-col">
