@@ -1,38 +1,13 @@
 .waitlist {
-  padding: 120px 0;
+  padding: 112px 0;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, rgba(201, 162, 0, 0.05) 0%, transparent 60%),
-    var(--bg-primary);
-}
-
-/* CSS grid pattern background */
-.waitlist::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--border-subtle) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.waitlist-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(201, 162, 0, 0.08) 0%, transparent 70%);
-  pointer-events: none;
+  border-top: 1px solid var(--line-strong);
+  background: var(--paper);
 }
 
 .waitlist-inner {
-  max-width: 560px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 40px;
   text-align: center;
@@ -41,71 +16,56 @@
 }
 
 .waitlist-inner h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
-  font-weight: 400;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-}
-
-.waitlist-inner > p {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  margin-bottom: 36px;
-  line-height: 1.6;
-}
-
-.waitlist-form {
-  display: flex;
-  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
   margin-bottom: 16px;
 }
 
-.waitlist-form input[type="email"] {
-  flex: 1;
-  padding: 14px 18px;
-  border-radius: 50px;
-  border: 1.5px solid var(--border-light);
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
+.waitlist-sub {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  max-width: 52ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.waitlist-form input[type="email"]::placeholder { color: var(--text-muted); }
-
-.waitlist-form input[type="email"]:focus {
-  border-color: var(--accent-yellow);
-  box-shadow: 0 0 20px rgba(201, 162, 0, 0.15);
+.waitlist-term {
+  text-align: left;
+  max-width: 660px;
+  margin: 0 auto 20px;
 }
 
-.waitlist-form .btn-primary {
-  padding: 14px 28px;
+.waitlist-term .term-body { padding: 22px 20px; overflow-x: auto; }
+
+.waitlist-cmd {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 2vw, 0.95rem);
+  color: var(--ink-soft);
+  text-decoration: none;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.btn-email {
-  padding: 16px 36px !important;
-  font-size: 1.05rem !important;
-  margin-bottom: 20px;
+.waitlist-email {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms steps(2);
 }
+
+.waitlist-cmd:hover .waitlist-email { border-bottom-color: var(--ink); }
 
 .waitlist-note {
-  font-size: 0.8rem;
-  color: var(--text-muted);
   font-family: var(--font-mono);
+  font-size: 0.82rem;
 }
 
-@media (max-width: 1024px) {
-  .waitlist-form { flex-direction: column; }
-}
-
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .waitlist { padding: 80px 0; }
-  .waitlist-inner { padding: 0 20px; }
-  .waitlist-form { flex-direction: column; }
+  .waitlist-inner { padding: 0 18px; }
 }

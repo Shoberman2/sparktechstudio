@@ -5,22 +5,19 @@ export default function Navbar() {
     <nav>
       <div className="nav-inner">
         <div className="nav-left">
+          <span className="term-dots" aria-hidden="true"><i /><i /><i /></span>
           <a href="#" className="logo">
             <img src="/logo.svg" alt="SparkTech Studios" className="logo-icon" />
-            <span className="logo-text">SparkTech Studios</span>
+            <span className="logo-text">sparktech-studios<span className="logo-caret" aria-hidden="true" /></span>
           </a>
-          <ul className="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#capabilities">Studio</a></li>
-            <li><a href="#portfolio">Work</a></li>
-            <li><a href="#approach">Approach</a></li>
-          </ul>
         </div>
+        <ul className="nav-links">
+          <li><a href="#services">./services</a></li>
+          <li><a href="#portfolio">./work</a></li>
+          <li><a href="#about">./about</a></li>
+        </ul>
         <div className="nav-right">
-          <a href="#waitlist" className="nav-cta">
-            Start a project
-            <span className="nav-cta-arrow" aria-hidden="true">→</span>
-          </a>
+          <a href="#waitlist" className="nav-cta">[ start_a_project ]</a>
         </div>
       </div>
     </nav>

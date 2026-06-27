@@ -2,18 +2,22 @@ import './Showcase.css'
 
 const projects = [
   {
-    name: 'BallotWatch',
+    name: 'ballotwatch.io',
     url: 'https://ballotwatch.io',
     logo: '/logo-ballotwatch.svg',
-    desc: 'A civic tech platform that makes local government transparent and accessible. Track legislation, representatives, and voting records all in one place.',
-    tags: ['Civic Tech', 'Public Data', 'Full-Stack'],
+    desc: 'A civic-tech platform that makes local government legible. Track legislation, representatives, and voting records in one place.',
+    does: 'Turns scattered public records into something a normal person can actually follow.',
+    tags: ['civic-tech', 'public-data', 'full-stack'],
+    built: 'React · Node · Postgres',
   },
   {
-    name: 'Utern.ai',
+    name: 'utern.ai',
     url: 'https://utern.ai',
     logo: '/logo-utern.png',
-    desc: 'Swipe for internships. A web and mobile app that turns the internship hunt into something fast, fun, and actually usable.',
-    tags: ['Career Tech', 'Mobile + Web', 'Consumer App'],
+    desc: 'Swipe for internships. The internship hunt turned into something fast, fun, and genuinely usable on web and mobile.',
+    does: 'Matches students to roles with a swipe, then gets out of the way.',
+    tags: ['career-tech', 'mobile+web', 'consumer'],
+    built: 'React Native · Web · AI matching',
   },
 ]
 
@@ -22,64 +26,62 @@ export default function Showcase() {
     <section className="showcase-section" id="portfolio">
       <div className="showcase-inner">
         <header className="showcase-header reveal">
-          <h2>
-            Selected <em>work</em>.
-          </h2>
-          <p>
-            Real products, live in production. Someone said "what if..."
-            and we built it.
+          <p className="prompt">
+            <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>$ ls ~/work --tree
+          </p>
+          <h2>// selected work</h2>
+          <p className="showcase-lead">
+            Real products, live, with real users. These are not mockups or
+            concept pages, click any of them and you land on the thing we
+            shipped.
           </p>
         </header>
 
-        <div className="family-tree">
+        <div className="tree">
           <div className="tree-root reveal">
             <img src="/logo.svg" alt="" className="tree-root-logo" />
-            <span className="tree-root-name">SparkTech Studios</span>
+            <span className="tree-root-name">sparktech-studios/</span>
           </div>
 
-          <svg
-            className="tree-branches"
-            viewBox="0 0 100 56"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M 50 0 V 28 H 25 V 56 M 50 28 H 75 V 56"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
+          <ul className="tree-list reveal-stagger">
+            {projects.map((p, i) => {
+              const last = i === projects.length - 1
+              return (
+                <li className="tree-row reveal" key={p.name}>
+                  <span className="tree-glyph" aria-hidden="true">{last ? '└──' : '├──'}</span>
+                  <a
+                    className="tree-node"
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="tree-node-bar">
+                      <span className="tree-fav">
+                        <img src={p.logo} alt="" loading="lazy" />
+                      </span>
+                      <span className="tree-node-name">{p.name}</span>
+                      <span className="tree-status">[live]</span>
+                      <span className="tree-arrow" aria-hidden="true">↗</span>
+                    </div>
+                    <div className="tree-node-body">
+                      <p className="tree-desc">{p.desc}</p>
+                      <p className="tree-line"><span className="tree-k">does</span>{p.does}</p>
+                      <p className="tree-line"><span className="tree-k">built</span>{p.built}</p>
+                      <div className="tree-tags">
+                        {p.tags.map((t) => (
+                          <span className="tree-tag" key={t}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
 
-          <div className="tree-children reveal-stagger">
-            {projects.map(p => (
-              <a
-                key={p.name}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="tree-node reveal"
-              >
-                <div className="tree-logo">
-                  <img src={p.logo} alt="" loading="lazy" />
-                </div>
-                <div className="tree-body">
-                  <h3>
-                    {p.name}
-                    <span className="tree-arrow" aria-hidden="true">↗</span>
-                  </h3>
-                  <p>{p.desc}</p>
-                  <div className="tree-tags">
-                    {p.tags.map(t => (
-                      <span className="tree-tag" key={t}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+          <p className="tree-footnote reveal">
+            <span className="comment"># every project here is in production. yours is next.</span>
+          </p>
         </div>
       </div>
     </section>

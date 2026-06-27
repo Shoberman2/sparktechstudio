@@ -1,0 +1,110 @@
+.services {
+  padding: 104px 0;
+  border-top: 1px solid var(--line-strong);
+  background: var(--paper);
+}
+
+.services-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.services-header {
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+
+.services-header .prompt { margin-bottom: 14px; }
+
+.services-header h2 {
+  font-family: var(--font-mono);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.services-lead {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* Grid of square terminal panels — no rounded AI cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line-strong);
+  border-bottom: none;
+  border-right: none;
+}
+
+.service {
+  padding: 26px 24px 24px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--paper);
+  transition: background 120ms steps(2), color 120ms steps(2);
+}
+
+.service:hover { background: var(--panel); }
+
+.service-top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.service-id {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.service-name {
+  font-family: var(--font-mono);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.service-paren { color: var(--accent-gold); font-weight: 400; }
+
+.service-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.service-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.service-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+}
+
+.service-tag::before { content: '#'; color: var(--accent-gold); }
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .services { padding: 72px 0; }
+  .services-inner { padding: 0 18px; }
+  .services-grid { grid-template-columns: 1fr; }
+}
