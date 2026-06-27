@@ -44,6 +44,14 @@
   text-underline-offset: 0.1em;
 }
 
+/* Slim caret at headline scale — a seamless text cursor, not a solid block */
+.hero-headline .tw-caret {
+  width: 0.05em;
+  height: 0.78em;
+  margin-left: 0.07em;
+  transform: translateY(0.02em);
+}
+
 .hero-sub {
   max-width: 60ch;
   margin-bottom: 36px;
