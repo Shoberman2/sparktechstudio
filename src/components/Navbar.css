@@ -46,7 +46,7 @@ nav {
 .logo-text {
   display: inline-flex;
   align-items: center;
-  color: var(--ink);
+  color: var(--accent-gold);
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.86rem;
