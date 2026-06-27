@@ -1,0 +1,17 @@
+{
+  "current_day": "2026-04-13",
+  "theme": "Studio Origin Story Sprint",
+  "campaign_phase": "awareness",
+  "campaign_day": 1,
+  "streak": 0,
+  "steps": {
+    "morning_brief": { "done": true, "file": "briefs/2026-04-13-brief.md" },
+    "create_content": { "done": true, "file": "assets/2026-04-13-linkedin-single-image.html" },
+    "brand_voice": { "done": false },
+    "campaign_arc": { "done": false },
+    "performance_check": { "done": false },
+    "outreach_plan": { "done": false },
+    "marketing_report": { "done": false }
+  },
+  "history": []
+}
