@@ -17,6 +17,7 @@ export default function Footer() {
             <ul>
               <li><a href="https://ballotwatch.io" target="_blank" rel="noopener noreferrer">ballotwatch.io</a></li>
               <li><a href="https://utern.ai" target="_blank" rel="noopener noreferrer">utern.ai</a></li>
+              <li><a href="https://spacialhealth.com" target="_blank" rel="noopener noreferrer">spacialhealth.com</a></li>
             </ul>
           </div>
           <div className="footer-col">

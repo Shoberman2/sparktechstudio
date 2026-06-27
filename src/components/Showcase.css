@@ -119,6 +119,20 @@
   padding: 2px 7px;
 }
 
+.tree-status--building {
+  background: none;
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  padding: 1px 6px;
+}
+
+.tree-status--soon {
+  background: none;
+  color: var(--ink-faint);
+  border: 1px solid var(--line-strong);
+  padding: 1px 6px;
+}
+
 .tree-arrow {
   margin-left: auto;
   font-size: 1rem;
