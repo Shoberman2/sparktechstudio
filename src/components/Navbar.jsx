@@ -8,7 +8,7 @@ export default function Navbar() {
           <span className="term-dots" aria-hidden="true"><i /><i /><i /></span>
           <a href="#" className="logo">
             <img src="/logo.svg" alt="SparkTech Studios" className="logo-icon" />
-            <span className="logo-text">sparktech-studios<span className="logo-caret" aria-hidden="true" /></span>
+            <span className="logo-text">sparktech<span className="logo-text-suffix">-studios</span><span className="logo-caret" aria-hidden="true" /></span>
           </a>
         </div>
         <ul className="nav-links">

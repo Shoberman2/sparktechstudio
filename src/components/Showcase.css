@@ -196,4 +196,14 @@
   .tree-row { grid-template-columns: 26px 1fr; }
   .tree-glyph { font-size: 0.95rem; }
   .tree-footnote { padding-left: 26px; }
+  .tree-node-bar { gap: 8px; padding: 10px 12px; }
+  .tree-node-name {
+    font-size: 0.88rem;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Hover-only affordance; costs width the longest domain doesn't have */
+  .tree-arrow { display: none; }
 }

@@ -108,4 +108,6 @@ nav {
 @media (max-width: 460px) {
   .nav-left .term-dots { display: none; }
   .nav-cta { font-size: 0.7rem; padding: 5px 8px; }
+  /* Full wordmark + CTA can't share 375px; keep the caret, drop the suffix */
+  .logo-text-suffix { display: none; }
 }

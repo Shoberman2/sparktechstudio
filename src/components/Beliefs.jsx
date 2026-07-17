@@ -22,15 +22,15 @@ export default function Beliefs() {
             <Typewriter
               as="span"
               className="serif"
-              speed={15}
-              startDelay={400}
+              speed={7}
+              startDelay={200}
               text="Everyone has that one idea. The one they can't stop thinking about. Too unique for a template, too ambitious for a freelancer."
               onDone={() => setPhase(1)}
             />
           </blockquote>
           <p>
             <Typewriter
-              speed={12}
+              speed={5}
               gate={phase >= 1}
               text={'That is who we are for. We build the things that do not fit neatly into a category, the products that make people ask "wait, how does this exist?" You bring the wild concept; we turn it into software real people can use.'}
               onDone={() => setPhase(2)}
@@ -38,7 +38,7 @@ export default function Beliefs() {
           </p>
           <p>
             <Typewriter
-              speed={12}
+              speed={5}
               gate={phase >= 2}
               text="And we do it fast, not by cutting corners but because building efficiently is what frees us to obsess over the parts that matter: the feel, the details, the craft that makes it yours."
               onDone={() => setPhase(3)}
@@ -46,7 +46,7 @@ export default function Beliefs() {
           </p>
           <p>
             <Typewriter
-              speed={12}
+              speed={5}
               gate={phase >= 3}
               keepCursor
               text="You do not need a massive budget or a year of runway. You need a senior team that gets excited about weird ideas and knows how to ship. That is SparkTech Studios."
