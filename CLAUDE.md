@@ -39,6 +39,7 @@ Rules when writing about this:
 - `public/logo.png` - Lightning bolt logo (transparent background)
 - The hero visual is a **live terminal session built in React** (`Hero.jsx`), not an image or video. There is no photography on the site. Do not reintroduce a video or stock-image hero without asking.
 - The terminal prompt user is `sparktech@studio` everywhere. Never shorten it to `spark@studio` — the brand is SparkTech.
+- **The brand is "SparkTech Studio", singular**, matching sparktechstudio.com — in the wordmark, page title, OG tags, and body copy. The **one** exception is the footer copyright, which reads "SparkTech Studios, LLC" because that is the registered entity. Do not "fix" that line to match.
 - Accent color is a muted yellow/gold (`--accent-yellow`, `--accent-gold`)
 
 ## Design System

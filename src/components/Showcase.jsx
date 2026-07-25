@@ -22,7 +22,7 @@ export default function Showcase() {
         <div className="tree">
           <div className="tree-root reveal">
             <img src="/logo.svg" alt="" className="tree-root-logo" />
-            <span className="tree-root-name">sparktech-studios/</span>
+            <span className="tree-root-name">sparktech-studio/</span>
           </div>
 
           <ul className="tree-list reveal-stagger">

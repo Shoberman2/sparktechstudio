@@ -86,7 +86,9 @@ body::after {
   background-size: 220px 220px;
 }
 
-/* ---------- Typewriter caret ---------- */
+/* ---------- Blinking caret ----------
+   Ambient only. Nothing types on the site any more; this marks live prompts
+   in the hero headline, the navbar, the contact line, and the footer. */
 .tw-caret {
   display: inline-block;
   width: 0.62em;

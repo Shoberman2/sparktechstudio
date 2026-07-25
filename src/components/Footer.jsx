@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#" className="logo">
-              <img src="/logo.svg" alt="SparkTech Studios" className="logo-icon" />
-              <span className="logo-text">sparktech-studios</span>
+              <img src="/logo.svg" alt="SparkTech Studio" className="logo-icon" />
+              <span className="logo-text">sparktech-studio</span>
             </a>
             <p className="comment"># ai for the volume, senior engineers for everything that decides whether it scales.</p>
           </div>

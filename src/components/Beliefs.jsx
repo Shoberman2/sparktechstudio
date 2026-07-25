@@ -32,7 +32,7 @@ export default function Beliefs() {
           <p>
             You do not need a massive budget or a year of runway. You need a
             senior team that gets excited about weird ideas and knows how to
-            ship. That is SparkTech Studios.
+            ship. That is SparkTech Studio.
           </p>
         </div>
       </div>
