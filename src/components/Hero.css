@@ -20,15 +20,6 @@
   border-bottom: 1px solid var(--line-strong);
 }
 
-/* Faint CRT glow so the black bed is not dead flat */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at 30% 45%, rgba(217, 165, 32, 0.09), transparent 62%);
-}
-
 .hero-inner {
   position: relative;
   z-index: 1;
