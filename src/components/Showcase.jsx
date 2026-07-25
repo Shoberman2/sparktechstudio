@@ -9,7 +9,7 @@ export default function Showcase() {
       <div className="showcase-inner">
         <header className="showcase-header reveal">
           <p className="prompt">
-            <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>$ ls ~/work --tree
+            <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ ls ~/work --tree
           </p>
           <h2>// selected work</h2>
           <p className="showcase-lead">

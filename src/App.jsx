@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Services from './components/Services'
-import Showcase from './components/Showcase'
+import Thesis from './components/Thesis'
 import Beliefs from './components/Beliefs'
+import Process from './components/Process'
+import Showcase from './components/Showcase'
 import Waitlist from './components/Waitlist'
 import Footer from './components/Footer'
 
@@ -40,9 +41,10 @@ export default function App() {
     <>
       <Navbar />
       <Hero />
-      <Services />
-      <Showcase />
+      <Thesis />
       <Beliefs />
+      <Process />
+      <Showcase />
       <Waitlist />
       <Footer />
     </>

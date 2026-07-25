@@ -1,25 +1,17 @@
 .beliefs {
   border-top: 1px solid var(--line-strong);
   padding: 104px 0;
-  background: var(--paper-dim);
+  background: var(--paper);
 }
 
+/* Same single-column shape as .thesis — see the note there. */
 .beliefs-inner {
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 40px;
-  display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) 1.4fr;
-  gap: 72px;
-  align-items: start;
 }
 
-.beliefs-header {
-  position: sticky;
-  top: 90px;
-  align-self: start;
-}
-
+.beliefs-header { margin-bottom: 44px; }
 .beliefs-header .prompt { margin-bottom: 14px; }
 
 .beliefs-header h2 {
@@ -30,7 +22,7 @@
   color: var(--ink);
 }
 
-.beliefs-body { max-width: 60ch; }
+.beliefs-body { max-width: 68ch; }
 
 .beliefs-quote {
   font-size: 1.35rem;
@@ -52,8 +44,8 @@
 
 @media (max-width: 900px) {
   .beliefs { padding: 80px 0; }
-  .beliefs-inner { grid-template-columns: 1fr; gap: 36px; padding: 0 18px; }
-  .beliefs-header { position: static; }
+  .beliefs-inner { padding: 0 18px; }
+  .beliefs-header { margin-bottom: 32px; }
   .beliefs-body { max-width: 100%; }
   .beliefs-quote { font-size: 1.2rem; }
 }

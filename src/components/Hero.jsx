@@ -1,73 +1,106 @@
+import { useEffect, useState } from 'react'
 import './Hero.css'
 import Typewriter from './Typewriter'
-import { projects } from '../data/projects'
 
-const liveCount = projects.filter((p) => p.status === 'live').length
+/*
+ * The hero "film" is a real terminal session, not a video of one: crisp text at
+ * any resolution, no megabyte download, and the numbers stay editable.
+ * Lines print whole, one after another, the way real command output does.
+ */
+const bootLines = [
+  { label: 'scoping the idea', status: 'ok' },
+  { label: 'spawning 20 agents', status: 'ok' },
+  { label: 'generating', status: '4,312 lines' },
+  { label: 'senior review', status: '4,312 / 4,312' },
+  { label: 'hardening auth + data', status: 'ok' },
+  { label: 'load test @ 10k users', status: 'pass' },
+  { label: 'deploy', status: 'live' },
+]
+
+const LINE_MS = 260
+
+const prefersReducedMotion = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export default function Hero() {
+  // Resolved at first render so reduced motion never needs a setState in the
+  // effect body (which would cascade an extra render).
+  const [printed, setPrinted] = useState(() =>
+    prefersReducedMotion() ? bootLines.length : 0
+  )
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    const timers = []
+    for (let i = 1; i <= bootLines.length; i += 1) {
+      timers.push(setTimeout(() => setPrinted(i), 700 + i * LINE_MS))
+    }
+    return () => timers.forEach(clearTimeout)
+  }, [])
+
+  const done = printed >= bootLines.length
+
   return (
     <section className="hero">
       <div className="hero-inner">
         <div className="hero-copy">
           <p className="prompt hero-prompt">
-            <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>$ ./sparktech --pitch
+            <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ ./sparktech --pitch
           </p>
 
           <h1 className="hero-headline">
             <Typewriter
               as="span"
               speed={42}
-              startDelay={300}
+              startDelay={400}
               keepCursor
               text={[
-                { t: 'We build the ' },
-                { t: 'crazy', className: 'serif hero-em' },
-                { t: ' ideas.' },
+                { t: 'AI builds it.\n' },
+                { t: 'Talent', className: 'serif hero-em' },
+                { t: ' scales it.' },
               ]}
             />
           </h1>
 
           <p className="hero-sub reveal">
-            A custom software studio for ambitious founders. We design, build,
-            and ship production web, mobile, and AI products. The ideas other
-            teams call too weird or too hard, we put in front of real users in
-            weeks.
+            Anyone can get an app built now. Getting one to survive real users is
+            a different job, and it takes engineers who understand what the AI
+            just wrote. We run both halves.
           </p>
 
           <div className="hero-buttons reveal">
             <a href="#waitlist" className="hero-btn-primary">[ start_a_project ]</a>
-            <a href="#portfolio" className="hero-link">
-              see_the_work <span className="hero-arrow" aria-hidden="true">→</span>
+            <a href="#thesis" className="hero-link">
+              read_the_thesis <span className="hero-arrow">↓</span>
             </a>
           </div>
         </div>
 
-        <aside className="hero-terminal reveal" aria-label="Live project status">
-          <div className="term-bar">
+        <aside className="hero-term" aria-label="Example build session">
+          <div className="hero-term-bar">
             <span className="term-dots" aria-hidden="true"><i /><i /><i /></span>
-            <span className="term-title">status.sh</span>
+            <span className="hero-term-title">build.sh</span>
           </div>
-          <div className="term-body">
-            <p className="ht-cmd">
-              <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>$ ./status.sh --all
+          <div className="hero-term-body">
+            <p className="boot-cmd">
+              <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ ./build --new
             </p>
-            <ul className="ht-list">
-              {projects.map((p) => (
-                <li className="ht-row" key={p.key}>
-                  <span className={`ht-dot ht-dot--${p.status}`} aria-hidden="true" />
-                  <span className="ht-name">{p.name}</span>
-                  <span className="ht-leader" aria-hidden="true" />
-                  <span className={`ht-state ht-state--${p.status}`}>{p.status}</span>
+            <ul className="boot-list">
+              {bootLines.slice(0, printed).map((l) => (
+                <li className="boot-row" key={l.label}>
+                  <span className="boot-arrow" aria-hidden="true">&gt;</span>
+                  <span className="boot-label">{l.label}</span>
+                  <span className="boot-leader" aria-hidden="true" />
+                  <span className="boot-status">{l.status}</span>
                 </li>
               ))}
             </ul>
-            <p className="ht-summary">
-              <span className="comment"># {liveCount}/{projects.length} live · all systems go</span>
-            </p>
-            <p className="ht-cmd">
-              <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>${' '}
-              <span className="tw-caret" aria-hidden="true" />
-            </p>
+            {done && (
+              <p className="boot-cmd boot-final">
+                <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>${' '}
+                <span className="tw-caret" aria-hidden="true" />
+              </p>
+            )}
           </div>
         </aside>
       </div>

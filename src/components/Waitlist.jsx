@@ -6,8 +6,9 @@ export default function Waitlist() {
       <div className="waitlist-inner reveal">
         <h2>// got a crazy idea?</h2>
         <p className="waitlist-sub">
-          The wilder the concept, the more excited we get. One email, one real
-          conversation about what you want to build. No forms, no funnel.
+          Still an idea, or already built and buckling under real users. Either
+          way it is one email and one real conversation with the people who
+          would do the work. No forms, no funnel.
         </p>
 
         <div className="waitlist-term term">
@@ -17,7 +18,7 @@ export default function Waitlist() {
           </div>
           <div className="term-body">
             <a className="waitlist-cmd" href="mailto:contactus@sparktechstudio.com">
-              <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>$ mail{' '}
+              <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ mail{' '}
               <span className="waitlist-email">contactus@sparktechstudio.com</span>
               <span className="tw-caret" aria-hidden="true" />
             </a>

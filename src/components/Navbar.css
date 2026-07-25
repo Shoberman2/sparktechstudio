@@ -1,3 +1,8 @@
+/*
+ * Hidden on the first view so the hero image is uninterrupted, then it snaps
+ * down once the user scrolls off the hero. `visibility` (not just transform)
+ * keeps the hidden links out of the tab order and the a11y tree.
+ */
 nav {
   position: fixed;
   top: 0;
@@ -5,6 +10,18 @@ nav {
   z-index: 1000;
   background: var(--paper-dim);
   border-bottom: 1px solid var(--line-strong);
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 200ms steps(4), visibility 200ms steps(1);
+}
+
+nav.nav-shown {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav { transition: none; }
 }
 
 .nav-inner {

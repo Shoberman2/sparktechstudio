@@ -1,0 +1,70 @@
+.thesis {
+  border-top: 1px solid var(--line-strong);
+  padding: 104px 0;
+  background: var(--paper-dim);
+}
+
+/*
+ * Single column, heading above body — the same shape as every other section.
+ * The old two-column sticky layout pinned the heading while the body scrolled
+ * past it, which left a tall empty column and made the page read as two
+ * disconnected halves.
+ */
+.thesis-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.thesis-header { margin-bottom: 44px; }
+.thesis-header .prompt { margin-bottom: 14px; }
+
+.thesis-header h2 {
+  font-family: var(--font-mono);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.thesis-body { max-width: 68ch; }
+
+.thesis-quote {
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 30px;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent-yellow);
+}
+
+.thesis-body p {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.thesis-body p:last-child { margin-bottom: 0; }
+
+/* The one phrase worth marking: Andreessen's coinage. */
+.thesis-term {
+  color: var(--accent-gold);
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent-yellow);
+}
+
+.thesis-footnote {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 900px) {
+  .thesis { padding: 80px 0; }
+  .thesis-inner { padding: 0 18px; }
+  .thesis-header { margin-bottom: 32px; }
+  .thesis-body { max-width: 100%; }
+  .thesis-quote { font-size: 1.2rem; }
+}

@@ -10,7 +10,7 @@ export default function Footer() {
               <img src="/logo.svg" alt="SparkTech Studios" className="logo-icon" />
               <span className="logo-text">sparktech-studios</span>
             </a>
-            <p className="comment"># we build the crazy ideas other studios won't touch. fast, real, in production.</p>
+            <p className="comment"># ai for the volume, senior engineers for everything that decides whether it scales.</p>
           </div>
           <div className="footer-col">
             <h4>~/work</h4>
@@ -23,8 +23,9 @@ export default function Footer() {
           <div className="footer-col">
             <h4>~/studio</h4>
             <ul>
+              <li><a href="#thesis">thesis</a></li>
               <li><a href="#about">about</a></li>
-              <li><a href="#services">services</a></li>
+              <li><a href="#process">process</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -50,7 +51,7 @@ export default function Footer() {
         </div>
 
         <p className="footer-prompt">
-          <span className="prompt-sign">spark@studio</span>:<span className="prompt-path">~</span>${' '}
+          <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>${' '}
           <span className="tw-caret" aria-hidden="true" />
         </p>
       </div>
