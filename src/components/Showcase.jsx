@@ -13,9 +13,8 @@ export default function Showcase() {
           </p>
           <h2>// selected work</h2>
           <p className="showcase-lead">
-            Real products, live, with real users. These are not mockups or
-            concept pages, click any of them and you land on the thing we
-            shipped.
+            Real products, live, with real users. Click any of them and you land
+            on the thing we shipped.
           </p>
         </header>
 
@@ -47,7 +46,6 @@ export default function Showcase() {
                     </div>
                     <div className="tree-node-body">
                       <p className="tree-desc">{p.desc}</p>
-                      <p className="tree-line"><span className="tree-k">does</span>{p.does}</p>
                       <div className="tree-tags">
                         {p.tags.map((t) => (
                           <span className="tree-tag" key={t}>{t}</span>

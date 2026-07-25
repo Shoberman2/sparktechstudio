@@ -14,32 +14,28 @@ export default function Thesis() {
         <div className="thesis-body">
           <blockquote className="thesis-quote reveal">
             <span className="serif">
-              Anyone can build an app now. Almost nobody can scale one.
+              Building got cheap. Deciding what to build did not.
             </span>
           </blockquote>
 
           <p className="reveal">
-            AI closed the distance between an idea and something that runs. That
-            part is over. What nobody automated is everything after: the product
-            holding up when real users arrive, when the data gets messy, when
-            the bill shows up.
+            AI closed the gap between an idea and something that runs. It did not
+            close what comes after: real users, messy data, the bill.
           </p>
 
           <p className="reveal">
             Marc Andreessen calls the engineers who adapted{' '}
-            <span className="thesis-term">AI vampires</span>. They run twenty
-            coding agents at once, sleep less than they should, and ship roughly
-            twenty times what they did a year ago. He named the catch in the
-            same breath: productivity is outrunning comprehension. There is more
-            code being written than there are people who understand it.
+            <span className="thesis-term">AI vampires</span> — twenty agents at
+            once, twenty times the output. He named the catch in the same breath:
+            productivity is outrunning comprehension. More is being shipped than
+            anyone is deciding on.
           </p>
 
           <p className="reveal">
-            That gap is the job. AI gives you speed. It does not tell you what to
-            build, what breaks at ten thousand users, or which of the four
-            thousand lines it just wrote you should keep. So we run both on
-            purpose: AI for the volume, senior engineers for the calls that
-            decide whether the thing lives. Neither half gets there alone.
+            So the job is judgment first. What is worth building, what breaks at
+            scale, what to cut, when to stop. We give you that answer, then we go
+            build it and run it. Advisors who ship, not consultants who hand you
+            a deck.
           </p>
 
           <p className="thesis-footnote reveal">

@@ -1,5 +1,5 @@
-// Single source of truth for projects.
-// Drives both the hero status terminal (name + status) and the Showcase tree.
+// Single source of truth for projects. Drives the Showcase tree.
+// No screenshots: the work list is text-only by design.
 // status: 'live' | 'building' | 'soon'
 export const projects = [
   {
@@ -8,8 +8,7 @@ export const projects = [
     url: 'https://ballotwatch.io',
     logo: '/logo-ballotwatch.svg',
     status: 'live',
-    desc: 'A civic-tech platform that makes local government legible. Track legislation, representatives, and voting records in one place.',
-    does: 'Turns scattered public records into something a normal person can actually follow.',
+    desc: 'Local government, made legible. Bills, reps, and voting records in one place.',
     tags: ['civic-tech', 'public-data', 'full-stack'],
   },
   {
@@ -18,8 +17,7 @@ export const projects = [
     url: 'https://utern.ai',
     logo: '/logo-utern.png',
     status: 'live',
-    desc: 'An AI internship platform run by two agents. Bob works for the student, Barb works for the recruiter. They handle the back and forth, and a match happens when both sides agree.',
-    does: 'Gives every student an agent that argues their case, then matches when the recruiter agent signs off.',
+    desc: 'Two AI agents run the internship hunt. One argues for the student, one screens for the recruiter.',
     tags: ['career-tech', 'ai-agents', 'consumer'],
   },
   {
@@ -28,8 +26,34 @@ export const projects = [
     url: 'https://spacialhealth.com',
     logo: '/logo-spacialhealth.png',
     status: 'live',
-    desc: 'Telehealth for food allergies. It connects people to real allergy doctors and proven at-home treatment plans, so families can build actual tolerance instead of just avoiding everything.',
-    does: 'Puts expert food-allergy treatment on your phone. No referrals, anywhere in the US.',
+    desc: 'Telehealth for food allergies. Real allergy doctors and at-home treatment, anywhere in the US.',
     tags: ['health-tech', 'telehealth', 'consumer'],
+  },
+  {
+    key: 'artstory',
+    name: 'artstory',
+    url: 'https://artstory-six.vercel.app',
+    logo: '/logo-artstory.svg',
+    status: 'live',
+    desc: 'Scan a painting and get the whole story: the detail you missed, the painter, the world it was made in.',
+    tags: ['ai', 'museums', 'consumer'],
+  },
+  {
+    key: 'burnt',
+    name: 'burnt',
+    url: 'https://burnt-delta.vercel.app',
+    logo: '/logo-burnt.svg',
+    status: 'live',
+    desc: 'Daily AI token tracking. Post what you burned, keep the streak, climb the leaderboard.',
+    tags: ['ai', 'ios', 'social'],
+  },
+  {
+    key: 'leed',
+    name: 'leed.media',
+    url: 'https://www.leed.media',
+    logo: '/logo-leed.svg',
+    status: 'live',
+    desc: 'Stocks for stories. Leads land on a public signal board, AI clusters them, and only verified journalists see the source.',
+    tags: ['journalism', 'ai', 'public-data'],
   },
 ]

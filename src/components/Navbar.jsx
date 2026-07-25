@@ -32,7 +32,12 @@ export default function Navbar() {
           <li><a href="#portfolio">./work</a></li>
         </ul>
         <div className="nav-right">
-          <a href="#waitlist" className="nav-cta">[ start_a_project ]</a>
+          {/* Two labels so the phone can keep the full wordmark: the long CTA
+              and "sparktech-studio" cannot both fit 375px. */}
+          <a href="#waitlist" className="nav-cta">
+            <span className="nav-cta-long">[ start_a_project ]</span>
+            <span className="nav-cta-short">[ start ]</span>
+          </a>
         </div>
       </div>
     </nav>

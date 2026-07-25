@@ -116,6 +116,9 @@ nav.nav-shown {
 
 .nav-cta:hover { background: var(--accent-yellow); color: var(--ink); }
 
+/* Long label by default; the phone breakpoint swaps to the short one. */
+.nav-cta-short { display: none; }
+
 @media (max-width: 760px) {
   .nav-inner { padding: 0 14px; gap: 12px; }
   .nav-links { display: none; }
@@ -124,7 +127,11 @@ nav.nav-shown {
 
 @media (max-width: 460px) {
   .nav-left .term-dots { display: none; }
-  .nav-cta { font-size: 0.7rem; padding: 5px 8px; }
-  /* Full wordmark + CTA can't share 375px; keep the caret, drop the suffix */
-  .logo-text-suffix { display: none; }
+  /* Shorten the CTA rather than the brand. Truncating to "sparktech" left the
+     caret sitting against a clipped word, which read as broken text rather
+     than a terminal cursor. */
+  .nav-cta { font-size: 0.72rem; padding: 5px 9px; }
+  .nav-cta-long { display: none; }
+  .nav-cta-short { display: inline; }
+  .logo-text { font-size: 0.74rem; }
 }

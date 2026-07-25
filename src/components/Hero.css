@@ -3,9 +3,9 @@
  * here, so the hero carries its own scoped tokens: the global --ink/--accent
  * are tuned for cream paper and are unreadable on this bed.
  *
- * The visual is a terminal printing itself out (see Hero.jsx), not an image or
- * a video: generated video renders text as garbled glyphs and the payoff line
- * has to be legible. It also ships nothing extra to download.
+ * The visual is a full-bleed macro still of a transistor (public/transistor.jpg,
+ * a frame from a Veo generation). No video, no motion: the hero's only movement
+ * is the blinking caret.
  */
 .hero {
   --hero-fg: #f3f0e7;
@@ -24,37 +24,35 @@
   border-bottom: 1px solid var(--line-strong);
 }
 
-/* The background session. Held clear of the pitch column so body copy never
-   sits on top of it — no scrim, because a scrim would be a gradient. Only the
-   oversized headline crosses it, and that reads fine at this contrast. */
-.hero-stream {
+.hero-media {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 58%;
+  inset: 0;
   z-index: 0;
-  padding: 64px 40px 64px 0;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  line-height: 1.62;
-  color: rgba(243, 240, 231, 0.2);
-  white-space: pre;
   overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  /* Newest lines sit at the bottom, like a real scrolling session */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }
 
-.stream-line { animation: stream-in 90ms steps(2) both; }
-.stream-cmd { color: rgba(217, 165, 32, 0.42); font-weight: 600; }
+.hero-still {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  display: block;
+}
 
-@keyframes stream-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Dark at the bottom so the copy stays legible, lighter through the middle so
+   the chip is still the thing you look at. This one is a gradient on purpose:
+   a flat veil dims the whole photo evenly and kills it. Distinct from the gold
+   radial glow that was removed. */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 9, 7, 0.94) 0%,
+    rgba(10, 9, 7, 0.8) 30%,
+    rgba(10, 9, 7, 0.42) 62%,
+    rgba(10, 9, 7, 0.6) 100%
+  );
 }
 
 .hero-inner {
@@ -76,9 +74,19 @@
 .hero-prompt .prompt-sign { color: var(--hero-gold); }
 .hero-prompt .prompt-path { color: var(--hero-fg-soft); }
 
+.hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hero-gold);
+  margin-bottom: 14px;
+}
+
 .hero-headline {
   font-family: var(--font-mono);
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(2.6rem, 8vw, 6.4rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.05em;
@@ -103,6 +111,10 @@
   color: var(--hero-fg);
   margin-bottom: 26px;
 }
+
+/* Second beat gets its own line deterministically. Left to wrapping it
+   orphaned "it." on a line of its own at some widths. */
+.hero-thesis-beat { display: block; width: fit-content; }
 
 .hero-em {
   font-weight: 400;
@@ -170,23 +182,16 @@
 @media (max-width: 760px) {
   .hero { padding: 104px 0 64px; min-height: 100svh; }
   .hero-inner { padding: 0 18px; }
-  /* No room for a side column: run it full-bleed and drop it well back so the
-     copy stays readable over it. */
-  .hero-stream {
-    left: 0;
-    padding: 52px 18px;
-    font-size: 0.62rem;
-    color: rgba(243, 240, 231, 0.07);
-  }
-  .stream-cmd { color: rgba(217, 165, 32, 0.12); }
   .hero-headline { font-size: clamp(2.6rem, 16vw, 4.4rem); margin-bottom: 20px; }
   .hero-thesis { font-size: 1.1rem; margin-bottom: 20px; }
   .hero-sub { font-size: 0.95rem; margin-bottom: 28px; }
-  .hero-buttons { gap: 16px; }
-  .hero-btn-primary, .hero-link { width: 100%; justify-content: center; text-align: center; }
+  .hero-buttons { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-btn-primary { width: 100%; justify-content: center; text-align: center; }
+  /* .hero-link is deliberately NOT stretched: its underline is a text
+     underline, and at full width it turns into a stray rule across the
+     viewport that reads as a broken button. */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stream-line { animation: none; }
   .hero-link .hero-arrow { transition: none; }
 }

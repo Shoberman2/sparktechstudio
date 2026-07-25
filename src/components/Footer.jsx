@@ -1,4 +1,5 @@
 import './Footer.css'
+import { projects } from '../data/projects'
 
 export default function Footer() {
   return (
@@ -10,14 +11,18 @@ export default function Footer() {
               <img src="/logo.svg" alt="SparkTech Studio" className="logo-icon" />
               <span className="logo-text">sparktech-studio</span>
             </a>
-            <p className="comment"># ai for the volume, senior engineers for everything that decides whether it scales.</p>
+            <p className="comment"># we tell you what is worth building, then we build it and scale it.</p>
           </div>
           <div className="footer-col">
             <h4>~/work</h4>
+            {/* Driven by the same roster as the work list so the two cannot
+                drift apart when a project is added. */}
             <ul>
-              <li><a href="https://ballotwatch.io" target="_blank" rel="noopener noreferrer">ballotwatch.io</a></li>
-              <li><a href="https://utern.ai" target="_blank" rel="noopener noreferrer">utern.ai</a></li>
-              <li><a href="https://spacialhealth.com" target="_blank" rel="noopener noreferrer">spacialhealth.com</a></li>
+              {projects.map((p) => (
+                <li key={p.key}>
+                  <a href={p.url} target="_blank" rel="noopener noreferrer">{p.name}</a>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="footer-col">

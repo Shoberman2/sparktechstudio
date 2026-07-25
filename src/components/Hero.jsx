@@ -1,71 +1,17 @@
-import { useEffect, useState } from 'react'
 import './Hero.css'
 
-/*
- * The hero background is a real terminal printing itself out, not a video of
- * one. Generated video renders text as garbled pseudo-glyphs, and the whole
- * point here is that the payoff line is legible. This also ships ~0KB.
- */
-const stream = [
-  '$ ./sparktech --boot',
-  'runtime ........................ ok',
-  'context window ................. 1,000,000',
-  'agents spawned ................. 20',
-  'indexing repo .................. 84,219 files',
-  '',
-  '$ ./build --new',
-  'scoping ........................ ok',
-  'scaffolding .................... ok',
-  'generating ..................... 4,312 lines',
-  'generating ..................... 8,904 lines',
-  'generating ..................... 14,271 lines',
-  'tests written .................. 1,208',
-  'tests passing .................. 1,208 / 1,208',
-  '',
-  '$ ./review --senior',
-  'reading every line ............. 14,271',
-  'architecture ................... rewritten',
-  'auth + data .................... hardened',
-  'cost per request ............... cut 71%',
-  'load test @ 10k users .......... pass',
-  '',
-  '$ ./ship',
-  'deploying ...................... live',
-  'uptime ......................... 100%',
-  '',
-  '$ _',
-]
-
-const STREAM_MS = 52
-
-const prefersReducedMotion = () =>
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
 export default function Hero() {
-  const [printed, setPrinted] = useState(() =>
-    prefersReducedMotion() ? stream.length : 0
-  )
-
-  useEffect(() => {
-    if (prefersReducedMotion()) return
-    const timers = []
-    for (let i = 1; i <= stream.length; i += 1) {
-      timers.push(setTimeout(() => setPrinted(i), i * STREAM_MS))
-    }
-    return () => timers.forEach(clearTimeout)
-  }, [])
-
   return (
     <section className="hero">
-      <div className="hero-stream" aria-hidden="true">
-        {stream.slice(0, printed).map((line, i) => (
-          <p
-            className={`stream-line${line.startsWith('$') ? ' stream-cmd' : ''}`}
-            key={`${line}-${i}`}
-          >
-            {line || ' '}
-          </p>
-        ))}
+      <div className="hero-media" aria-hidden="true">
+        <img
+          className="hero-still"
+          src="/transistor.jpg"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+        />
+        <div className="hero-scrim" />
       </div>
 
       <div className="hero-inner">
@@ -73,24 +19,29 @@ export default function Hero() {
           <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ ./sparktech --pitch
         </p>
 
+        {/* "AI is here." demoted to a kicker: it sets up why advice is the
+            scarce thing now, but advisory is the headline. */}
+        <p className="hero-kicker">AI is here.</p>
+
         <h1 className="hero-headline">
-          AI is here.<span className="tw-caret" aria-hidden="true" />
+          Advice that ships.<span className="tw-caret" aria-hidden="true" />
         </h1>
 
         <p className="hero-thesis reveal">
-          AI builds it. <span className="serif hero-em">Talent</span> scales it.
+          We help you decide what is worth building.{' '}
+          <span className="serif hero-em hero-thesis-beat">Then we build it.</span>
         </p>
 
         <p className="hero-sub reveal">
-          Anyone can get an app built now. Getting one to survive real users is
-          a different job, and it takes engineers who understand what the AI
-          just wrote. We run both halves.
+          Anyone can get code written now. The scarce part is judgment: what to
+          build, what breaks at ten thousand users, when to say no. You get that
+          first, and a team that ships it second.
         </p>
 
         <div className="hero-buttons reveal">
           <a href="#waitlist" className="hero-btn-primary">[ start_a_project ]</a>
-          <a href="#thesis" className="hero-link">
-            read_the_thesis <span className="hero-arrow">↓</span>
+          <a href="#portfolio" className="hero-link">
+            see_the_work <span className="hero-arrow">↓</span>
           </a>
         </div>
       </div>

@@ -4,22 +4,22 @@ const steps = [
   {
     n: '1',
     name: 'scope',
-    desc: 'You tell us the idea. We tell you what is actually hard about it, what it costs, and what we would cut. Straight answer in one conversation, not a deck two weeks later.',
+    desc: 'You tell us the idea. We tell you what is actually hard about it, and what it costs.',
   },
   {
     n: '2',
     name: 'build',
-    desc: 'AI does the volume. A senior engineer owns the architecture and reads every line that ships. You are looking at something running in days, not staring at wireframes for a month.',
+    desc: 'AI writes the volume. A senior engineer owns the architecture and reads every line.',
   },
   {
     n: '3',
     name: 'harden',
-    desc: 'The unglamorous half: auth, data, payments, cost, the failure modes that never show up in a demo. This is the part that decides whether it survives real users.',
+    desc: 'Auth, data, payments, cost. The failure modes that never show up in a demo.',
   },
   {
     n: '4',
     name: 'ship',
-    desc: 'It goes live on infrastructure that holds, with monitoring so you know before your users do. You own the code, the accounts, and the keys. No lock-in, no retainer trap.',
+    desc: 'Live on infrastructure that holds. You own the code, the accounts, the keys.',
   },
 ]
 
@@ -33,8 +33,8 @@ export default function Process() {
           </p>
           <h2>// how we work</h2>
           <p className="process-lead">
-            Four steps, no ceremony. The same way whether it is a weekend
-            prototype or the thing your company runs on.
+            Advice first, then execution. The same four steps whether it is a
+            weekend prototype or the thing your company runs on.
           </p>
         </header>
 
