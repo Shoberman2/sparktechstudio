@@ -1,7 +1,11 @@
 /*
  * Hero — the one dark surface on the site. Paper ink inverts to paper-on-black
- * here. The visual is a live terminal session (see Hero.jsx), not an image or a
- * video, so the type stays crisp and the page ships nothing extra to download.
+ * here, so the hero carries its own scoped tokens: the global --ink/--accent
+ * are tuned for cream paper and are unreadable on this bed.
+ *
+ * The visual is a terminal printing itself out (see Hero.jsx), not an image or
+ * a video: generated video renders text as garbled glyphs and the payoff line
+ * has to be legible. It also ships nothing extra to download.
  */
 .hero {
   --hero-fg: #f3f0e7;
@@ -20,6 +24,39 @@
   border-bottom: 1px solid var(--line-strong);
 }
 
+/* The background session. Held clear of the pitch column so body copy never
+   sits on top of it — no scrim, because a scrim would be a gradient. Only the
+   oversized headline crosses it, and that reads fine at this contrast. */
+.hero-stream {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 58%;
+  z-index: 0;
+  padding: 64px 40px 64px 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.62;
+  color: rgba(243, 240, 231, 0.2);
+  white-space: pre;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  /* Newest lines sit at the bottom, like a real scrolling session */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.stream-line { animation: stream-in 90ms steps(2) both; }
+.stream-cmd { color: rgba(217, 165, 32, 0.42); font-weight: 600; }
+
+@keyframes stream-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -27,17 +64,11 @@
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
 }
-
-.hero-copy { flex: 1 1 auto; max-width: 620px; }
 
 .hero-prompt {
   font-size: 0.92rem;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   color: var(--hero-fg-soft);
   white-space: normal;
 }
@@ -47,14 +78,30 @@
 
 .hero-headline {
   font-family: var(--font-mono);
-  /* Sized so "Talent scales it." holds one line beside the session panel. */
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.04em;
+  line-height: 1;
+  letter-spacing: -0.05em;
   color: var(--hero-fg);
-  margin-bottom: 28px;
-  white-space: pre-line;
+  margin-bottom: 26px;
+}
+
+/* Slim caret at headline scale — a seamless text cursor, not a solid block */
+.hero-headline .tw-caret {
+  width: 0.045em;
+  height: 0.78em;
+  margin-left: 0.07em;
+  transform: translateY(0.02em);
+  background: var(--hero-gold);
+}
+
+.hero-thesis {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--hero-fg);
+  margin-bottom: 26px;
 }
 
 .hero-em {
@@ -67,17 +114,8 @@
   text-underline-offset: 0.12em;
 }
 
-/* Slim caret at headline scale — a seamless text cursor, not a solid block */
-.hero-headline .tw-caret {
-  width: 0.05em;
-  height: 0.78em;
-  margin-left: 0.07em;
-  transform: translateY(0.02em);
-  background: var(--hero-gold);
-}
-
 .hero-sub {
-  max-width: 54ch;
+  max-width: 58ch;
   margin-bottom: 32px;
   font-size: 1rem;
   line-height: 1.7;
@@ -129,98 +167,26 @@
 .hero-link .hero-arrow { transition: transform 160ms steps(3); }
 .hero-link:hover .hero-arrow { transform: translateY(3px); }
 
-/* ---------- the session ---------- */
-.hero-term {
-  flex: 0 0 auto;
-  width: clamp(320px, 34vw, 420px);
-  background: rgba(243, 240, 231, 0.04);
-  border: 1px solid var(--hero-line);
-  font-family: var(--font-mono);
-}
-
-.hero-term-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 32px;
-  padding: 0 12px;
-  border-bottom: 1px solid var(--hero-line);
-  background: rgba(243, 240, 231, 0.05);
-}
-
-.hero-term-bar .term-dots i { border-color: rgba(243, 240, 231, 0.5); }
-
-.hero-term-title {
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--hero-fg-soft);
-}
-
-.hero-term-body { padding: 16px 18px 15px; }
-
-.boot-cmd {
-  font-size: 0.78rem;
-  color: var(--hero-fg-soft);
-  /* Clip rather than spill past the panel border if the command ever grows. */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.boot-cmd .prompt-sign { color: var(--hero-gold); }
-.boot-final { margin-top: 10px; }
-
-.boot-list { list-style: none; margin: 12px 0 0; }
-
-.boot-row {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-size: 0.78rem;
-  line-height: 2;
-  color: var(--hero-fg);
-  animation: boot-in 140ms steps(2) both;
-}
-
-@keyframes boot-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.boot-arrow { color: var(--hero-fg-soft); flex-shrink: 0; }
-.boot-label { flex-shrink: 0; }
-
-.boot-leader {
-  flex: 1;
-  align-self: center;
-  border-bottom: 1px dotted rgba(243, 240, 231, 0.35);
-  min-width: 12px;
-}
-
-.boot-status {
-  flex-shrink: 0;
-  color: var(--hero-gold);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-@media (max-width: 980px) {
-  .hero-inner { flex-direction: column; align-items: stretch; gap: 44px; }
-  .hero-copy { max-width: none; }
-  .hero-term { width: 100%; max-width: 460px; }
-}
-
 @media (max-width: 760px) {
-  .hero { padding: 104px 0 64px; min-height: auto; }
-  .hero-inner { padding: 0 18px; gap: 36px; }
-  .hero-headline { font-size: clamp(2.1rem, 10vw, 3.2rem); margin-bottom: 24px; }
+  .hero { padding: 104px 0 64px; min-height: 100svh; }
+  .hero-inner { padding: 0 18px; }
+  /* No room for a side column: run it full-bleed and drop it well back so the
+     copy stays readable over it. */
+  .hero-stream {
+    left: 0;
+    padding: 52px 18px;
+    font-size: 0.62rem;
+    color: rgba(243, 240, 231, 0.07);
+  }
+  .stream-cmd { color: rgba(217, 165, 32, 0.12); }
+  .hero-headline { font-size: clamp(2.6rem, 16vw, 4.4rem); margin-bottom: 20px; }
+  .hero-thesis { font-size: 1.1rem; margin-bottom: 20px; }
   .hero-sub { font-size: 0.95rem; margin-bottom: 28px; }
   .hero-buttons { gap: 16px; }
   .hero-btn-primary, .hero-link { width: 100%; justify-content: center; text-align: center; }
-  .boot-row, .boot-cmd { font-size: 0.72rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .boot-row { animation: none; }
+  .stream-line { animation: none; }
   .hero-link .hero-arrow { transition: none; }
 }
