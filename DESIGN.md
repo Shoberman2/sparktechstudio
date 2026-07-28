@@ -19,7 +19,7 @@
 - **UI/Labels:** IBM Plex Mono (600/700) — prompts, nav, tags, buttons.
 - **Classical flourish:** IBM Plex Serif (italic) via the `.serif` class — used sparingly for one emphasis word ("crazy") and the about-section quote. The single "classical" note against the mono.
 - **Code/Data:** IBM Plex Mono (400)
-- **Loading:** Google Fonts CDN — `IBM+Plex+Mono` (400–700 + italics), `IBM+Plex+Serif` (italic), `Space+Mono` as fallback
+- **Loading:** Google Fonts CDN — `IBM+Plex+Mono` (400–700 + italics), `IBM+Plex+Serif` (italic). Space Mono stays in the CSS font stack as a fallback but is not loaded — it never rendered and cost two font files on first paint.
 - **Scale:**
   - Hero: clamp(2.6rem, 8.5vw, 6.5rem), letter-spacing -0.04em
   - Section heading (`// comment` style): clamp(1.7rem, 3.4vw, 2.5rem)
@@ -35,7 +35,7 @@
 - **Panel:** #f8f6ef — terminal window bodies
 - **Ink (text primary):** #14130f — warm true-black, no blue cast
 - **Ink soft (secondary):** #45433b — body copy
-- **Ink faint (muted):** #8b887b — labels, comments, branch glyphs
+- **Ink faint (muted):** #8b887b — decorative only (branch glyphs, parens, term titles, micro labels). It is ~3.1:1 on paper, below AA at body sizes, so `#` comment lines that carry copy use ink-soft instead.
 - **Hairline:** rgba(20,19,15,0.22); strong rgba(20,19,15,0.55)
 - **Accent (gold):** #b8860b (DarkGoldenRod) for non-text marks — the blinking caret (the signature spark), the `[live]` badge, primary CTA fill, hover fills. #7a5a0a (deeper gold, WCAG AA on paper) for accent *text* — the `spark@studio` prompt, `#` tags, the service index numbers, and the serif "crazy".
 - **Why warm-neutral, not cool:** the previous palette (#1a1a1e / #55555e / #8a8a95) carried a blue undertone (blue channel > red/green) and read as "blue." All ink values are now R ≥ G ≥ B.
@@ -73,7 +73,7 @@
 - **Headings:** `// comment`-style, typed.
 - **Tags:** Square, 1px hairline border, mono, prefixed with `#`.
 - **Work list:** ASCII tree (`├──` / `└──`) from `sparktech-studio/` to each live project, each shown as a terminal window with a `[live]` badge, a one-line description, and tags. **Text only — no screenshots.**
-- **Contact:** a terminal window where the email types itself into a `$ mail …` prompt with a persistent caret; the whole line is the mailto link.
+- **Contact:** left-aligned like every other section, opening with a `mkdir ~/your-idea` prompt and the standard `//` heading scale; a terminal window shows the email in a `$ mail …` prompt with a persistent caret, and the whole line is the mailto link.
 
 ## Decisions Log
 | Date | Decision | Rationale |
@@ -123,3 +123,9 @@
 | 2026-07-24 | **Hero is a still, not video.** `transistor.mp4` removed | Tried a looping Veo 3.1 clip (macro zoom into the chip, boomerang-encoded to hide the loop cut). User cut it after seeing it live. The single frame carries the same image at 44KB instead of 2.3MB, with no autoplay, no loop seam, and nothing to degrade on mobile or reduced motion. Do not reintroduce a video hero without asking. |
 | 2026-07-24 | Cut the 6-card services grid and the "why we exist" section; page is now hero → thesis → work → contact | Per user ("way more simple"). Page height dropped ~30%. The services content compressed into one `who-does-what.sh` panel (ai/ vs us/ ASCII columns), which now *argues the thesis* instead of listing capabilities. Nav drops to two links. |
 | 2026-07-24 | Lifted hero gold to #d9a520, scoped to `.hero` | The paper-safe accent (#7a5a0a, chosen for AA on cream) is nearly invisible on near-black. The hero needs its own gold; the rest of the site is unchanged. |
+| 2026-07-27 | `#` comment lines go ink-soft; ink-faint is decorative-only | From design review: ink-faint on paper is ~3.1:1 at 14–16px, below AA, and the comment lines carry some of the best copy on the page ("yours is next"). Branch glyphs, parens, and term titles stay faint. |
+| 2026-07-27 | Thesis em dash removed; "AI vampires" links to the source clip | Brand voice bans em dashes and the copy had one. The term was also underlined gold — link styling on dead text — so it now links to a16z's clip of Andreessen coining it (JRE #2501). Hover flips to ink. |
+| 2026-07-27 | Mobile hero tightened so both CTAs clear the fold at 812px | The seven-line sub paragraph pushed `see_the_work ↓` below the fold on a 375×812 phone, so the first viewport showed one action instead of two. Trimmed padding/margins and dropped the sub to 0.92rem/1.62; copy unchanged. |
+| 2026-07-27 | Work tree capped at 900px | Full-width cards held one sentence and three tags in ~1100px of paper and read as stretched. Text-only rule untouched. |
+| 2026-07-27 | Contact section left-aligns with its own prompt line | It was the only centered block on a left-aligned page. Now opens with `mkdir ~/your-idea` + the standard `//` heading scale, sharing the page's left edge. Copy unchanged. |
+| 2026-07-27 | Drop Space Mono from the Google Fonts request | It never rendered (Plex Mono always loads first) and cost two font files on first paint. Still in the CSS stack as a local fallback. |

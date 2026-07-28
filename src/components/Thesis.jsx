@@ -25,10 +25,17 @@ export default function Thesis() {
 
           <p className="reveal">
             Marc Andreessen calls the engineers who adapted{' '}
-            <span className="thesis-term">AI vampires</span> — twenty agents at
-            once, twenty times the output. He named the catch in the same breath:
-            productivity is outrunning comprehension. More is being shipped than
-            anyone is deciding on.
+            <a
+              className="thesis-term"
+              href="https://www.youtube.com/shorts/z_5bfejaqnk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AI vampires
+            </a>
+            : twenty agents at once, twenty times the output. He named the
+            catch in the same breath: productivity is outrunning comprehension.
+            More is being shipped than anyone is deciding on.
           </p>
 
           <p className="reveal">

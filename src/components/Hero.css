@@ -180,12 +180,16 @@
 .hero-link:hover .hero-arrow { transform: translateY(3px); }
 
 @media (max-width: 760px) {
-  .hero { padding: 104px 0 64px; min-height: 100svh; }
+  /* Tight enough that see_the_work clears the fold on an 812px-tall phone —
+     the first viewport should show both actions, not one. */
+  .hero { padding: 76px 0 48px; min-height: 100svh; }
   .hero-inner { padding: 0 18px; }
-  .hero-headline { font-size: clamp(2.6rem, 16vw, 4.4rem); margin-bottom: 20px; }
-  .hero-thesis { font-size: 1.1rem; margin-bottom: 20px; }
-  .hero-sub { font-size: 0.95rem; margin-bottom: 28px; }
-  .hero-buttons { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-prompt { margin-bottom: 16px; }
+  .hero-kicker { margin-bottom: 10px; }
+  .hero-headline { font-size: clamp(2.6rem, 15vw, 4.4rem); margin-bottom: 16px; }
+  .hero-thesis { font-size: 1.1rem; margin-bottom: 16px; }
+  .hero-sub { font-size: 0.92rem; line-height: 1.62; margin-bottom: 24px; }
+  .hero-buttons { flex-direction: column; align-items: flex-start; gap: 16px; }
   .hero-btn-primary { width: 100%; justify-content: center; text-align: center; }
   /* .hero-link is deliberately NOT stretched: its underline is a text
      underline, and at full width it turns into a stray rule across the

@@ -32,9 +32,11 @@
   color: var(--ink-soft);
 }
 
-/* ASCII process tree */
+/* ASCII process tree. Capped: full-width cards held one sentence and three
+   tags in ~1100px of paper, which read as stretched, not generous. */
 .tree {
   font-family: var(--font-mono);
+  max-width: 900px;
 }
 
 .tree-root {

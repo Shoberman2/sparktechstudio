@@ -47,11 +47,18 @@
 
 .thesis-body p:last-child { margin-bottom: 0; }
 
-/* The one phrase worth marking: Andreessen's coinage. */
+/* The one phrase worth marking: Andreessen's coinage, linked to him saying it. */
 .thesis-term {
   color: var(--accent-gold);
   font-weight: 600;
+  text-decoration: none;
   border-bottom: 1px solid var(--accent-yellow);
+  transition: color 120ms steps(2), border-color 120ms steps(2);
+}
+
+.thesis-term:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
 }
 
 .thesis-footnote {

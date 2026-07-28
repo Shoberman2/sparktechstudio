@@ -6,22 +6,25 @@
   background: var(--paper);
 }
 
+/* Left-aligned like every other section — this was the one centered block on
+   the page, and the shared left edge lands harder than a change of axis. */
 .waitlist-inner {
-  max-width: 720px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 40px;
-  text-align: center;
   position: relative;
   z-index: 1;
 }
 
+.waitlist-header { margin-bottom: 18px; }
+.waitlist-header .prompt { margin-bottom: 14px; }
+
 .waitlist-inner h2 {
   font-family: var(--font-mono);
-  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--ink);
-  margin-bottom: 16px;
 }
 
 .waitlist-sub {
@@ -30,14 +33,11 @@
   color: var(--ink-soft);
   margin-bottom: 32px;
   max-width: 52ch;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .waitlist-term {
-  text-align: left;
   max-width: 660px;
-  margin: 0 auto 20px;
+  margin: 0 0 20px;
 }
 
 .waitlist-term .term-body { padding: 22px 20px; overflow-x: auto; }
