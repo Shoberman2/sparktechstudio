@@ -2680,7 +2680,7 @@ body.mockup-lab-active nav:not(.lab-nav) {
   margin: 72px auto 0;
   padding: 42px;
   background: var(--d-paper);
-  border: 1px solid var(--d-green);
+  border: 0;
   box-shadow: none;
 }
 
