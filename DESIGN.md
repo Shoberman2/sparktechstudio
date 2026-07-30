@@ -1,5 +1,22 @@
 # Design System — SparkTech Studios
 
+## Current Production Direction
+
+As of 2026-07-30, the live site uses the approved **Practice Notes / Concept D**
+direction in `src/mockups/`. It supersedes the legacy terminal system below for
+the production homepage and capability pages.
+
+- Warm cream paper, deep green structure, and restrained coral-red accents.
+- Editorial serif headlines paired with compact sans and mono utility labels.
+- Centered, spacious major statements with strong rules and structured sections.
+- Pill-shaped calls to action, smooth scroll reveals, and no numbered section labels.
+- The SparkTech logo sits to the left of the `ST/S` monogram with no boxed background.
+- Core operating theme: **We ship in days, not weeks.**
+
+The terminal system remains documented because the previous site is still present
+in the codebase as a legacy fallback. Do not apply its square-button, gold-accent,
+or monospace-everywhere rules to the live Concept D pages.
+
 ## Product Context
 - **What this is:** A dev studio that builds ambitious, unconventional product ideas fast
 - **Who it's for:** People with wild product ideas who can't afford a big agency and need more than DIY
@@ -44,7 +61,7 @@
 
 ## Spacing
 - **Base unit:** 8px
-- **Density:** Comfortable but denser than before — sections carry proof and concrete content, not empty whitespace. Section padding ~104px desktop / ~72px mobile.
+- **Density:** Comfortable but denser than before — sections carry proof and concrete content, not empty whitespace. Section padding 104px desktop / 76px mobile, uniform across all sections.
 - **Scale:** 2xs(4) xs(8) sm(16) md(24) lg(32) xl(48) 2xl(64)
 
 ## Layout
@@ -129,3 +146,5 @@
 | 2026-07-27 | Work tree capped at 900px | Full-width cards held one sentence and three tags in ~1100px of paper and read as stretched. Text-only rule untouched. |
 | 2026-07-27 | Contact section left-aligns with its own prompt line | It was the only centered block on a left-aligned page. Now opens with `mkdir ~/your-idea` + the standard `//` heading scale, sharing the page's left edge. Copy unchanged. |
 | 2026-07-27 | Drop Space Mono from the Google Fonts request | It never rendered (Plex Mono always loads first) and cost two font files on first paint. Still in the CSS stack as a local fallback. |
+| 2026-07-29 | **Polish pass on the existing theme** (after a re-theme was mocked and declined) | User direction: keep the current design, make it better. (1) Hero still preloaded from index.html — it is the LCP element but sat behind the JS bundle. (2) `scroll-margin-top: 62px` on ids so anchor jumps clear the fixed nav. (3) Keyboard pass: gold `:focus-visible` outlines, work cards mirror their hover state on focus, and a hidden `skip_to_content` link. (4) `how we work` goes paper-dim, restoring the alternating section rhythm. (5) Section quotes bump to clamp(1.35–1.55rem) — the Memo mockup showed bigger pull quotes read more confident. (6) Section padding unified at 104/76; contact was 112 and work mobile 72. (7) `text-wrap: balance` on headings; `theme-color` #0a0907. |
+| 2026-07-30 | **Practice Notes / Concept D promoted to production** | The user chose mockup four and refined it through multiple rounds. The cream, green, and coral editorial direction now owns `/`; capability detail pages live at `/capabilities/*`; the four-concept lab remains under `/mockups`. The old terminal system is retained only as a legacy fallback. |

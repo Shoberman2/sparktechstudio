@@ -25,8 +25,8 @@
 .beliefs-body { max-width: 68ch; }
 
 .beliefs-quote {
-  font-size: 1.35rem;
-  line-height: 1.55;
+  font-size: clamp(1.35rem, 2vw, 1.55rem);
+  line-height: 1.5;
   color: var(--ink);
   margin-bottom: 30px;
   padding-left: 20px;
@@ -43,7 +43,7 @@
 .beliefs-body p:last-child { margin-bottom: 0; }
 
 @media (max-width: 900px) {
-  .beliefs { padding: 80px 0; }
+  .beliefs { padding: 76px 0; }
   .beliefs-inner { padding: 0 18px; }
   .beliefs-header { margin-bottom: 32px; }
   .beliefs-body { max-width: 100%; }

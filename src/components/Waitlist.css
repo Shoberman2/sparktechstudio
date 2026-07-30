@@ -1,5 +1,5 @@
 .waitlist {
-  padding: 112px 0;
+  padding: 104px 0;
   position: relative;
   overflow: hidden;
   border-top: 1px solid var(--line-strong);
@@ -66,7 +66,7 @@
 }
 
 @media (max-width: 600px) {
-  .waitlist { padding: 80px 0; }
+  .waitlist { padding: 76px 0; }
   .waitlist-inner { padding: 0 18px; }
   .waitlist-cmd {
     font-size: 0.75rem;

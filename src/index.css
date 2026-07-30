@@ -41,6 +41,11 @@
 
 html { scroll-behavior: smooth; font-size: 19px; }
 
+/* Anchor jumps land under the fixed navbar without this. */
+[id] { scroll-margin-top: 62px; }
+
+h1, h2, h3 { text-wrap: balance; }
+
 body {
   font-family: var(--font-mono);
   background: var(--paper);
@@ -53,6 +58,29 @@ body {
 
 /* Terminal text selection: invert like a console */
 ::selection { background: var(--ink); color: var(--paper); }
+
+/* Keyboard focus: the gold caret color, square like everything else */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 16px;
+  z-index: 2000;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  text-decoration: none;
+}
+
+.skip-link:focus { top: 12px; }
 
 /* CRT scanlines + vignette */
 body::before {

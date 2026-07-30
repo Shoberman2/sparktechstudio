@@ -39,6 +39,7 @@ export default function App() {
 
   return (
     <>
+      <a className="skip-link" href="#thesis">skip_to_content</a>
       <Navbar />
       <Hero />
       <Thesis />

@@ -78,7 +78,8 @@
   transition: transform 120ms steps(2), box-shadow 120ms steps(2), background 120ms steps(2);
 }
 
-.tree-node:hover {
+.tree-node:hover,
+.tree-node:focus-visible {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 0 var(--ink);
 }
@@ -193,7 +194,7 @@
 }
 
 @media (max-width: 600px) {
-  .showcase-section { padding: 72px 0; }
+  .showcase-section { padding: 76px 0; }
   .showcase-inner { padding: 0 18px; }
   .tree-row { grid-template-columns: 26px 1fr; }
   .tree-glyph { font-size: 0.95rem; }
