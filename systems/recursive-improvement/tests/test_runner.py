@@ -168,6 +168,13 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(r['status'], 'failed')
         self.assertEqual(r['commands_used'], 0)
 
+    def test_snapshot_must_match_execution_approval(self):
+        self.config['approved_source_manifest'] = {'app.txt': 'different-approved-hash'}
+        _, r = self.cycle()
+        self.assertEqual(r['status'], 'failed')
+        self.assertEqual(r['commands_used'], 0)
+        self.assertIn('explicitly approved source', r['error'])
+
     def test_next_cycle_reads_actual_release_and_detects_tampering(self):
         c, _ = self.cycle()
         file = self.root / 'config.json'

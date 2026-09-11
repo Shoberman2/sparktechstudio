@@ -52,7 +52,7 @@ Reingesting identical identity/date/content is idempotent. For a correction, pas
 
 Coordinated with `systems/recursive-improvement` owner in the separate worktree. That runner owns subprocess execution, isolated workspaces, company credentials, budgets, verification, release and recovery. Its current stages are QA-specific; this library deliberately does not insert knowledge ingestion into its repair stages.
 
-The export has `schema_version`, `company_id`, immutable proposal/review records, and `execution_authorized: false`. A future adapter must verify company identity, map the reviewed proposal into permitted runner configuration, recheck current approval/claim health at execution time, and obtain the runner's own execution approval. Store runner `run_id`, `candidate_digest`, and evidence path on the outcome. This handoff is a documented integration boundary, not a wired live adapter. An exported JSON file is not a signed authorization token.
+The export has `schema_version`, `company_id`, immutable proposal/review records, and `execution_authorized: false`. The local `qa_bridge.py` now implements one bounded mapping to the canonical counter fixture. It requires a separate execution approval, rechecks current review/claim health and company identity, binds source/config/adapter hashes, invokes the existing QA runner, and stores run/evidence/approval references and measured counter values on the outcome. An exported JSON file is not an execution approval or signed token. Live company and arbitrary experiment adapters remain unimplemented. See [INTEGRATION.md](INTEGRATION.md).
 
 ## Security and practical boundaries
 

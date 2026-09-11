@@ -246,6 +246,8 @@ class Cycle:
             shutil.copyfile(src, dest)
         shutil.copytree(self.baseline, self.workspace)
         self.original = tree(self.baseline)
+        if self.config.get('approved_source_manifest') is not None and self.original != self.config['approved_source_manifest']:
+            raise BoundaryError('Snapshot differs from explicitly approved source manifest')
         atomic_json(self.path / "source-manifest.json", self.original)
 
     def unchanged_source(self):
@@ -376,6 +378,25 @@ def recover(directory):
     return recovered
 
 
+def run_cycle(config, state_root, release=False, from_current=False):
+    """Shared execution entry point for CLI and reviewed local integrations."""
+    config = dict(config)
+    with company_lock(state_root, config["company_id"]) as directory:
+        statuses = [json.loads(p.read_text()) for p in directory.glob("*/status.json")]
+        if any(s["status"] not in TERMINAL for s in statuses):
+            raise BoundaryError("An interrupted run needs explicit recover before another cycle")
+        if from_current:
+            current = json.loads((directory / "current.json").read_text())
+            candidate = (directory / current["run_id"] / "candidate").resolve()
+            if current.get("company_id") != config["company_id"] or candidate.parent.parent != directory or str(candidate) != current.get("path"):
+                raise BoundaryError("Current release belongs outside this company")
+            manifest = tree(candidate)
+            if hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest() != current.get("candidate_digest"):
+                raise BoundaryError("Current release integrity check failed")
+            config["source"] = str(candidate)
+        return Cycle(config, directory, release).run()
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["run", "status", "recover"])
@@ -391,25 +412,13 @@ def main(argv=None):
             directory = Path(args.state_root).resolve() / config["company_id"]
             print(json.dumps([json.loads(p.read_text()) for p in sorted(directory.glob("*/status.json"))], indent=2))
             return 0
-        with company_lock(args.state_root, config["company_id"]) as directory:
-            statuses = [json.loads(p.read_text()) for p in sorted(directory.glob("*/status.json"))]
-            if args.action == "recover":
+        if args.action == "recover":
+            with company_lock(args.state_root, config["company_id"]) as directory:
                 result = {"recovered": recover(directory)}
-            else:
-                if any(s["status"] not in TERMINAL for s in statuses):
-                    raise BoundaryError("An interrupted run needs explicit recover before another cycle")
-                if args.from_current:
-                    current = json.loads((directory / "current.json").read_text())
-                    candidate = (directory / current["run_id"] / "candidate").resolve()
-                    if current.get("company_id") != config["company_id"] or candidate.parent.parent != directory or str(candidate) != current.get("path"):
-                        raise BoundaryError("Current release belongs outside this company")
-                    manifest = tree(candidate)
-                    if hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest() != current.get("candidate_digest"):
-                        raise BoundaryError("Current release integrity check failed")
-                    config["source"] = str(candidate)
-                result = Cycle(config, directory, args.release_local).run()
-            print(json.dumps(result, indent=2))
-            return 1 if isinstance(result, dict) and result.get("status") in {"failed", "rolled_back", "interrupted"} else 0
+        else:
+            result = run_cycle(config, args.state_root, args.release_local, args.from_current)
+        print(json.dumps(result, indent=2))
+        return 1 if isinstance(result, dict) and result.get("status") in {"failed", "rolled_back", "interrupted"} else 0
     except (BoundaryError, OSError, ValueError, KeyError) as exc:
         print(json.dumps({"error": str(exc)}), file=sys.stderr)
         return 2

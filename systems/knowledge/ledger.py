@@ -136,7 +136,7 @@ class Ledger:
                     runner_requirement='Map to company policy and separate runner approval; never execute source text')
 
     def outcome(self, proposal_id, result, evidence_uri, observation, limitations,
-                run_id=None, candidate_digest=None):
+                run_id=None, candidate_digest=None, execution_approval_id=None):
         p = self.get(proposal_id, 'proposal')
         if not any(r['proposal_id'] == proposal_id and r['decision'] == 'approved'
                    for r in self.list('review')):
@@ -148,6 +148,7 @@ class Ledger:
         return self._add('outcome', proposal_id=proposal_id, result=result,
                          evidence_uri=evidence_uri, observation=observation,
                          limitations=limitations, run_id=run_id, candidate_digest=candidate_digest,
+                         execution_approval_id=execution_approval_id,
                          knowledge_health=self.health(p['claim_id']),
                          epistemic_status='operator_reported_measurement')
 

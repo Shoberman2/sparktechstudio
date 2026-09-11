@@ -96,7 +96,7 @@ Recovery holds the company lock, refuses to proceed while a recorded command pro
 
 ## Knowledge-system integration boundary
 
-The separate knowledge/intelligence workstream owns source ingestion, source-backed techniques, company applicability, reviewed experiment proposals and measured outcomes. This package owns QA execution. Knowledge records may reference `company_id`, `run_id`, `candidate_digest` and evidence paths from this runner; a reviewed QA proposal may supply a company-specific goal to a future adapter. A source recommendation or lesson does not itself authorize execution, change permissions or demonstrate an experiment's effect. The current QA stage machine is not a generic knowledge ingestion orchestrator.
+The knowledge/intelligence package owns source ingestion, source-backed techniques, company applicability, reviewed experiment proposals and measured outcomes. This package owns QA execution. The local `systems/knowledge/qa_bridge.py` now calls `run_cycle` for one canonical fixture experiment, after a distinct execution approval and current knowledge/config/source checks. It records `company_id`, `run_id`, `candidate_digest` and evidence references in the ledger outcome. The bridge cannot release candidates or invoke the optional AI worker. See `systems/knowledge/INTEGRATION.md`. A source recommendation or lesson does not itself authorize execution, change permissions or demonstrate an experiment's effect. The current QA stage machine is not a generic knowledge ingestion orchestrator.
 
 ## Grounding and verification
 
