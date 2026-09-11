@@ -1,0 +1,9 @@
+{"time": 1789093304.7518668, "status": "created"}
+{"time": 1789093304.8035111, "status": "discover", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/discover"}}
+{"time": 1789093308.6489432, "status": "reproduce", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/reproduce"}}
+{"time": 1789093318.350178, "status": "implement", "active_command": {"argv": ["python3", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/fixture_worker.py"], "evidence": "evidence/implement"}}
+{"time": 1789093319.903269, "status": "test", "active_command": {"argv": ["python3", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/fixture_test.py"], "evidence": "evidence/test"}}
+{"time": 1789093321.2837608, "status": "verify", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/verify"}}
+{"time": 1789093326.1306398, "status": "releasing", "previous_pointer": {"company_id": "sparktech-fixture", "run_id": "20260910T221433-ae71a71ccc", "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/.runs/sparktech-fixture/20260910T221433-ae71a71ccc/candidate", "candidate_digest": "78dea8c3c789aa613c417e97299bd092cb452b48d8fae8cffa87f7c0ee3437a1"}}
+{"time": 1789093326.1347141, "status": "release_check", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/release_check"}}
+{"time": 1789093338.037856, "status": "completed", "release": "local-artifact-only"}
