@@ -1,0 +1,18 @@
+.logo-intro { position:fixed; inset:0; z-index:3000; display:grid; place-items:center; width:100%; height:100%; border:0; padding:0; overflow:hidden; background:#eeeeee; cursor:pointer; animation:intro-exit 600ms 3.2s cubic-bezier(.7,0,.2,1) both; }
+.intro-spark { position:absolute; width:min(58vw,420px); height:min(58vw,420px); overflow:visible; animation:intro-spin 3.2s cubic-bezier(.2,.75,.15,1) both; }
+.intro-ray { transform-origin:24px 24px; animation:intro-rays 3.2s cubic-bezier(.2,.7,.2,1) both; }
+.intro-core { transform-origin:24px 24px; animation:intro-heart 3.2s cubic-bezier(.2,.7,.2,1) both; }
+.intro-dot { animation:intro-dots 3.2s ease both; }
+.intro-orbit { position:absolute; width:min(76vw,580px); aspect-ratio:1; border:1px solid #aaa; border-radius:50%; animation:intro-orbit 3.2s ease both; }
+.intro-orbit::after { content:''; position:absolute; top:50%; left:-4px; width:8px; height:8px; background:#a47d22; border-radius:50%; }
+.intro-orbit-two { width:min(92vw,740px); animation-direction:reverse; border-color:#ccc; }
+@keyframes intro-spin { 0%{transform:rotate(-240deg) scale(.35)} 40%{transform:rotate(80deg) scale(1.15)} 75%{transform:rotate(-12deg) scale(.9)} 100%{transform:rotate(0) scale(1)} }
+@keyframes intro-rays { 0%{transform:translate(var(--dx),var(--dy)) rotate(var(--r));opacity:0} 12%{opacity:1} 45%{transform:translate(0,0) rotate(0)} 62%{transform:translate(calc(var(--dx)*.15),calc(var(--dy)*.15)) rotate(20deg)} 100%{transform:translate(0,0) rotate(0);opacity:1} }
+@keyframes intro-heart { 0%{transform:scale(.1) rotate(-180deg)} 35%{transform:scale(1.6) rotate(90deg)} 65%{transform:scale(.7) rotate(180deg)} 100%{transform:scale(1) rotate(360deg)} }
+@keyframes intro-dots { 0%,15%{transform:translate(var(--dx),var(--dy));opacity:0} 30%{opacity:.7} 70%,100%{transform:translate(0,0);opacity:.65} }
+@keyframes intro-orbit { 0%{transform:rotate(-160deg) scale(.3);opacity:0} 25%{opacity:.7} 70%{opacity:.3} 100%{transform:rotate(240deg) scale(1.2);opacity:0} }
+@keyframes intro-exit { from{clip-path:inset(0 0 0 0)} to{clip-path:inset(0 0 100% 0)} }
+.site-content--intro { visibility:hidden; }
+.site-content--ready { animation:site-arrive 500ms ease both; }
+@keyframes site-arrive { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+@media(prefers-reduced-motion:reduce) { .logo-intro{display:none}.site-content--ready{animation:none} }

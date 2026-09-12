@@ -1,100 +1,104 @@
-# Design System — SparkTech Studios
+# Design System — SparkTech Studio
 
-## Current Production Direction
+## Current Production Direction (2026-09-11, second pass): Neutral palette, centered, animated
 
-As of 2026-07-30, the live site uses the approved **Practice Notes / Concept D**
-direction in `src/mockups/`. It supersedes the legacy terminal system below for
-the production homepage and capability pages.
+User feedback on the first pass: "Make it way more stylish, and professional looking. Include animations, make sure everything is aligned, center some things, and only use standard colors." This supersedes the palette and composition below while keeping the content and structure.
 
-- Warm cream paper, deep green structure, and restrained coral-red accents.
-- Editorial serif headlines paired with compact sans and mono utility labels.
-- Centered, spacious major statements with strong rules and structured sections.
-- Pill-shaped calls to action, smooth scroll reveals, and no numbered section labels.
-- The SparkTech logo sits to the left of the `ST/S` monogram with no boxed background.
-- Core operating theme: **We ship in days, not weeks.**
+- Palette is the standard zinc scale plus the original gold (third pass, same day): near-black `#09090b` hero, status, and CTA bands, white `#ffffff` content, `#f4f4f5` systems band, `#18181b` ink, `#71717a` muted, `#e4e4e7` lines, gold `#d4b46a` on dark and `#b8860b` on light for eyebrows, the spark, the sweep arc, timeline fill, flow numbers, hover borders, and the CTA button. No sage, no green-tinted charcoal.
+- Composition is centered: hero label, headline, copy, and two CTAs stack on the center axis with the loop ring beneath; every section opens with a centered label, h2, and lead capped at 640px. One 1120px container, 120px section rhythm, 1px hairlines throughout.
+- Motion: the headline rises line by line through a clip mask, label/copy/CTAs fade up in sequence, the loop auto-advances every 3.6s until the visitor hovers or interacts, two dotted orbits rotate slowly, the stage panel cross-fades, the status timeline draws its filled track and staggers its four milestones on reveal, sections fade up once, cards lift on hover, nav links underline on hover, and the nav gains a blurred dark bar after 24px of scroll. Reduced motion disables all of it.
+- Infrastructure layers are a nested stack: four bordered rows, each 36px narrower than the one above, numbered 01 to 04, so containment reads visually. Systems sit in a 3x2 hairline grid. Companies are three bordered cards. Contact is a centered oversized link.
+- Note on the 2026-07-24 "no B&W repaint" entry: that verdict was on a different design and the user has now explicitly asked for standard colors, so it no longer applies.
 
-The terminal system remains documented because the previous site is still present
-in the codebase as a legacy fallback. Do not apply its square-button, gold-accent,
-or monospace-everywhere rules to the live Concept D pages.
+## First pass (2026-09-11): Agentic infrastructure, same palette
+
+User asked for the site to reflect the new vision for implementing the agentic infrastructure, captured in the Codex voice thread and the one-page vision brief: "Build companies that keep getting better." SparkTech builds digital products and owns the agentic systems that keep improving them. Build the system once; each company plugs in with its own data, goals, and permissions. This supersedes the 2026-09-10 layout while keeping its palette, type, and restraint.
+
+- Palette and type unchanged: charcoal `#232924` hero and status band, off-white `#f3f3ef` content, sage-gray `#e4e8df` systems band, gold `#d4b46a` accent, Instrument Sans.
+- Headline: "Companies that keep getting better." One supporting paragraph, one CTA.
+- Hero centerpiece is the six-stage improvement loop (Learn, Propose, Review, Run, Verify, Record) drawn as a ring. Stage labels sit on the ring as tabs; the spark mark in the centre rotates to point at the active stage and a gold arc sweeps from Learn to the active stage. Clicking the centre advances. Arrow, Home, and End keys work. The outer dotted orbit drifts slightly with scroll. Labelled an interactive concept, not live activity.
+- New "How it's built" section: the four layers of the infrastructure (Company boundary, Knowledge ledger, Review, Runner) as a nested ruled list with a gold diamond marker and a rail, each row indented one step deeper to read as containment.
+- Systems grow from five to six with Knowledge first (agents read approved podcasts, transcripts, and notes and turn them into testable proposals), in a two-column ruled list on the sage band.
+- New "Where this stands" dark band: four milestones (Prototype: working locally, First pilot: next, Continuous: planned, Recursive: planned). Only the prototype is marked done, with a note that no integrations are live. This is the honest-status rule from CLAUDE.md made visible.
+- Companies, contact, and footer carry over. Sections fade up once on scroll; reduced motion shows everything static.
+- No pills, no step numbers, no cards with shadows, no gradients, no metrics, no testimonials.
+- `VentureSite.jsx` / `VentureSite.css` remain the sole live UI (class prefix `rs-`). Legacy components, the Sisyphus video, and the mockup lab stay on disk untouched.
+
+## Previous Production Direction (2026-09-10): Simplified, high contrast
+
+User rejected the long operating-model explanation and requested much simpler copy, strong contrast, polished motion, and a clear identity. This supersedes earlier layouts.
+
+- Charcoal `#232924` hero, off-white `#f3f3ef` content, muted sage-gray `#e4e8df` company section, original gold spark.
+- Headline: “Products. Built to improve.” One sentence explains that SparkTech builds products and owns systems that maintain and improve them.
+- Interactive hero spark expands and assembles across Find / Fix / Verify tabs, with pointer and scroll rotation. Click/tap the mark cycles stages; keyboard tab controls are supported. It is labeled an interactive concept, not live activity.
+- Three sections below: five short system descriptions, company boundaries and intended adoption, contact. Concept name and one-line recursive explanation sit in the footer.
+- No intro gate, auto-looping animation, testimonials, fake status, or redundant thesis sections. Content is always visible. Reduced motion makes the mark static and disables transitions.
+- `VentureSite.jsx` / `VentureSite.css` remain sole live UI; legacy assets and mockups stay unchanged. `systems/` is reserved for the separate automation implementation task.
+
+## Previous Production Direction (2026-09-05): Minimal editorial
+
+Per user: “Make a totally new design for SparkTech. I want it to look high quality, minimal.” This supersedes the earlier Natural layout and effects below.
+
+- Soft white and neutral gray mix, requested by the user after the style refinement: white `#fafafa`, gray `#e9e9e9`, ink `#292929`, secondary `#505050`, muted `#6b6b6b`. Hero blends from white into gray; Work holds gray; Studio blends back to white; footer fades into light gray. Work hover rows lift toward white. Live-site tokens are scoped to `.studio-site` to preserve the mockup lab. Gold stays in the spark logo and moss in the live dots.
+- Instrument Sans throughout the live page. Oversized, left-aligned sans hero, up to 164px, with a muted second line. No serif accents, grain, dark bands, animated reveals, or oversized decorative footer.
+- 1248px content width with fluid side margins. Spacious editorial layout: navigation → hero → selected work → studio and approach → contact → compact footer.
+- Hero: “Good ideas. Made real.” One supporting sentence at the lower right and simple text links. No imagery, badges, or product strip.
+- Work is a text-only ruled index of the four products, with descriptions, plain live status, and outbound arrows. No logos or screenshots in the list.
+- Studio uses a large statement beside a small section label, followed by concise approach copy. The former manifesto and standalone process sections are no longer mounted. `#process` resolves to the approach inside Studio.
+- Contact is a large linked “Let’s make it.” with a visible email. Footer keeps the four product links, back-to-top, and legal copyright.
+- Motion is limited to link hover transitions; reduced motion disables transitions. All content is visible immediately. Keyboard focus and skip link remain.
+- On phones, product descriptions sit below domains, studio copy stacks, and navigation retains Work and Studio. Contact is available in the hero and contact section.
+
+### Refinement (2026-09-05)
+User likes the minimal direction and requested more style. Keep the design and copy: the second hero line is slightly indented, a short rule introduces the hero label, and a fine vertical rule anchors the supporting copy. Work uses outlined square arrows that fill on hover or keyboard focus, with a small title shift. Studio approach items have fine top rules. Contact has a short underline that extends on interaction. Navigation uses restrained underline transitions. No ambient motion or hidden content; reduced-motion settings remain respected.
+
+### Agency structure and generated art (2026-09-05)
+User requested cool AI designs and simpler formatting based on web development agency landing pages. This supersedes the text-only hero constraint: use the generated silver, glass, and ceramic sculpture (`public/studio-sculpture.jpg`) beside the hero copy. Retain gray/white palette. Hero is a conventional two-column offer with Start a project and View our work actions. Follow with four real work links, a compact services section (Websites, Digital products, Ongoing development), contact, and footer. No extra studio manifesto. Mobile stacks the hero artwork under the CTA. Artwork is decorative, not evidence of client work. References: thoughtbot.com and basement.studio for offer, services, portfolio, contact structure; do not copy their claims.
+
+### Centered layout and logo animation (2026-09-05)
+User requested an animated logo and more centering/alignment. Hero now centers the original spark mark, headline, supporting text, and CTAs. The sculpture is preserved on disk but no longer mounted. `AnimatedLogo` recreates the actual SVG paths: rays assemble as the mark turns, the core settles, and the existing dots appear. The 2.4-second animation plays once and replays on the logo button, with keyboard support; reduced motion renders the complete static mark. Navigation uses equal outer columns. Work heading, services introduction, and contact are centered; data rows remain left-aligned for reading. This explicit request supersedes earlier restrictions on a centered hero and logo animation.
+
+### Scroll-controlled spark (2026-09-05)
+The user requested that the logo animation follow scrolling. `AnimatedLogo` is now decorative rather than a replay button. During the first 240px of hero scrolling (shorter on small screens), the original rays spread, the mark rotates 150 degrees, the core counter-rotates, and the original dots move outward. Scrolling upward reverses it exactly. No autoplay, scroll capture, or added scroll distance. A passive listener updates one CSS variable through requestAnimationFrame; listeners are cleaned up and reduced motion keeps the original static mark. This replaces the earlier timed assembly and replay behavior.
+
+### Interactive balancing headline (2026-09-05)
+User could not see the subtle scroll effect and explicitly requested a highly interactive logo balancing on words. The larger original spark now sits directly above the first headline line. Pointer movement or scroll rolls it along that line, which tilts like a balance. Click/tap gives it a spring bounce; arrow keys move it. Touch supports dragging the spark while vertical page scrolling remains enabled. The hero copy stays sticky for a short additional scroll span so the interaction remains visible. Animation frames stop once springs settle; reduced motion removes movement and sticky dwell. This supersedes the earlier subtle scroll-only treatment and authorizes this specific interactive headline.
+
+### Text-free cinematic opening (2026-09-05)
+User explicitly requested a crazy animation with no text first. `LogoIntro` covers the first view with a gray, text-free stage: original gold rays fly in, the core spins, dots converge, and two thin orbital rings sweep around it. At 3.8 seconds it exits and the site appears, retaining the balancing headline interaction. The covered content is hidden and inert. Click, tap, or Escape skips; reduced motion skips the introduction. This specific request authorizes the brief intro and ornamental rings.
+
+### Sisyphus section (2026-09-06)
+User requested a Sisyphus video, then a site version, then “make it very cinematic, use Higgsfield, add color.” `Sisyphus.jsx` sits between Work and Studio and plays `public/sisyphus.mp4`: a Seedance 2.5 render, full color, cinematic 3D animation with golden-hour light, a red flag on the peak, and a crane-out wide shot at the end. 21:9, 1920 wide, muted, looping, full container width, plays only while in view, poster for first paint. He pushes, looks up at the flag and grins, a second boulder tears loose and hits him, and both tumble down in dust. The slogan “Is the way you’re doing it the best way to do it?” fades in at the hit and stays. Reduced motion or a failed video falls back to the drawn SVG cartoon in the same file. This is the one place color imagery is allowed on the live page; the hero stays as it is. Earlier gray takes and the originals are in `briefs/sisyphus/`.
 
 ## Product Context
-- **What this is:** A dev studio that builds ambitious, unconventional product ideas fast
-- **Who it's for:** People with wild product ideas who can't afford a big agency and need more than DIY
-- **Space/industry:** Creative development studio / software agency
-- **Project type:** Marketing site (single-page, React + Vite)
+- **What this is:** the site of SparkTech Studio, an idea development studio:
+  you have the idea, we build it. AI is how, not what.
+- **Who it's for:** people with an idea they keep coming back to.
+- **Project type:** single-page marketing site (React + Vite) plus the July 2026
+  concept lab under `/mockups`.
 
-## Aesthetic Direction
-- **Direction:** Terminal / old-classical computing. The whole page reads like a console session being generated live.
-- **Decoration level:** Intentional — CRT scanline overlay + paper grain, monochrome terminal window chrome (title bars, traffic-light dots, prompts), ASCII tree structures. No rounded cards, no gradients, no decorative blobs.
-- **The one exception:** the hero is a dark surface (`#0a0907`) — the only one on the site. Its visual is a **full-bleed macro still of a transistor** (`public/transistor.jpg`), static, with the pitch as crisp HTML on top and no chrome over it.
-- **Mood:** A serious custom-build studio that ships real products. Old IBM/teletype heritage meets craft. Confident, technical, a little irreverent. Reads as engineering, not marketing.
-- **Anti-patterns:** No blue (text and ink are warm true-black, never cool-cast), no purple gradients, no rounded "AI card" grids with soft shadows, no centered-everything hero, no generic concept-page whitespace without proof.
-
-## Typography
-- **Display/Hero:** IBM Plex Mono (700) — the headline is typed out character by character with a blinking caret.
-- **Body:** IBM Plex Mono (400/500) — monospace everywhere. Reinforces the terminal feel.
-- **UI/Labels:** IBM Plex Mono (600/700) — prompts, nav, tags, buttons.
-- **Classical flourish:** IBM Plex Serif (italic) via the `.serif` class — used sparingly for one emphasis word ("crazy") and the about-section quote. The single "classical" note against the mono.
-- **Code/Data:** IBM Plex Mono (400)
-- **Loading:** Google Fonts CDN — `IBM+Plex+Mono` (400–700 + italics), `IBM+Plex+Serif` (italic). Space Mono stays in the CSS font stack as a fallback but is not loaded — it never rendered and cost two font files on first paint.
-- **Scale:**
-  - Hero: clamp(2.6rem, 8.5vw, 6.5rem), letter-spacing -0.04em
-  - Section heading (`// comment` style): clamp(1.7rem, 3.4vw, 2.5rem)
-  - Card/panel heading: 1.1–1.2rem
-  - Body: 0.9–1rem (19px base)
-  - Prompt lines: 0.8–0.92rem
-  - Tags / micro labels: 0.68rem, often uppercase letter-spacing 0.1–0.16em
-
-## Color
-- **Approach:** Warm-black ink on warm paper with a single gold accent. Color is rare and meaningful — gold marks the cursors, prompts, the "spark", and primary actions; everything else is ink.
-- **Paper (bg):** #f3f0e7 — warm off-white, like a printout
-- **Paper dim:** #ebe7da — alternating sections, title bars
-- **Panel:** #f8f6ef — terminal window bodies
-- **Ink (text primary):** #14130f — warm true-black, no blue cast
-- **Ink soft (secondary):** #45433b — body copy
-- **Ink faint (muted):** #8b887b — decorative only (branch glyphs, parens, term titles, micro labels). It is ~3.1:1 on paper, below AA at body sizes, so `#` comment lines that carry copy use ink-soft instead.
-- **Hairline:** rgba(20,19,15,0.22); strong rgba(20,19,15,0.55)
-- **Accent (gold):** #b8860b (DarkGoldenRod) for non-text marks — the blinking caret (the signature spark), the `[live]` badge, primary CTA fill, hover fills. #7a5a0a (deeper gold, WCAG AA on paper) for accent *text* — the `spark@studio` prompt, `#` tags, the service index numbers, and the serif "crazy".
-- **Why warm-neutral, not cool:** the previous palette (#1a1a1e / #55555e / #8a8a95) carried a blue undertone (blue channel > red/green) and read as "blue." All ink values are now R ≥ G ≥ B.
-- **Hero (dark surface only):** scoped to `.hero` and never used elsewhere. Bed `#0a0907`, text `--hero-fg` #f3f0e7 / `--hero-fg-soft` rgba(243,240,231,0.74), and `--hero-gold` **#d9a520** — a lifted gold, because the paper-safe `--accent-gold` (#7a5a0a) is unreadable on black. Hairlines rgba(243,240,231,0.28).
-- **Dark mode strategy:** none currently — the light "paper terminal" is the identity. If added: invert to paper text on ink, keep scanlines.
-
-## Spacing
-- **Base unit:** 8px
-- **Density:** Comfortable but denser than before — sections carry proof and concrete content, not empty whitespace. Section padding 104px desktop / 76px mobile, uniform across all sections.
-- **Scale:** 2xs(4) xs(8) sm(16) md(24) lg(32) xl(48) 2xl(64)
-
-## Layout
-- **Approach:** Left-aligned, structured, terminal-document feel. Each section opens with a typed prompt line + `// comment` heading.
-- **Max content width:** 1180px
-- **Border radius:** 0 everywhere (terminal squares). Only the traffic-light dots are round.
-- **Elevation:** hard offset shadow (`4px 4px 0 0 var(--ink)`) instead of soft blurred shadows — a printed/stamped look, not a floating-card look.
-- **Breakpoints:** mobile(<600px) tablet(600-900px) desktop(>900px)
-- **Page framing:** the fixed navbar is the window title bar (traffic-light dots + `sparktech-studios` + blinking caret); the footer ends in a perpetual live `spark@studio:~$ █` prompt. The navbar is **hidden on the first view** and snaps down past 80px of scroll, so the hero image is uninterrupted and edge-to-edge.
-- **Page flow:** hero → thesis → why we exist → how we work → work → contact.
-
-## Motion
-- **Hero:** static. Nothing on the site types or plays; the blinking caret is the only movement, and it is ambient.
-- **Hero legibility:** `.hero-scrim` is a bottom-weighted `linear-gradient` over the still — dark where the copy sits, lighter through the middle so the chip stays visible. This is the one gradient kept on purpose: a flat veil dims the whole photo evenly and flattens it. It is not the gold radial glow, which was removed.
-- **Signature:** Typewriter. The `<Typewriter>` component types text char-by-char once it scrolls into view, with a blinking gold caret. **Scoped to the hero headline only** — the gold underline on "Talent" draws in as it types. Every other section renders its prompt, heading, and body statically. Body copy is never typed: it delays reading for no gain. All other sections render their prompts and `// headings` statically. Ambient (non-typing) blinking carets remain in the navbar, the contact `$ mail` line, and the footer. Honors `prefers-reduced-motion` (renders full text, static caret).
-- **Caret:** `.tw-caret` — 0.62em × 1.02em gold (`--accent-yellow`) block, `blink` keyframe at 1.05s steps(1).
-- **Scroll reveal:** IntersectionObserver + MutationObserver, threshold 0.15, short translateY(18px) entrance with stepped easing.
-- **Transitions:** quick and stepped (`steps()`), not smooth/floaty — UI snaps like a console. Hovers invert colors or nudge the hard shadow.
-- **Overlays:** fixed CRT scanlines + vignette (multiply) and a low-opacity grain layer.
-- **Reduced motion:** disable caret blink and reveals, set final state immediately.
-
-## Component Patterns
-- **Buttons:** Square, 1px ink border, mono label, often bracketed (`[ start_a_project ]`). Primary = solid ink + paper text + hard offset shadow; hover inverts to paper + ink. No pills.
-- **Panels / "cards":** Square terminal windows — optional title bar (`.term-bar` with `.term-dots` + `.term-title`) over a `.term-body`. Hard offset shadow, hairline borders. This replaces the old rounded white card.
-- **Prompt line:** `.prompt` with `spark@studio:~$` then a typed command. Opens most sections.
-- **Headings:** `// comment`-style, typed.
-- **Tags:** Square, 1px hairline border, mono, prefixed with `#`.
-- **Work list:** ASCII tree (`├──` / `└──`) from `sparktech-studio/` to each live project, each shown as a terminal window with a `[live]` badge, a one-line description, and tags. **Text only — no screenshots.**
-- **Contact:** left-aligned like every other section, opening with a `mkdir ~/your-idea` prompt and the standard `//` heading scale; a terminal window shows the email in a `$ mail …` prompt with a persistent caret, and the whole line is the mailto link.
+## Anti-patterns (all tried, all rejected)
+- Product screenshots, video heroes. (Founder content was on this list until 2026-09-11, when the user asked for an About section.)
+- Pills, chips, badges, tag clouds, numbered 01/02 labels, custom cursors.
+- Hard color edges between sections. (Gradients and near-black grounds were on this list until 2026-09-11, when the user asked for gradients and a high-level dark design.)
+- Canvas particle effects, dot grids, radial glows, spotlight cards, 3D tilt,
+  magnetic buttons, marquees, typing effects, word-by-word reveals.
+- Centered hero + badge + two buttons + logo strip; identical section headers;
+  equal card grids with soft shadows; purple gradients.
+- Serif display everywhere, mono everywhere, cream/gold, cream/green/coral,
+  yellow poster, graphite-only.
 
 ## Decisions Log
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| 2026-09-11 | **Eighth pass: motion cut back to four moves (hero fade, one logo spin on load, arc travelling between stops with a dot pop, scroll fades); "One system. Four layers." becomes a connected four-block diagram with gold chevrons and in/out tags; every footer link is its own page (/idea, /how-its-built, /workflows, /companies, /about, /contact) via a tiny pathname router, no library** | Per user ("Too many animations. What about the one system four layers. Add that too. Have the logo spin when the user first comes on. Have each page in the footer be its own separate page"). Continuous ring spin, ripple, pulse, label bump, headline mask rise, staggered hero fades, and the rotating watermark are gone. Home keeps the full page; each section page shows its section first, then a related section and the contact band. Vercel rewrites already send every path to index.html. |
+| 2026-09-11 | **Seventh pass: traveling ring indicator, landing animation per stop, styled About and closing sections, and every eyebrow label, step number, workflow ID, and stage counter removed** | Per user ("have it go around naturally. Add a cool animation for each new point", "make this more stylish", "make this stand out more", "remove all of the generic AI stuff like the tags at the top like the idea, and the 01, 02, 03"). The gold arc now travels forward around the ring on an accumulating angle so it never snaps back; when it arrives the stop's dot pops with a soft ring and the label bumps. About: name in gold at display size, sticky left column with a gold rule under the meta, a large lead sentence, hairline between columns, outline button, faint spark watermark. Closing: "build it." in gold at up to 152px, slow-rotating spark watermark, soft gold glow below, larger gold button. Layers use a short gold tick instead of numbers. |
+| 2026-09-11 | **Sixth pass: light direction chosen from the Claude Design canvas. White nav and hero (headline left, ring right), gradients, glow, 3D tilt, deep zoom, gradient borders, and the diagonal staircase removed; hairline grids and ruled columns; gold stays the single accent; About and CTA remain the only dark bands** | Per user ("Make it look cleaner. Use Claude Design", then "I like the white version"). Canvas: https://claude.ai/code/artifact/b8f0a91e-a725-4f2b-aa16-daaee0d694dc. The ring keeps its spin, sweep, auto-advance, and a gentle scale-in; nothing else moves beyond fades and hover states. |
+| 2026-09-11 | **Fifth pass: "The idea" section spells out Recursive Self-Enterprise Improvement across eight facets (Product, Engineering, Marketing, Sales, Support, Operations, Finance, Knowledge) plus a recursion callout; loop stages renamed Observe, Select, Approve, Implement, Verify, Learn to match the CLAUDE.md loop; ring rebuilt as a 3D stage (perspective, layered depth, deep zoom entrance, pointer tilt, spinning layers, glowing core); gradients throughout (gold gradient text, gradient borders on cards, radial gold glows on dark bands, light-to-band section gradients, gradient CTA button); each workflow gets a unique geometric emblem and an ID (ST-01 to ST-08)** | Per user ("Be more specific about the enterprise self recursive improvement. It should work for all facets of the enterprise. Make it way more high level design. Add gradients, make each workflow its own unique id not a generic icon. Have this really zoom in, 3D-esque"). Gradients were on the anti-pattern list; the user asked for them explicitly. |
+| 2026-09-11 | **Fourth pass: spinning ring with zoom, pulse, and ripple; tighter hero copy; diagonal staircase for the four layers with measured connector lines; eight named workflows with line icons (Scribe, Scout, Mechanic, Warden, Analyst, Herald, Concierge, Auditor); status section folded into one line; About section for Spencer** | Per user ("have this spin and create a cool animation... transitions and zoom in effects", "make this more direct", "make this more diagonal", "create more workflows and better names... faces / icons", "not sure if where this stands is necessary", "Mention who I am too"). The ring's orbits, sweep, and labels rotate together over 64s, labels counter-rotate to stay upright, the whole thing pauses on hover; the spark zoom-pulses and a ripple expands on each stage change; the ring zooms in on load and scales up on hover. Workflow icons are inline 24px stroke SVGs. Status line keeps the no-live-integrations rule visible. About is first person, verifiable facts only, and reverses the 2026-09-02 "never name Spencer" entry at the user's explicit request. |
+| 2026-09-11 | **Third pass: gold returns as the accent on the neutral base; headline "Companies that get better every day."; four-layer flow on one line; six named workflows; company cards with logos and real one-liners; oversized gold CTA band; four-column footer with real links** | Per user ("Keep the goldish color too. Make the how it's built more clear and aligned. Give each task its own name. Emphasize the different companies more and emphasize the CTA at the end. Make the footer have actual page links, use our email"). Gold `#d4b46a` on dark, `#b8860b` on light, used for eyebrows, the spark, sweep arc, timeline fill, flow numbers, hover borders, and the CTA button. Workflow names (Ledger, Inspector, Caretaker, Experiments, Newsroom, Desk) are working names the user can rename. Company one-liners come from `src/data/projects.js`. |
+| 2026-09-11 | **Second pass: neutral zinc palette, centered composition, full motion layer** | Per user ("way more stylish, and professional looking. Include animations, make sure everything is aligned, center some things, and only use standard colors"). Gold and sage dropped for black/white/gray; hero and section heads centered on one axis; headline mask reveal, auto-advancing loop, drawn status timeline, staggered reveals, hover states. Content unchanged. |
+| 2026-09-11 | **Site reflects the agentic-infrastructure vision: six-stage loop ring, four-layer stack, six systems, honest milestone band** | Per user ("change the website design based off the new vision for implementing the agentic infrastructure, it's in Codex"). Source: the Codex voice thread, the one-page vision brief, and the combined systems status report. Headline moves to "Companies that keep getting better." Palette and type kept from 2026-09-10 so the change is in structure and content, not a re-theme. Status band states only what the local prototype does and marks the first pilot as next. |
 | 2026-03-23 | Initial design system created | Created by /design-consultation based on existing codebase + competitive research |
 | 2026-03-23 | Keep Playfair Display + Space Grotesk | Existing pairing works — distinctive without being precious |
 | 2026-03-23 | Warm off-white over dark theme | Differentiator — every studio site is dark. Warm cream = craft, not corporate |
@@ -148,3 +152,12 @@ or monospace-everywhere rules to the live Concept D pages.
 | 2026-07-27 | Drop Space Mono from the Google Fonts request | It never rendered (Plex Mono always loads first) and cost two font files on first paint. Still in the CSS stack as a local fallback. |
 | 2026-07-29 | **Polish pass on the existing theme** (after a re-theme was mocked and declined) | User direction: keep the current design, make it better. (1) Hero still preloaded from index.html — it is the LCP element but sat behind the JS bundle. (2) `scroll-margin-top: 62px` on ids so anchor jumps clear the fixed nav. (3) Keyboard pass: gold `:focus-visible` outlines, work cards mirror their hover state on focus, and a hidden `skip_to_content` link. (4) `how we work` goes paper-dim, restoring the alternating section rhythm. (5) Section quotes bump to clamp(1.35–1.55rem) — the Memo mockup showed bigger pull quotes read more confident. (6) Section padding unified at 104/76; contact was 112 and work mobile 72. (7) `text-wrap: balance` on headings; `theme-color` #0a0907. |
 | 2026-07-30 | **Practice Notes / Concept D promoted to production** | The user chose mockup four and refined it through multiple rounds. The cream, green, and coral editorial direction now owns `/`; capability detail pages live at `/capabilities/*`; the four-concept lab remains under `/mockups`. The old terminal system is retained only as a legacy fallback. |
+| 2026-09-02 | **Personal framing tried and rejected; Practice Notes restored; copy shifted to "web development studio that builds with AI and ships fast"** | Per user. In one session: (1) a first-person founder section plus a "personal incubator" section were added to Concept D; (2) a full person-first redesign (spark yellow / white / black poster, Bricolage Grotesque, giant name hero) replaced the site; (3) the user rejected it on sight ("I really don't like it") and asked for the site as it was, "not about me, just a web development agency utilizing AI to ship fast." Everything was restored from the last commit. What changed on top of the restore: roster trimmed to utern, spacialhealth, ballotwatch, leed (that order); hero now reads "Real software, shipped in days" with kicker "How we build / Senior engineers plus AI"; the Practice section is "A development studio that builds with AI" and its nav label is Studio; method heading "Four steps from idea to live"; contact "Bring us the thing you need built"; footer and meta description follow. Design system unchanged. **Do not propose a founder-led or personal direction again, and do not use the yellow poster.** |
+| 2026-09-02 | **Practice Notes rejected; replaced with a simple, modern page** | Per user ("I don't like the design at all. Change it, make it simple and modern."), immediately after the restore. New system: white, near-black, gray borders, Inter, 1120px container, centered hero with a live-dot badge and a proof strip of the four products, three-column "How we build", 2x2 work cards on a gray surface, four-step process, black contact band, one-line footer. Same copy and positioning as the restore (web development studio, builds with AI, ships in days). Legacy terminal components deleted; Concept D still at `/mockups/d`; `/capabilities/*` retired. New `public/og.png` (v4) in the same system. |
+| 2026-09-02 | **"Make it more cool": motion and interaction layer on the simple system** | Per user ("i like it - make it more cool though... really showcase what Fable 5.1 is capable of"). Palette, type, and layout unchanged. Added: interactive dot field and staged headline reveal in the hero; a live agents → engineers → shipped particle simulation in How we build; spotlight + tilt work cards; scroll-driven process track; cursor light on the contact band; magnetic buttons; pinging live dots; scroll reveals. Everything monochrome, canvases pause off-screen, reduced motion gets static frames. |
+| 2026-09-02 | **No invented claims; second motion pass ("more dynamic")** | Per user ("Don't make anything up. There are no senior engineers. Make the website more dynamic."). Every "senior engineers" line became "we"; "real users" cut; contact reads "one email goes straight to the studio"; pipeline gate is "We review". Added: custom cursor (dot + trailing ring, opens on links, blend mode, pointer devices only); word-by-word rise on every section h2 (`Words` + `.split`); hero parallax and fade on scroll; nav scroll-spy with a sliding indicator and a scroll progress line; the contact band opens from an inset 28px-radius panel to full bleed as it enters; the right work column drifts against the left; the pipeline's particles are nudged by the pointer. All reduced-motion safe. |
+| 2026-09-03 | **Pills removed; positioning becomes "we build ideas"** | Per user ("Remove any generic pill tags. I want SparkTech to be just an idea development where we build ideas."). Hero badge pill replaced by a plain kicker ("Idea development studio"); tag chips and the pill-shaped Live label removed from work cards (Live is now plain text with the dot). Copy: hero "You have the idea. We build it."; What we do: start with the idea / build it for real / keep it standing; pipeline labels Ideas in / We build / Live (pass rate raised to 0.86); Work "Ideas we built."; Process steps Shape / Build / Launch / Keep going; contact "Have an idea that needs to exist?"; CTAs "Send us an idea". Share card regenerated. |
+| 2026-09-03 | **Graphite palette, big footer, no step numbers, no custom cursor** | Per user ("Remove the generic 01s, 02s, 03s. Make the footer more big and include more links. Make the mouse effect turn off with the circle. Don't make it just like a pure black, use a grayish professional tone and mix it across the website well."). Pure black replaced by a graphite scale across text, buttons, canvases, the contact band, and the footer; light gray surfaces now alternate through the middle of the page. Process steps lose their 01–04 labels (the track and nodes stay). The custom cursor (dot + ring) is deleted; the native cursor is back. The footer becomes a four-column dark graphite block: brand + tagline + email, Studio links, the four product links, and Start links, with a meta row. |
+| 2026-09-03 | **Design pass: colors mixed, more motion, more polish** | Per user ("Change the design of the website. Mix the colors better, add more animations and transitions and make it look more professional"). Palette shifts to off-white + graphite with light/dark alternation (What we do becomes a dark band; the pipeline draws light-on-dark). Work cards invert to graphite on hover with a brighter spotlight. Eyebrows go uppercase with a leading dash; hairlines become gradients. New motion: two drifting graphite glows behind the hero, second headline line one step lighter (`--text-2`) for a two-tone title, a scroll cue at the hero's foot, logos grayscale-to-color, button shine sweep + lift, sliding nav underlines, service-column rules that draw in, process copy that slides in as steps activate, dark bands opening from an inset panel (`useScrollProgress`). |
+| 2026-09-05 | **"Way less AI, more natural": stone palette blended down the page, humanist type, asymmetric layouts, effects removed** | Per user. Dropped every generated-site tell listed under Anti-patterns above. New: Instrument Sans + one Instrument Serif italic word per heading; left-aligned hero with a live product list; sticky-intro two-column sections; ruled list instead of cards; vertical scroll-filled process; big email as the contact CTA; nav CTA is the email. Backgrounds are continuous gradients from `--paper` through four stone tones to a charcoal footer so no section has a hard edge. `src/components/fx/` deleted. Share card regenerated. |
+| 2026-09-05 | **"Even cooler", inside the natural direction** | Per user. No effects came back. Instead: type scale up (h1 to 5.7rem, h2 to 3.3rem, larger list titles), an 88svh hero, a fixed paper grain, a dark manifesto band whose words fill in with scroll (blended in and out of the stone with gradient edges), a huge ghosted serif wordmark clipped at the foot of the footer, and "What we do" trimmed to the three-item list with the lead moved into the manifesto. |

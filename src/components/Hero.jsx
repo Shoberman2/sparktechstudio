@@ -1,50 +1,12 @@
+import { Arrow, ArrowOut } from './Icons'
 import './Hero.css'
-
+import AnimatedLogo from './AnimatedLogo'
 export default function Hero() {
-  return (
-    <section className="hero">
-      <div className="hero-media" aria-hidden="true">
-        <img
-          className="hero-still"
-          src="/transistor.jpg"
-          alt=""
-          fetchPriority="high"
-          decoding="async"
-        />
-        <div className="hero-scrim" />
-      </div>
-
-      <div className="hero-inner">
-        <p className="prompt hero-prompt">
-          <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ ./sparktech --pitch
-        </p>
-
-        {/* "AI is here." demoted to a kicker: it sets up why advice is the
-            scarce thing now, but advisory is the headline. */}
-        <p className="hero-kicker">AI is here.</p>
-
-        <h1 className="hero-headline">
-          Advice that ships.<span className="tw-caret" aria-hidden="true" />
-        </h1>
-
-        <p className="hero-thesis reveal">
-          We help you decide what is worth building.{' '}
-          <span className="serif hero-em hero-thesis-beat">Then we build it.</span>
-        </p>
-
-        <p className="hero-sub reveal">
-          Anyone can get code written now. The scarce part is judgment: what to
-          build, what breaks at ten thousand users, when to say no. You get that
-          first, and a team that ships it second.
-        </p>
-
-        <div className="hero-buttons reveal">
-          <a href="#waitlist" className="hero-btn-primary">[ start_a_project ]</a>
-          <a href="#portfolio" className="hero-link">
-            see_the_work <span className="hero-arrow">↓</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  )
+  return <section className="hero" aria-labelledby="hero-title"><div className="wrap hero-grid">
+    <div className="hero-copy"><p className="hero-kicker">Ideas. Design. Development.</p>
+      <div className="hero-playground"><AnimatedLogo /><h1 id="hero-title"><span className="headline-balance">Good ideas.</span><span>Made real.</span></h1></div><p className="hero-play-hint">Scroll, drag, or tap the spark.</p>
+      <p className="hero-description">We design and build websites and digital products. Bring the idea. We’ll take it from there.</p>
+      <div className="hero-actions"><a className="btn" href="mailto:contactus@sparktechstudio.com">Start a project <ArrowOut /></a><a className="link" href="#work">View our work <Arrow /></a></div>
+    </div>
+  </div></section>
 }

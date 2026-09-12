@@ -3,14 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+// The July 2026 concept lab stays reachable at /mockups. Everything else is the site.
 const MockupLab = lazy(() => import('./mockups/MockupLab.jsx'))
-const isStudioPath = window.location.pathname === '/'
-  || window.location.pathname.startsWith('/capabilities/')
-  || window.location.pathname.startsWith('/mockups')
+const isLabPath = window.location.pathname.startsWith('/mockups')
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {isStudioPath ? (
+    {isLabPath ? (
       <Suspense fallback={null}>
         <MockupLab />
       </Suspense>

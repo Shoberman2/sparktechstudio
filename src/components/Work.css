@@ -1,0 +1,22 @@
+ .work { padding-bottom:40px; background:var(--surface); }
+.work-head { display:flex; justify-content:space-between; padding-block:24px; border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line); }
+.work-head h2,.work-head p { font-size:14px; font-weight:400; letter-spacing:0; }
+.work-head p { color:var(--muted); }
+.work-list { list-style:none; }
+.work-list li { border-bottom:1px solid var(--line); }
+.work-list a { display:grid; grid-template-columns:1.1fr 1fr 70px 42px; gap:36px; align-items:center; padding:40px 0; text-decoration:none; position:relative; transition:background .25s; }
+.work-list a:hover,.work-list a:focus-visible { background:rgba(255,255,255,.6); }
+.work-list h3 { font-size:clamp(24px,2.7vw,38px); letter-spacing:-.055em; font-weight:400; }
+.work-list p { font-size:14px; line-height:1.65; color:var(--ink-2); max-width:365px; }
+.work-status { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--ink-2); }
+.work-list svg { height:42px; width:42px; padding:10px; border:1px solid var(--line-strong); transition:transform .25s,background .25s,color .25s,border-color .25s; }
+.work-list a:is(:hover,:focus-visible) svg { transform:translate(3px,-3px); background:var(--ink); color:var(--paper); border-color:var(--ink); }
+@media(max-width:800px) { .work-list a{grid-template-columns:1fr 1fr 20px;gap:24px}.work-status{display:none}.work-list h3{font-size:26px} }
+@media(max-width:600px) { .work{padding-bottom:24px}.work-list a{grid-template-columns:1fr 22px;gap:14px;padding-block:28px}.work-list h3{font-size:29px}.work-list p{grid-row:2;max-width:290px}.work-list svg{grid-column:2;grid-row:1}.work-head p{font-size:12px} }
+
+.work-list h3 { transition:transform 280ms var(--ease); }
+.work-list a:is(:hover,:focus-visible) h3 { transform:translateX(12px); }
+@media(max-width:800px) { .work-list svg{width:22px;height:22px;padding:0;border:0}.work-list a:is(:hover,:focus-visible) svg{background:transparent;color:var(--ink)} }
+@media(hover:none) { .work-list a:hover h3{transform:none}.work-list a:hover{background:transparent} }
+
+.work-head { justify-content:center; flex-direction:column; align-items:center; gap:8px; padding-block:28px; }

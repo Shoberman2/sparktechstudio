@@ -1,16 +1,8 @@
 // Single source of truth for projects. Drives the Showcase tree.
 // No screenshots: the work list is text-only by design.
+// Four products by request (2026-09-02). Do not add others back without asking.
 // status: 'live' | 'building' | 'soon'
 export const projects = [
-  {
-    key: 'ballotwatch',
-    name: 'ballotwatch.io',
-    url: 'https://ballotwatch.io',
-    logo: '/logo-ballotwatch.svg',
-    status: 'live',
-    desc: 'Local government, made legible. Bills, reps, and voting records in one place.',
-    tags: ['civic-tech', 'public-data', 'full-stack'],
-  },
   {
     key: 'utern',
     name: 'utern.ai',
@@ -30,22 +22,13 @@ export const projects = [
     tags: ['health-tech', 'telehealth', 'consumer'],
   },
   {
-    key: 'artstory',
-    name: 'artstory',
-    url: 'https://artstory-six.vercel.app',
-    logo: '/logo-artstory.svg',
+    key: 'ballotwatch',
+    name: 'ballotwatch.io',
+    url: 'https://ballotwatch.io',
+    logo: '/logo-ballotwatch.svg',
     status: 'live',
-    desc: 'Scan a painting and get the whole story: the detail you missed, the painter, the world it was made in.',
-    tags: ['ai', 'museums', 'consumer'],
-  },
-  {
-    key: 'burnt',
-    name: 'burnt',
-    url: 'https://burnt-delta.vercel.app',
-    logo: '/logo-burnt.svg',
-    status: 'live',
-    desc: 'Daily AI token tracking. Post what you burned, keep the streak, climb the leaderboard.',
-    tags: ['ai', 'ios', 'social'],
+    desc: 'Local government, made legible. Bills, reps, and voting records in one place.',
+    tags: ['civic-tech', 'public-data', 'full-stack'],
   },
   {
     key: 'leed',

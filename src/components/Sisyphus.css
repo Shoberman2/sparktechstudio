@@ -1,0 +1,33 @@
+.sis { padding-block:48px 72px; background:linear-gradient(var(--surface),#f0f0f0); }
+.sis .wrap { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.sis-svg { width:min(100%,980px); height:auto; display:block; }
+.sis-video { width:100%; height:auto; display:block; aspect-ratio:21/9; object-fit:cover; background:#1a1a1a; }
+.sis-ground { fill:none; stroke:var(--ink); stroke-width:2.5; stroke-linejoin:round; }
+.sis-mountain { fill:rgba(41,41,41,.055); stroke:none; }
+.sis-contour { stroke:rgba(41,41,41,.22); }
+.sis-pebbles { fill:#d9d9d9; stroke:var(--ink); stroke-width:1.5; }
+.sis-flag { stroke:var(--ink); stroke-width:2; fill:var(--ink); }
+.sis-sun { stroke:rgba(41,41,41,.3); stroke-width:1.6; fill:none; }
+.sis-cloud-line { stroke:rgba(41,41,41,.32); stroke-width:1.6; fill:none; }
+.sis-cloud-fill { fill:#ededed; stroke:none; }
+.sis-ink { fill:none; stroke:var(--ink); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.sis-thin { fill:none; stroke-width:1.6; }
+.sis-limb { stroke-width:4.5; }
+.sis-foot,.sis-hand { fill:var(--paper); stroke-width:1.8; }
+.sis-tunic { fill:#d4d4d4; stroke-width:2; }
+.sis-skin { fill:var(--paper); stroke-width:2; }
+.sis-hair { fill:var(--ink); stroke:none; }
+.sis-eye { fill:var(--paper); stroke-width:1.2; }
+.sis-pupil { fill:var(--ink); stroke:none; }
+.sis-mouth { fill:var(--ink); stroke-width:1; }
+.sis-drop { fill:var(--paper); stroke-width:1.2; }
+.sis-star { fill:var(--paper); stroke-width:1.2; }
+.sis-rock circle { fill:#d7d7d7; stroke-width:2.5; }
+.sis-pit { fill:rgba(41,41,41,.18); stroke:none; }
+.sis-burst { fill:var(--paper); stroke-width:2; }
+.sis-puff circle { fill:#efefef; stroke-width:1.5; }
+.sis-title { font-size:clamp(28px,3.6vw,50px); font-weight:400; line-height:1.1; letter-spacing:-.045em; text-align:center; max-width:820px; margin-top:36px;
+  opacity:0; transform:translateY(8px); transition:opacity 700ms var(--ease),transform 700ms var(--ease); }
+.sis-title.is-in { opacity:1; transform:none; }
+@media(max-width:700px) { .sis{padding-block:16px 48px}.sis-title{font-size:26px;margin-top:-8px} }
+@media(prefers-reduced-motion:reduce) { .sis-title{transition:none} }

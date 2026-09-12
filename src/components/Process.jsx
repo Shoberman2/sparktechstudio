@@ -1,58 +1,72 @@
+import { useEffect, useRef } from 'react'
+import { prefersReducedMotion } from '../lib/motion'
 import './Process.css'
 
 const steps = [
-  {
-    n: '1',
-    name: 'scope',
-    desc: 'You tell us the idea. We tell you what is actually hard about it, and what it costs.',
-  },
-  {
-    n: '2',
-    name: 'build',
-    desc: 'AI writes the volume. A senior engineer owns the architecture and reads every line.',
-  },
-  {
-    n: '3',
-    name: 'harden',
-    desc: 'Auth, data, payments, cost. The failure modes that never show up in a demo.',
-  },
-  {
-    n: '4',
-    name: 'ship',
-    desc: 'Live on infrastructure that holds. You own the code, the accounts, the keys.',
-  },
+  ['Shape', 'We take the idea as it is and pressure-test it: who it is for, what it has to do, and what can wait.'],
+  ['Build', 'Working software, fast. We build with AI and make every call about what ships.'],
+  ['Launch', 'It goes live. A real product at a real address, not a demo.'],
+  ['Keep going', 'We stay for the unglamorous parts: data, security, payments, cost, and edge cases.'],
 ]
 
 export default function Process() {
-  return (
-    <section className="process" id="process">
-      <div className="process-inner">
-        <header className="process-header reveal">
-          <p className="prompt">
-            <span className="prompt-sign">sparktech@studio</span>:<span className="prompt-path">~</span>$ cat how-we-work.txt
-          </p>
-          <h2>// how we work</h2>
-          <p className="process-lead">
-            Advice first, then execution. The same four steps whether it is a
-            weekend prototype or the thing your company runs on.
-          </p>
-        </header>
+  const listRef = useRef(null)
 
-        <ol className="process-list reveal-stagger">
-          {steps.map((s) => (
-            <li className="process-step reveal" key={s.n}>
-              <div className="process-step-top">
-                <span className="process-n">[{s.n}/4]</span>
-                <span className="process-name">{s.name}<span className="process-paren">()</span></span>
-              </div>
-              <p className="process-desc">{s.desc}</p>
+  // A vertical line fills as the steps scroll through the viewport.
+  useEffect(() => {
+    const list = listRef.current
+    const items = [...list.querySelectorAll('li')]
+
+    if (prefersReducedMotion()) {
+      list.style.setProperty('--p', '1')
+      items.forEach((li) => li.classList.add('is-active'))
+      return
+    }
+
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const rect = list.getBoundingClientRect()
+      const marker = window.innerHeight * 0.62
+      const p = Math.min(1, Math.max(0, (marker - rect.top) / rect.height))
+      list.style.setProperty('--p', p.toFixed(3))
+      items.forEach((li) => {
+        const r = li.getBoundingClientRect()
+        li.classList.toggle('is-active', r.top + 24 <= marker)
+      })
+    }
+    const queue = () => {
+      if (!raf) raf = window.requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', queue, { passive: true })
+    window.addEventListener('resize', queue)
+    return () => {
+      window.removeEventListener('scroll', queue)
+      window.removeEventListener('resize', queue)
+      window.cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  return (
+    <section className="process section" id="process">
+      <div className="wrap process-grid">
+        <div className="process-intro" data-reveal>
+          <p className="kicker">Process</p>
+          <h2>From idea to live in <em>four</em> steps.</h2>
+          <p className="process-sub">No handoffs and no waiting. The idea stays sharp all the way to launch.</p>
+        </div>
+
+        <ol className="process-steps" ref={listRef}>
+          <span className="process-line" aria-hidden="true"><i /></span>
+          {steps.map(([title, copy]) => (
+            <li key={title}>
+              <span className="process-node" aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{copy}</p>
             </li>
           ))}
         </ol>
-
-        <p className="process-footnote reveal">
-          <span className="comment"># no timelines on this page. we quote yours after step 1, not before.</span>
-        </p>
       </div>
     </section>
   )

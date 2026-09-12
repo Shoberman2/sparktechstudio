@@ -621,7 +621,7 @@ function DHeader({ isHome, basePath }) {
         <span className="d-monogram-main">ST<i>/</i>S</span>
       </a>
       <nav aria-label="Studio sections">
-        <a href={sectionHref('d-practice')}>Practice</a>
+        <a href={sectionHref('d-practice')}>Studio</a>
         <a href={sectionHref('d-work')}>Index</a>
         <a href={sectionHref('d-contact')}>Contact</a>
       </nav>
@@ -642,7 +642,7 @@ function DFooter({ isHome, activeCapability, basePath }) {
             <img src="/logo.svg" alt="" />
             <span className="d-monogram-main">ST<i>/</i>S</span>
           </a>
-          <p>Senior product judgment, engineering, and ownership for ambitious software.</p>
+          <p>A web development studio that builds with AI and ships in days.</p>
         </div>
         <a className="d-footer-email" href="mailto:contactus@sparktechstudio.com">
           contactus@sparktechstudio.com
@@ -653,7 +653,7 @@ function DFooter({ isHome, activeCapability, basePath }) {
         <div className="d-reveal">
           <h3>Studio</h3>
           <a href={sectionHref('d-top')}>Home</a>
-          <a href={sectionHref('d-practice')}>Practice</a>
+          <a href={sectionHref('d-practice')}>Studio</a>
           <a href={sectionHref('d-method')}>Method</a>
           <a href={sectionHref('d-work')}>Work</a>
           <a href={sectionHref('d-contact')}>Contact</a>
@@ -687,7 +687,7 @@ function DFooter({ isHome, activeCapability, basePath }) {
 
       <div className="d-footer-meta d-reveal">
         <span>© {new Date().getFullYear()} SparkTech Studios, LLC</span>
-        <span>Advice that ships. Days, not weeks.</span>
+        <span>Built with AI. Shipped in days.</span>
       </div>
     </footer>
   )
@@ -763,7 +763,7 @@ function ConceptDCapability({ capability, basePath }) {
       <section className="d-capability-cta">
         <div className="d-reveal">
           <span>Start here</span>
-          <h2>Bring us the decision.<br />We will help make it real.</h2>
+          <h2>Bring us the product.<br />We will make it real.</h2>
           <a href="mailto:contactus@sparktechstudio.com">
             Start with the question <ArrowIcon />
           </a>
@@ -892,17 +892,18 @@ function ConceptD({ capabilitySlug, basePath }) {
           <section className="d-hero" id="d-top">
             <div className="d-hero-main">
               <p className="d-hero-speed">
-                <span>Operating pace</span>
-                We ship in days, not weeks.
+                <span>How we build</span>
+                Senior engineers plus AI.
               </p>
-              <h1>Good advice<br />should leave<br /><em>fingerprints.</em></h1>
+              <h1>Real software,<br />shipped<br /><em>in days.</em></h1>
               <div className="d-hero-intro">
                 <p>
-                  We help teams choose the right product, shape it until it is sharp,
-                  then put senior builders behind every claim.
+                  SparkTech is a web development studio that builds with AI. Agents
+                  handle the volume, senior engineers make the calls, and your product
+                  goes live fast and holds up when users show up.
                 </p>
                 <a href="mailto:contactus@sparktechstudio.com">
-                  Start with the question <ArrowIcon />
+                  Start a project <ArrowIcon />
                 </a>
               </div>
             </div>
@@ -910,22 +911,22 @@ function ConceptD({ capabilitySlug, basePath }) {
 
           <section className="d-practice" id="d-practice">
             <header className="d-reveal">
-              <span>Practice</span>
-              <h2>An advisory practice<br />that builds.</h2>
+              <span>Studio</span>
+              <h2>A development studio<br />that builds with AI.</h2>
             </header>
             <div className="d-practice-grid">
               <article className="d-practice-lead d-reveal">
-                <p>We advise first. Then we ship in days, not weeks.</p>
+                <p>AI writes the volume. Senior engineers make the calls.</p>
               </article>
               <article className="d-reveal">
                 <span>What you bring</span>
-                <h3>A decision worth getting right.</h3>
-                <p>An early idea, a product with traction, or a system beginning to strain.</p>
+                <h3>Something that needs to exist.</h3>
+                <p>An idea, a spec, or an app that has to be live by next month.</p>
               </article>
               <article className="d-reveal">
                 <span>What we bring</span>
-                <h3>Judgment with follow-through.</h3>
-                <p>Product strategy, architecture, senior engineering, and ongoing ownership.</p>
+                <h3>Speed without the mess.</h3>
+                <p>Architecture, build, launch, and the engineering to keep it standing.</p>
               </article>
             </div>
           </section>
@@ -933,7 +934,7 @@ function ConceptD({ capabilitySlug, basePath }) {
           <section className="d-decisions" id="d-method">
             <div className="d-decision-intro d-reveal">
               <span>Method</span>
-              <h2>The work is a sequence<br />of better decisions.</h2>
+              <h2>Four steps from<br />idea to live.</h2>
               <p className="d-method-speed">
                 Fewer handoffs. Faster calls. Working software while the problem is still sharp.
               </p>
@@ -996,12 +997,12 @@ function ConceptD({ capabilitySlug, basePath }) {
           <section className="d-contact" id="d-contact">
             <div className="d-reveal">
               <span>Correspondence</span>
-              <h2>Bring us the decision<br />you cannot afford<br />to get wrong.</h2>
+              <h2>Bring us the thing<br />you need<br />built.</h2>
             </div>
             <div className="d-contact-note d-reveal">
               <p>
-                No form. No qualification maze. One email goes directly to the people
-                who would advise and build the work.
+                No form. No qualification maze. One email goes directly to the
+                engineers who would build it.
               </p>
               <a href="mailto:contactus@sparktechstudio.com">
                 contactus@sparktechstudio.com <ArrowIcon />
