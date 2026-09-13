@@ -203,7 +203,7 @@ class RunnerTests(unittest.TestCase):
 
     def test_codex_adapter_invokes_real_cli_contract(self):
         task = self.root / 'task.json'
-        atomic_json(task, {'worker_kind': 'codex-exec', 'editable_files': ['app.txt']})
+        atomic_json(task, {'worker_kind': 'codex-exec', 'editable_files': ['app.txt'], 'accepted_context': {'private_history':'never-send'}, 'previous_lessons':['never-send']})
         env = {'CODEX_API_KEY': 'test-only', 'RSEI_TASK': str(task), 'RSEI_WORKSPACE': str(self.source)}
         with patch.dict(os.environ, env, clear=True), patch('adapters.codex_worker.shutil.which', return_value='/bin/codex'), patch('adapters.codex_worker.subprocess.run') as command:
             command.return_value.returncode = 7
@@ -214,6 +214,15 @@ class RunnerTests(unittest.TestCase):
             self.assertIn('--ignore-user-config', argv)
             self.assertNotIn('--dangerously-bypass-approvals-and-sandbox', argv)
             self.assertEqual(command.call_args.kwargs['cwd'], str(self.source))
+            self.assertNotIn('never-send', command.call_args.kwargs['input'])
+
+    def test_user_local_auth_cannot_be_borrowed_for_other_companies(self):
+        task = self.root / 'task.json'
+        atomic_json(task, {'worker_kind':'codex-exec','company_id':'utern'})
+        env={'CODEX_AUTH_MODE':'user-local','CODEX_AUTH_HOME':str(self.root),'RSEI_TASK':str(task)}
+        with patch.dict(os.environ,env,clear=True), patch('adapters.codex_worker.shutil.which',return_value='/bin/codex'), patch('adapters.codex_worker.subprocess.run') as command:
+            self.assertEqual(codex_main(),2)
+            command.assert_not_called()
 
     def test_required_context_blocks_before_any_probe(self):
         self.config['context_records'] = []
