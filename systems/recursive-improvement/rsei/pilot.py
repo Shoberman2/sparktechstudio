@@ -250,6 +250,17 @@ class Pilot:
                        check=True,timeout=5,env={'PATH':'/usr/bin:/bin'},cwd=self.path)
         return self.receipt(request.with_suffix('.receipt.json'))
 
+    def value_metrics(self, path):
+        from .value_metrics import validate
+        self.validate_context()
+        rows=json.loads(Path(path).read_text())
+        results=[validate(row) for row in rows]
+        if len({r['metric'] for r in results}) != len(results):
+            raise ValueError('Duplicate metric definitions in bundle')
+        atomic_json(self.path/'value-metrics.json',{'source':evidence(path),'results':results})
+        self.event('measure',value_metrics=results)
+        return results
+
     def report(self):
         comparisons=[]
         for metric in sorted({m['metric'] for m in self.state['metrics']}):
@@ -268,6 +279,10 @@ class Pilot:
                '| Metric | Status | Value | Scope | Evidence time |','|---|---|---|---|---|']
         for m in self.state['metrics']:
             lines.append(f'| {m["metric"]} | {m["status"]} | {m["value"]} | {m["scope"]} | {m["captured_at"]} |')
+        value_path=self.path/'value-metrics.json'
+        lines += ['', '## Repeatable customer value',
+            json.dumps(json.loads(value_path.read_text())['results'],indent=2) if value_path.exists() else
+            'Not measured: no governed aggregate/query evidence for verified value, meaningful return or verified interview cohorts. Account totals and last-sign-in timestamps are not retention.']
         lines+=['','## Release and decision',json.dumps({k:self.state.get(k) for k in ('base','candidate','blockers')},indent=2),
                 '', 'No sign-in, model generation, application receipt or meeting success is inferred from public service availability.',
                 'Live repair/deploy/rollback is owned externally. Fixture receipts are never accepted as live deployment evidence.',
@@ -284,7 +299,7 @@ class Pilot:
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action',choices=['init','probe','context','import','propose','evaluate','authorize','receipt','report'])
+    p.add_argument('action',choices=['init','probe','context','import','propose','evaluate','authorize','receipt','report','value-metrics'])
     p.add_argument('--run',required=True); p.add_argument('--input'); p.add_argument('--probe')
     args=p.parse_args()
     with company_lock(Path(args.run).resolve().parent,'utern-pilot-lock'):
@@ -298,6 +313,7 @@ def main():
         if args.action=='authorize':
             approval=pilot.authorize(**json.loads(Path(args.input).read_text()))
             atomic_json(pilot.path/f'authorization-{approval["id"]}.json',approval)
+        if args.action=='value-metrics': pilot.value_metrics(args.input)
         if args.action=='receipt': pilot.receipt(args.input)
         pilot.report()
         print(json.dumps({'run':str(pilot.path),'status':pilot.state['status']},indent=2))

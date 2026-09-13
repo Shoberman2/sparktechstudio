@@ -21,6 +21,9 @@ Mode: external-owner; UTern is independent of SparkTech.
 | sandbox_apply_receipt | blocked | None | production | 2026-09-13T08:46:42.069224+00:00 |
 | native_submit_preserved | blocked | None | production | 2026-09-13T08:46:42.069679+00:00 |
 
+## Repeatable customer value
+Not measured: no governed aggregate/query evidence for verified value, meaningful return or verified interview cohorts. Account totals and last-sign-in timestamps are not retention.
+
 ## Release and decision
 {
   "base": {
