@@ -40,3 +40,5 @@ See [recorded pilot report](evidence/utern-20260913/run/REPORT.md). Public catal
 Full live completion still requires authenticated journey evidence, controlled employer/student participants, receiving/reply access, calendar consent and actual persisted outcomes. No introduction, meeting or external application was executed by this pilot. The exact candidate deployment is absent, so the outcome is `awaiting_candidate_identity`, with no measured production improvement or rollback claimed. Archived evidence has local absolute paths and intentional expiry; it is historical evidence, not a portable reusable authorization.
 
 Repeatable customer-value definitions and existing-source gaps: [measurement contract](VALUE-MEASUREMENT.md). The `value-metrics` command imports governed aggregates separately from release health checks.
+
+Release-owner update: PR299 and PR300 merged after all CI passed. Combined release commit is `738d7830da24bce97186e0b43c52a8978145bb54`. Production READY verification is pending; preview evidence remains separate. The designated audit test account is excluded from customer-value cohorts.
