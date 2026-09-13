@@ -12,5 +12,27 @@
     "authenticated_success_verified": false,
     "stop_fix_production_verified": false,
     "notes": "PR300 merged at738d7830; PR301 also reportedly merged. Neither has production receipt in this update. Test account excluded from customer metrics."
+  },
+  {
+    "source": "UTern audit/release owner task 01a0877c-9b5d-7a91-bae6-873969d508ca",
+    "company_id": "utern",
+    "release": {
+      "commit": "738d7830da24bce97186e0b43c52a8978145bb54",
+      "deployment_id": "dpl_GPMPjn6P2vddur81xTsoaSrwri5u"
+    },
+    "alias": "utern.ai",
+    "reported_state": "READY",
+    "scope": "owner-report; STOP PR300 production",
+    "stop_fix_production_verified": true,
+    "authenticated_success_verified": false,
+    "observations": [
+      "Google handoff reached identifier page with Supabase callback and email/profile scopes; previous GSI400 absent in this observed handoff. This is not full OAuth proof.",
+      "Test signup submitted; response/session not yet verified."
+    ],
+    "pending_release": {
+      "commit": "a23ae7f18ab7e739c503b5838932c04d7ff3fe5c",
+      "pr": 301,
+      "deployment_id": null
+    }
   }
 ]

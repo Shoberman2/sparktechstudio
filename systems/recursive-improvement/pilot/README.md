@@ -42,3 +42,5 @@ Full live completion still requires authenticated journey evidence, controlled e
 Repeatable customer-value definitions and existing-source gaps: [measurement contract](VALUE-MEASUREMENT.md). The `value-metrics` command imports governed aggregates separately from release health checks.
 
 Release-owner update: PR299 and PR300 merged after all CI passed. Combined release commit is `738d7830da24bce97186e0b43c52a8978145bb54`. Production READY verification is pending; preview evidence remains separate. The designated audit test account is excluded from customer-value cohorts.
+
+Subsequent owner receipt confirms PR300 production READY at `dpl_GPMPjn6P2vddur81xTsoaSrwri5u`, commit `738d7830da24bce97186e0b43c52a8978145bb54`. Google handoff reached the identifier page without the previous GSI400; full authentication and relationship outcomes remain unverified. See [release updates](release-updates.json).
