@@ -1,0 +1,16 @@
+[
+  {
+    "source": "origin task relaying UTern release owner",
+    "company_id": "utern",
+    "release": {
+      "commit": "5683e4b74836261a0d8d338342dbea9fc95e1245",
+      "deployment_id": "dpl_8dSNWZeHgXZryovpeewRPzEJBycT"
+    },
+    "alias": "utern.ai",
+    "reported_state": "READY",
+    "scope": "owner-report; Google PR299",
+    "authenticated_success_verified": false,
+    "stop_fix_production_verified": false,
+    "notes": "PR300 merged at738d7830; PR301 also reportedly merged. Neither has production receipt in this update. Test account excluded from customer metrics."
+  }
+]
