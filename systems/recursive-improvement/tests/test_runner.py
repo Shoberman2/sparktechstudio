@@ -215,6 +215,14 @@ class RunnerTests(unittest.TestCase):
             self.assertNotIn('--dangerously-bypass-approvals-and-sandbox', argv)
             self.assertEqual(command.call_args.kwargs['cwd'], str(self.source))
 
+    def test_required_context_blocks_before_any_probe(self):
+        self.config['context_records'] = []
+        _, result = self.cycle()
+        self.assertEqual(result['status'], 'failed')
+        self.assertEqual(result['commands_used'], 0)
+        self.assertIn('Context needs reconciliation', result['error'])
+        self.assertFalse((self.company / 'current.json').exists())
+
     def test_config_rejects_traversal_disabled_and_unknown_permissions(self):
         file = self.root / 'config.json'
         for change in [{'source_files': ['../secret']}, {'enabled': False},
