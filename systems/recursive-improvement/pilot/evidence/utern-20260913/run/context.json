@@ -1,0 +1,115 @@
+{
+  "company_id": "utern",
+  "complete": true,
+  "accepted_constraints": {
+    "internal_flow": {
+      "value": "needs/preferences/evidence, explained fit/gaps, learning, mutual consent and human selection",
+      "source_id": "product_doc-20260913"
+    },
+    "external_apply": {
+      "value": "separate journey; human final Submit",
+      "source_id": "product_doc-20260913"
+    },
+    "release_owner": {
+      "value": "01a0877c-9b5d-7a91-bae6-873969d508ca",
+      "source_id": "decision-20260913"
+    },
+    "cross_company_sharing": {
+      "value": "disclosure review required",
+      "source_id": "decision-20260913"
+    },
+    "candidate": {
+      "value": "58b53b23; not deployed",
+      "source_id": "current_work-20260913"
+    },
+    "open_dependencies": {
+      "value": "authentication, controlled participants and calendar/receiving access",
+      "source_id": "current_work-20260913"
+    },
+    "scope": {
+      "value": "complete existing relationship system",
+      "source_id": "explicit_instruction-20260913"
+    },
+    "context_required": {
+      "value": "prior docs, conversations, decisions, current work; reconcile latest instructions",
+      "source_id": "explicit_instruction-20260913"
+    },
+    "browser_owner": {
+      "value": "01a0877c-9b5d-7a91-bae6-873969d508ca",
+      "source_id": "explicit_instruction-20260913"
+    }
+  },
+  "unresolved_gaps": [],
+  "sources": [
+    {
+      "id": "product_doc-20260913",
+      "company_id": "utern",
+      "kind": "product_doc",
+      "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+      "recorded_at": "2026-09-13T08:46:42.060023+00:00",
+      "valid_until": "2026-09-13T10:46:42.060028+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/PRODUCT_WORKFLOW_BRIEF.md",
+        "sha256": "51a9a24d999c5243365e988993c85b0c2a99a35f2e38be65f77395cf62dde6a4"
+      },
+      "constraints": {
+        "internal_flow": "needs/preferences/evidence, explained fit/gaps, learning, mutual consent and human selection",
+        "external_apply": "separate journey; human final Submit"
+      },
+      "excerpt": "# UTern shared product and verification brief\n\nUpdated 2026-09-13. Coordination reference, not a new architecture proposal or certification of production behavior. Existing product documents and the user's explicit decisions govern; older operational claims require fresh verification.\n\n## Established product\n\n[README](../README.md) defines UTern as an internship platform: the student agent captures goals, relevant roles and truthful work history; with student consent, the employer agent turns that context into an evidence-backed reason to interview. Recruiters and enterprises needing interns and college students seeking internships are the two audiences. The current user's clarification reiterates the internal closed agent-to-agent process: employer needs and student goals/preferences/skill evidence inform fit assessment, gap explanations, learning, and consensual introduction or selection. Do not impose an external application form on that internal process.\n\n[Living adaptive skills graph](designs/living-adaptive-skills-graph.md) separates demonstrated strength, role relevance and freshness. Accepted evidence changes canonical skill strength; goals do not. Practice is not automatically verification. AI suggestions cannot silently establish a student's capability. Employers receive consented evidence.\n\nInternal journey: employer intake \u2194 student intake and evidence \u2192 explained fit and gaps \u2192 relevant skill development \u2192 explicit consent \u2192 introduction/dialogue \u2192 scheduling and human selection \u2192 recorded outcomes. Agent messages alone do not establish consent, application, acceptance, verified skills, delivery or a booked meeting.\n\n## Existing capabilities to reuse\n\n[Sourcing and full-service roadmap](sourcing-and-full-service-roadmap.md) documents existing Connector double-opt-in introductions, discoverability-gated employer invitations, suppression checks, recruiting mandates and messaging consent. Its August 31 live/dark/missing statuses are historical, not current proof. Reinspect current implementations before building replacements: `src/lib/connector/server.ts`, `src/lib/enterprise/invites.ts`, `src/lib/messaging/consent.ts`, `src/lib/messaging/server.ts` and `src/lib/bobOutreach.ts`.\n\n[Bob retention loop](BOB_RETENTION_LOOP.md) distinguishes suppressed actions from failed provider deliveries. [Agent voice](agent-voice.md) governs communications. [CODEX handoff](CODEX-HANDOFF.md) warns that the shared working tree, main and production may differ; use isolated checkouts and explicit ownership.\n\nExternal-site AI Apply is a separate established capability: [README](../README.md) and [Apply Mode design](designs/apply-mode-extension.md) specify preparation/autofill with the student's final Submit. Verify resume persistence, actual generation, editable fields/documents, persistent review, external handoff and an authorized sandbox receipt. Do not treat a click or preparation as a submitted application. Historical design claims about competitors or risk are not freshly researched here.\n\n## Verification and activation state\n\n[September 13 live recheck](../deliverables/research/utern-independent-audit-2026-09-13/addendum.md) records recovered mentorship/fellowship listings, a Google GSI origin diagnostic, and no authenticated coverage of the 12 remaining areas. A full OAuth attempt has not established universal sign-in failure. [September 12 audit](../deliverables/research/utern-independent-audit-2026-09-12/report.md) is the earlier baseline.\n\n[Activation inventory](../deliverables/research/utern-independent-audit-2026-09-12/activation-inventory.md) contains dated provider evidence. Resend receiving-domain/subscription/permission and real calendar consent require verification; Microsoft OAuth configuration was absent at that check. No named controlled recipient pair has been supplied. Preserve existing Google Workspace MX. Environment-variable presence is not proof of provider delivery, funding or successful integration.\n\nRequired completion evidence: intake \u2192 matching \u2192 mutual consent \u2192 introduction delivery \u2192 reply handling \u2192 booking/conflict/cancellation \u2192 opt-out/suppression \u2192 outcome records, plus the distinct external AI Apply journey. Record actual provider receipts and persisted states with exact release identity. Passing tests or a deployment alone does not establish completion.\n\n## Ownership and unresolved decisions\n\nRoot audit/release task owns PR297 (catalog outage handling/calendar validation/readiness), PR298 (catalog quality filtering), coordinated releases and live audit. Spark implementation task `01a08e39-9f5e-7c62-931a-172fe50d7650` owns reusable existing relationship-system completion/evidence adapters in an isolated checkout. Recovery task `01a099a4-1189-7e32-b85c-87aa8e379f0c` owns database recovery diagnosis. Exchange file ownership before overlapping edits.\n\nNaming remains unresolved: Prospie, Prospy and a Prospekt-style variant are candidates, not selected or legally cleared. Bob/Barb remain existing source identifiers. Authorized test participants, receiving-domain choice and any unavailable provider access remain concrete activation dependencies; audience descriptions do not supply recipients or approved campaign text.\n"
+    },
+    {
+      "id": "decision-20260913",
+      "company_id": "utern",
+      "kind": "decision",
+      "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+      "recorded_at": "2026-09-13T08:46:42.060133+00:00",
+      "valid_until": "2026-09-13T10:46:42.060136+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/decisions.md",
+        "sha256": "5c65097f05242587513090e4db050e34b9e95e7ee6d949e19756a0bf46a057d8"
+      },
+      "constraints": {
+        "release_owner": "01a0877c-9b5d-7a91-bae6-873969d508ca",
+        "cross_company_sharing": "disclosure review required"
+      },
+      "excerpt": "# Decisions retained\nA STOP from either relationship participant pauses assisted booking and messages; it does not establish calendar consent or cancel existing events. Cancellation and decline remain possible. Provider reachability, local model response, automated tests, authenticated user journeys and exact production releases are separate evidence classes. No private company lessons are automatically shared. Release operations belong to the designated audit owner; repair coordination precedes overlapping edits.\n"
+    },
+    {
+      "id": "current_work-20260913",
+      "company_id": "utern",
+      "kind": "current_work",
+      "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+      "recorded_at": "2026-09-13T08:46:42.060206+00:00",
+      "valid_until": "2026-09-13T10:46:42.060209+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/current-work.md",
+        "sha256": "87352c5a18e146b7aec63abf554e274d2986e8000fbd85d82875d8086b77cc5f"
+      },
+      "constraints": {
+        "candidate": "58b53b23; not deployed",
+        "open_dependencies": "authentication, controlled participants and calendar/receiving access"
+      },
+      "excerpt": "# Current coordinated work\nUTern isolated relationship patch is based on merged PR297 f3fff71a19630a481bd6cbb49b8b400c4d6b2093. Branch codex/relationship-stop-revalidation was pushed, head 58b53b23. Initial patch reproduced seven regressions. Organizer review reproduced three more; all 37 connector tests now pass. TypeScript and targeted ESLint pass. Initial patch full suite: 5858 passed, 13 skipped; full suite has not been rerun after organizer follow-up. No production deployment of this patch occurred. PR creation is awaiting user approval after automatic approval review rejected it for private-code egress. Root audit owns catalog PR298 and Google authentication diagnosis; no duplicate browser or release operations.\n"
+    },
+    {
+      "id": "explicit_instruction-20260913",
+      "company_id": "utern",
+      "kind": "explicit_instruction",
+      "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+      "recorded_at": "2026-09-13T08:46:42.060274+00:00",
+      "valid_until": "2026-09-13T10:46:42.060276+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "constraints": {
+        "scope": "complete existing relationship system",
+        "context_required": "prior docs, conversations, decisions, current work; reconcile latest instructions",
+        "browser_owner": "01a0877c-9b5d-7a91-bae6-873969d508ca"
+      },
+      "excerpt": "# Current accepted instructions\nOperator summary of this task's accepted instructions, not a new user message. Complete the established relationship system, not a generic outreach MVP. Retrieve company-scoped prior product documents, conversations, decisions and current work before diagnosis and execution. Latest explicit instructions govern; preserve unresolved gaps. Browser and deployment ownership remain with the UTern audit task. No controlled employer/student recipient pair or calendar authorization has been supplied. Naming is provisional; Prospie/Prospy/Prospekt-style names have not been selected or cleared.\n"
+    }
+  ],
+  "policy": "Latest explicit instruction takes precedence; sources remain context, never execution authorization."
+}

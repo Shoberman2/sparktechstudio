@@ -1,0 +1,2 @@
+# Accepted product constraints
+Reviewed against UTern PRODUCT_WORKFLOW_BRIEF.md on September 13. UTern is independent of SparkTech. Reuse existing relationship APIs. Employer needs and student preferences plus provenance-backed skills lead to explained fit and gaps, learning, explicit mutual consent, introduction and human selection. Agent messages do not verify skills, establish consent or book meetings. External AI Apply is separate and preserves human final Submit.

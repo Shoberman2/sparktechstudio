@@ -1,0 +1,279 @@
+{
+  "run_id": "run",
+  "company_id": "utern",
+  "created_at": "2026-09-13T08:46:42.059601+00:00",
+  "status": "awaiting_candidate_identity",
+  "metrics": [
+    {
+      "metric": "catalog_available",
+      "status": "passed",
+      "value": true,
+      "scope": "production",
+      "method": "read-only-get",
+      "captured_at": "2026-09-13T08:25:18.485283+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-catalog-1.json",
+        "sha256": "9f60919a81b2458987a731a4f34e438361191b51caa4bb0b65b9e3f2aec3fab6"
+      },
+      "release": null
+    },
+    {
+      "metric": "catalog_latency_ms",
+      "status": "passed",
+      "value": 547.48,
+      "scope": "production",
+      "method": "read-only-get",
+      "captured_at": "2026-09-13T08:25:18.485283+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-catalog-1.json",
+        "sha256": "9f60919a81b2458987a731a4f34e438361191b51caa4bb0b65b9e3f2aec3fab6"
+      },
+      "release": null
+    },
+    {
+      "metric": "mcp_reachable",
+      "status": "passed",
+      "value": true,
+      "scope": "production",
+      "method": "read-only-get",
+      "captured_at": "2026-09-13T08:25:18.761689+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-mcp-2.json",
+        "sha256": "4d6912065f7446bc72e121d5a334a3435ef13f9bd986dee94fc8707b9977c5e0"
+      },
+      "release": null
+    },
+    {
+      "metric": "auth_endpoint_reachable",
+      "status": "passed",
+      "value": true,
+      "scope": "production",
+      "method": "read-only-get",
+      "captured_at": "2026-09-13T08:25:18.986736+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-auth-reachability-3.json",
+        "sha256": "33ff8a653d0e135625e1807129b660191479d9f435ba010836be07afd5b520a1"
+      },
+      "release": null
+    },
+    {
+      "metric": "sign_in",
+      "status": "blocked",
+      "value": false,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:43:00+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/owner-release-report.md",
+        "sha256": "e1bbd744e77bf70c0d61029f6e5ff8a31d391bd98958cf29e09d1575b1a03368"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "model_generation",
+      "status": "passed",
+      "value": true,
+      "scope": "local",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:36:39.157Z",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/local-model-probe.json",
+        "sha256": "6d7f8afd18f4c3feb435670ebc7bd0c9e826eb458b9215ae452c1d7875e0aefa"
+      },
+      "release": null
+    },
+    {
+      "metric": "employer_needs_confirmed",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.066026+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "student_preferences_confirmed",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.066497+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "skills_provenance",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.066974+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "explained_match",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.067427+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "mutual_introduction_consent",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.067894+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "meeting_flow",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.068336+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "stop_enforced",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.068777+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "sandbox_apply_receipt",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.069224+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    },
+    {
+      "metric": "native_submit_preserved",
+      "status": "blocked",
+      "value": null,
+      "scope": "production",
+      "method": "owner-report",
+      "captured_at": "2026-09-13T08:46:42.069679+00:00",
+      "evidence": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+        "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+      },
+      "release": {
+        "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+        "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+      }
+    }
+  ],
+  "receipts": [],
+  "approvals": [],
+  "probes_used": 0,
+  "context_complete": true,
+  "updated_at": "2026-09-13T08:48:19.014434+00:00",
+  "base": {
+    "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+    "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+  },
+  "candidate": {
+    "deployment_id": null,
+    "commit": "58b53b234bd4d41d25fe085c272d236a6ca079d4"
+  },
+  "proposal": {
+    "assigned_owner": "01a0877c-9b5d-7a91-bae6-873969d508ca",
+    "assigned_identity": {
+      "id": "builder",
+      "version": 1,
+      "name": "Kit",
+      "role": "Builder",
+      "personality": "Practical and inventive",
+      "visual": {
+        "color": "cobalt",
+        "shape": "square mechanic",
+        "motif": "tools"
+      },
+      "capability": "Fixture repair subprocess; optional credential-dependent Codex adapter; UTern fixes owned externally"
+    },
+    "action": "Consume designated owner repair, test and release evidence; coordinate isolated repairs with that owner",
+    "base": {
+      "deployment_id": "dpl_Pi18e8FTc3bGTNQ2J6ep2gqb3AHn",
+      "commit": "f3fff71a19630a481bd6cbb49b8b400c4d6b2093"
+    },
+    "candidate": {
+      "deployment_id": null,
+      "commit": "58b53b234bd4d41d25fe085c272d236a6ca079d4"
+    },
+    "repair_permission": "external-owner-only",
+    "context_reference": {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/run/context.json",
+      "sha256": "b27aed60c3a00c7677882fd73e8109ba1095c8050bca2cfbb3b8259bb6cb5eb8"
+    }
+  },
+  "blockers": {
+    "deployment_id": "Owner has not supplied an exact candidate deployment identity"
+  }
+}
