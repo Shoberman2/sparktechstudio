@@ -205,15 +205,19 @@ class Cycle:
             file.write_bytes(data)
         result = {"argv": argv, "exit_code": p.returncode, "duration_seconds": round(time.monotonic() - start, 3), "error": reason, 'actor': actor(self.identities, label)}
         atomic_json(evidence / "command.json", result)
-        if stage == "worker" and self.config["worker_kind"] == "codex-exec":
+        if stage == "worker" and self.config["worker_kind"] in ("codex-exec", "claude-messages"):
             usage = []
             for line in (evidence / "stdout.txt").read_text(errors="replace").splitlines():
                 try:
                     item = json.loads(line)
-                    if item.get("type") == "turn.completed" and isinstance(item.get("usage"), dict):
-                        usage.append(item["usage"])
-                except (ValueError, AttributeError):
+                except ValueError:
                     continue
+                if not isinstance(item, dict) or not isinstance(item.get("usage"), dict):
+                    continue
+                if item.get("type") == "turn.completed":  # Codex JSONL turn event
+                    usage.append(item["usage"])
+                elif item.get("worker") == "claude-messages":  # one summary line naming the served model
+                    usage.append({"model": item.get("model"), **item["usage"]})
             self.state["reported_model_usage"] = usage
         self.state.pop("active_pid", None)
         self.state.pop("active_command", None)

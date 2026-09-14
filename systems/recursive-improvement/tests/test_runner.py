@@ -1,16 +1,20 @@
 """Orchestration fault tests use explicit test doubles; demo uses real Chromium."""
+import http.server
 import json
 import io
 import os
 from pathlib import Path
 import sys
 import tempfile
+import threading
 import unittest
+import urllib.error
 from unittest.mock import patch
 from contextlib import redirect_stdout
 
 from rsei.runner import BoundaryError, Cycle, atomic_json, company_lock, load_config, recover, main
 from adapters.codex_worker import main as codex_main
+from adapters import claude_worker
 
 
 PROBE = '''import json, os, sys
@@ -37,6 +41,57 @@ if fault == 'secret': print(os.environ.get('TEST_CREDENTIAL')); print(os.environ
 TEST = '''import os, sys
 sys.exit(1 if os.environ.get('FAULT') == 'test' else 0)
 '''
+
+
+def claude_reply(patch, model='claude-opus-5', stop_reason='end_turn'):
+    """Messages API response shape as a test double; the patch is what a structured-output turn returns."""
+    return {'id': 'msg_test', 'type': 'message', 'role': 'assistant', 'model': model, 'stop_reason': stop_reason,
+            'stop_details': None, 'content': [{'type': 'text', 'text': json.dumps(patch)}],
+            'usage': {'input_tokens': 321, 'output_tokens': 45}}
+
+
+class FakeUrlopen:
+    """Records every Messages API request and answers from a scripted queue. No network."""
+    def __init__(self, replies):
+        self.replies = list(replies)
+        self.requests = []
+
+    def __call__(self, request, timeout=None):
+        self.requests.append(request)
+        reply = self.replies.pop(0)
+        if isinstance(reply, int):
+            body = io.BytesIO(json.dumps({'type': 'error', 'error': {'type': 'test', 'message': 'status %d' % reply}}).encode())
+            raise urllib.error.HTTPError(request.full_url, reply, 'error', {'request-id': 'req_err'}, body)
+        response = io.BytesIO(json.dumps(reply).encode())
+        response.status = 200
+        response.headers = {'request-id': 'req_ok'}
+        response.__enter__ = lambda: response
+        response.__exit__ = lambda *args: response.close()
+        return response
+
+
+class LoopbackMessagesServer:
+    """Loopback stand-in for api.anthropic.com used only by the subprocess cycle test."""
+    def __init__(self, expected_key, patch):
+        server = self
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def log_message(self, *args): pass
+            def do_POST(self):
+                body = json.loads(self.rfile.read(int(self.headers['content-length'])))
+                server.requests.append({'path': self.path, 'key': self.headers.get('x-api-key'),
+                    'version': self.headers.get('anthropic-version'), 'body': body})
+                if self.headers.get('x-api-key') != expected_key:
+                    self.send_response(401); self.end_headers(); self.wfile.write(b'{"type":"error"}'); return
+                data = json.dumps(claude_reply(patch, model=body['model'])).encode()
+                self.send_response(200); self.send_header('content-type', 'application/json')
+                self.send_header('request-id', 'req_loopback'); self.end_headers(); self.wfile.write(data)
+        self.requests = []
+        self.http = http.server.HTTPServer(('127.0.0.1', 0), Handler)
+        self.url = 'http://127.0.0.1:%d' % self.http.server_address[1]
+        threading.Thread(target=self.http.serve_forever, daemon=True).start()
+
+    def close(self):
+        self.http.shutdown(); self.http.server_close()
 
 
 class RunnerTests(unittest.TestCase):
@@ -223,6 +278,113 @@ class RunnerTests(unittest.TestCase):
         with patch.dict(os.environ,env,clear=True), patch('adapters.codex_worker.shutil.which',return_value='/bin/codex'), patch('adapters.codex_worker.subprocess.run') as command:
             self.assertEqual(codex_main(),2)
             command.assert_not_called()
+
+    def claude_env(self, **extra):
+        task = self.root / 'task.json'
+        atomic_json(task, {'worker_kind': 'claude-messages', 'company_id': 'alpha', 'goal': 'Fix test fixture',
+            'editable_files': ['app.txt'], 'finding': {'fingerprint': 'known-defect', 'actual': 'broken'},
+            'accepted_context': {'private_history': 'never-send'}, 'previous_lessons': ['never-send']})
+        evidence = self.root / 'evidence'
+        evidence.mkdir(exist_ok=True)
+        return {'ANTHROPIC_API_KEY': 'test-only-key', 'RSEI_TASK': str(task), 'RSEI_WORKSPACE': str(self.source),
+                'RSEI_EVIDENCE': str(evidence), **extra}
+
+    def test_claude_adapter_does_not_call_network_without_key(self):
+        fake = FakeUrlopen([claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'fixed'}]})])
+        env = self.claude_env(); del env['ANTHROPIC_API_KEY']
+        with patch.dict(os.environ, env, clear=True), patch('adapters.claude_worker.urllib.request.urlopen', fake):
+            self.assertEqual(claude_worker.main(), 2)
+        self.assertEqual(fake.requests, [])
+        self.assertEqual((self.source / 'app.txt').read_text(), 'broken')
+
+    def test_claude_adapter_sends_bounded_payload_and_applies_validated_patch(self):
+        fake = FakeUrlopen([claude_reply({'status': 'patched', 'reason': 'off by one', 'files': [{'path': 'app.txt', 'content': 'fixed'}]})])
+        with patch.dict(os.environ, self.claude_env(), clear=True), patch('adapters.claude_worker.urllib.request.urlopen', fake), \
+                redirect_stdout(io.StringIO()) as out:
+            self.assertEqual(claude_worker.main(), 0)
+        request, = fake.requests
+        self.assertEqual(request.full_url, 'https://api.anthropic.com/v1/messages')
+        self.assertEqual(request.get_header('X-api-key'), 'test-only-key')
+        self.assertEqual(request.get_header('Anthropic-version'), '2023-06-01')
+        body = json.loads(request.data)
+        self.assertEqual(body['model'], 'claude-opus-5')
+        self.assertEqual(body['output_config']['format']['type'], 'json_schema')
+        self.assertNotIn('tools', body)
+        self.assertNotIn('never-send', request.data.decode())
+        self.assertIn('known-defect', request.data.decode())
+        self.assertIn('broken', json.loads(body['messages'][0]['content'])['files']['app.txt'])
+        self.assertEqual((self.source / 'app.txt').read_text(), 'fixed')
+        summary = json.loads(out.getvalue())
+        self.assertEqual(summary['usage'], {'input_tokens': 321, 'output_tokens': 45})
+        self.assertEqual(summary['changed'], ['app.txt'])
+        attempts = json.loads((self.root / 'evidence/model-attempts.json').read_text())
+        self.assertEqual([a['model'] for a in attempts['attempts']], ['claude-opus-5'])
+        self.assertNotIn('test-only-key', (self.root / 'evidence/model-attempts.json').read_text())
+
+    def test_claude_adapter_falls_back_to_sonnet_exactly_once_for_availability_only(self):
+        good = claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'fixed'}]}, model='claude-sonnet-5')
+        fake = FakeUrlopen([529, good])
+        with patch.dict(os.environ, self.claude_env(), clear=True), patch('adapters.claude_worker.urllib.request.urlopen', fake), redirect_stdout(io.StringIO()):
+            self.assertEqual(claude_worker.main(), 0)
+        self.assertEqual([json.loads(r.data)['model'] for r in fake.requests], ['claude-opus-5', 'claude-sonnet-5'])
+        self.assertEqual((self.source / 'app.txt').read_text(), 'fixed')
+        (self.source / 'app.txt').write_text('broken')
+        for status in (401, 402, 403, 400):
+            fake = FakeUrlopen([status, good])
+            with patch.dict(os.environ, self.claude_env(), clear=True), patch('adapters.claude_worker.urllib.request.urlopen', fake):
+                self.assertEqual(claude_worker.main(), 2)
+            self.assertEqual(len(fake.requests), 1, status)
+        fake = FakeUrlopen([529, 529, good])
+        with patch.dict(os.environ, self.claude_env(), clear=True), patch('adapters.claude_worker.urllib.request.urlopen', fake):
+            self.assertEqual(claude_worker.main(), 2)
+        self.assertEqual(len(fake.requests), 2)
+        self.assertEqual((self.source / 'app.txt').read_text(), 'broken')
+
+    def test_claude_adapter_never_writes_blockers_refusals_or_files_outside_allowlist(self):
+        cases = [
+            claude_reply({'status': 'blocked', 'reason': 'scope too small', 'files': []}),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': []}),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'other.txt', 'content': 'bad'}]}),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': '../app.txt', 'content': 'bad'}]}),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'a'}, {'path': 'app.txt', 'content': 'b'}]}),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'x' * 70000}]}),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'fixed'}]}, stop_reason='refusal'),
+            claude_reply({'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'fixed'}]}, stop_reason='max_tokens'),
+            {**claude_reply({}), 'content': [{'type': 'text', 'text': 'not json'}]},
+        ]
+        for reply in cases:
+            fake = FakeUrlopen([reply])
+            with patch.dict(os.environ, self.claude_env(), clear=True), patch('adapters.claude_worker.urllib.request.urlopen', fake):
+                self.assertEqual(claude_worker.main(), 3)
+            self.assertEqual((self.source / 'app.txt').read_text(), 'broken')
+            self.assertFalse((self.source / 'other.txt').exists())
+        with patch.dict(os.environ, self.claude_env(ANTHROPIC_BASE_URL='https://example.com'), clear=True), \
+                patch('adapters.claude_worker.urllib.request.urlopen', FakeUrlopen([])) as fake:
+            self.assertEqual(claude_worker.main(), 2)
+        self.assertEqual(fake.requests, [])
+
+    def test_claude_worker_runs_inside_runner_boundary_with_loopback_double(self):
+        server = LoopbackMessagesServer('cycle-test-key', {'status': 'patched', 'reason': 'x', 'files': [{'path': 'app.txt', 'content': 'fixed'}]})
+        self.addCleanup(server.close)
+        self.config.update(worker_kind='claude-messages', secret_env=['ANTHROPIC_API_KEY'],
+            environment={'ANTHROPIC_BASE_URL': server.url})
+        self.config['commands']['worker'] = [sys.executable, str(Path(claude_worker.__file__).resolve())]
+        with self.assertRaises(BoundaryError):  # the key must come from the runner's environment, never a file
+            with patch.dict(os.environ, {}, clear=True):
+                Cycle(self.config, self.company).command('worker', 'implement')
+        with patch.dict(os.environ, {'ANTHROPIC_API_KEY': 'cycle-test-key'}):
+            c, result = self.cycle(release=False)
+        self.assertEqual(result['status'], 'awaiting_release')
+        self.assertEqual(result['reported_model_usage'], [{'model': 'claude-opus-5', 'input_tokens': 321, 'output_tokens': 45}])
+        self.assertEqual((c.path / 'candidate/app.txt').read_text(), 'fixed')
+        self.assertEqual((self.source / 'app.txt').read_text(), 'broken')
+        request, = server.requests
+        self.assertEqual((request['path'], request['key'], request['version'], request['body']['model']),
+                         ('/v1/messages', 'cycle-test-key', '2023-06-01', 'claude-opus-5'))
+        self.assertNotIn('previous_lessons', json.dumps(request['body']))
+        self.assertNotIn('cycle-test-key', (c.path / 'evidence/implement/stdout.txt').read_text())
+        self.assertNotIn('cycle-test-key', (c.path / 'evidence/implement/model-attempts.json').read_text())
+        self.assertNotIn('cycle-test-key', (c.path / 'changes.patch').read_text())
 
     def test_required_context_blocks_before_any_probe(self):
         self.config['context_records'] = []
