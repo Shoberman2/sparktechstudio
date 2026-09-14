@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "run_id": "20260910T222218-78b7eb1126",
+  "company_id": "sparktech-fixture",
+  "status": "healthy",
+  "commands_used": 1,
+  "worker_kind": "deterministic-fixture-repair",
+  "started_at": 1789093338.828629,
+  "release_requested": false,
+  "updated_at": 1789093341.2534962,
+  "elapsed_seconds": 2.432
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "node",
+    "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"
+  ],
+  "exit_code": 10,
+  "duration_seconds": 1.223,
+  "error": null,
+  "actor": {
+    "id": "observer",
+    "version": 1,
+    "name": "Pip",
+    "role": "Observer",
+    "personality": "Curious and concise",
+    "visual": {
+      "color": "amber",
+      "shape": "round explorer",
+      "motif": "lens"
+    },
+    "capability": "Read-only probes and imported observations"
+  }
+}

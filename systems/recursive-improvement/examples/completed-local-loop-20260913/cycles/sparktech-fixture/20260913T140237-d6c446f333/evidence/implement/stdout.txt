@@ -1,0 +1,1 @@
+{"worker": "deterministic-fixture-repair", "changed": ["index.html"]}

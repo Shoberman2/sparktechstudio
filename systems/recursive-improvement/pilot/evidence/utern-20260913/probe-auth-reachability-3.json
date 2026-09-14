@@ -1,0 +1,8 @@
+{
+  "url": "https://bqhtqrufsazxkmcfgrlt.supabase.co/auth/v1/settings",
+  "captured_at": "2026-09-13T08:25:18.986736+00:00",
+  "http_status": 401,
+  "latency_ms": 124.4,
+  "available": null,
+  "oversize": false
+}

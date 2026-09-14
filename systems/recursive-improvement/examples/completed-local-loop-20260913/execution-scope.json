@@ -1,0 +1,15 @@
+{
+  "id": "876cbadc513842bd81d012e4ff8ca267",
+  "scope": "local-artifact-only",
+  "company_id": "sparktech-fixture",
+  "authorization_source": {
+    "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/accepted-instructions.md",
+    "sha256": "3e166f84e7ba4045124e382619fa3a84e07fe994fc006642e0572f1fe1c710e0"
+  },
+  "config_sha256": "fc40bb3c4e93d04c70ca51d90d514fa3129bc9afabb3fd9165eed3fa422d7a3a",
+  "source_manifest": {
+    "index.html": "0d9edfacb9f7e4fe3175b86345e0a2f424431c732465670ac0dbdc9ab08c57db"
+  },
+  "worker_kind": "deterministic-fixture-repair",
+  "release_local": true
+}
