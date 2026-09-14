@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime, timedelta, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import uuid
@@ -14,11 +15,15 @@ sys.path.insert(0, str(SYSTEM.parent/'knowledge'))
 from ledger import Ledger
 
 
-def proof(output, codex_auth_home=None):
+def proof(output, codex_auth_home=None, claude=False):
+    if codex_auth_home and claude:raise SystemExit('Choose one model worker mode')
+    # The runner injects ANTHROPIC_API_KEY into the worker stage only; nothing here reads or stores it.
+    if claude and not os.environ.get('ANTHROPIC_API_KEY'):raise SystemExit('ANTHROPIC_API_KEY is not set in this environment; no model was invoked')
     output=Path(output).resolve()
     output.mkdir(parents=True,exist_ok=False)
     company='sparktech-fixture'
-    worker_label='real Codex model worker' if codex_auth_home else 'deterministic fixture worker'
+    model_mode=bool(codex_auth_home or claude)
+    worker_label='real Codex model worker' if codex_auth_home else 'real Claude model worker' if claude else 'deterministic fixture worker'
     identities=registry()
     atomic_json(output/'agents.json',identities)
     records=[]
@@ -46,8 +51,15 @@ def proof(output, codex_auth_home=None):
         config['environment']={'CODEX_AUTH_MODE':'user-local','CODEX_AUTH_HOME':str(Path(codex_auth_home).resolve()),
             'CODEX_EXECUTABLE':'/Applications/ChatGPT.app/Contents/Resources/codex'}
         config['budgets'].update(max_seconds=180,command_seconds=120)
-    atomic_json(output/'worker-mode.json',{'worker':worker_label,'auth_scope':'explicit-user-local-ChatGPT' if codex_auth_home else 'none',
-        'no_company_credentials_borrowed':True,'model_budget':'one invocation,120-second command limit; reported usage is not a hard dollar cap' if codex_auth_home else 'no model'})
+    if claude:
+        config['worker_kind']='claude-messages'
+        config['commands']['worker']=[sys.executable,str(SYSTEM/'adapters/claude_worker.py')]
+        config['secret_env']=['ANTHROPIC_API_KEY']
+        config['budgets'].update(max_seconds=180,command_seconds=120)
+    atomic_json(output/'worker-mode.json',{'worker':worker_label,
+        'auth_scope':'explicit-user-local-ChatGPT' if codex_auth_home else 'ANTHROPIC_API_KEY from the invoking environment' if claude else 'none',
+        'no_company_credentials_borrowed':True,
+        'model_budget':'one invocation plus at most one explicit model fallback, 120-second command limit; reported usage is not a hard dollar cap' if model_mode else 'no model'})
     original=tree(config['source'])
     approval={'id':uuid.uuid4().hex,'scope':'local-artifact-only','company_id':company,
         'authorization_source':{'path':str(instructions),'sha256':digest(instructions)},
@@ -62,7 +74,7 @@ def proof(output, codex_auth_home=None):
         proposal=ledger.propose(claim['id'],'One click adds one','Existing controlled fixture, not live customer data',
             'Run existing bounded runner with '+worker_label+' and independent Chromium checks','counter after one click',
             'discover/reproduce=2; verify/release/follow-up=1; source unchanged','No UTern/company data or production releases; only explicitly configured worker authentication and model endpoint in AI mode',
-            'Runner restores previous local pointer if release verification fails',1,0)
+            'Runner restores previous local pointer if release verification fails',1,1 if model_mode else 0)
         ledger.review(proposal['id'],'task operator under explicit user local execution approval','approved','Exact local scope and source reviewed; not authority for any production action')
         first=run_cycle(config,output/'cycles',release=True)
         atomic_json(output/'repair-result.json',first)
@@ -124,4 +136,5 @@ This is a real local execution against an intentionally broken fixture, with {wo
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',required=True)
     parser.add_argument('--codex-auth-home',help='Explicit documented local Codex login directory; fixture only, no credential copying')
-    args=parser.parse_args();print(json.dumps(proof(args.output,args.codex_auth_home),indent=2))
+    parser.add_argument('--claude',action='store_true',help='Use the tool-free Claude patch worker; needs ANTHROPIC_API_KEY in the environment')
+    args=parser.parse_args();print(json.dumps(proof(args.output,args.codex_auth_home,args.claude),indent=2))

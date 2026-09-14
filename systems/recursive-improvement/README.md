@@ -2,7 +2,7 @@
 
 SparkTech's first reusable system is an executable QA improvement cycle. It launches a real browser probe, reproduces a finding, invokes an implementation subprocess against an isolated snapshot, checks the resulting changes, runs independent tests and browser verification, and optionally switches a company-local release pointer. A browser checks that released artifact. Failure restores the previous pointer. Evidence and lessons feed the next cycle.
 
-This is a local execution foundation, not an unattended production service. The included browser fixture and deterministic repair are real executions against deliberately broken code. The deterministic worker is explicitly **not an AI agent**. An optional real Codex worker adapter is included; live model execution requires separately provisioned company credentials and has not been demonstrated here. No outside company is connected.
+This is a local execution foundation, not an unattended production service. The included browser fixture and deterministic repair are real executions against deliberately broken code. The deterministic worker is explicitly **not an AI agent**. Optional Codex and Claude worker adapters are included; live model execution requires separately provisioned company credentials and has not been demonstrated here. No outside company is connected.
 
 ## Run it
 
@@ -77,6 +77,14 @@ The adapter invokes `codex exec` with JSONL events, ephemeral execution, no inhe
 
 The fresh worker HOME does not reuse desktop account authentication. Explicit secret names are passed only to the worker, never to browser probes or regression commands. The Codex adapter needs network access to its model provider and a working company credential. This host has a Codex executable, but no `CODEX_API_KEY` was available during implementation. Its CLI contract and missing-credential behavior are tested; a live model repair remains unverified.
 
+## Optional Claude implementation worker
+
+`adapters/claude_worker.py` is the tool-free alternative to the Codex adapter. Copy `companies/claude-fixture.example.json` to a local company config, set `enabled: true`, and provision a company-scoped `ANTHROPIC_API_KEY` through the execution environment or a secret manager. The runner injects that variable into the worker stage only, refuses to start the worker when it is absent, and redacts its value from retained logs. The adapter reads the key from the environment and from nowhere else; it does not read profiles, config files or chat. The example disables local release.
+
+The worker makes one Anthropic Messages API request with no tools, no shell and no agent loop. It sends the goal, the reproduced finding, the file allowlist and the current text of the editable files (64 KiB each at most), and asks for whole-file replacements through a JSON response schema. Accepted context, previous lessons and conversations are never sent. Model is `claude-opus-5`; if that request fails on availability alone (404, 429, 5xx, 529) it makes exactly one more attempt with `claude-sonnet-5`. Auth, billing, permission and bad-request errors stop immediately. Every attempt, and the served response, is written to `evidence/implement/model-attempts.json`; the runner records the reported token usage as `reported_model_usage`.
+
+Paths are checked against the allowlist, duplicates and oversize content are rejected, and a `blocked` answer, a refusal, a truncated response or unparseable output leaves the workspace unchanged with a nonzero exit. There is no deterministic fallback. Independent tests and browser verification still decide whether the candidate is retained. The adapter is standard-library Python because the runner starts workers with a private HOME and a minimal PATH, so the system interpreter must be able to run it without installed packages. `ANTHROPIC_BASE_URL` is honoured only when it points at a loopback test double; the tests use one through the real subprocess cycle. `python3 finish_local.py --claude --output DIR` runs the full local proof with this worker. See `AI-WORKER-STATUS.md` for what has and has not been executed live.
+
 ## Budgets, recovery and limits
 
 `max_commands`, `max_seconds`, `command_seconds`, and `max_output_bytes` bound top-level command count, cycle/command execution time, and retained stdout/stderr. Timeout and output overflow terminate the process group, including ordinary child processes. Output is sampled every 25 ms and truncated after execution; disk use can briefly exceed the output limit. Browser traces, snapshots and source size are not quota-limited. Hosted use needs filesystem quotas and retention policies.
@@ -96,7 +104,7 @@ Recovery holds the company lock, refuses to proceed while a recorded command pro
 
 ## Knowledge-system integration boundary
 
-The knowledge/intelligence package owns source ingestion, source-backed techniques, company applicability, reviewed experiment proposals and measured outcomes. This package owns QA execution. The local `systems/knowledge/qa_bridge.py` now calls `run_cycle` for one canonical fixture experiment, after a distinct execution approval and current knowledge/config/source checks. It records `company_id`, `run_id`, `candidate_digest` and evidence references in the ledger outcome. The bridge cannot release candidates or invoke the optional AI worker. See `systems/knowledge/INTEGRATION.md`. A source recommendation or lesson does not itself authorize execution, change permissions or demonstrate an experiment's effect. The current QA stage machine is not a generic knowledge ingestion orchestrator.
+The knowledge/intelligence package owns source ingestion, source-backed techniques, company applicability, reviewed experiment proposals and measured outcomes. This package owns QA execution. The local `systems/knowledge/qa_bridge.py` now calls `run_cycle` for one canonical fixture experiment, after a distinct execution approval and current knowledge/config/source checks. It records `company_id`, `run_id`, `candidate_digest` and evidence references in the ledger outcome. The bridge cannot release candidates or invoke the optional AI workers. See `systems/knowledge/INTEGRATION.md`. A source recommendation or lesson does not itself authorize execution, change permissions or demonstrate an experiment's effect. The current QA stage machine is not a generic knowledge ingestion orchestrator.
 
 ## Grounding and verification
 
