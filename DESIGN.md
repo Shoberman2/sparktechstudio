@@ -1,5 +1,14 @@
 # Design System — SparkTech Studios
 
+## September 2026 evolution
+
+The production site now lives in `src/studio/`, retaining Practice Notes cream,
+green, editorial serif, mono labels, rules, and pill CTAs. The new theme is
+**Build it. Keep it moving.** A shared-system diagram, company selector and
+expandable workflow rows explain the proposed operating model. Coral text uses
+`#b93824` for contrast on cream; dark-green sections use pale coral `#eaa78b`.
+System status is explicitly planned. No simulated live metrics or activity.
+
 ## Current Production Direction
 
 As of 2026-07-30, the live site uses the approved **Practice Notes / Concept D**

@@ -1,5 +1,29 @@
 # SparkTech Studios
 
+## Current positioning (September 2026)
+
+This section supersedes the historical advisory-first framing below.
+SparkTech Studio is becoming an incubator, website/product creator, and long-term
+operator with reusable agentic automation systems. Lead with building products
+and continuously improving them. Shared capabilities include browser/computer-use
+QA with reproduction, implementation handoff, retesting and release verification;
+daily maintenance; outcome-driven analytics and experiments; social/content
+workflows; and broader operations. Describe these as planned until deployment is
+verified. Do not invent integrations, customers, metrics or full autonomy.
+
+SparkTech owns the reusable system layer in this intended model. Each adopting
+company supplies separate data, credentials, brand, goals and permissions. UTern
+is independent and explicitly NOT owned by SparkTech. The roster lists Ballot
+Watch and `leed.media` (LEED, called LEAD in the new verbal brief); it does not
+establish their ownership or system integration status. Do not infer either.
+
+Production `/` and `/capabilities/*` now render `src/studio/Studio.jsx`, styled by
+`src/studio/Studio.css`. `src/data/projects.js` remains the work roster. The old
+capability URLs map to the corresponding new systems. `/mockups` preserves the
+historical concept lab. Keep the cream/green/coral Practice Notes visual language,
+singular public brand, text-only work list, concise copy, and no video hero.
+
+
 ## Mission
 
 SparkTech Studios exists to build the crazy ideas that people think can't be done. We take unique, ambitious concepts and turn them into real products, fast and efficiently. The whole point is: you have a wild idea, we make it real.
