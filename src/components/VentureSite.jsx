@@ -337,16 +337,46 @@ function About({ page }) {
   </section>
 }
 
+function ContactForm() {
+  const [state, setState] = useState('idle')
+  const [error, setError] = useState('')
+  async function submit(event) {
+    event.preventDefault()
+    const form = event.currentTarget
+    const data = Object.fromEntries(new FormData(form).entries())
+    setState('sending'); setError('')
+    try {
+      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      const body = await r.json().catch(() => ({}))
+      if (r.ok && body.ok) { setState('sent'); form.reset(); return }
+      setState('error'); setError(body.error || 'Could not send right now.')
+    } catch {
+      setState('error'); setError('Could not send right now.')
+    }
+  }
+  if (state === 'sent') return <p className="rs-form-done" role="status">Got it. We read every message and answer from the studio inbox.</p>
+  return <form className="rs-form" onSubmit={submit} noValidate>
+    <label className="rs-field"><span>Name</span><input name="name" type="text" autoComplete="name" maxLength={120} /></label>
+    <label className="rs-field"><span>Email</span><input name="email" type="email" autoComplete="email" required maxLength={200} /></label>
+    <label className="rs-field rs-field-wide"><span>What you’re building, or what keeps breaking</span><textarea name="message" rows={5} required minLength={10} maxLength={4000} /></label>
+    <label className="rs-field rs-hp" aria-hidden="true"><span>Company website</span><input name="company_website" type="text" tabIndex={-1} autoComplete="off" /></label>
+    <div className="rs-form-actions">
+      <button className="rs-button" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending' : 'Send to the studio'} <ArrowOut /></button>
+      {state === 'error' && <p className="rs-form-error" role="alert">{error} You can also write to <a className="rs-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>}
+    </div>
+  </form>
+}
+
 function Contact({ page }) {
   return <section className={`rs-section rs-cta${page ? ' rs-page' : ''}`} id="contact" aria-labelledby="cta-title">
     <div className="rs-wrap" data-reveal>
       <h2 id="cta-title"><Rise>Let’s <span className="rs-accent">build it.</span></Rise></h2>
       <div className="rs-cta-row">
-        <p className="rs-cta-copy">One email goes straight to the studio. Tell us what you’re building, or what keeps breaking.</p>
-        <div className="rs-cta-actions">
-          <a className="rs-button" href={`mailto:${EMAIL}`}>Email the studio <ArrowOut /></a>
+        <div>
+          <p className="rs-cta-copy">One message goes straight to the studio. Tell us what you’re building, or what keeps breaking.</p>
           <a className="rs-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
         </div>
+        <ContactForm />
       </div>
     </div>
   </section>
