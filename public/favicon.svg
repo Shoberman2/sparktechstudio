@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 28 28" fill="none">
+  <!-- The spark mark cropped for tab size: the diamond and dots fill the frame, the rays run off the edges. logo.svg keeps the full mark for the site. -->
+  <defs>
+    <linearGradient id="spark-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8860b"/>
+      <stop offset="100%" stop-color="#7a5a0a"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 4 L26.5 18 L28 14 L24 4z" fill="url(#spark-grad)"/>
+  <path d="M24 44 L21.5 30 L20 34 L24 44z" fill="url(#spark-grad)"/>
+  <path d="M4 24 L18 21.5 L14 20 L4 24z" fill="url(#spark-grad)"/>
+  <path d="M44 24 L30 26.5 L34 28 L44 24z" fill="url(#spark-grad)"/>
+  <path d="M24 18 L30 24 L24 30 L18 24z" fill="url(#spark-grad)"/>
+  <circle cx="14" cy="14" r="1.5" fill="#b8860b" opacity="0.6"/>
+  <circle cx="34" cy="14" r="1" fill="#b8860b" opacity="0.4"/>
+  <circle cx="34" cy="34" r="1.5" fill="#7a5a0a" opacity="0.5"/>
+  <circle cx="14" cy="34" r="1" fill="#7a5a0a" opacity="0.3"/>
+</svg>
