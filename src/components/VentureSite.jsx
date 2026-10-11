@@ -249,10 +249,16 @@ function Hero() {
   </section>
 }
 
+/* A section opened as its own page owns the page's one h1; on the home page it stays an h2 under the hero. */
+function Heading({ page, ...props }) {
+  const Tag = page ? 'h1' : 'h2'
+  return <Tag {...props} />
+}
+
 function Idea({ page }) {
   return <section className={`rs-section rs-idea${page ? ' rs-page' : ''}`} id="idea" aria-labelledby="idea-title">
     <div className="rs-wrap rs-idea-grid">
-      <h2 id="idea-title" data-reveal><Rise>Recursive</Rise><Rise n={1}>Self-Enterprise</Rise><Rise n={2} className="rs-accent">Improvement.</Rise></h2>
+      <Heading page={page} id="idea-title" data-reveal><Rise>Recursive</Rise><Rise n={1}>Self-Enterprise</Rise><Rise n={2} className="rs-accent">Improvement.</Rise></Heading>
       <div className="rs-idea-copy" data-reveal style={{ '--d': '180ms' }}>
         <p className="rs-lead">One loop, run on every part of a company.</p>
         <p className="rs-lead rs-lead-strong">Then run it on the workflow that did the work.</p>
@@ -266,7 +272,7 @@ function Built({ page }) {
   return <section className={`rs-section rs-built${page ? ' rs-page' : ''}`} id="infrastructure" aria-labelledby="infra-title">
     <div className="rs-wrap">
       <div className="rs-head-row" data-reveal>
-        <h2 id="infra-title"><Rise>One system.</Rise><Rise n={1}>Four layers.</Rise></h2>
+        <Heading page={page} id="infra-title"><Rise>One system.</Rise><Rise n={1}>Four layers.</Rise></Heading>
         <p className="rs-lead">Sources in one end. A verified change out the other. A person signs off in the middle.</p>
       </div>
       <ol className="rs-stack">
@@ -286,7 +292,7 @@ function Workflows({ page }) {
   return <section className={`rs-section rs-systems${page ? ' rs-page' : ''}`} id="workflows" aria-labelledby="workflows-title">
     <div className="rs-wrap">
       <div className="rs-head-row" data-reveal>
-        <h2 id="workflows-title"><Rise>Eight named</Rise><Rise n={1}>workflows.</Rise></h2>
+        <Heading page={page} id="workflows-title"><Rise>Eight named</Rise><Rise n={1}>workflows.</Rise></Heading>
         <p className="rs-lead">Each owns a job after launch, inside the company’s own permissions.</p>
       </div>
       <ol className="rs-wf-list">
@@ -305,7 +311,7 @@ function Companies({ page }) {
   return <section className={`rs-section rs-companies${page ? ' rs-page' : ''}`} id="companies" aria-labelledby="companies-title">
     <div className="rs-wrap">
       <div className="rs-head-row" data-reveal>
-        <h2 id="companies-title"><Rise>Same systems.</Rise><Rise n={1}>Your company.</Rise></h2>
+        <Heading page={page} id="companies-title"><Rise>Same systems.</Rise><Rise n={1}>Your company.</Rise></Heading>
         <p className="rs-lead">Built around these first. Each keeps its own data, credentials, and permissions.</p>
       </div>
       <div className="rs-co-list">
@@ -325,7 +331,7 @@ function About({ page }) {
   return <section className={`rs-section rs-about${page ? ' rs-page' : ''}`} id="about" aria-labelledby="about-title">
     <div className="rs-wrap rs-about-grid">
       <div className="rs-about-side" data-reveal>
-        <h2 id="about-title"><Rise>Built by</Rise><Rise n={1} className="rs-accent">Spencer Hoberman.</Rise></h2>
+        <Heading page={page} id="about-title"><Rise>Built by</Rise><Rise n={1} className="rs-accent">Spencer Hoberman.</Rise></Heading>
         <p className="rs-about-meta">Founder, SparkTech Studio<br />New York</p>
       </div>
       <div className="rs-about-copy" data-reveal style={{ '--d': '140ms' }}>
@@ -370,7 +376,7 @@ function ContactForm() {
 function Contact({ page }) {
   return <section className={`rs-section rs-cta${page ? ' rs-page' : ''}`} id="contact" aria-labelledby="cta-title">
     <div className="rs-wrap" data-reveal>
-      <h2 id="cta-title"><Rise>Let’s <span className="rs-accent">build it.</span></Rise></h2>
+      <Heading page={page} id="cta-title"><Rise>Let’s <span className="rs-accent">build it.</span></Rise></Heading>
       <div className="rs-cta-row">
         <div>
           <p className="rs-cta-copy">One message goes straight to the studio. Tell us what you’re building, or what keeps breaking.</p>
