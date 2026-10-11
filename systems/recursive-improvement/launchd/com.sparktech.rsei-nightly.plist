@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.sparktech.rsei-nightly</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>cd ~/sparktech-systems/systems/recursive-improvement && exec python3 -m rsei.nightly --max-cycles 3</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>RSEI_PLAYWRIGHT_MODULE</key><string>/Users/shoberman/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.js</string>
+    <key>PLAYWRIGHT_BROWSERS_PATH</key><string>/Users/shoberman/Library/Caches/ms-playwright</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>3</integer><key>Minute</key><integer>30</integer></dict>
+  <key>StandardOutPath</key><string>/Users/shoberman/Library/Logs/sparktech-rsei/nightly.log</string>
+  <key>StandardErrorPath</key><string>/Users/shoberman/Library/Logs/sparktech-rsei/nightly.err</string>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>

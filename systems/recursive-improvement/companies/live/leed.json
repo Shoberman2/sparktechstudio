@@ -1,0 +1,30 @@
+{
+  "schema_version": 2,
+  "company_id": "leed",
+  "display_name": "LEED",
+  "relationship": "intended-adopter",
+  "enabled": true,
+  "goal": "leed.media's public pages load clean for a visitor: no page errors, no failed same-origin requests, no broken internal links, no horizontal overflow on phones, sound document structure. Journalist-gated surfaces are out of scope.",
+  "repo": "~/journalistapp",
+  "base_branch": "main",
+  "allowed_paths": ["app/**", "lib/**", "public/**"],
+  "forbidden_paths": ["supabase/**", "proxy.ts", "next.config.ts", "package.json", "package-lock.json", "bun.lock", "vercel.json", ".env*", "app/api/**", "lib/auth*", "lib/gate*", "CLAUDE.md", "DESIGN.md", "AGENTS.md"],
+  "repo_notes": "Next.js 16 app. Read CLAUDE.md and DESIGN.md first. The board, feed, tip detail and desk are journalist-gated; never loosen a gate. Public surfaces only. Tier words, never numerals.",
+  "commands": {
+    "lint": ["npm", "run", "lint"],
+    "test": ["npm", "run", "test"]
+  },
+  "probe": {
+    "kind": "browser",
+    "observe_url": "https://www.leed.media/",
+    "verify": {"kind": "vercel-preview"},
+    "routes": ["/"],
+    "max_pages": 10,
+    "ignore_console": []
+  },
+  "worker": {"model": "opus", "max_turns": 30, "max_budget_usd": 5, "max_seconds": 900},
+  "approval": {"mode": "policy", "basis": "Owner approved on 2026-10-10: the loop may propose fixes to LEED as pull requests only; nothing merges or deploys without the owner."},
+  "release": {"mode": "pull-request"},
+  "budgets": {"max_seconds": 2700, "command_seconds": 900},
+  "share_from_repo": ["node_modules", ".vercel"]
+}
