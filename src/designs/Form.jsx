@@ -49,6 +49,10 @@ const morph = { hover: null } // reserved: a product page could hold its own for
 
 function setup2d(ctx) {
   const pos = Float32Array.from(targets[0])
+  // Low-end devices draw every other point; everyone gets quantized colors so fillStyle changes are cheap
+  const stride = typeof navigator !== 'undefined' && (navigator.hardwareConcurrency || 8) <= 4 ? 2 : 1
+  const styleCache = new Map()
+  const style = (r0, g0, b0, a) => { const k = (r0 << 20) | (g0 << 12) | (b0 << 4) | a; let v = styleCache.get(k); if (!v) { v = `rgba(${r0},${g0},${b0},${(a / 15).toFixed(2)})`; styleCache.set(k, v) } return v }
   const state = { auto: 0, last: 0, ang: 0, prev: 0, spark: 1 }
   return (w, h, t, ptr) => {
     if (morph.hover == null && t - state.last > 4.5) { state.auto = (state.auto + 1) % forms.length; state.last = t }
@@ -65,7 +69,7 @@ function setup2d(ctx) {
     const ry = state.ang + (ptr.x - 0.5) * 0.9, rx = -0.3 * (1 - state.spark) + (ptr.y - 0.5) * 0.6
     const sy = Math.sin(ry), cyy = Math.cos(ry), sx = Math.sin(rx), cxx = Math.cos(rx)
     const g = state.spark
-    for (let i = 0; i < COUNT; i++) {
+    for (let i = 0; i < COUNT; i += stride) {
       const k = i * 3, ease = 0.035 + (i % 7) * 0.004
       pos[k] += (goal[k] - pos[k]) * ease; pos[k + 1] += (goal[k + 1] - pos[k + 1]) * ease; pos[k + 2] += (goal[k + 2] - pos[k + 2]) * ease
       const x = pos[k], y = pos[k + 1], z = pos[k + 2]
@@ -75,8 +79,8 @@ function setup2d(ctx) {
       const depth = (1 - z2) * 0.5
       const accent = i % 37 === 0
       // On the spark the cloud turns gold, the logo's own color; elsewhere it is ink with gold flecks
-      const r0 = accent ? 184 : 10 + 174 * g, g0 = accent ? 134 : 10 + 124 * g, b0 = accent ? 11 : 12 - g
-      ctx.fillStyle = `rgba(${r0 | 0},${g0 | 0},${b0 | 0},${accent ? 0.5 + depth * 0.5 : 0.14 + depth * 0.66})`
+      const r0 = (accent ? 184 : 10 + 174 * g) | 0, g0 = (accent ? 134 : 10 + 124 * g) | 0, b0 = (accent ? 11 : 12 - g) | 0
+      ctx.fillStyle = style(r0, g0, b0, Math.round((accent ? 0.5 + depth * 0.5 : 0.14 + depth * 0.66) * 15))
       const r = (accent ? 1.6 : 0.9 + g * 0.2) * p
       ctx.fillRect(cx + x1 * scale * p - r, cy + y1 * scale * p - r, r * 2, r * 2)
     }
@@ -91,7 +95,7 @@ function Cloud({ className }) {
 
 const SP_DOTS = [[46.5, 10.9], [46.4, 24.4], [46.5, 37.9], [73.5, 37.9], [19.4, 38], [32.9, 38], [60, 38], [32.9, 51.5], [46.4, 51.5], [5.8, 51.6], [19.3, 51.6], [46.5, 65.1], [32.6, 65.2], [32.8, 78.6]]
 const tiles = {
-  utern: { bg: '#101a2a url(/work/utern/mountain.webp) center 35% / cover no-repeat', img: '/work/utern/birdee.png', cls: 'is-utern' },
+  utern: { bg: '#101a2a url(/work/utern/mountain.webp) center 35% / cover no-repeat', img: '/work/utern/birdee.webp', cls: 'is-utern' },
   leed: { bg: '#0b0b09', img: '/work/leed/sherlock.svg', cls: 'is-leed' },
   ballotwatch: { bg: '#0c1626', img: '/work/ballotwatch/capitol-logo.svg', cls: 'is-bw' },
   spacial: { bg: '#7255ff', cls: 'is-spacial' },
@@ -105,6 +109,7 @@ export default function Form() {
       <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
       <nav><a href="#systems">Systems</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
     </header>
+    <main id="main">
     <section className="fm-hero">
       <div className="fm-copy">
         <h1>We create<br />the future.</h1>
@@ -132,7 +137,7 @@ export default function Form() {
         {built.map(b => {
           const t = tiles[b.slug]
           return <a key={b.slug} href={b.url} className={`fm-tile ${t.cls}`} style={{ background: t.bg }}>
-            {t.img ? <img src={t.img} alt="" /> : <svg viewBox="-4 0 102 92" aria-hidden="true" className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
+            {t.img ? <img src={t.img} alt="" loading="lazy" decoding="async" /> : <svg viewBox="-4 0 102 92" aria-hidden="true" className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
             <span className="fm-tile-go"><Arrow /></span>
             <span className="fm-tile-text"><strong>{b.name}</strong><span>{b.line}</span></span>
           </a>
@@ -140,6 +145,7 @@ export default function Form() {
       </div>
     </section>
 
+    </main>
     <footer className="fm-foot" id="contact">
       <div className="fm-foot-cta">
         <h2>What should<br />exist <em>next?</em></h2>
@@ -156,11 +162,11 @@ export default function Form() {
           <span className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</span>
           <p>An independent studio in New York. We build products, then build the systems that keep them getting better.</p>
         </div>
-        <nav aria-label="Studio"><h4>Studio</h4><a href="#systems">The systems</a><a href="#work">What we’ve built</a><a href="#contact">Contact</a></nav>
-        <nav aria-label="Work"><h4>Work</h4>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
-        <nav aria-label="Contact"><h4>Contact</h4><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email</a></nav>
+        <nav aria-label="Studio"><p className="fm-foot-h">Studio</p><a href="#systems">The systems</a><a href="#work">What we’ve built</a><a href="#contact">Contact</a></nav>
+        <nav aria-label="Work"><p className="fm-foot-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
+        <nav aria-label="Contact"><p className="fm-foot-h">Contact</p><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email</a></nav>
       </div>
-      <div className="fm-foot-bottom"><span>© {year} SparkTech Studios, Inc.</span><span>New York</span></div>
+      <div className="fm-foot-bottom"><span>© {year} SparkTech Studios, Inc.</span><span><a href="/privacy">Privacy</a> · New York</span></div>
     </footer>
   </div>
 }

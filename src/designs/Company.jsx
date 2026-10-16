@@ -38,7 +38,7 @@ function Climb({ c }) {
       <path className="cl-ridge" d="M0 500 L 0 480 C 140 450, 170 390, 250 370 S 380 310, 430 260 S 560 180, 600 150 S 720 70, 780 44 L 800 40 L 800 500 Z" />
       <path className="cl-path" d={path} />
       <ClimbDots path={path} pts={pts} steps={steps} />
-      <g className="cl-bird"><image href="/work/utern/birdee.png" width="44" height="44" /></g>
+      <g className="cl-bird"><image href="/work/utern/birdee.webp" width="44" height="44" /></g>
       <text x="20" y="494" className="cl-cap">Enrollment</text>
       <text x="780" y="20" className="cl-cap" textAnchor="end">Employment</text>
     </svg>
@@ -145,6 +145,7 @@ export default function Company({ slug }) {
       <a className="co-back" href="/"><span>←</span><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
       {c.url ? <a className="co-visit" href={c.url} target="_blank" rel="noreferrer">Visit {c.host} ↗</a> : <span className="co-visit">{c.host}</span>}
     </header>
+    <main id="main">
     <section className="co-hero">
       <div className="co-bg" style={bgStyle} />
       {c.bgMobile && <style>{`@media (max-width:860px){.co-${c.slug} .co-bg{background-image:url(${c.bgMobile})!important}}`}</style>}
@@ -172,9 +173,14 @@ export default function Company({ slug }) {
       </ol>
       {c.howNote && <p className="co-note">{c.howNote}</p>}
     </section>}
+    <section className="co-ask">
+      <p>Want something built like this?</p>
+      <a href={CALENDLY} target="_blank" rel="noreferrer">Book 30 minutes <span aria-hidden="true">↗</span></a>
+    </section>
+    </main>
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><span className="co-foot-links"><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>{EMAIL}</a></span><span>© {year} SparkTech Studios, Inc.</span></footer>
+    <footer className="co-foot"><span className="co-foot-links"><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>{EMAIL}</a></span><span>© {year} SparkTech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
   </div>
 }

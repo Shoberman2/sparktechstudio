@@ -108,6 +108,8 @@ User requested a Sisyphus video, then a site version, then “make it very cinem
   concept lab under `/mockups`.
 
 ## Anti-patterns (all tried, all rejected)
+
+> 2026-10-16 note: the live Form site (DESIGN decisions of 2026-10-15/16) was approved on sight with a point-cloud canvas, a soft radial glow behind Budzy, a five-tile grid with corner arrow discs, and pill buttons. Those specific, approved uses stand; do not "fix" them against the list below, which records earlier rejections on earlier designs.
 - Product screenshots, video heroes. (Founder content was on this list until 2026-09-11, when the user asked for an About section.)
 - Pills, chips, badges, tag clouds, numbered 01/02 labels, custom cursors.
 - Hard color edges between sections. (Gradients and near-black grounds were on this list until 2026-09-11, when the user asked for gradients and a high-level dark design.)

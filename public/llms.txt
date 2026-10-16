@@ -13,10 +13,11 @@ Legal entity: SparkTech Studios, Inc., a Delaware C corporation
 - [Leed](https://www.sparktechstudio.com/work/leed): A private story-intelligence desk for newsrooms. Live at https://www.leed.media
 - [BallotWatch](https://www.sparktechstudio.com/work/ballotwatch): How Congress votes, in plain English. Live at https://www.ballotwatch.io
 - [Spacial Health](https://www.sparktechstudio.com/work/spacial): Complex care, finally coordinated. Platform preview on sample data.
+- [Privacy](https://www.sparktechstudio.com/privacy): no analytics, no ads, no tracking.
 - [Budtender](https://www.sparktechstudio.com/work/budtender): Know what you like. Remember why. Private preview.
 
 ## Facts worth getting right
 
-- Each product is its own company with its own data, brand, and people. SparkTech built them; it does not own UTern.
-- The improvement system runs on sparktechstudio.com today. It does not yet run on the products above.
+- Each product is its own company with its own data, brand, and people. Spencer Hoberman, SparkTech's founder, also builds UTern. UTern is its own company, not owned by SparkTech.
+- The site describes the improvement system only in broad terms. It does not yet run on the products above.
 - No pricing, headcount, or customer numbers are published.

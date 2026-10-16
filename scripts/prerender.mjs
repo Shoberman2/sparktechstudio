@@ -14,8 +14,11 @@ const routes = [
   { path: '/', title: 'SparkTech Studio | We create the future', description: 'SparkTech Studio is an independent studio in New York. We build products, then run the system that keeps them getting better.' },
 ]
 for (const c of companies || []) {
-  routes.push({ path: `/work/${c.slug}`, title: `${c.name} | SparkTech Studio`, description: `${c.name}: ${c.line} ${c.todayLabel ? 'In preview.' : ''}`.trim() })
+  const lede = String(c.lede || '').replace(/\s+/g, ' ')
+  routes.push({ path: `/work/${c.slug}`, title: `${c.name} | SparkTech Studio`, description: `${c.line} ${lede}`.slice(0, 155).replace(/\s\S*$/, '') + (lede.length > 120 ? '.' : ''), image: `/work/${c.slug}/og.jpg` })
 }
+routes.push({ path: '/privacy', title: 'Privacy | SparkTech Studio', description: 'No analytics, no ads, no tracking. What this site does with what you send.' })
+routes.push({ path: '/404', title: 'Not here | SparkTech Studio', description: 'That page is not here. Back to the studio.', noindex: true })
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 for (const r of routes) {
@@ -25,8 +28,13 @@ for (const r of routes) {
   page = page.replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(r.description)}$2`)
   page = page.replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${esc(r.title)}$2`)
   page = page.replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(r.description)}$2`)
-  page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${site}${r.path === '/' ? '/' : r.path}$2`)
+  const url = `${site}${r.path === '/' ? '/' : r.path}`
+  page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
+  page = page.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
+  if (r.image) page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${site}${r.image}$2`)
+  if (r.noindex) page = page.replace('</head>', '  <meta name="robots" content="noindex" />\n  </head>')
   if (r.path === '/') writeFileSync(resolve(dist, 'index.html'), page)
+  else if (r.path === '/404') writeFileSync(resolve(dist, '404.html'), page)
   else {
     // Both shapes: work/<slug>.html for Vercel's cleanUrls, work/<slug>/index.html for any plain static host
     mkdirSync(resolve(dist, r.path.slice(1)), { recursive: true })
@@ -37,6 +45,5 @@ for (const r of routes) {
 }
 
 // sitemap from the same route list
-const today = new Date().toISOString().slice(0, 10)
-writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`)
+writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.filter(r => !r.noindex).map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc></url>`).join('\n')}\n</urlset>\n`)
 rmSync(resolve('dist-ssr'), { recursive: true, force: true })

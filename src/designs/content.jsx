@@ -8,7 +8,7 @@ export const companies = [
   {
     slug: 'utern', name: 'UTern', host: 'utern.ai', url: 'https://utern.ai', line: 'Your AI for landing an internship.',
     theme: { '--c-bg': '#0d1420', '--c-accent': '#f0a24a', '--c-scrim': 'linear-gradient(90deg, rgba(8,14,24,.1) 0%, rgba(8,14,24,.35) 40%, rgba(8,14,24,.82) 75%, rgba(8,14,24,.88) 100%)' },
-    bg: '/work/utern/mountain.webp', bgMobile: '/work/utern/mountain-mobile.webp', figure: '/work/utern/birdee.png', figureAlt: 'Birdee, UTern’s AI',
+    bg: '/work/utern/mountain.webp', bgMobile: '/work/utern/mountain-mobile.webp', figure: '/work/utern/birdee.webp', figureAlt: 'Birdee, UTern’s AI',
     kicker: 'Your AI for landing an internship',
     value: <>From enrollment <em>to employment.</em></>,
     lede: 'Birdee, UTern’s AI, finds students real internships that fit and brings companies the students who fit their role. Companies see evidence, never scores.',
