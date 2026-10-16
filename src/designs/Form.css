@@ -120,3 +120,6 @@
 .fm-cta:hover i svg { transform:translate(2px,-2px); }
 .fm-cta-ghost { display:inline-flex; align-items:center; padding:14px 22px; border-radius:999px; border:1px solid var(--line); font-size:15px; font-weight:500; color:var(--ink); transition:border-color .3s,background-color .3s,transform .4s cubic-bezier(.16,1,.3,1); }
 .fm-cta-ghost:hover { border-color:var(--ink); background:#f7f7f8; transform:translateY(-2px); color:var(--ink); }
+.fm-foot-actions { display:flex; flex-direction:column; align-items:center; gap:16px; }
+.fm-foot-email { font-size:15px; color:rgba(255,255,255,.7) !important; border-bottom:1px solid rgba(255,255,255,.25); padding-bottom:2px; overflow-wrap:anywhere; transition:color .3s,border-color .3s; }
+.fm-foot-email:hover { color:#d4b46a !important; border-color:#d4b46a; }

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useLoop } from './useLoop'
-import { companies, EMAIL, year } from './content.jsx'
+import { companies, EMAIL, CALENDLY, year } from './content.jsx'
 import './Company.css'
 
 const SP_DOTS = [[46.5, 10.9], [46.4, 24.4], [46.5, 37.9], [73.5, 37.9], [19.4, 38], [32.9, 38], [60, 38], [32.9, 51.5], [46.4, 51.5], [5.8, 51.6], [19.3, 51.6], [46.5, 65.1], [32.6, 65.2], [32.8, 78.6]]
@@ -175,6 +175,6 @@ export default function Company({ slug }) {
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><span>© {year} SparkTech Studios, Inc.</span></footer>
+    <footer className="co-foot"><span className="co-foot-links"><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>{EMAIL}</a></span><span>© {year} SparkTech Studios, Inc.</span></footer>
   </div>
 }

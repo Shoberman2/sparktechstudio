@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useLoop } from './useLoop'
-import { built, EMAIL, year } from './content.jsx'
+import { built, EMAIL, CALENDLY, year } from './content.jsx'
 import './Form.css'
 
 // One cloud of points that morphs between forms. The SparkTech spark is home; each product has a form of its own.
@@ -110,7 +110,7 @@ export default function Form() {
         <h1>We create<br />the future.</h1>
         <p>An independent studio in New York. We build the things other people only talk about.</p>
         <div className="fm-hero-actions">
-          <a className="fm-cta" href="#contact"><span>Start something</span><i aria-hidden="true"><Arrow /></i></a>
+          <a className="fm-cta" href={CALENDLY} target="_blank" rel="noreferrer"><span>Book a 30-minute call</span><i aria-hidden="true"><Arrow /></i></a>
           <a className="fm-cta-ghost" href="#work">See what we’ve built</a>
         </div>
       </div>
@@ -144,8 +144,11 @@ export default function Form() {
       <div className="fm-foot-cta">
         <h2>What should<br />exist <em>next?</em></h2>
         <div>
-          <p>Tell us. We reply within two business days, and the first call is a real conversation, not a pitch.</p>
-          <a className="fm-mailbtn" href={`mailto:${EMAIL}`}>{EMAIL} <Arrow /></a>
+          <p>Tell us. Book 30 minutes, or write and we reply within two business days. The first call is a real conversation, not a pitch.</p>
+          <div className="fm-foot-actions">
+            <a className="fm-mailbtn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call <Arrow /></a>
+            <a className="fm-foot-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </div>
         </div>
       </div>
       <div className="fm-foot-grid">
@@ -155,7 +158,7 @@ export default function Form() {
         </div>
         <nav aria-label="Studio"><h4>Studio</h4><a href="#systems">The systems</a><a href="#work">What we’ve built</a><a href="#contact">Contact</a></nav>
         <nav aria-label="Work"><h4>Work</h4>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
-        <nav aria-label="Contact"><h4>Contact</h4><a href={`mailto:${EMAIL}`}>Email</a><a href="#contact">Start a project</a></nav>
+        <nav aria-label="Contact"><h4>Contact</h4><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email</a></nav>
       </div>
       <div className="fm-foot-bottom"><span>© {year} SparkTech Studios, Inc.</span><span>New York</span></div>
     </footer>

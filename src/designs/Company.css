@@ -39,8 +39,9 @@
 .co-split li:first-child { border-top:0; padding-top:0; }
 .co-visual { margin-top:56px; position:relative; }
 .co-foot { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding:28px clamp(16px,4vw,48px); border-top:1px solid var(--c-line); font-size:13px; color:var(--c-mute); }
-.co-foot a:first-child { padding:12px 22px; border-radius:999px; background:var(--c-fg); color:var(--c-bg); font-size:14px; font-weight:500; transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s; }
-.co-foot a:first-child:hover { transform:translateY(-2px); color:var(--c-bg); opacity:.92; }
+.co-foot-links { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.co-foot-links a:first-child { padding:12px 22px; border-radius:999px; background:var(--c-fg); color:var(--c-bg); font-size:14px; font-weight:500; transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s; }
+.co-foot-links a:first-child:hover { transform:translateY(-2px); color:var(--c-bg); opacity:.92; }
 .co-foot a:hover { color:var(--c-fg); }
 .co-note { font-size:13px; color:var(--c-mute); margin-top:24px; max-width:60ch; }
 
