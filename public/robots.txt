@@ -1,0 +1,7 @@
+# SparkTech Studio. Everyone is welcome to read this site, including AI agents and crawlers.
+User-agent: *
+Allow: /
+Disallow: /mockups
+Disallow: /designs
+
+Sitemap: https://www.sparktechstudio.com/sitemap.xml

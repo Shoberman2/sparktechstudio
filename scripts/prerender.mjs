@@ -1,0 +1,42 @@
+// Prerender every site route to static HTML after `vite build`, so crawlers and AI agents that do not run
+// JavaScript still get the full page. The client hydrates the same tree (src/main.jsx).
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
+
+const dist = resolve('dist')
+const { render } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
+const { companies } = await import(pathToFileURL(resolve('dist-ssr/content.js')).href).catch(() => ({ companies: null }))
+const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
+
+const site = 'https://www.sparktechstudio.com'
+const routes = [
+  { path: '/', title: 'SparkTech Studio | We create the future', description: 'SparkTech Studio is an independent studio in New York. We build products, then run the system that keeps them getting better.' },
+]
+for (const c of companies || []) {
+  routes.push({ path: `/work/${c.slug}`, title: `${c.name} | SparkTech Studio`, description: `${c.name}: ${c.line} ${c.todayLabel ? 'In preview.' : ''}`.trim() })
+}
+
+const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+for (const r of routes) {
+  const html = render(r.path)
+  let page = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`)
+  page = page.replace(/<title>[^<]*<\/title>/, `<title>${esc(r.title)}</title>`)
+  page = page.replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(r.description)}$2`)
+  page = page.replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${esc(r.title)}$2`)
+  page = page.replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(r.description)}$2`)
+  page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${site}${r.path === '/' ? '/' : r.path}$2`)
+  if (r.path === '/') writeFileSync(resolve(dist, 'index.html'), page)
+  else {
+    // Both shapes: work/<slug>.html for Vercel's cleanUrls, work/<slug>/index.html for any plain static host
+    mkdirSync(resolve(dist, r.path.slice(1)), { recursive: true })
+    writeFileSync(resolve(dist, r.path.slice(1), 'index.html'), page)
+    writeFileSync(resolve(dist, `${r.path.slice(1)}.html`), page)
+  }
+  console.log('prerendered', r.path)
+}
+
+// sitemap from the same route list
+const today = new Date().toISOString().slice(0, 10)
+writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`)
+rmSync(resolve('dist-ssr'), { recursive: true, force: true })

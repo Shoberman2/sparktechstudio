@@ -31,36 +31,58 @@ const emblems = {
   auditor: <><circle cx="19" cy="24" r="11" stroke={G} strokeWidth="1.8" /><circle cx="29" cy="24" r="11" stroke={G} strokeWidth="1.8" /><path d="M24 15.5a11 11 0 0 1 0 17 11 11 0 0 1 0-17z" fill={G} /></>,
 }
 
+// Status is what is true today. Pilot: runs on sparktechstudio.com. Prototype: works locally on test data. Planned: designed, not built.
 const workflows = [
-  ['Scribe', 'Knowledge', 'scribe', 'Turns approved podcasts, transcripts, and notes into proposals worth testing.'],
-  ['Scout', 'QA', 'scout', 'Uses the product like a customer. Finds the bug and reproduces it.'],
-  ['Mechanic', 'Fixes & releases', 'mechanic', 'Fixes it in an isolated copy, retests it in a real browser, checks the release.'],
-  ['Warden', 'Maintenance', 'warden', 'Daily checks. Recurring problems handled before they pile up.'],
-  ['Analyst', 'Product improvement', 'analyst', 'Tests changes against outcomes that matter, not clicks.'],
-  ['Herald', 'Content', 'herald', 'Drafts and reviews posts for X, TikTok, and other channels, inside each company’s permissions.'],
-  ['Concierge', 'Support & operations', 'concierge', 'Handles the repeatable requests. Routes the exceptions to a person.'],
-  ['Auditor', 'Self-improvement', 'auditor', 'Proposes changes to the workflows themselves. Only proven changes stick.'],
+  ['Scout', 'QA', 'scout', 'Uses the site like a visitor on desktop and phone. Finds the bug and reproduces it.', 'Pilot'],
+  ['Mechanic', 'Fixes & releases', 'mechanic', 'Fixes it in an isolated copy, retests it in a real browser, ships it, checks production.', 'Pilot'],
+  ['Scribe', 'Knowledge', 'scribe', 'Turns approved podcasts, transcripts, and notes into proposals worth testing.', 'Prototype'],
+  ['Warden', 'Maintenance', 'warden', 'Will run the checks every night so recurring problems get handled before they pile up.', 'Prototype'],
+  ['Analyst', 'Product improvement', 'analyst', 'Will test changes against outcomes that matter, not clicks.', 'Planned'],
+  ['Herald', 'Content', 'herald', 'Will draft posts for X, TikTok, and other channels for a person to review.', 'Planned'],
+  ['Concierge', 'Support & operations', 'concierge', 'Will handle the repeatable requests and route the exceptions to a person.', 'Planned'],
+  ['Auditor', 'Self-improvement', 'auditor', 'Will propose changes to the workflows themselves. Only proven changes stick.', 'Planned'],
+]
+
+const offer = [
+  ['A call', 'Tell us the idea, or the product that keeps breaking. We’ll tell you straight whether we’re the right people to build it.'],
+  ['A written scope', 'What we build, what launches first, the price, the timeline, who owns the code, and what support looks like. Nothing starts until you approve it.'],
+  ['Build and launch', 'We build it and ship it to production on your domain, ready for real traffic.'],
+  ['After launch', 'If you want it, the product joins the improvement loop. That part is in pilot, so we’ll show you exactly what runs and what doesn’t.'],
+]
+
+// The loop's first unattended production release, on this site. Evidence: run 20261011T163353-1a538094, commit 4c45203.
+const COMMIT = 'https://github.com/Shoberman2/sparktechstudio/commit/4c45203de1329956bd8a4d457dff1e5096eda120'
+const proof = [
+  ['The problem', 'Six section pages had no main heading. Bad for screen readers and search.'],
+  ['Found', 'Scout probed sparktechstudio.com on desktop and phone and reproduced it twice in a headless browser.'],
+  ['Fixed', 'Mechanic repaired it in an isolated copy, then passed lint, the build, and a second browser check.'],
+  ['Shipped', 'Pushed to main, deployed on Vercel, production checked afterward. Nobody steered the run.'],
+  ['Time and cost', '208 seconds. $1.61 in model usage.'],
+  ['When', 'October 11, 2026.'],
 ]
 
 const companies = [
-  { name: 'UTern', url: 'https://utern.ai', host: 'utern.ai', logo: '/logo-utern.png', desc: 'Two AI agents run the internship hunt.', status: 'Independent company. Not owned by SparkTech. First intended pilot.' },
-  { name: 'LEED', url: 'https://www.leed.media', host: 'leed.media', logo: '/logo-leed.svg', desc: 'Stocks for stories. Sources visible only to verified journalists.', status: 'Intended system adoption.' },
-  { name: 'Ballot Watch', url: 'https://ballotwatch.io', host: 'ballotwatch.io', logo: '/logo-ballotwatch.svg', desc: 'Local government, made legible.', status: 'Intended system adoption.' },
+  { name: 'UTern', url: 'https://utern.ai', host: 'utern.ai', logo: '/logo-utern.png', desc: 'Active recruiting for internships. Birdee, UTern’s AI, finds internships that fit a student and helps them get picked.', status: 'Live: the student app with Birdee at utern.ai. The bigger vision, from enrollment to employment, is still ahead. Independent company, not owned by SparkTech.' },
+  { name: 'LEED', url: 'https://www.leed.media', host: 'leed.media', logo: '/logo-leed.svg', desc: 'Stocks for stories. Sources visible only to verified journalists.', status: 'Live at leed.media. Intended to adopt the systems.' },
+  { name: 'Ballot Watch', url: 'https://ballotwatch.io', host: 'ballotwatch.io', logo: '/logo-ballotwatch.svg', desc: 'Local government, made legible.', status: 'Live at ballotwatch.io. Intended to adopt the systems.' },
 ]
 
 const EMAIL = 'contactus@sparktechstudio.com'
 
 const pages = [
+  ['/build', 'What we build'],
   ['/idea', 'The idea'],
   ['/how-its-built', 'How it’s built'],
   ['/workflows', 'Workflows'],
   ['/companies', 'Companies'],
   ['/about', 'About'],
   ['/contact', 'Contact'],
+  ['/privacy', 'Privacy'],
 ]
+const navPages = ['/build', '/idea', '/workflows', '/companies', '/about'].map(to => pages.find(p => p[0] === to))
 
 // Home-page section ids and the page each one stands for, used by the nav scroll-spy
-const spy = { idea: '/idea', infrastructure: '/how-its-built', workflows: '/workflows', companies: '/companies', about: '/about' }
+const spy = { offer: '/build', idea: '/idea', infrastructure: '/how-its-built', workflows: '/workflows', proof: '/companies', companies: '/companies', about: '/about' }
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -221,7 +243,7 @@ function Nav({ path }) {
   return <header className={`rs-nav${scrolled ? ' is-scrolled' : ''}`}>
     <div className="rs-wrap rs-nav-inner">
       <Link className="rs-brand" to="/"><img src="/logo.svg" width="22" height="22" alt="" />SparkTech Studio</Link>
-      <nav aria-label="Main navigation">{pages.slice(0, 5).map(([to, label]) => <Link key={to} to={to} aria-current={path === to ? 'page' : undefined} data-active={section === to || undefined}>{label}</Link>)}</nav>
+      <nav aria-label="Main navigation">{navPages.map(([to, label]) => <Link key={to} to={to} aria-current={path === to ? 'page' : undefined} data-active={section === to || undefined}>{label}</Link>)}</nav>
       <Link className="rs-nav-cta" to="/contact">Get in touch <ArrowOut /></Link>
     </div>
   </header>
@@ -237,10 +259,10 @@ function Hero() {
           <span className="rs-line"><Words text="every day." n0={4} /></span>
         </h1>
         <div className="rs-hero-row">
-          <p className="rs-hero-text">We build the product, then run the AI systems that keep improving it.</p>
+          <p className="rs-hero-text">Hire us to build your product. We ship it, then keep improving it with the AI systems we’re piloting now.</p>
           <div className="rs-hero-actions">
             <Link className="rs-button" to="/contact">Build with us <ArrowOut /></Link>
-            <Link className="rs-textlink" to="/idea">See how it works</Link>
+            <Link className="rs-textlink" to="/build">What you get</Link>
           </div>
         </div>
       </div>
@@ -253,6 +275,27 @@ function Hero() {
 function Heading({ page, ...props }) {
   const Tag = page ? 'h1' : 'h2'
   return <Tag {...props} />
+}
+
+function Offer({ page }) {
+  return <section className={`rs-section rs-offer${page ? ' rs-page' : ''}`} id="offer" aria-labelledby="offer-title">
+    <div className="rs-wrap">
+      <div className="rs-head-row" data-reveal>
+        <Heading page={page} id="offer-title"><Rise>What you</Rise><Rise n={1} className="rs-accent">get.</Rise></Heading>
+        <p className="rs-lead">For founders and companies with a product to build: a web app, a site, an AI tool, or the weird one other studios turn down.</p>
+      </div>
+      <ol className="rs-steps">
+        {offer.map(([name, copy], index) => <li key={name} className="rs-step" data-reveal style={{ '--d': `${index * 80}ms` }}>
+          <h3>{name}</h3>
+          <p>{copy}</p>
+        </li>)}
+      </ol>
+      <div className="rs-offer-foot" data-reveal>
+        <Link className="rs-button" to="/contact">Start with a call <ArrowOut /></Link>
+        <p className="rs-note">We reply within 2 business days.</p>
+      </div>
+    </div>
+  </section>
 }
 
 function Idea({ page }) {
@@ -293,16 +336,32 @@ function Workflows({ page }) {
     <div className="rs-wrap">
       <div className="rs-head-row" data-reveal>
         <Heading page={page} id="workflows-title"><Rise>Eight named</Rise><Rise n={1}>workflows.</Rise></Heading>
-        <p className="rs-lead">Each owns a job after launch, inside the company’s own permissions.</p>
+        <p className="rs-lead">Each owns a job after launch, inside the company’s own permissions. Here is where each one actually stands.</p>
       </div>
       <ol className="rs-wf-list">
-        {workflows.map(([name, area, emblem, copy], index) => <li key={name} className="rs-wf" data-reveal style={{ '--d': `${index * 70}ms` }}>
+        {workflows.map(([name, area, emblem, copy, status], index) => <li key={name} className="rs-wf" data-reveal style={{ '--d': `${index * 70}ms` }}>
           <span className="rs-wf-emblem" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" strokeLinecap="round" strokeLinejoin="round">{emblems[emblem]}</svg></span>
           <span className="rs-wf-id"><h3>{name}</h3><span>{area}</span></span>
           <p>{copy}</p>
+          <span className="rs-wf-status" data-status={status.toLowerCase()}>{status}</span>
         </li>)}
       </ol>
-      <p className="rs-status-line" data-reveal><span aria-hidden="true" />Today the test, fix, verify loop runs locally with a person approving each step. The first real pilot is next. Nothing is live yet.</p>
+      <p className="rs-status-line" data-reveal><span aria-hidden="true" /><span><strong>Pilot</strong> runs on sparktechstudio.com today. <strong>Prototype</strong> works locally on test data. <strong>Planned</strong> is designed, not built. No client company runs on these yet.</span></p>
+    </div>
+  </section>
+}
+
+function Proof() {
+  return <section className="rs-section rs-proof" id="proof" aria-labelledby="proof-title">
+    <div className="rs-wrap">
+      <div className="rs-head-row" data-reveal>
+        <h2 id="proof-title"><Rise>It fixed</Rise><Rise n={1} className="rs-accent">this site.</Rise></h2>
+        <p className="rs-lead">Our first real result. Small, and on our own site, with the owner’s standing approval. Not a client result yet.</p>
+      </div>
+      <dl className="rs-proof-grid">
+        {proof.map(([term, detail], index) => <div key={term} data-reveal style={{ '--d': `${index * 60}ms` }}><dt>{term}</dt><dd>{detail}</dd></div>)}
+      </dl>
+      <a className="rs-textlink rs-proof-link" href={COMMIT} target="_blank" rel="noreferrer">See the commit on GitHub</a>
     </div>
   </section>
 }
@@ -311,8 +370,8 @@ function Companies({ page }) {
   return <section className={`rs-section rs-companies${page ? ' rs-page' : ''}`} id="companies" aria-labelledby="companies-title">
     <div className="rs-wrap">
       <div className="rs-head-row" data-reveal>
-        <Heading page={page} id="companies-title"><Rise>Same systems.</Rise><Rise n={1}>Your company.</Rise></Heading>
-        <p className="rs-lead">Built around these first. Each keeps its own data, credentials, and permissions.</p>
+        <Heading page={page} id="companies-title"><Rise>Products</Rise><Rise n={1}>we’ve shipped.</Rise></Heading>
+        <p className="rs-lead">Built by Spencer and live now. Each is its own company with its own data, credentials, and permissions.</p>
       </div>
       <div className="rs-co-list">
         {companies.map((c, index) => <a key={c.name} className="rs-co" href={c.url} target="_blank" rel="noreferrer" data-reveal style={{ '--d': `${index * 110}ms` }}>
@@ -322,7 +381,7 @@ function Companies({ page }) {
           <span className="rs-co-go" aria-hidden="true"><ArrowOut /></span>
         </a>)}
       </div>
-      <p className="rs-note" data-reveal>Planned adoption, including UTern. Nothing is presented as live.</p>
+      <p className="rs-note" data-reveal>The products are live. None of them runs on the improvement systems yet.</p>
     </div>
   </section>
 }
@@ -336,7 +395,12 @@ function About({ page }) {
       </div>
       <div className="rs-about-copy" data-reveal style={{ '--d': '140ms' }}>
         <p className="rs-about-lead">I started SparkTech Studio to build products. Now I’m building the systems that keep them improving after launch.</p>
-        <p>First, one pilot. An agent tests UTern like a customer, finds a real bug, fixes it in an isolated copy, and proves the fix in a real browser, with me approving each step. UTern, which I also build, runs independently of the studio.</p>
+        <p>I build and ship products myself. UTern, LEED, and Ballot Watch are live, and this site is kept up by the loop it describes. UTern runs independently of the studio.</p>
+        <p>Who owns the code, what access we need, who approves releases, and what ongoing support includes all go in the written scope, agreed before any work starts.</p>
+        <ul className="rs-shipped" aria-label="Shipped work">
+          {companies.map(c => <li key={c.name}><a href={c.url} target="_blank" rel="noreferrer"><strong>{c.name}</strong><span>{c.host}</span><ArrowOut /></a></li>)}
+          <li><a href={COMMIT} target="_blank" rel="noreferrer"><strong>The loop’s first release</strong><span>sparktechstudio.com</span><ArrowOut /></a></li>
+        </ul>
         <Link className="rs-button rs-button-ghost" to="/contact">Work with me <ArrowOut /></Link>
       </div>
     </div>
@@ -360,7 +424,7 @@ function ContactForm() {
       setState('error'); setError('Could not send right now.')
     }
   }
-  if (state === 'sent') return <p className="rs-form-done" role="status">Got it. We read every message and answer from the studio inbox.</p>
+  if (state === 'sent') return <p className="rs-form-done" role="status">Got it. You’ll hear back within 2 business days.</p>
   return <form className="rs-form" onSubmit={submit} noValidate>
     <label className="rs-field"><span>Name</span><input name="name" type="text" autoComplete="name" maxLength={120} /></label>
     <label className="rs-field"><span>Email</span><input name="email" type="email" autoComplete="email" required maxLength={200} /></label>
@@ -368,6 +432,7 @@ function ContactForm() {
     <label className="rs-field rs-hp" aria-hidden="true"><span>Company website</span><input name="company_website" type="text" tabIndex={-1} autoComplete="off" /></label>
     <div className="rs-form-actions">
       <button className="rs-button" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'Sending' : 'Send to the studio'} <ArrowOut /></button>
+      <p className="rs-form-privacy">We use what you send only to reply. <Link to="/privacy">Privacy</Link></p>
       {state === 'error' && <p className="rs-form-error" role="alert">{error} You can also write to <a className="rs-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>}
     </div>
   </form>
@@ -379,10 +444,36 @@ function Contact({ page }) {
       <Heading page={page} id="cta-title"><Rise>Let’s <span className="rs-accent">build it.</span></Rise></Heading>
       <div className="rs-cta-row">
         <div>
-          <p className="rs-cta-copy">One message goes straight to the studio. Tell us what you’re building, or what keeps breaking.</p>
+          <p className="rs-cta-copy">Tell us what you want built, or what keeps breaking. Here’s what happens next.</p>
+          <ol className="rs-next">
+            <li>We reply within 2 business days.</li>
+            <li>If it’s a fit, we set up a call.</li>
+            <li>You get a written scope with the price and timeline. Nothing starts until you approve it.</li>
+          </ol>
           <a className="rs-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
         </div>
         <ContactForm />
+      </div>
+    </div>
+  </section>
+}
+
+function Privacy() {
+  return <section className="rs-section rs-page rs-privacy" aria-labelledby="privacy-title">
+    <div className="rs-wrap rs-privacy-grid">
+      <h1 id="privacy-title" data-reveal><Rise>Privacy.</Rise></h1>
+      <div className="rs-privacy-copy" data-reveal style={{ '--d': '120ms' }}>
+        <p className="rs-about-lead">Short version: what you send us is used to reply to you.</p>
+        <h3>What the contact form collects</h3>
+        <p>Your name if you give it, your email, and your message. The form also sends a hidden field that only bots fill in.</p>
+        <h3>Where it goes</h3>
+        <p>The message is emailed to the studio inbox through Resend, our email provider. Your IP address is included in that email so we can spot spam, and it is held briefly in server memory to limit repeat submissions.</p>
+        <h3>What we do with it</h3>
+        <p>We use it to reply and to talk about your project. We don’t sell it and we don’t add you to a mailing list.</p>
+        <h3>Analytics and cookies</h3>
+        <p>This site runs no analytics, ads, or tracking cookies. It is hosted on Vercel, which keeps standard server logs.</p>
+        <h3>Deleting your data</h3>
+        <p>Write to <a className="rs-email" href={`mailto:${EMAIL}`}>{EMAIL}</a> and we’ll delete your messages.</p>
       </div>
     </div>
   </section>
@@ -394,7 +485,7 @@ function Footer() {
       <div className="rs-footer-grid">
         <div className="rs-footer-brand">
           <Link className="rs-brand" to="/"><img src="/logo.svg" width="22" height="22" alt="" />SparkTech Studio</Link>
-          <p>We build the product, then run the AI systems that keep improving it.</p>
+          <p>We build your product and ship it, then keep improving it with AI systems now in pilot.</p>
           <a className="rs-footer-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
         </div>
         <nav aria-label="Site"><h4>Site</h4>{pages.map(([to, label]) => <Link key={to} to={to}>{label}</Link>)}</nav>
@@ -411,12 +502,14 @@ function Footer() {
 
 const titles = {
   '/': 'SparkTech Studio | Recursive Self-Enterprise Improvement',
+  '/build': 'What we build | SparkTech Studio',
   '/idea': 'The idea | SparkTech Studio',
   '/how-its-built': 'How it’s built | SparkTech Studio',
   '/workflows': 'Workflows | SparkTech Studio',
   '/companies': 'Companies | SparkTech Studio',
   '/about': 'About | SparkTech Studio',
   '/contact': 'Contact | SparkTech Studio',
+  '/privacy': 'Privacy | SparkTech Studio',
 }
 
 export default function VentureSite() {
@@ -426,13 +519,15 @@ export default function VentureSite() {
 
   let body
   switch (path) {
+    case '/build': body = <><Offer page /><Proof /><Contact /></>; break
     case '/idea': body = <><Idea page /><Built /><Contact /></>; break
     case '/how-its-built': body = <><Built page /><Workflows /><Contact /></>; break
-    case '/workflows': body = <><Workflows page /><Companies /><Contact /></>; break
-    case '/companies': body = <><Companies page /><About /><Contact /></>; break
+    case '/workflows': body = <><Workflows page /><Proof /><Contact /></>; break
+    case '/companies': body = <><Companies page /><Proof /><About /><Contact /></>; break
     case '/about': body = <><About page /><Contact /></>; break
     case '/contact': body = <><Contact page /></>; break
-    default: body = <><Hero /><Idea /><Built /><Workflows /><Companies /><About /><Contact /></>
+    case '/privacy': body = <><Privacy /></>; break
+    default: body = <><Hero /><Offer /><Idea /><Built /><Workflows /><Proof /><Companies /><About /><Contact /></>
   }
 
   return <div className="rs-site" id="top">

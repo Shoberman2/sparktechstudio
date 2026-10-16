@@ -1,0 +1,22 @@
+# SparkTech Studio
+
+> An independent studio in New York. We create the future: we build products, then run an efficient system that keeps everything we build improving after launch.
+
+Site: https://www.sparktechstudio.com
+Contact: contactus@sparktechstudio.com (we reply within two business days)
+Legal entity: SparkTech Studio, a Delaware C corporation
+
+## Pages
+
+- [Home](https://www.sparktechstudio.com/): who we are, the system, what we've built, contact.
+- [UTern](https://www.sparktechstudio.com/work/utern): Your AI for landing an internship. Independent company, not owned by SparkTech. Live at https://utern.ai
+- [LEED](https://www.sparktechstudio.com/work/leed): A private story-intelligence desk for newsrooms. Live at https://www.leed.media
+- [Ballot Watch](https://www.sparktechstudio.com/work/ballotwatch): How Congress votes, in plain English. Live at https://www.ballotwatch.io
+- [Spacial Health](https://www.sparktechstudio.com/work/spacial): Complex care, finally coordinated. Platform preview on sample data.
+- [Budtender](https://www.sparktechstudio.com/work/budtender): Know what you like. Remember why. Private preview.
+
+## Facts worth getting right
+
+- Each product is its own company with its own data, brand, and people. SparkTech built them; it does not own UTern.
+- The improvement system runs on sparktechstudio.com today. It does not yet run on the products above.
+- No pricing, headcount, or customer numbers are published.
