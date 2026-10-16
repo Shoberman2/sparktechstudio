@@ -64,7 +64,7 @@ function ClimbDots({ path, pts, steps }) {
   return <g ref={g}>{steps.map(([t, done], i) => <circle key={t} r={done ? 5 : 6} className={done ? 'cl-done' : 'cl-next'} style={{ '--i': i }} />)}</g>
 }
 
-// LEED: scattered newsrooms send tips along curves into a few story clusters that brighten as leads arrive.
+// Leed: scattered newsrooms send tips along curves into a few story clusters that brighten as leads arrive.
 function setupSignals(ctx) {
   const rnd = (a => () => (a = (a * 16807) % 2147483647) / 2147483647)(7)
   const rooms = Array.from({ length: 46 }, () => ({ x: .04 + rnd() * .62, y: .1 + rnd() * .8, p: rnd() * 6 }))
@@ -171,6 +171,6 @@ export default function Company({ slug }) {
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><span>© {year} SparkTech Studio. A Delaware C corporation.</span></footer>
+    <footer className="co-foot"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><span>© {year} SparkTech Studios, Inc.</span></footer>
   </div>
 }

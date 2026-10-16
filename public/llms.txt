@@ -4,14 +4,14 @@
 
 Site: https://www.sparktechstudio.com
 Contact: contactus@sparktechstudio.com (we reply within two business days)
-Legal entity: SparkTech Studio, a Delaware C corporation
+Legal entity: SparkTech Studios, Inc., a Delaware C corporation
 
 ## Pages
 
 - [Home](https://www.sparktechstudio.com/): who we are, the system, what we've built, contact.
 - [UTern](https://www.sparktechstudio.com/work/utern): Your AI for landing an internship. Independent company, not owned by SparkTech. Live at https://utern.ai
-- [LEED](https://www.sparktechstudio.com/work/leed): A private story-intelligence desk for newsrooms. Live at https://www.leed.media
-- [Ballot Watch](https://www.sparktechstudio.com/work/ballotwatch): How Congress votes, in plain English. Live at https://www.ballotwatch.io
+- [Leed](https://www.sparktechstudio.com/work/leed): A private story-intelligence desk for newsrooms. Live at https://www.leed.media
+- [BallotWatch](https://www.sparktechstudio.com/work/ballotwatch): How Congress votes, in plain English. Live at https://www.ballotwatch.io
 - [Spacial Health](https://www.sparktechstudio.com/work/spacial): Complex care, finally coordinated. Platform preview on sample data.
 - [Budtender](https://www.sparktechstudio.com/work/budtender): Know what you like. Remember why. Private preview.
 

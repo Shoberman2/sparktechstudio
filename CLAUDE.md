@@ -25,7 +25,7 @@ Present this as the operating model and direction. Do not claim that all workflo
 ## Companies and factual boundaries
 
 - **UTern is NOT owned by SparkTech.** It is an outside company intended to use the systems.
-- **LEED** (verified repository spelling; voice transcription said LEAD; existing site link `https://www.leed.media`) and **Ballot Watch** are part of the intended adoption direction. Do not infer or assert ownership.
+- **Leed** and **BallotWatch** (spellings chosen by the user on 2026-10-16 to match the live sites; earlier notes said LEED and Ballot Watch) are part of the intended adoption direction. Do not infer or assert ownership.
 - Future associated companies and outside companies may follow the model. Shared systems do not imply shared company data or ownership.
 - No fabricated numbers, testimonials, titles, team headcounts, guaranteed outcomes, or claims that these integrations are live.
 
@@ -54,7 +54,7 @@ Present this as the operating model and direction. Do not claim that all workflo
 - Older components and assets remain on disk, including the animated logo, intro, Sisyphus video, and generated sculpture. They are not mounted by the new operating-model site. Do not delete them as incidental cleanup.
 - `src/data/projects.js` remains historical product data, not an ownership register or evidence that system integrations are live. The new site uses the specifically requested companies, with explicit intended-adoption language.
 - `public/logo.svg` is the spark mark. `public/og.png` is the current 1200×630 share card; bump `?v=` in `index.html` when regenerated.
-- Brand remains **SparkTech Studio**, singular. Copyright line reads "SparkTech Studio. A Delaware C corporation." (user, 2026-10-16: the studio is now a Delaware C corp; the exact corporate name was not given, so do not print one until he supplies it. The earlier LLC name is retired from the site.)
+- Brand remains **SparkTech Studio**, singular. Legal entity is **SparkTech Studios, Inc.**, a Delaware C corporation (user, 2026-10-16). Copyright lines and JSON-LD use that name; the earlier LLC name is retired.
 - No invented team, metrics, testimonials, client ownership, active integrations, or guaranteed perfect autonomy. No social posting or account changes authorized by the website task.
 - Founder section (2026-09-11): the user asked for the site to say who he is. One About section, first person, facts only: Spencer Hoberman, founder of SparkTech Studio, New York, building the first pilot, also builds UTern which stays independent. No credentials, employers, ages, or photos unless he supplies them. Everything else on the page stays in studio voice.
 

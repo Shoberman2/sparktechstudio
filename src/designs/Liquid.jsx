@@ -93,6 +93,6 @@ export default function Liquid() {
       <p className="lq-label">Next</p>
       <a className="lq-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
     </section>
-    <footer className="lq-foot"><span>© {year} SparkTech Studios, LLC</span><span>We create the future.</span></footer>
+    <footer className="lq-foot"><span>© {year} SparkTech Studios, Inc.</span><span>We create the future.</span></footer>
   </div>
 }

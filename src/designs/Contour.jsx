@@ -100,7 +100,7 @@ export default function Contour() {
     </main>
     <footer className="ct-foot" id="contact">
       <a className="ct-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-      <span>© {year} SparkTech Studios, LLC</span>
+      <span>© {year} SparkTech Studios, Inc.</span>
     </footer>
   </div>
 }

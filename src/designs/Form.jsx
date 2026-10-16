@@ -153,7 +153,7 @@ export default function Form() {
         <nav aria-label="Work"><h4>Work</h4>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
         <nav aria-label="Elsewhere"><h4>Elsewhere</h4><a href={`mailto:${EMAIL}`}>Email</a><a href="https://github.com/Shoberman2" target="_blank" rel="noreferrer">GitHub</a></nav>
       </div>
-      <div className="fm-foot-bottom"><span>© {year} SparkTech Studio. A Delaware C corporation.</span><span>New York</span></div>
+      <div className="fm-foot-bottom"><span>© {year} SparkTech Studios, Inc.</span><span>New York</span></div>
     </footer>
   </div>
 }
