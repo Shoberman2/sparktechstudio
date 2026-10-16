@@ -162,12 +162,16 @@ export default function Company({ slug }) {
       <p className="co-label">The vision</p>
       <h2>{c.visionTitle}</h2>
       {Visual && <div className="co-visual"><Visual c={c} /></div>}
-      {c.visual !== 'climb' && <div className="co-split">
-        <div><h3>{c.todayLabel || 'Live today'}</h3><ul>{c.today.map(t => <li key={t}>{t}</li>)}</ul></div>
-        <div><h3>Where it’s going</h3><ul>{c.vision.map(t => <li key={t}>{t}</li>)}</ul></div>
-      </div>}
       {c.note && <p className="co-note">{c.note}</p>}
     </section>
+    {c.how && <section className="co-section co-how" aria-labelledby="how-title">
+      <p className="co-label">How it works</p>
+      <h2 id="how-title">{c.howTitle}</h2>
+      <ol className="co-steps">
+        {c.how.map(([name, copy]) => <li key={name}><h3>{name}</h3><p>{copy}</p></li>)}
+      </ol>
+      {c.howNote && <p className="co-note">{c.howNote}</p>}
+    </section>}
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
