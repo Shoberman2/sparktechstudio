@@ -91,7 +91,7 @@ function Cloud({ className }) {
 
 const SP_DOTS = [[46.5, 10.9], [46.4, 24.4], [46.5, 37.9], [73.5, 37.9], [19.4, 38], [32.9, 38], [60, 38], [32.9, 51.5], [46.4, 51.5], [5.8, 51.6], [19.3, 51.6], [46.5, 65.1], [32.6, 65.2], [32.8, 78.6]]
 const tiles = {
-  utern: { bg: '#101a2a', img: '/work/utern/birdee.png', cls: 'is-utern' },
+  utern: { bg: '#101a2a url(/work/utern/mountain.webp) center 35% / cover no-repeat', img: '/work/utern/birdee.png', cls: 'is-utern' },
   leed: { bg: '#0b0b09', img: '/work/leed/sherlock.svg', cls: 'is-leed' },
   ballotwatch: { bg: '#0c1626', img: '/work/ballotwatch/capitol-logo.svg', cls: 'is-bw' },
   spacial: { bg: '#7255ff', cls: 'is-spacial' },
