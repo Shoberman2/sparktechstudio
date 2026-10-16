@@ -107,13 +107,13 @@ export default function Form() {
   return <div className="fm">
     <header className="fm-nav">
       <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
-      <nav><a href="#systems">Systems</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+      <nav><a href="/systems">System</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
     </header>
     <main id="main">
     <section className="fm-hero">
       <div className="fm-copy">
-        <h1>We create<br />the future.</h1>
-        <p>An independent studio in New York. We build the things other people only talk about.</p>
+        <h1>We build the things other people only <em>talk about.</em></h1>
+        <p>An independent studio in New York. We create the future, then keep making it better.</p>
         <div className="fm-hero-actions">
           <a className="fm-cta" href={CALENDLY} target="_blank" rel="noreferrer"><span>Book a 30-minute call</span><i aria-hidden="true"><Arrow /></i></a>
           <a className="fm-cta-ghost" href="#work">See what we’ve built</a>
@@ -123,9 +123,10 @@ export default function Form() {
     </section>
 
     <section className="fm-sys" id="systems">
-      <h2>And we never<br />stop <em>improving it.</em></h2>
+      <h2>And we never<br />stop <em>improving them.</em></h2>
       <div className="fm-sys-side">
-        <p>The future isn’t a launch date. We run an efficient system that keeps everything we build getting better, so what we make today is sharper tomorrow.</p>
+        <p>Launch isn’t the finish line. We run an efficient system that keeps everything we build getting better, so what we make today is sharper tomorrow.</p>
+        <a className="fm-textlink" href="/systems">How the system works <Arrow /></a>
       </div>
     </section>
 
@@ -162,7 +163,7 @@ export default function Form() {
           <span className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</span>
           <p>An independent studio in New York. We build products, then build the systems that keep them getting better.</p>
         </div>
-        <nav aria-label="Studio"><p className="fm-foot-h">Studio</p><a href="#systems">The systems</a><a href="#work">What we’ve built</a><a href="#contact">Contact</a></nav>
+        <nav aria-label="Studio"><p className="fm-foot-h">Studio</p><a href="/systems">The system</a><a href="#work">What we’ve built</a><a href="#contact">Contact</a></nav>
         <nav aria-label="Work"><p className="fm-foot-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
         <nav aria-label="Contact"><p className="fm-foot-h">Contact</p><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email</a></nav>
       </div>
