@@ -1,0 +1,16 @@
+/* One button for the whole site. A pill, no icon. The solid one warms to gold on hover; the ghost one is the quiet second door.
+   Colors come from --b-bg / --b-fg so dark footers and themed company pages can invert without a second style. */
+.btn { --b-bg:#0a0a0c; --b-fg:#fff; --b-line:#e6e6e9;
+  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:0 28px; border-radius:999px;
+  background:var(--b-bg); color:var(--b-fg) !important; border:1px solid transparent; font-family:'Instrument Sans',system-ui,sans-serif; font-weight:500; font-size:15.5px; line-height:1; letter-spacing:-.01em; white-space:nowrap; text-decoration:none; cursor:pointer;
+  overflow:hidden; isolation:isolate; transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .3s,color .3s; }
+.btn::before { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(135deg,#d4b46a,#b8860b 60%,#8f6a0c); opacity:0; transition:opacity .45s; }
+.btn:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(184,134,11,.28); color:#fff !important; border-color:transparent; }
+.btn:hover::before { opacity:1; }
+.btn:focus-visible { outline:2px solid #b8860b; outline-offset:4px; }
+.btn-ghost { background:transparent; color:var(--b-ghost-fg,#0a0a0c) !important; border-color:var(--b-line); box-shadow:none; }
+.btn-ghost:hover { box-shadow:none; }
+/* Dark ground: solid becomes white on ink, ghost gets a light rule */
+.on-dark .btn { --b-bg:#fff; --b-fg:#0a0a0c; --b-line:rgba(255,255,255,.32); --b-ghost-fg:#fff; }
+@media (max-width:520px) { .btn { min-height:50px; padding:0 24px; font-size:15px; } }
+@media (prefers-reduced-motion:reduce) { .btn,.btn::before { transition:none !important; } }

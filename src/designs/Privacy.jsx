@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { EMAIL, CALENDLY, year } from './content.jsx'
+import './buttons.css'
 import './NotFound.css'
 
 // What this site actually does with data, and nothing more. Update if analytics, a form, or any third party is added.
@@ -18,8 +19,8 @@ export default function Privacy() {
       <h2>Hosting</h2>
       <p>The site is hosted on Vercel, which keeps standard server logs. Fonts load from Google Fonts.</p>
       <h2>Deleting your data</h2>
-      <p>Write to <a href={`mailto:${EMAIL}`}>{EMAIL}</a> and we will delete what we hold.</p>
-      <div className="nf-actions"><a className="nf-cta" href="/">Back to the studio</a><a className="nf-ghost" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a></div>
+      <p><a href={`mailto:${EMAIL}`}>Email us</a> and we will delete what we hold.</p>
+      <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a></div>
     </main>
     <footer className="nf-foot">© {year} SparkTech Studios, Inc.</footer>
   </div>

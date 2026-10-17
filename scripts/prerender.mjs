@@ -11,13 +11,13 @@ const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
 const site = 'https://www.sparktechstudio.com'
 const routes = [
-  { path: '/', title: 'SparkTech Studio | We build the things other people only talk about', description: 'An independent studio in New York. We build the things other people only talk about, then keep making them better.' },
+  { path: '/', title: 'SparkTech Studio | We Build the Things Other People Only Talk About', description: 'An independent studio in New York. We build the things other people only talk about, then keep making them better.' },
 ]
 for (const c of companies || []) {
   const lede = String(c.lede || '').replace(/\s+/g, ' ')
   routes.push({ path: `/work/${c.slug}`, title: `${c.name} | SparkTech Studio`, description: `${c.line} ${lede}`.slice(0, 155).replace(/\s\S*$/, '') + (lede.length > 120 ? '.' : ''), image: `/work/${c.slug}/og.jpg` })
 }
-routes.push({ path: '/systems', title: 'The system | SparkTech Studio', description: 'Software that keeps getting better. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
+routes.push({ path: '/systems', title: 'System | SparkTech Studio', description: 'Software that keeps getting better. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
 routes.push({ path: '/privacy', title: 'Privacy | SparkTech Studio', description: 'No analytics, no ads, no tracking. What this site does with what you send.' })
 routes.push({ path: '/404', title: 'Not here | SparkTech Studio', description: 'That page is not here. Back to the studio.', noindex: true })
 

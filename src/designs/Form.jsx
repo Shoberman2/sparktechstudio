@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { useLoop } from './useLoop'
-import { built, EMAIL, CALENDLY, year } from './content.jsx'
+import { built, CALENDLY } from './content.jsx'
+import Footer from './Footer.jsx'
+import './buttons.css'
 import './Form.css'
 
 // One cloud of points that morphs between forms. The SparkTech spark is home; each product has a form of its own.
@@ -112,11 +114,11 @@ export default function Form() {
     <main id="main">
     <section className="fm-hero">
       <div className="fm-copy">
-        <h1>We build the things other people only <em>talk about.</em></h1>
+        <h1>We Build the Things Other People Only <em>Talk About.</em></h1>
         <p>An independent studio in New York. We create the future, then keep making it better.</p>
         <div className="fm-hero-actions">
-          <a className="fm-cta" href={CALENDLY} target="_blank" rel="noreferrer"><span>Book a 30-minute call</span><i aria-hidden="true"><Arrow /></i></a>
-          <a className="fm-cta-ghost" href="#work">See what we’ve built</a>
+          <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+          <a className="btn btn-ghost" href="#work">See what we’ve built</a>
         </div>
       </div>
       <Cloud className="fm-canvas" />
@@ -126,7 +128,7 @@ export default function Form() {
       <h2>And we never<br />stop <em>improving them.</em></h2>
       <div className="fm-sys-side">
         <p>Launch isn’t the finish line. We run an efficient system that keeps everything we build getting better, so what we make today is sharper tomorrow.</p>
-        <a className="fm-textlink" href="/systems">How the system works <Arrow /></a>
+        <a className="btn btn-ghost" href="/systems">How it works</a>
       </div>
     </section>
 
@@ -147,27 +149,6 @@ export default function Form() {
     </section>
 
     </main>
-    <footer className="fm-foot" id="contact">
-      <div className="fm-foot-cta">
-        <h2>What should<br />exist <em>next?</em></h2>
-        <div>
-          <p>Tell us. Book 30 minutes, or write and we reply within two business days. The first call is a real conversation, not a pitch.</p>
-          <div className="fm-foot-actions">
-            <a className="fm-mailbtn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call <Arrow /></a>
-            <a className="fm-foot-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          </div>
-        </div>
-      </div>
-      <div className="fm-foot-grid">
-        <div className="fm-foot-brand">
-          <span className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</span>
-          <p>An independent studio in New York. We build products, then build the systems that keep them getting better.</p>
-        </div>
-        <nav aria-label="Studio"><p className="fm-foot-h">Studio</p><a href="/systems">The system</a><a href="#work">What we’ve built</a><a href="#contact">Contact</a></nav>
-        <nav aria-label="Work"><p className="fm-foot-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
-        <nav aria-label="Contact"><p className="fm-foot-h">Contact</p><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email</a></nav>
-      </div>
-      <div className="fm-foot-bottom"><span>© {year} SparkTech Studios, Inc.</span><span><a href="/privacy">Privacy</a> · New York</span></div>
-    </footer>
+    <Footer />
   </div>
 }

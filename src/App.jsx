@@ -12,7 +12,7 @@ import { companies } from './designs/content.jsx'
 export default function App({ path = typeof window !== 'undefined' ? window.location.pathname : '/' }) {
   const parts = path.split('/')
   const slug = parts[1] === 'work' ? parts[2] : null
-  useEffect(() => { if (!slug) document.title = 'SparkTech Studio | We build the things other people only talk about' }, [slug])
+  useEffect(() => { if (!slug) document.title = 'SparkTech Studio | We Build the Things Other People Only Talk About' }, [slug])
   if (slug && companies.some(c => c.slug === slug)) return <Company slug={slug} />
   if (path === '/privacy') return <Privacy />
   if (path === '/systems') return <Systems />

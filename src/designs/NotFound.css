@@ -8,10 +8,6 @@
 .nf h1 em { font-style:normal; font-family:inherit; color:#b8860b; }
 .nf-lede { margin:28px 0 0; font-size:18px; line-height:1.5; color:#55555c; max-width:40ch; }
 .nf-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
-.nf-cta,.nf-ghost { display:inline-flex; align-items:center; padding:14px 24px; border-radius:999px; font-weight:500; font-size:15px; transition:transform .4s cubic-bezier(.16,1,.3,1); }
-.nf-cta { background:#0a0a0c; color:#fff; }
-.nf-ghost { border:1px solid #e6e6e9; }
-.nf-cta:hover,.nf-ghost:hover { transform:translateY(-2px); }
 .nf-work { list-style:none; margin:64px 0 0; padding:0; border-top:1px solid #e6e6e9; }
 .nf-work a { display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid #e6e6e9; font-size:16px; }
 .nf-work strong { font-weight:500; }

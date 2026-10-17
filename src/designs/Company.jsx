@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useLoop } from './useLoop'
 import { companies, EMAIL, CALENDLY, year } from './content.jsx'
+import './buttons.css'
 import './Company.css'
 
 const SP_DOTS = [[46.5, 10.9], [46.4, 24.4], [46.5, 37.9], [73.5, 37.9], [19.4, 38], [32.9, 38], [60, 38], [32.9, 51.5], [46.4, 51.5], [5.8, 51.6], [19.3, 51.6], [46.5, 65.1], [32.6, 65.2], [32.8, 78.6]]
@@ -143,7 +144,7 @@ export default function Company({ slug }) {
   return <div className={`co-page co-${c.slug}`} style={c.theme}>
     <header className="co-nav">
       <a className="co-back" href="/"><span>←</span><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
-      {c.url ? <a className="co-visit" href={c.url} target="_blank" rel="noreferrer">Visit {c.host} ↗</a> : <span className="co-visit">{c.host}</span>}
+      {c.url ? <a className="btn btn-ghost co-visit" href={c.url} target="_blank" rel="noreferrer">Visit {c.host}</a> : <span className="co-host">{c.host}</span>}
     </header>
     <main id="main">
     <section className="co-hero">
@@ -175,12 +176,12 @@ export default function Company({ slug }) {
     </section>}
     <section className="co-ask">
       <p>Want something built like this?</p>
-      <a href={CALENDLY} target="_blank" rel="noreferrer">Book 30 minutes <span aria-hidden="true">↗</span></a>
+      <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
     </section>
     </main>
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><span className="co-foot-links"><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>{EMAIL}</a></span><span>© {year} SparkTech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
+    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} SparkTech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
   </div>
 }
