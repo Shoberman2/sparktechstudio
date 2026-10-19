@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "companyId": "sample-company",
+  "brand": {
+    "displayName": "Example Company",
+    "logo": { "path": "assets/example-mark.svg", "evidence": ["approved:company-brand-kit"] },
+    "voice": ["plainspoken", "specific", "calm"],
+    "visualWorld": "Describe this company's own materials, interface, product metaphor, and motion language.",
+    "tokens": { "paper": "#f5f2eb", "ink": "#1c1a18", "accent": "#b9452f" }
+  },
+  "audience": "Describe the actual audience supported by company evidence.",
+  "product": {
+    "name": "Example product",
+    "summary": "Describe the product behavior without claiming unmeasured outcomes.",
+    "evidence": ["approved:product-overview"]
+  },
+  "hero": {
+    "hook": "Name a concrete product outcome.",
+    "support": "Explain what happens in the product using verified current behavior.",
+    "visual": { "path": "assets/example-product-view.svg", "evidence": ["approved:current-product-screen"] },
+    "evidence": ["approved:product-overview"]
+  },
+  "features": [
+    { "title": "First evidence-backed product behavior", "copy": "Explain the behavior and its practical use.", "visual": { "path": "assets/example-product-view.svg", "evidence": ["approved:current-product-screen"] }, "evidence": ["approved:product-overview"], "syntheticDisclosure": "Illustrative data" },
+    { "title": "Second evidence-backed product behavior", "copy": "Explain the behavior and its practical use.", "visual": { "path": "assets/example-product-view.svg", "evidence": ["approved:current-product-screen"] }, "evidence": ["approved:product-overview"], "syntheticDisclosure": null },
+    { "title": "Third evidence-backed product behavior", "copy": "Explain the behavior and its practical use.", "visual": { "path": "assets/example-product-view.svg", "evidence": ["approved:current-product-screen"] }, "evidence": ["approved:product-overview"], "syntheticDisclosure": null }
+  ],
+  "conversion": { "label": "Talk with the team", "destination": "/contact", "destinationEvidence": "approved:contact-route" },
+  "privacy": ["List actual data access or privacy boundaries, with local evidence."],
+  "footer": { "legalEntity": null, "legalEntityEvidence": null, "attribution": null }
+}
