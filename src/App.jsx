@@ -4,6 +4,7 @@ import Company from './designs/Company.jsx'
 import NotFound from './designs/NotFound.jsx'
 import Privacy from './designs/Privacy.jsx'
 import Systems from './designs/Systems.jsx'
+import Services from './designs/Services.jsx'
 import { companies } from './designs/content.jsx'
 import { meta } from './designs/seo.js'
 
@@ -17,6 +18,7 @@ export default function App({ path = typeof window !== 'undefined' ? window.loca
   if (slug && companies.some(c => c.slug === slug)) return <Company slug={slug} />
   if (path === '/privacy') return <Privacy />
   if (path === '/systems') return <Systems />
+  if (path === '/services') return <Services />
   if (path !== '/' && path !== '/index.html') return <NotFound />
   return <Form />
 }

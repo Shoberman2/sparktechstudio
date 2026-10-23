@@ -44,7 +44,7 @@ export default function Systems() {
   return <div className="sy">
     <header className="sy-nav">
       <a href="/" className="sy-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
-      <nav><a href="/systems" aria-current="page">System</a><a href="/#work">Work</a><a href="#contact">Contact</a></nav>
+      <nav><a href="/systems" aria-current="page">System</a><a href="/services">Services</a><a href="/#work">Work</a><a href="#contact">Contact</a></nav>
     </header>
     <main id="main">
       <section className="sy-hero">

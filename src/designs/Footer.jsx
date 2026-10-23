@@ -2,10 +2,11 @@ import { built, EMAIL, CALENDLY, year } from './content.jsx'
 import './buttons.css'
 import './Footer.css'
 
-// The dark site footer: the closing question, two buttons, link columns, and the legal line. Shared by the home page and the system page.
-export default function Footer() {
-  return <footer className="ft on-dark" id="contact">
-    <div className="ft-cta">
+// The dark site footer: the closing question, two buttons, link columns, and the legal line. Shared by the home, system and services pages.
+// Pages with their own closing ask (/services) pass cta={false} and carry id="contact" themselves.
+export default function Footer({ cta = true }) {
+  return <footer className="ft on-dark" id={cta ? 'contact' : undefined}>
+    {cta && <div className="ft-cta">
       <h2>What should<br />exist <em>next?</em></h2>
       <div>
         <p>Tell us. Book a call, or send us an email and we reply within two business days. The first call is a real conversation, not a pitch.</p>
@@ -14,13 +15,13 @@ export default function Footer() {
           <a className="btn btn-ghost" href={`mailto:${EMAIL}`}>Email us</a>
         </div>
       </div>
-    </div>
+    </div>}
     <div className="ft-grid">
       <div className="ft-brand">
         <span className="ft-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</span>
         <p>An independent studio in New York. We build products, then build the systems that keep them getting better.</p>
       </div>
-      <nav aria-label="Studio"><p className="ft-h">Studio</p><a href="/systems">System</a><a href="/#work">What we’ve built</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Studio"><p className="ft-h">Studio</p><a href="/services">Services</a><a href="/systems">System</a><a href="/#work">What we’ve built</a><a href="#contact">Contact</a></nav>
       <nav aria-label="Work"><p className="ft-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
       <nav aria-label="Contact"><p className="ft-h">Contact</p><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
     </div>
