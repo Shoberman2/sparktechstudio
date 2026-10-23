@@ -7,8 +7,10 @@ const tiles = {
   utern: { bg: '#101a2a url(/work/utern/mountain.webp) center 35% / cover no-repeat', img: '/work/utern/birdee.webp', cls: 'is-utern' },
   leed: { bg: '#0b0b09', img: '/work/leed/sherlock.svg', cls: 'is-leed' },
   ballotwatch: { bg: '#0c1626', img: '/work/ballotwatch/capitol-logo.svg', cls: 'is-bw' },
-  spacial: { bg: '#7255ff', cls: 'is-spacial' },
+  spacial: { bg: '#7255ff', cls: 'is-spacial', dots: true },
   budtender: { bg: 'radial-gradient(90% 80% at 40% 40%,#3f8a5e,#143b27 70%,#0b2418)', img: '/work/budtender/budzy-phone.webp', cls: 'is-bud' },
+  // Shown only when SHOW_CLIENT_CASE is on. TODO(Spencer): a client image for the tile
+  'client-build': { bg: 'radial-gradient(90% 80% at 70% 30%,#2a2a31,#111114 70%)', cls: 'is-client' },
 }
 const Arrow = () => <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M5 3h8v8" stroke="currentColor" strokeWidth="1.6" /></svg>
 
@@ -17,7 +19,7 @@ export default function WorkTiles() {
     {built.map(b => {
       const t = tiles[b.slug]
       return <a key={b.slug} href={b.url} className={`fm-tile ${t.cls}`} style={{ background: t.bg }}>
-        {t.img ? <img src={t.img} alt={b.tileAlt} loading="lazy" decoding="async" /> : <svg viewBox="-4 0 102 92" role="img" aria-label={b.tileAlt} className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
+        {t.img ? <img src={t.img} alt={b.tileAlt} loading="lazy" decoding="async" /> : t.dots && <svg viewBox="-4 0 102 92" role="img" aria-label={b.tileAlt} className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
         <span className="fm-tile-go"><Arrow /></span>
         <span className="fm-tile-text"><strong>{b.name}</strong><span>{b.tileLine}</span></span>
       </a>

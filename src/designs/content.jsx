@@ -4,7 +4,7 @@ export const EMAIL = 'contactus@sparktechstudio.com'
 export const CALENDLY = 'https://calendly.com/spencerhoberman-utern/30min'
 export const year = new Date().getFullYear()
 
-export const companies = [
+const portfolio = [
   {
     slug: 'utern', name: 'UTern', host: 'utern.ai', url: 'https://utern.ai', line: 'Your AI for landing an internship.',
     seo: { title: 'UTern: AI Internship App Case Study | Sparktech Studios', description: 'How Sparktech Studios built UTern, an AI app (Birdee) that matches students with real internships and brings companies students who fit the role.' },
@@ -138,6 +138,38 @@ export const companies = [
     visual: 'phone', note: 'Budtender is in private preview.',
   },
 ]
+
+// A custom client build, told with the same template. Placeholder until Spencer fills it in.
+// While SHOW_CLIENT_CASE is false the page still renders at /work/client-build, but it is noindexed and left out of the
+// sitemap, the nav, the home and services tiles, and the footer. Going live is this one line, plus real content below.
+export const SHOW_CLIENT_CASE = false
+const clientCase = {
+  slug: 'client-build', name: '[Client name]', host: '[client domain]', url: null, line: '[One-line outcome]',
+  h1: '[Client name]: [one-line outcome]',
+  seo: { title: 'Custom Client Build Case Study | Sparktech Studios', description: 'A custom web/app build Sparktech Studios delivered for a client: the problem, what we built, and the results.' },
+  buildType: '', // TODO(Spencer): Web app, Mobile app, or AI
+  facts: { role: '', stack: '', timeline: '', status: '', results: '' }, // TODO(Spencer)
+  tileAlt: '',
+  theme: { '--c-bg': '#111114' },
+  bg: null, bgCss: 'radial-gradient(90% 80% at 70% 40%, #2a2a31 0%, #151518 60%, #0c0c0e 100%)', figure: null,
+  kicker: '[Client industry]',
+  value: <>[What changed for the client, <em>in one sentence.</em>]</>,
+  lede: '[Two sentences on who the client is and what they needed.] TODO(Spencer)',
+  // TODO(Spencer): replace every bracketed line with the real story. Results must be real numbers or left out.
+  sections: [
+    ['Client and industry', '[Who the client is, where they are, and what they do.]'],
+    ['The problem', '[What was broken, slow, or missing before the build.]'],
+    ['What we built', '[The product, the key flows, and what makes it work.]'],
+    ['Stack', '[Platform, frameworks, and services.]'],
+    ['Timeline', '[From first call to launch.]'],
+    ['Results', '[Measured outcomes, with real numbers only.]'],
+  ],
+  quote: { text: '[A quote from the client.]', who: '[Name, title, company]' },
+}
+
+// The case studies listed across the site; every case study page that renders, listed or not
+export const companies = SHOW_CLIENT_CASE ? [...portfolio, clientCase] : portfolio
+export const caseStudies = [...portfolio, clientCase]
 
 // The short list the three design directions show
 export const built = companies.map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line, tileLine: c.tileLine || c.line, tileAlt: c.tileAlt || '' }))

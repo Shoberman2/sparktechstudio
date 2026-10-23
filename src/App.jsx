@@ -5,7 +5,7 @@ import NotFound from './designs/NotFound.jsx'
 import Privacy from './designs/Privacy.jsx'
 import Systems from './designs/Systems.jsx'
 import Services from './designs/Services.jsx'
-import { companies } from './designs/content.jsx'
+import { caseStudies } from './designs/content.jsx'
 import { meta } from './designs/seo.js'
 
 // The live site is the Form direction (chosen 2026-10-15). Company pages live at /work/<slug>.
@@ -15,7 +15,7 @@ export default function App({ path = typeof window !== 'undefined' ? window.loca
   const parts = path.split('/')
   const slug = parts[1] === 'work' ? parts[2] : null
   useEffect(() => { document.title = meta(path.replace(/\/+$/, '') || '/').title }, [path])
-  if (slug && companies.some(c => c.slug === slug)) return <Company slug={slug} />
+  if (slug && caseStudies.some(c => c.slug === slug)) return <Company slug={slug} />
   if (path === '/privacy') return <Privacy />
   if (path === '/systems') return <Systems />
   if (path === '/services') return <Services />

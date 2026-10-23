@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useLoop } from './useLoop'
-import { companies, EMAIL, CALENDLY, year } from './content.jsx'
+import { companies, caseStudies, EMAIL, CALENDLY, year } from './content.jsx'
 import './buttons.css'
 import './Company.css'
 
@@ -147,7 +147,7 @@ function Facts({ c }) {
 }
 
 export default function Company({ slug }) {
-  const c = companies.find(x => x.slug === slug)
+  const c = caseStudies.find(x => x.slug === slug)
   useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [slug])
   if (!c) return <main className="co-page co-missing"><a href="/">Back</a></main>
   const Visual = visuals[c.visual]
@@ -159,15 +159,15 @@ export default function Company({ slug }) {
       {c.url ? <a className="btn btn-ghost co-visit" href={c.url} target="_blank" rel="noreferrer">Visit {c.host}</a> : <span className="co-host">{c.host}</span>}
     </header>
     <main id="main">
-    <section className="co-hero">
+    <section className={`co-hero${c.figure ? '' : ' is-plain'}`}>
       <div className="co-bg" style={bgStyle} />
       {c.bgMobile && <style>{`@media (max-width:860px){.co-${c.slug} .co-bg{background-image:url(${c.bgMobile})!important}}`}</style>}
-      <div className={`co-figure ${c.figureClass || ''}`}>
+      {c.figure && <div className={`co-figure ${c.figureClass || ''}`}>
         {c.figure === 'spacial-mark' ? <SpacialMark /> : <img src={c.figure} alt={c.figureAlt} />}
-      </div>
+      </div>}
       <div className="co-copy">
         <p className="co-kicker">{c.kicker}</p>
-        <h1>{c.name}</h1>
+        <h1>{c.h1 || c.name}</h1>
         {c.buildType && <p className="co-type">{c.buildType}</p>}
         {c.partner && <p className="co-credit">Built with <a href={c.partner.url} target="_blank" rel="noopener"><strong>{c.partner.name}</strong></a>.</p>}
         <p className="co-value">{c.value}</p>
@@ -179,12 +179,20 @@ export default function Company({ slug }) {
       <p className="co-label">Partnership</p>
       <p className="co-partner-body">{c.partner.body}</p>
     </section>}
-    <section className="co-section">
+    {c.visionTitle && <section className="co-section">
       <p className="co-label">The vision</p>
       <h2>{c.visionTitle}</h2>
       {Visual && <div className="co-visual"><Visual c={c} /></div>}
       {c.note && <p className="co-note">{c.note}</p>}
-    </section>
+    </section>}
+    {c.sections?.map(([label, body]) => <section key={label} className="co-section co-story">
+      <p className="co-label">{label}</p>
+      <p className="co-story-body">{body}</p>
+    </section>)}
+    {c.quote && <section className="co-section co-story">
+      <p className="co-label">In their words</p>
+      <blockquote className="co-quote"><p>{c.quote.text}</p><footer>{c.quote.who}</footer></blockquote>
+    </section>}
     {c.how && <section className="co-section co-how" aria-labelledby="how-title">
       <p className="co-label">How it works</p>
       <h2 id="how-title">{c.howTitle}</h2>

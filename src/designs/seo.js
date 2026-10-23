@@ -1,6 +1,6 @@
 // Title, description and share image for every route, in one place. The build-time prerender (scripts/prerender.mjs)
 // writes these into each page's <head>; App sets document.title from the same table so the two never drift.
-import { companies } from './content.jsx'
+import { companies, caseStudies } from './content.jsx'
 
 export const SITE = 'https://www.sparktechstudio.com'
 export const BRAND = 'Sparktech Studios'
@@ -15,7 +15,8 @@ const pages = [
 
 // Every route the prerender writes, in sitemap order
 export function routes() {
-  const work = companies.map(c => ({ path: `/work/${c.slug}`, title: c.seo.title, description: c.seo.description, image: `/work/${c.slug}/og.jpg` }))
+  // A case study that is not listed (the client-build placeholder while SHOW_CLIENT_CASE is false) is noindexed and left out of the sitemap
+  const work = caseStudies.map(c => ({ path: `/work/${c.slug}`, title: c.seo.title, description: c.seo.description, image: c.figure === null ? null : `/work/${c.slug}/og.jpg`, noindex: !companies.includes(c) }))
   return [pages[0], pages[1], ...work, ...pages.slice(2)]
 }
 
@@ -86,7 +87,7 @@ export function jsonld(path) {
     })
     graph.push(crumbs([['Home', '/'], ['Services', '/services']]))
   }
-  const c = path.startsWith('/work/') && companies.find(x => `/work/${x.slug}` === path)
+  const c = path.startsWith('/work/') && caseStudies.find(x => `/work/${x.slug}` === path)
   if (c) {
     graph.push({
       '@type': 'CreativeWork',
@@ -94,7 +95,7 @@ export function jsonld(path) {
       name: c.name,
       description: c.seo.description,
       url: canonical(path),
-      image: `${SITE}/work/${c.slug}/og.jpg`,
+      ...(c.figure === null ? {} : { image: `${SITE}/work/${c.slug}/og.jpg` }),
       creator: { '@id': ORG },
       ...(c.partner ? { contributor: { '@type': 'Organization', name: c.partner.name, url: c.partner.url } } : {}),
     })
