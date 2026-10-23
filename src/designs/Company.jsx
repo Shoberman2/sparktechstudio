@@ -134,11 +134,24 @@ function Assemble() {
 
 const visuals = { climb: Climb, signals: Signals, assemble: Assemble }
 
+// The same facts on every case study. A field with no value is left out, so nothing is ever padded or guessed.
+function Facts({ c }) {
+  const f = c.facts || {}
+  const status = f.status && (c.url ? <>{f.status} at <a href={c.url} target="_blank" rel="noreferrer">{c.host}</a></> : f.status)
+  const rows = [['Role', f.role], ['Type', c.buildType], ['Platform and stack', f.stack], ['Timeline', f.timeline], ['Status', status], ['Results', f.results]].filter(([, v]) => v)
+  if (!rows.length) return null
+  return <section className="co-facts" aria-label="Project facts">
+    <p className="co-label">Project facts</p>
+    <dl>{rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+  </section>
+}
+
 export default function Company({ slug }) {
   const c = companies.find(x => x.slug === slug)
   useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [slug])
   if (!c) return <main className="co-page co-missing"><a href="/">Back</a></main>
   const Visual = visuals[c.visual]
+  const next = companies[(companies.indexOf(c) + 1) % companies.length]
   const bgStyle = c.bg ? { backgroundImage: `url(${c.bg})` } : { background: c.bgCss }
   return <div className={`co-page co-${c.slug}`} style={c.theme}>
     <header className="co-nav">
@@ -161,6 +174,7 @@ export default function Company({ slug }) {
         <p className="co-line">{c.lede}</p>
       </div>
     </section>
+    <Facts c={c} />
     {c.partner && <section className="co-section co-partner">
       <p className="co-label">Partnership</p>
       <p className="co-partner-body">{c.partner.body}</p>
@@ -180,10 +194,11 @@ export default function Company({ slug }) {
       {c.howNote && <p className="co-note">{c.howNote}</p>}
     </section>}
     <section className="co-ask">
-      <p>Want something built like this?</p>
+      <p>Want something like this?</p>
       <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
     </section>
     </main>
+    <a className="co-next" href={`/work/${next.slug}`}><span>Next project</span><strong>{next.name} <span aria-hidden="true">→</span></strong></a>
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>

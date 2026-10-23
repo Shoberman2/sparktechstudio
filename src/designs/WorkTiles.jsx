@@ -17,7 +17,7 @@ export default function WorkTiles() {
     {built.map(b => {
       const t = tiles[b.slug]
       return <a key={b.slug} href={b.url} className={`fm-tile ${t.cls}`} style={{ background: t.bg }}>
-        {t.img ? <img src={t.img} alt="" loading="lazy" decoding="async" /> : <svg viewBox="-4 0 102 92" aria-hidden="true" className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
+        {t.img ? <img src={t.img} alt={b.tileAlt} loading="lazy" decoding="async" /> : <svg viewBox="-4 0 102 92" role="img" aria-label={b.tileAlt} className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
         <span className="fm-tile-go"><Arrow /></span>
         <span className="fm-tile-text"><strong>{b.name}</strong><span>{b.tileLine}</span></span>
       </a>
