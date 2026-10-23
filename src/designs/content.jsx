@@ -172,6 +172,9 @@ const clientCase = {
 export const companies = SHOW_CLIENT_CASE ? [...portfolio, clientCase] : portfolio
 export const caseStudies = [...portfolio, clientCase]
 
+// Proof under the home hero. TODO(Spencer): client logos ({ name, src }) and testimonials ({ quote, who }); each row stays hidden while empty.
+export const proof = { partner: 'High Times', logos: [], testimonials: [] }
+
 // The short list the three design directions show
 export const built = companies.map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line, tileLine: c.tileLine || c.line, tileAlt: c.tileAlt || '' }))
 

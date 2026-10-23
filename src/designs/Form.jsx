@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useLoop } from './useLoop'
-import { BOOKING_URL } from './content.jsx'
+import { BOOKING_URL, built, proof } from './content.jsx'
 import Footer from './Footer.jsx'
 import WorkTiles from './WorkTiles.jsx'
 import './buttons.css'
@@ -113,6 +113,13 @@ export default function Form() {
         </div>
       </div>
       <Cloud className="fm-canvas" />
+    </section>
+
+    <section className="fm-proof" aria-label="Proof">
+      <p><span>Built with</span> <strong>{proof.partner}</strong></p>
+      <ul>{built.map(b => <li key={b.slug}><a href={b.url}>{b.name}</a></li>)}</ul>
+      {proof.logos.length > 0 && <ul className="fm-proof-logos">{proof.logos.map(l => <li key={l.name}><img src={l.src} alt={l.name} height="28" /></li>)}</ul>}
+      {proof.testimonials.length > 0 && <div className="fm-proof-quotes">{proof.testimonials.map(t => <blockquote key={t.who}><p>{t.quote}</p><footer>{t.who}</footer></blockquote>)}</div>}
     </section>
 
     <section className="fm-sys" id="systems">

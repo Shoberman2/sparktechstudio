@@ -30,6 +30,18 @@
 .fm-sys { display:grid; grid-template-columns:1.1fr .9fr; gap:64px; align-items:end; padding:clamp(110px,18vh,190px) clamp(16px,4vw,48px) clamp(90px,14vh,150px); }
 .fm-sys h2 { margin:0; font-weight:500; font-size:clamp(48px,6.6vw,112px); line-height:.9; letter-spacing:-.06em; color:var(--ink); }
 .fm-sys-side .btn { margin-top:28px; }
+/* Proof strip: the partner credit and the products, one quiet ruled row under the hero */
+.fm-proof { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px 40px; margin:0 clamp(16px,4vw,48px); padding:26px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-size:15px; }
+.fm-proof p { margin:0; color:var(--mute); }
+.fm-proof strong { font-weight:500; color:var(--ink); }
+.fm-proof ul { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px 28px; }
+.fm-proof li a { color:var(--ink); font-weight:500; letter-spacing:-.01em; transition:color .3s; }
+.fm-proof li a:hover { color:var(--gold); }
+.fm-proof-logos img { height:28px; width:auto; filter:grayscale(1); opacity:.7; }
+.fm-proof-quotes { flex-basis:100%; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+.fm-proof-quotes blockquote { margin:0; }
+.fm-proof-quotes footer { margin-top:8px; color:var(--mute); }
+@media (max-width:520px) { .fm-proof ul { gap:8px 20px; } }
 /* What we do: the keyword statement, a size down from the story headlines */
 .fm-do { padding-top:clamp(40px,6vh,72px); padding-bottom:clamp(40px,6vh,72px); }
 .fm-do h2 { font-size:clamp(38px,4.6vw,76px); line-height:.96; letter-spacing:-.05em; }
