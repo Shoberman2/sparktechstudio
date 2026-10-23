@@ -14,7 +14,7 @@ export default function DesignLab() {
   const parts = window.location.pathname.split('/')
   const n = parts[2]
   const d = designs.find(x => x.n === n)
-  useEffect(() => { if (n === 'work') return; document.title = d ? `${d.name} | SparkTech Studio` : 'Designs | SparkTech Studio' }, [d, n])
+  useEffect(() => { if (n === 'work') return; document.title = d ? `${d.name} | Sparktech Studios` : 'Designs | Sparktech Studios' }, [d, n])
   if (n === 'work') return <Suspense fallback={null}><Company slug={parts[3]} /></Suspense>
   if (d) return <Suspense fallback={null}><d.C /><nav className="dl-switch" aria-label="Designs">{designs.map(x => <a key={x.n} href={`/designs/${x.n}`} aria-current={x.n === n ? 'page' : undefined}>{x.name}</a>)}</nav></Suspense>
   return <main className="dl">

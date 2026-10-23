@@ -136,14 +136,14 @@ const visuals = { climb: Climb, signals: Signals, assemble: Assemble }
 
 export default function Company({ slug }) {
   const c = companies.find(x => x.slug === slug)
-  useEffect(() => { if (c) document.title = `${c.name} | SparkTech Studio` }, [c])
+  useEffect(() => { if (c) document.title = `${c.name} | Sparktech Studios` }, [c])
   useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [slug])
   if (!c) return <main className="co-page co-missing"><a href="/">Back</a></main>
   const Visual = visuals[c.visual]
   const bgStyle = c.bg ? { backgroundImage: `url(${c.bg})` } : { background: c.bgCss }
   return <div className={`co-page co-${c.slug}`} style={c.theme}>
     <header className="co-nav">
-      <a className="co-back" href="/"><span>←</span><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
+      <a className="co-back" href="/"><span>←</span><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
       {c.url ? <a className="btn btn-ghost co-visit" href={c.url} target="_blank" rel="noreferrer">Visit {c.host}</a> : <span className="co-host">{c.host}</span>}
     </header>
     <main id="main">
@@ -182,6 +182,6 @@ export default function Company({ slug }) {
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} SparkTech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
+    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} Sparktech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
   </div>
 }

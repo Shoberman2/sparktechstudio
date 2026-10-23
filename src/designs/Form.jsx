@@ -108,7 +108,7 @@ const Arrow = () => <svg width="16" height="16" viewBox="0 0 16 16" fill="none" 
 export default function Form() {
   return <div className="fm">
     <header className="fm-nav">
-      <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
+      <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
       <nav><a href="/systems">System</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
     </header>
     <main id="main">

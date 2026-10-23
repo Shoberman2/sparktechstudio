@@ -59,7 +59,7 @@ export default function Liquid() {
   useLoop(ref, setup, { gl: true })
   return <div className="lq">
     <header className="lq-nav">
-      <a href="/designs/1" className="lq-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
+      <a href="/designs/1" className="lq-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
       <nav><a href="#built">Built</a><a href="#systems">Systems</a><a href="#contact">Contact</a></nav>
     </header>
     <section className="lq-hero">
@@ -93,6 +93,6 @@ export default function Liquid() {
       <p className="lq-label">Next</p>
       <a className="lq-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
     </section>
-    <footer className="lq-foot"><span>© {year} SparkTech Studios, Inc.</span><span>We create the future.</span></footer>
+    <footer className="lq-foot"><span>© {year} Sparktech Studios, Inc.</span><span>We create the future.</span></footer>
   </div>
 }

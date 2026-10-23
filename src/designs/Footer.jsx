@@ -17,13 +17,13 @@ export default function Footer() {
     </div>
     <div className="ft-grid">
       <div className="ft-brand">
-        <span className="ft-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</span>
+        <span className="ft-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</span>
         <p>An independent studio in New York. We build products, then build the systems that keep them getting better.</p>
       </div>
       <nav aria-label="Studio"><p className="ft-h">Studio</p><a href="/systems">System</a><a href="/#work">What we’ve built</a><a href="#contact">Contact</a></nav>
       <nav aria-label="Work"><p className="ft-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
       <nav aria-label="Contact"><p className="ft-h">Contact</p><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
     </div>
-    <div className="ft-bottom"><span>© {year} SparkTech Studios, Inc.</span><span><a href="/privacy">Privacy</a> · New York</span></div>
+    <div className="ft-bottom"><span>© {year} Sparktech Studios, Inc.</span><span><a href="/privacy">Privacy</a> · New York</span></div>
   </footer>
 }

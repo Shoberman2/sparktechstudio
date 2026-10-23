@@ -5,9 +5,9 @@ import './NotFound.css'
 
 // What this site actually does with data, and nothing more. Update if analytics, a form, or any third party is added.
 export default function Privacy() {
-  useEffect(() => { document.title = 'Privacy | SparkTech Studio' }, [])
+  useEffect(() => { document.title = 'Privacy | Sparktech Studios' }, [])
   return <div className="nf">
-    <header className="nf-nav"><a href="/" className="nf-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a></header>
+    <header className="nf-nav"><a href="/" className="nf-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a></header>
     <main id="main" className="nf-main nf-prose">
       <p className="nf-kicker">Privacy</p>
       <h1>Short version: <em>we keep it simple.</em></h1>
@@ -22,6 +22,6 @@ export default function Privacy() {
       <p><a href={`mailto:${EMAIL}`}>Email us</a> and we will delete what we hold.</p>
       <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a></div>
     </main>
-    <footer className="nf-foot">© {year} SparkTech Studios, Inc.</footer>
+    <footer className="nf-foot">© {year} Sparktech Studios, Inc.</footer>
   </div>
 }

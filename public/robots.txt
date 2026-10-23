@@ -1,4 +1,4 @@
-# SparkTech Studio. Everyone is welcome to read this site, including AI agents and crawlers.
+# Sparktech Studios. Everyone is welcome to read this site, including AI agents and crawlers.
 User-agent: *
 Allow: /
 
