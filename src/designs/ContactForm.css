@@ -1,0 +1,20 @@
+/* The project form on /services. White ground, hairline fields with soft corners, the site pill as the submit. */
+.cf { width:100%; max-width:760px; margin:40px auto 0; display:flex; flex-direction:column; gap:18px; text-align:left; }
+.cf-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.cf-field { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.cf label { font-size:14px; font-weight:500; color:#3f3f46; }
+.cf input,.cf select,.cf textarea { width:100%; min-height:52px; padding:14px 16px; border:1px solid #e6e6e9; border-radius:14px; background:#fff; color:#0a0a0c; font:inherit; font-size:16px; line-height:1.4; transition:border-color .2s,box-shadow .2s; -webkit-appearance:none; appearance:none; }
+.cf select { padding-right:40px; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%237a7a82' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center; }
+.cf textarea { resize:vertical; min-height:140px; }
+.cf input:focus,.cf select:focus,.cf textarea:focus { outline:none; border-color:#b8860b; box-shadow:0 0 0 3px rgba(184,134,11,.16); }
+.cf-field.has-error :is(input,select,textarea) { border-color:#b42318; }
+.cf-error { font-size:13.5px; color:#b42318; }
+.cf-hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+.cf-foot { display:flex; align-items:center; flex-wrap:wrap; gap:14px 20px; margin-top:6px; }
+.cf-foot .btn[disabled] { opacity:.6; cursor:progress; }
+.cf-note { margin:0; font-size:15px; color:#7a7a82; }
+.cf-note a { border-bottom:1px solid #d4d4d8; }
+.cf-done { max-width:560px; margin:40px auto 0; padding:32px; border:1px solid #e6e6e9; border-radius:24px; }
+.cf-done strong { display:block; font-weight:500; font-size:28px; letter-spacing:-.035em; }
+.cf-done p { margin:10px 0 0; font-size:17px; color:#55555c; }
+@media (max-width:640px) { .cf-row { grid-template-columns:1fr; } .cf-foot .btn { width:100%; } }

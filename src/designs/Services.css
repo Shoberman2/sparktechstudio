@@ -21,6 +21,8 @@
 .sv-ask { text-align:center; display:flex; flex-direction:column; align-items:center; }
 .sv-ask h2 { max-width:14ch; }
 .sv-ask .sv-actions { animation:none; }
+.sv-or { margin:48px 0 0; font-size:15px; color:var(--mute); }
+.sv-or + .cf { margin-top:20px; }
 
 @media (max-width:960px) {
   .sv-how,.sv-cards.sv-two { grid-template-columns:1fr; }

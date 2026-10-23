@@ -1,6 +1,7 @@
 import { BOOKING_URL, EMAIL } from './content.jsx'
 import Footer from './Footer.jsx'
 import WorkTiles from './WorkTiles.jsx'
+import ContactForm from './ContactForm.jsx'
 import './buttons.css'
 import './Systems.css'
 import './Services.css'
@@ -84,6 +85,8 @@ export default function Services() {
           <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href={`mailto:${EMAIL}`}>Email us</a>
         </div>
+        <p className="sv-or">Or tell us here.</p>
+        <ContactForm />
       </section>
     </main>
     <Footer cta={false} />
