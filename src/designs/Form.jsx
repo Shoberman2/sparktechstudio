@@ -99,7 +99,7 @@ function Cloud({ className }) {
 export default function Form() {
   return <div className="fm">
     <header className="fm-nav">
-      <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
+      <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studios</a>
       <nav><a href="/systems">System</a><a href="/services">Services</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
     </header>
     <main id="main">

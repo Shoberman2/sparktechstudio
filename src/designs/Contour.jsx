@@ -69,7 +69,7 @@ export default function Contour() {
   return <div className="ct">
     <canvas ref={ref} className="ct-canvas" aria-hidden="true" />
     <header className="ct-nav">
-      <a href="/designs/3" className="ct-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
+      <a href="/designs/3" className="ct-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studios</a>
       <span className="ct-coord">40.7128° N · 74.0060° W</span>
       <nav className="ct-links"><a href="#systems">Systems</a><a href="#contact">Contact</a></nav>
     </header>
@@ -100,7 +100,7 @@ export default function Contour() {
     </main>
     <footer className="ct-foot" id="contact">
       <a className="ct-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-      <span>© {year} Sparktech Studios, Inc.</span>
+      <span>© {year} SparkTech Studios, Inc.</span>
     </footer>
   </div>
 }

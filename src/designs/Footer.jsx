@@ -18,14 +18,14 @@ export default function Footer({ cta = true }) {
     </div>}
     <div className="ft-grid">
       <div className="ft-brand">
-        <span className="ft-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</span>
+        <span className="ft-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studios</span>
         <p>An independent studio in New York. We build products, then build the systems that keep them getting better.</p>
       </div>
       <nav aria-label="Studio"><p className="ft-h">Studio</p><a href="/services">Services</a><a href="/systems">System</a><a href="/#work">What we’ve built</a><a href="#contact">Contact</a></nav>
       <nav aria-label="Work"><p className="ft-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
       <nav aria-label="Contact"><p className="ft-h">Contact</p><a href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
     </div>
-    <div className="ft-bottom"><span>© {year} Sparktech Studios, Inc.</span><span>Sparktech Studios · New York, NY · <a href="/privacy">Privacy</a></span></div>
+    <div className="ft-bottom"><span>© {year} SparkTech Studios, Inc.</span><span>SparkTech Studios · New York, NY · <a href="/privacy">Privacy</a></span></div>
     {/* TODO(Spencer): add "Not affiliated with other companies of similar name." here only if you approve it */}
   </footer>
 }

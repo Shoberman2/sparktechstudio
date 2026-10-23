@@ -28,14 +28,14 @@ const steps = [
 export default function Services() {
   return <div className="sy sv">
     <header className="sy-nav">
-      <a href="/" className="sy-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>
+      <a href="/" className="sy-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studios</a>
       <nav><a href="/systems">System</a><a href="/services" aria-current="page">Services</a><a href="/#work">Work</a><a href="#contact">Contact</a></nav>
     </header>
     <main id="main">
       <section className="sy-hero">
         <p className="sy-kicker">Services</p>
         <h1>Custom app and web development for startups and <em>small businesses</em></h1>
-        <p className="sy-lede">Sparktech Studios is a product studio in New York. We design, build, and launch web apps, mobile apps, and websites, then keep making them better after launch.</p>
+        <p className="sy-lede">SparkTech Studios is a product studio in New York. We design, build, and launch web apps, mobile apps, and websites, then keep making them better after launch.</p>
         <div className="sv-actions">
           <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href="#work">See our work</a>
@@ -77,9 +77,9 @@ export default function Services() {
         <div>
           <p className="sy-kicker">Who you’ll work with</p>
           <h2 id="founder-title">Spencer <em>Hoberman.</em></h2>
-          <p className="sv-founder-role">Founder, Sparktech Studios. New York.</p>
+          <p className="sv-founder-role">Founder, SparkTech Studios. New York.</p>
           {/* TODO(Spencer): a short bio in your own words. Facts only; no invented credentials. */}
-          <p className="sv-founder-bio">I founded Sparktech Studios in New York to build the products people keep talking about. I also build UTern, which stays its own company.</p>
+          <p className="sv-founder-bio">I founded SparkTech Studios in New York to build the products people keep talking about. I also build UTern, which stays its own company.</p>
         </div>
       </section>
 

@@ -1,14 +1,14 @@
 // Shared copy for the design directions and the company pages. Facts come from each company's own repo and live site (checked 2026-10-15).
 // Shipped and vision are kept apart on purpose. UTern is an independent company; nothing here asserts SparkTech ownership of any of them.
 export const EMAIL = 'contactus@sparktechstudio.com'
-// The one booking link for the whole site. TODO(Spencer): swap in a Sparktech-branded Calendly slug here.
+// The one booking link for the whole site. TODO(Spencer): swap in a SparkTech-branded Calendly slug here.
 export const BOOKING_URL = 'https://calendly.com/spencerhoberman-utern/30min'
 export const year = new Date().getFullYear()
 
 const portfolio = [
   {
     slug: 'utern', name: 'UTern', host: 'utern.ai', url: 'https://utern.ai', line: 'Your AI for landing an internship.',
-    seo: { title: 'UTern: AI Internship App Case Study | Sparktech Studios', description: 'How Sparktech Studios built UTern, an AI app (Birdee) that matches students with real internships and brings companies students who fit the role.' },
+    seo: { title: 'UTern: AI Internship App Case Study | SparkTech Studios', description: 'How SparkTech Studios built UTern, an AI app (Birdee) that matches students with real internships and brings companies students who fit the role.' },
     buildType: 'AI web app',
     // Project facts. TODO(Spencer): role, platform and stack, timeline or launch date, results. Empty fields are not shown.
     facts: { role: '', stack: '', timeline: '', status: 'Live', results: '' },
@@ -34,7 +34,7 @@ const portfolio = [
   },
   {
     slug: 'leed', name: 'Leed', host: 'leed.media', url: 'https://www.leed.media', line: 'Every tip, read and kept safe.',
-    seo: { title: 'Leed: Newsroom Tip Management App Case Study | Sparktech Studios', description: 'Leed reads, sorts, and secures every tip a newsroom receives. A product built by Sparktech Studios, a New York product studio.' },
+    seo: { title: 'Leed: Newsroom Tip Management App Case Study | SparkTech Studios', description: 'Leed reads, sorts, and secures every tip a newsroom receives. A product built by SparkTech Studios, a New York product studio.' },
     buildType: 'AI web app for newsrooms',
     // Project facts. TODO(Spencer): role, platform and stack, timeline or launch date, results. Empty fields are not shown.
     facts: { role: '', stack: '', timeline: '', status: 'Live', results: '' },
@@ -58,7 +58,7 @@ const portfolio = [
   },
   {
     slug: 'ballotwatch', name: 'BallotWatch', host: 'ballotwatch.io', url: 'https://www.ballotwatch.io', line: 'How Congress votes, in plain English.',
-    seo: { title: 'BallotWatch: Congressional Vote Tracker Case Study | Sparktech Studios', description: 'BallotWatch shows how Congress votes in plain English, with every fact linked to its official source. Built by Sparktech Studios in NYC.' },
+    seo: { title: 'BallotWatch: Congressional Vote Tracker Case Study | SparkTech Studios', description: 'BallotWatch shows how Congress votes in plain English, with every fact linked to its official source. Built by SparkTech Studios in NYC.' },
     buildType: 'Web app and public API',
     // Project facts. TODO(Spencer): role, platform and stack, timeline or launch date, results. Empty fields are not shown.
     facts: { role: '', stack: '', timeline: '', status: 'Live', results: '' },
@@ -83,7 +83,7 @@ const portfolio = [
   },
   {
     slug: 'spacial', name: 'Spacial Health', host: 'Platform preview', url: null, line: 'Complex care, finally coordinated.',
-    seo: { title: 'Spacial Health: Care Coordination App Case Study | Sparktech Studios', description: 'Spacial Health coordinates complex care around the whole person. A health product designed and built by Sparktech Studios, New York.' },
+    seo: { title: 'Spacial Health: Care Coordination App Case Study | SparkTech Studios', description: 'Spacial Health coordinates complex care around the whole person. A health product designed and built by SparkTech Studios, New York.' },
     buildType: 'Health platform preview',
     // Project facts. TODO(Spencer): role, platform and stack, timeline or launch date, results. Empty fields are not shown.
     facts: { role: '', stack: '', timeline: '', status: 'Platform preview on sample data', results: '' },
@@ -110,13 +110,13 @@ const portfolio = [
   },
   {
     slug: 'budtender', name: 'Budtender', host: 'Private preview', url: null, line: 'Know what you like. Remember why.',
-    seo: { title: 'Budtender with High Times: Cannabis App Case Study | Sparktech Studios', description: 'Budtender, built with High Times: rank what you try, see what friends love, and ask Budzy what’s next. Designed and built by Sparktech Studios, NYC.' },
+    seo: { title: 'Budtender with High Times: Cannabis App Case Study | SparkTech Studios', description: 'Budtender, built with High Times: rank what you try, see what friends love, and ask Budzy what’s next. Designed and built by SparkTech Studios, NYC.' },
     buildType: 'AI consumer app',
     // Project facts. TODO(Spencer): role, platform and stack, timeline or launch date, results. Empty fields are not shown.
     facts: { role: '', stack: '', timeline: '', status: 'Private preview', results: '' },
     tileAlt: 'Budzy, Budtender’s AI, on a phone screen',
     // TODO(Spencer): a quote or partnership details from High Times, and brand-approved logo usage if wanted
-    partner: { name: 'High Times', url: 'https://hightimes.com', body: 'Sparktech Studios designed and built Budtender in partnership with High Times.' },
+    partner: { name: 'High Times', url: 'https://hightimes.com', body: 'SparkTech Studios designed and built Budtender in partnership with High Times.' },
     tileLine: 'Know what you like. Remember why. Built with High Times.',
     theme: { '--c-bg': '#0f2a1d', '--c-accent': '#f28322', '--c-mute': 'rgba(236,244,238,.66)', '--c-scrim': 'radial-gradient(120% 90% at 25% 50%, rgba(66,140,96,.0) 0%, rgba(10,32,21,.35) 60%, rgba(8,26,17,.85) 100%)' },
     bg: null, bgCss: 'radial-gradient(90% 80% at 28% 52%, #4f9e6f 0%, #2a6b47 38%, #143b27 72%, #0b2418 100%)', figure: '/work/budtender/budzy-phone.webp', figureAlt: 'Budzy on a phone', figureClass: 'is-phone',
@@ -147,7 +147,7 @@ export const SHOW_CLIENT_CASE = false
 const clientCase = {
   slug: 'client-build', name: '[Client name]', host: '[client domain]', url: null, line: '[One-line outcome]',
   h1: '[Client name]: [one-line outcome]',
-  seo: { title: 'Custom Client Build Case Study | Sparktech Studios', description: 'A custom web/app build Sparktech Studios delivered for a client: the problem, what we built, and the results.' },
+  seo: { title: 'Custom Client Build Case Study | SparkTech Studios', description: 'A custom web/app build SparkTech Studios delivered for a client: the problem, what we built, and the results.' },
   buildType: '', // TODO(Spencer): Web app, Mobile app, or AI
   facts: { role: '', stack: '', timeline: '', status: '', results: '' }, // TODO(Spencer)
   tileAlt: '',

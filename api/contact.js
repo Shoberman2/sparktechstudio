@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   if (tooMany(ip)) return res.status(429).json({ ok: false, error: 'Too many messages; try again later' });
 
   const to = process.env.CONTACT_TO || 'spencer@sparktechstudio.com';
-  const from = process.env.CONTACT_FROM || 'Sparktech site <onboarding@resend.dev>';
+  const from = process.env.CONTACT_FROM || 'SparkTech site <onboarding@resend.dev>';
   const text = `From: ${name || '(no name)'} <${email}>\nIP: ${ip}\n\n${message}\n`;
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',

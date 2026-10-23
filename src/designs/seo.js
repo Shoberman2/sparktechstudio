@@ -3,7 +3,7 @@
 import { companies, caseStudies } from './content.jsx'
 
 export const SITE = 'https://www.sparktechstudio.com'
-export const BRAND = 'Sparktech Studios'
+export const BRAND = 'SparkTech Studios'
 
 const pages = [
   { path: '/', title: `${BRAND} | NYC Product Studio for App & Web Development`, description: `${BRAND} is a New York product studio. We design and build custom web apps, mobile apps, and websites for startups and small businesses, then keep improving them.` },
@@ -43,7 +43,7 @@ function siteGraph() {
       '@id': ORG,
       name: BRAND,
       legalName: `${BRAND}, Inc.`,
-      alternateName: ['Sparktech Studios NYC', 'SparkTech Studio'],
+      alternateName: ['SparkTech Studios NYC', 'SparkTech Studio'],
       url: `${SITE}/`,
       logo: `${SITE}/logo.png`,
       image: `${SITE}/og.png`,
