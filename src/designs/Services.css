@@ -17,6 +17,12 @@
 
 .sv a.fm-tile,.sv a.fm-tile:hover { color:#fff; }
 
+/* Founder */
+.sv-founder { display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(28px,5vw,64px); align-items:center; }
+.sv-photo { width:clamp(120px,14vw,180px); aspect-ratio:1; border-radius:50%; display:grid; place-items:center; background:#f3f3f5; border:1px solid var(--line); font-size:clamp(34px,4vw,48px); font-weight:500; letter-spacing:-.04em; color:var(--gold); }
+.sv-founder-role { margin:18px 0 0; font-size:15px; color:var(--mute); }
+.sv-founder-bio { margin:14px 0 0; max-width:48ch; font-size:clamp(18px,1.5vw,21px); line-height:1.5; color:#3f3f46; }
+
 /* Closing ask */
 .sv-ask { text-align:center; display:flex; flex-direction:column; align-items:center; }
 .sv-ask h2 { max-width:14ch; }
@@ -25,5 +31,5 @@
 .sv-or + .cf { margin-top:20px; }
 
 @media (max-width:960px) {
-  .sv-how,.sv-cards.sv-two { grid-template-columns:1fr; }
+  .sv-how,.sv-cards.sv-two,.sv-founder { grid-template-columns:1fr; }
 }

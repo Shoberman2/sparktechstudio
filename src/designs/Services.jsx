@@ -71,6 +71,18 @@ export default function Services() {
         {/* TODO(Spencer): "Projects typically start at $X" */}
       </section>
 
+      <section className="sv-block sv-founder" aria-labelledby="founder-title">
+        {/* TODO(Spencer): swap the monogram for a photo (public/spencer.jpg, square, at least 480px) */}
+        <div className="sv-photo" aria-hidden="true">SH</div>
+        <div>
+          <p className="sy-kicker">Who you’ll work with</p>
+          <h2 id="founder-title">Spencer <em>Hoberman.</em></h2>
+          <p className="sv-founder-role">Founder, Sparktech Studios. New York.</p>
+          {/* TODO(Spencer): a short bio in your own words. Facts only; no invented credentials. */}
+          <p className="sv-founder-bio">I founded Sparktech Studios in New York to build the products people keep talking about. I also build UTern, which stays its own company.</p>
+        </div>
+      </section>
+
       <section className="sv-block" id="work" aria-labelledby="work-title">
         <div className="sy-head">
           <h2 id="work-title">Recent <em>work.</em></h2>
