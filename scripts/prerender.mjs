@@ -36,6 +36,7 @@ for (const r of routes()) {
   console.log('prerendered', r.path)
 }
 
-// sitemap from the same route list
-writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes().filter(r => !r.noindex).map(r => `  <url><loc>${canonical(r.path)}</loc></url>`).join('\n')}\n</urlset>\n`)
+// sitemap from the same route list, stamped with the build date; noindexed routes stay out
+const lastmod = new Date().toISOString().slice(0, 10)
+writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes().filter(r => !r.noindex).map(r => `  <url><loc>${canonical(r.path)}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`)
 rmSync(resolve('dist-ssr'), { recursive: true, force: true })
