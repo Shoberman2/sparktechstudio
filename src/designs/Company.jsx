@@ -156,10 +156,15 @@ export default function Company({ slug }) {
         <p className="co-kicker">{c.kicker}</p>
         <h1>{c.name}</h1>
         {c.buildType && <p className="co-type">{c.buildType}</p>}
+        {c.partner && <p className="co-credit">Built with <a href={c.partner.url} target="_blank" rel="noopener"><strong>{c.partner.name}</strong></a>.</p>}
         <p className="co-value">{c.value}</p>
         <p className="co-line">{c.lede}</p>
       </div>
     </section>
+    {c.partner && <section className="co-section co-partner">
+      <p className="co-label">Partnership</p>
+      <p className="co-partner-body">{c.partner.body}</p>
+    </section>}
     <section className="co-section">
       <p className="co-label">The vision</p>
       <h2>{c.visionTitle}</h2>

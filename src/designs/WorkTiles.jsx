@@ -19,7 +19,7 @@ export default function WorkTiles() {
       return <a key={b.slug} href={b.url} className={`fm-tile ${t.cls}`} style={{ background: t.bg }}>
         {t.img ? <img src={t.img} alt="" loading="lazy" decoding="async" /> : <svg viewBox="-4 0 102 92" aria-hidden="true" className="fm-tile-dots">{SP_DOTS.map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5.2" />)}</svg>}
         <span className="fm-tile-go"><Arrow /></span>
-        <span className="fm-tile-text"><strong>{b.name}</strong><span>{b.line}</span></span>
+        <span className="fm-tile-text"><strong>{b.name}</strong><span>{b.tileLine}</span></span>
       </a>
     })}
   </div>

@@ -99,6 +99,9 @@ export const companies = [
     slug: 'budtender', name: 'Budtender', host: 'Private preview', url: null, line: 'Know what you like. Remember why.',
     seo: { title: 'Budtender with High Times: Cannabis App Case Study | Sparktech Studios', description: 'Budtender, built with High Times: rank what you try, see what friends love, and ask Budzy what’s next. Designed and built by Sparktech Studios, NYC.' },
     buildType: 'AI consumer app',
+    // TODO(Spencer): a quote or partnership details from High Times, and brand-approved logo usage if wanted
+    partner: { name: 'High Times', url: 'https://hightimes.com', body: 'Sparktech Studios designed and built Budtender in partnership with High Times.' },
+    tileLine: 'Know what you like. Remember why. Built with High Times.',
     theme: { '--c-bg': '#0f2a1d', '--c-accent': '#f28322', '--c-mute': 'rgba(236,244,238,.66)', '--c-scrim': 'radial-gradient(120% 90% at 25% 50%, rgba(66,140,96,.0) 0%, rgba(10,32,21,.35) 60%, rgba(8,26,17,.85) 100%)' },
     bg: null, bgCss: 'radial-gradient(90% 80% at 28% 52%, #4f9e6f 0%, #2a6b47 38%, #143b27 72%, #0b2418 100%)', figure: '/work/budtender/budzy-phone.webp', figureAlt: 'Budzy on a phone', figureClass: 'is-phone',
     kicker: 'Meet Budzy. He remembers.',
@@ -122,7 +125,7 @@ export const companies = [
 ]
 
 // The short list the three design directions show
-export const built = companies.map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line }))
+export const built = companies.map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line, tileLine: c.tileLine || c.line }))
 
 // The recursive agentic systems. Status is what is true today: product fixes run on our own site; the other areas are the roadmap.
 export const systems = {
