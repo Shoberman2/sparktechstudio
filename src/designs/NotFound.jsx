@@ -13,6 +13,6 @@ export default function NotFound() {
       <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a></div>
       <ul className="nf-work">{built.map(b => <li key={b.slug}><a href={b.url}><strong>{b.name}</strong><span>{b.line}</span></a></li>)}</ul>
     </main>
-    <footer className="nf-foot">© {year} Sparktech Studios, Inc.</footer>
+    <footer className="nf-foot">© {year} Sparktech Studios, Inc. · New York, NY</footer>
   </div>
 }

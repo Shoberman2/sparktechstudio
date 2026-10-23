@@ -25,6 +25,7 @@ export default function Footer({ cta = true }) {
       <nav aria-label="Work"><p className="ft-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
       <nav aria-label="Contact"><p className="ft-h">Contact</p><a href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
     </div>
-    <div className="ft-bottom"><span>© {year} Sparktech Studios, Inc.</span><span><a href="/privacy">Privacy</a> · New York</span></div>
+    <div className="ft-bottom"><span>© {year} Sparktech Studios, Inc.</span><span>Sparktech Studios · New York, NY · <a href="/privacy">Privacy</a></span></div>
+    {/* TODO(Spencer): add "Not affiliated with other companies of similar name." here only if you approve it */}
   </footer>
 }

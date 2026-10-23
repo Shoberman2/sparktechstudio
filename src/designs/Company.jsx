@@ -210,6 +210,6 @@ export default function Company({ slug }) {
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} Sparktech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
+    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} Sparktech Studios, Inc. · New York, NY · <a href="/privacy">Privacy</a></span></footer>
   </div>
 }

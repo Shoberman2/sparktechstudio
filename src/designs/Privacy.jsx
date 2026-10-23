@@ -20,6 +20,6 @@ export default function Privacy() {
       <p><a href={`mailto:${EMAIL}`}>Email us</a> and we will delete what we hold.</p>
       <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a></div>
     </main>
-    <footer className="nf-foot">© {year} Sparktech Studios, Inc.</footer>
+    <footer className="nf-foot">© {year} Sparktech Studios, Inc. · New York, NY</footer>
   </div>
 }
