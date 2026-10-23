@@ -1,7 +1,8 @@
 // Shared copy for the design directions and the company pages. Facts come from each company's own repo and live site (checked 2026-10-15).
 // Shipped and vision are kept apart on purpose. UTern is an independent company; nothing here asserts SparkTech ownership of any of them.
 export const EMAIL = 'contactus@sparktechstudio.com'
-export const CALENDLY = 'https://calendly.com/spencerhoberman-utern/30min'
+// The one booking link for the whole site. TODO(Spencer): swap in a Sparktech-branded Calendly slug here.
+export const BOOKING_URL = 'https://calendly.com/spencerhoberman-utern/30min'
 export const year = new Date().getFullYear()
 
 const portfolio = [

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useLoop } from './useLoop'
-import { CALENDLY } from './content.jsx'
+import { BOOKING_URL } from './content.jsx'
 import Footer from './Footer.jsx'
 import WorkTiles from './WorkTiles.jsx'
 import './buttons.css'
@@ -108,7 +108,7 @@ export default function Form() {
         <h1>We Build the Things Other People Only <em>Talk About.</em></h1>
         <p>A New York product studio for custom app and web development. We create the future, then keep making it better.</p>
         <div className="fm-hero-actions">
-          <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+          <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href="#work">See what we’ve built</a>
         </div>
       </div>

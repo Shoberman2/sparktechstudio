@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useLoop } from './useLoop'
-import { companies, caseStudies, EMAIL, CALENDLY, year } from './content.jsx'
+import { companies, caseStudies, EMAIL, BOOKING_URL, year } from './content.jsx'
 import './buttons.css'
 import './Company.css'
 
@@ -203,13 +203,13 @@ export default function Company({ slug }) {
     </section>}
     <section className="co-ask">
       <p>Want something like this?</p>
-      <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+      <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
     </section>
     </main>
     <a className="co-next" href={`/work/${next.slug}`}><span>Next project</span><strong>{next.name} <span aria-hidden="true">→</span></strong></a>
     <nav className="co-others" aria-label="More work">
       {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
-    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} Sparktech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
+    <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} Sparktech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
   </div>
 }

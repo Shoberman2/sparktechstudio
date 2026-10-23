@@ -1,4 +1,4 @@
-import { EMAIL, CALENDLY, year } from './content.jsx'
+import { EMAIL, BOOKING_URL, year } from './content.jsx'
 import './buttons.css'
 import './NotFound.css'
 
@@ -18,7 +18,7 @@ export default function Privacy() {
       <p>The site is hosted on Vercel, which keeps standard server logs. Fonts load from Google Fonts.</p>
       <h2>Deleting your data</h2>
       <p><a href={`mailto:${EMAIL}`}>Email us</a> and we will delete what we hold.</p>
-      <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a></div>
+      <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a></div>
     </main>
     <footer className="nf-foot">© {year} Sparktech Studios, Inc.</footer>
   </div>

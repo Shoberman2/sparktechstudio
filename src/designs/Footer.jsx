@@ -1,4 +1,4 @@
-import { built, EMAIL, CALENDLY, year } from './content.jsx'
+import { built, EMAIL, BOOKING_URL, year } from './content.jsx'
 import './buttons.css'
 import './Footer.css'
 
@@ -11,7 +11,7 @@ export default function Footer({ cta = true }) {
       <div>
         <p>Tell us. Book a call, or send us an email and we reply within two business days. The first call is a real conversation, not a pitch.</p>
         <div className="ft-actions">
-          <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+          <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href={`mailto:${EMAIL}`}>Email us</a>
         </div>
       </div>
@@ -23,7 +23,7 @@ export default function Footer({ cta = true }) {
       </div>
       <nav aria-label="Studio"><p className="ft-h">Studio</p><a href="/services">Services</a><a href="/systems">System</a><a href="/#work">What we’ve built</a><a href="#contact">Contact</a></nav>
       <nav aria-label="Work"><p className="ft-h">Work</p>{built.map(b => <a key={b.slug} href={b.url}>{b.name}</a>)}</nav>
-      <nav aria-label="Contact"><p className="ft-h">Contact</p><a href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
+      <nav aria-label="Contact"><p className="ft-h">Contact</p><a href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
     </div>
     <div className="ft-bottom"><span>© {year} Sparktech Studios, Inc.</span><span><a href="/privacy">Privacy</a> · New York</span></div>
   </footer>

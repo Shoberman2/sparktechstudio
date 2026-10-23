@@ -1,4 +1,4 @@
-import { CALENDLY, EMAIL } from './content.jsx'
+import { BOOKING_URL, EMAIL } from './content.jsx'
 import Footer from './Footer.jsx'
 import WorkTiles from './WorkTiles.jsx'
 import './buttons.css'
@@ -36,7 +36,7 @@ export default function Services() {
         <h1>Custom app and web development for startups and <em>small businesses</em></h1>
         <p className="sy-lede">Sparktech Studios is a product studio in New York. We design, build, and launch web apps, mobile apps, and websites, then keep making them better after launch.</p>
         <div className="sv-actions">
-          <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+          <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href="#work">See our work</a>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function Services() {
       <section className="sv-block sv-ask" id="contact" aria-labelledby="ask-title">
         <h2 id="ask-title">Have something that should <em>exist?</em></h2>
         <div className="sv-actions">
-          <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+          <a className="btn" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href={`mailto:${EMAIL}`}>Email us</a>
         </div>
       </section>
