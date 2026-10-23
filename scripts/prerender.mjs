@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url'
 
 const dist = resolve('dist')
 const { render } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
-const { routes, canonical, SITE: site } = await import(pathToFileURL(resolve('dist-ssr/seo.js')).href)
+const { routes, canonical, jsonld, SITE: site } = await import(pathToFileURL(resolve('dist-ssr/seo.js')).href)
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
@@ -21,6 +21,9 @@ for (const r of routes()) {
   page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
   page = page.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
   if (r.image) page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${site}${r.image}$2`)
+  // One JSON-LD @graph per page; '<' is escaped so the JSON can never close the script tag
+  const ld = JSON.stringify(jsonld(r.path)).replace(/</g, '\\u003c')
+  page = page.replace(/(<script type="application\/ld\+json">)[\s\S]*?(<\/script>)/, (_, open, close) => open + ld + close)
   if (r.noindex) page = page.replace('</head>', '  <meta name="robots" content="noindex" />\n  </head>')
   if (r.path === '/') writeFileSync(resolve(dist, 'index.html'), page)
   else if (r.path === '/404') writeFileSync(resolve(dist, '404.html'), page)
