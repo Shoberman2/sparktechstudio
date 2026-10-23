@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "sparktechstudio.com" }], "destination": "https://www.sparktechstudio.com/:path*", "permanent": true }
+  ],
   "headers": [
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
     { "source": "/work/(.*)\\.(webp|png|jpg|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
