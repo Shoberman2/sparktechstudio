@@ -15,7 +15,7 @@ export default function Privacy() {
       <h2>What we do with it</h2>
       <p>We use it to reply and to talk about your project. We don’t sell it, rent it, or add you to a mailing list.</p>
       <h2>Hosting</h2>
-      <p>The site is hosted on Vercel, which keeps standard server logs. Fonts load from Google Fonts.</p>
+      <p>The site is hosted on Vercel, which keeps standard server logs. Fonts are served from this site; nothing loads from Google.</p>
       <h2>Deleting your data</h2>
       <p><a href={`mailto:${EMAIL}`}>Email us</a> and we will delete what we hold.</p>
       <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" href={BOOKING_URL} target="_blank" rel="noreferrer">Book a call</a></div>

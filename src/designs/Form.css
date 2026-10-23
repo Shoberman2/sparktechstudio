@@ -55,6 +55,7 @@
 .fm-tiles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
 .fm-tile { position:relative; display:flex; flex-direction:column; justify-content:flex-end; min-height:420px; padding:32px; border-radius:28px; overflow:hidden; color:#fff; isolation:isolate; transition:transform .6s cubic-bezier(.16,1,.3,1); }
 .fm-tile:hover { transform:translateY(-4px); color:#fff; }
+.fm-tile img { height:auto; }
 .fm-tile img,.fm-tile-dots { position:absolute; pointer-events:none; transition:transform .8s cubic-bezier(.16,1,.3,1); }
 .fm-tile:hover img,.fm-tile:hover .fm-tile-dots { transform:translateY(-6px) scale(1.03); }
 .fm-tile-text { position:relative; display:block; }

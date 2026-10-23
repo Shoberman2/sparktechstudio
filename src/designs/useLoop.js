@@ -29,10 +29,14 @@ export function useLoop(ref, setup, { gl = false } = {}) {
     const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; cancelAnimationFrame(raf); if (visible) raf = requestAnimationFrame(t => frame(t)) })
     const vis = () => { cancelAnimationFrame(raf); if (!document.hidden && visible) raf = requestAnimationFrame(t => frame(t)) }
     const ro = new ResizeObserver(size)
-    ro.observe(canvas); io.observe(canvas)
-    addEventListener('pointermove', move, { passive: true })
-    document.addEventListener('visibilitychange', vis)
-    size()
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); removeEventListener('pointermove', move); document.removeEventListener('visibilitychange', vis) }
+    // Start once the first paint is done and the main thread is free, so the canvas never competes with the page's own render
+    const begin = () => {
+      ro.observe(canvas); io.observe(canvas)
+      addEventListener('pointermove', move, { passive: true })
+      document.addEventListener('visibilitychange', vis)
+      size()
+    }
+    const idle = window.requestIdleCallback ? requestIdleCallback(begin, { timeout: 600 }) : setTimeout(begin, 200)
+    return () => { (window.cancelIdleCallback || clearTimeout)(idle); cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); removeEventListener('pointermove', move); document.removeEventListener('visibilitychange', vis) }
   }, [ref, setup, gl])
 }
