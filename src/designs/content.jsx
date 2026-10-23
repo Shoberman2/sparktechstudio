@@ -7,6 +7,8 @@ export const year = new Date().getFullYear()
 export const companies = [
   {
     slug: 'utern', name: 'UTern', host: 'utern.ai', url: 'https://utern.ai', line: 'Your AI for landing an internship.',
+    seo: { title: 'UTern: AI Internship App Case Study | Sparktech Studios', description: 'How Sparktech Studios built UTern, an AI app (Birdee) that matches students with real internships and brings companies students who fit the role.' },
+    buildType: 'AI web app',
     theme: { '--c-bg': '#0d1420', '--c-accent': '#f0a24a', '--c-scrim': 'linear-gradient(90deg, rgba(8,14,24,.1) 0%, rgba(8,14,24,.35) 40%, rgba(8,14,24,.82) 75%, rgba(8,14,24,.88) 100%)' },
     bg: '/work/utern/mountain.webp', bgMobile: '/work/utern/mountain-mobile.webp', figure: '/work/utern/birdee.webp', figureAlt: 'Birdee, UTern’s AI',
     kicker: 'Your AI for landing an internship',
@@ -28,6 +30,8 @@ export const companies = [
   },
   {
     slug: 'leed', name: 'Leed', host: 'leed.media', url: 'https://www.leed.media', line: 'Every tip, read and kept safe.',
+    seo: { title: 'Leed: Newsroom Tip Management App Case Study | Sparktech Studios', description: 'Leed reads, sorts, and secures every tip a newsroom receives. A product built by Sparktech Studios, a New York product studio.' },
+    buildType: 'AI web app for newsrooms',
     theme: { '--c-bg': '#0b0b09', '--c-accent': '#e9e4d6', '--c-mute': 'rgba(240,236,226,.6)' },
     bg: '/work/leed/newsrooms.webp', figure: '/work/leed/sherlock.svg', figureAlt: 'Sherlock, Leed’s desk agent', figureClass: 'is-sherlock',
     kicker: 'A private story-intelligence desk for newsrooms',
@@ -47,6 +51,8 @@ export const companies = [
   },
   {
     slug: 'ballotwatch', name: 'BallotWatch', host: 'ballotwatch.io', url: 'https://www.ballotwatch.io', line: 'How Congress votes, in plain English.',
+    seo: { title: 'BallotWatch: Congressional Vote Tracker Case Study | Sparktech Studios', description: 'BallotWatch shows how Congress votes in plain English, with every fact linked to its official source. Built by Sparktech Studios in NYC.' },
+    buildType: 'Web app and public API',
     theme: { '--c-bg': '#0c1626', '--c-accent': '#c9a85c', '--c-scrim': 'linear-gradient(90deg, rgba(9,18,34,.9) 0%, rgba(9,18,34,.55) 50%, rgba(9,18,34,.75) 100%)' },
     bg: '/work/ballotwatch/hero-capitol.jpg', figure: '/work/ballotwatch/capitol-logo.svg', figureAlt: 'BallotWatch capitol mark', figureClass: 'is-mark',
     kicker: 'How did your representative vote this week?',
@@ -67,6 +73,8 @@ export const companies = [
   },
   {
     slug: 'spacial', name: 'Spacial Health', host: 'Platform preview', url: null, line: 'Complex care, finally coordinated.',
+    seo: { title: 'Spacial Health: Care Coordination App Case Study | Sparktech Studios', description: 'Spacial Health coordinates complex care around the whole person. A health product designed and built by Sparktech Studios, New York.' },
+    buildType: 'Health platform preview',
     theme: { '--c-bg': '#243b73', '--c-accent': '#c9bdff', '--c-scrim': 'linear-gradient(90deg, rgba(36,59,115,.94) 0%, rgba(36,59,115,.84) 55%, rgba(36,59,115,.92) 100%)' },
     bg: '/work/spacial/ink-threads.jpg', figure: 'spacial-mark', figureAlt: 'Spacial Health mark', figureClass: 'is-mark',
     kicker: 'Complex care, finally coordinated',
@@ -89,6 +97,8 @@ export const companies = [
   },
   {
     slug: 'budtender', name: 'Budtender', host: 'Private preview', url: null, line: 'Know what you like. Remember why.',
+    seo: { title: 'Budtender with High Times: Cannabis App Case Study | Sparktech Studios', description: 'Budtender, built with High Times: rank what you try, see what friends love, and ask Budzy what’s next. Designed and built by Sparktech Studios, NYC.' },
+    buildType: 'AI consumer app',
     theme: { '--c-bg': '#0f2a1d', '--c-accent': '#f28322', '--c-mute': 'rgba(236,244,238,.66)', '--c-scrim': 'radial-gradient(120% 90% at 25% 50%, rgba(66,140,96,.0) 0%, rgba(10,32,21,.35) 60%, rgba(8,26,17,.85) 100%)' },
     bg: null, bgCss: 'radial-gradient(90% 80% at 28% 52%, #4f9e6f 0%, #2a6b47 38%, #143b27 72%, #0b2418 100%)', figure: '/work/budtender/budzy-phone.webp', figureAlt: 'Budzy on a phone', figureClass: 'is-phone',
     kicker: 'Meet Budzy. He remembers.',

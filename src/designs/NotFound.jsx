@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
 import { built, CALENDLY, year } from './content.jsx'
 import './buttons.css'
 import './NotFound.css'
 
 // Served for any route that is not the home page or a known company page; the build also writes it as 404.html.
 export default function NotFound() {
-  useEffect(() => { document.title = 'Not here | Sparktech Studios' }, [])
   return <div className="nf">
     <header className="nf-nav"><a href="/" className="nf-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a></header>
     <main id="main" className="nf-main">

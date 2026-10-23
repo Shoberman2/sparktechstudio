@@ -115,7 +115,7 @@ export default function Form() {
     <section className="fm-hero">
       <div className="fm-copy">
         <h1>We Build the Things Other People Only <em>Talk About.</em></h1>
-        <p>An independent studio in New York. We create the future, then keep making it better.</p>
+        <p>A New York product studio for custom app and web development. We create the future, then keep making it better.</p>
         <div className="fm-hero-actions">
           <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
           <a className="btn btn-ghost" href="#work">See what we’ve built</a>

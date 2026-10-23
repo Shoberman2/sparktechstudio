@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
 import { EMAIL, CALENDLY, year } from './content.jsx'
 import './buttons.css'
 import './NotFound.css'
 
 // What this site actually does with data, and nothing more. Update if analytics, a form, or any third party is added.
 export default function Privacy() {
-  useEffect(() => { document.title = 'Privacy | Sparktech Studios' }, [])
   return <div className="nf">
     <header className="nf-nav"><a href="/" className="nf-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a></header>
     <main id="main" className="nf-main nf-prose">

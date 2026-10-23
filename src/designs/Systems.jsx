@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Footer from './Footer.jsx'
 import './buttons.css'
 import './Systems.css'
@@ -42,7 +41,6 @@ function Ring() {
 }
 
 export default function Systems() {
-  useEffect(() => { document.title = 'System | Sparktech Studios' }, [])
   return <div className="sy">
     <header className="sy-nav">
       <a href="/" className="sy-mark"><img src="/logo.svg" width="18" height="18" alt="" />Sparktech Studios</a>

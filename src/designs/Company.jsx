@@ -136,7 +136,6 @@ const visuals = { climb: Climb, signals: Signals, assemble: Assemble }
 
 export default function Company({ slug }) {
   const c = companies.find(x => x.slug === slug)
-  useEffect(() => { if (c) document.title = `${c.name} | Sparktech Studios` }, [c])
   useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [slug])
   if (!c) return <main className="co-page co-missing"><a href="/">Back</a></main>
   const Visual = visuals[c.visual]
@@ -156,6 +155,7 @@ export default function Company({ slug }) {
       <div className="co-copy">
         <p className="co-kicker">{c.kicker}</p>
         <h1>{c.name}</h1>
+        {c.buildType && <p className="co-type">{c.buildType}</p>}
         <p className="co-value">{c.value}</p>
         <p className="co-line">{c.lede}</p>
       </div>

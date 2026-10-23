@@ -6,30 +6,18 @@ import { pathToFileURL } from 'node:url'
 
 const dist = resolve('dist')
 const { render } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
-const { companies } = await import(pathToFileURL(resolve('dist-ssr/content.js')).href).catch(() => ({ companies: null }))
+const { routes, canonical, SITE: site } = await import(pathToFileURL(resolve('dist-ssr/seo.js')).href)
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
-const site = 'https://www.sparktechstudio.com'
-const routes = [
-  { path: '/', title: 'Sparktech Studios | We Build the Things Other People Only Talk About', description: 'An independent studio in New York. We build the things other people only talk about, then keep making them better.' },
-]
-for (const c of companies || []) {
-  const lede = String(c.lede || '').replace(/\s+/g, ' ')
-  routes.push({ path: `/work/${c.slug}`, title: `${c.name} | Sparktech Studios`, description: `${c.line} ${lede}`.slice(0, 155).replace(/\s\S*$/, '') + (lede.length > 120 ? '.' : ''), image: `/work/${c.slug}/og.jpg` })
-}
-routes.push({ path: '/systems', title: 'System | Sparktech Studios', description: 'Software that keeps getting better. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
-routes.push({ path: '/privacy', title: 'Privacy | Sparktech Studios', description: 'No analytics, no ads, no tracking. What this site does with what you send.' })
-routes.push({ path: '/404', title: 'Not here | Sparktech Studios', description: 'That page is not here. Back to the studio.', noindex: true })
-
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
-for (const r of routes) {
+for (const r of routes()) {
   const html = render(r.path)
   let page = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`)
   page = page.replace(/<title>[^<]*<\/title>/, `<title>${esc(r.title)}</title>`)
   page = page.replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(r.description)}$2`)
   page = page.replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${esc(r.title)}$2`)
   page = page.replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(r.description)}$2`)
-  const url = `${site}${r.path === '/' ? '/' : r.path}`
+  const url = canonical(r.path)
   page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
   page = page.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
   if (r.image) page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${site}${r.image}$2`)
@@ -46,5 +34,5 @@ for (const r of routes) {
 }
 
 // sitemap from the same route list
-writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.filter(r => !r.noindex).map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc></url>`).join('\n')}\n</urlset>\n`)
+writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes().filter(r => !r.noindex).map(r => `  <url><loc>${canonical(r.path)}</loc></url>`).join('\n')}\n</urlset>\n`)
 rmSync(resolve('dist-ssr'), { recursive: true, force: true })
