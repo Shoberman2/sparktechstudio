@@ -1,0 +1,11 @@
+{
+  "company_id": "sparktech-fixture",
+  "outcome_id": "896d2284-73be-4aac-8d16-8827e3887247",
+  "lesson": "This controlled repair reduced one-click error from 1 to 0 and remained correct after local release.",
+  "source": {
+    "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/measurement.json",
+    "sha256": "b11f75dcc13240840076acd1461deb91355c62bb1bab942fbbeda4e0e6f08d9b"
+  },
+  "disclosure_approved": false,
+  "scope": "bounded fixture finding; not universal fact"
+}

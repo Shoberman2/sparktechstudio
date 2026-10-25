@@ -1,0 +1,67 @@
+[
+  {
+    "id": "product_doc-20260913",
+    "company_id": "utern",
+    "kind": "product_doc",
+    "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+    "recorded_at": "2026-09-13T08:46:42.060023+00:00",
+    "valid_until": "2026-09-13T10:46:42.060028+00:00",
+    "source": {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/PRODUCT_WORKFLOW_BRIEF.md",
+      "sha256": "51a9a24d999c5243365e988993c85b0c2a99a35f2e38be65f77395cf62dde6a4"
+    },
+    "constraints": {
+      "internal_flow": "needs/preferences/evidence, explained fit/gaps, learning, mutual consent and human selection",
+      "external_apply": "separate journey; human final Submit"
+    }
+  },
+  {
+    "id": "decision-20260913",
+    "company_id": "utern",
+    "kind": "decision",
+    "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+    "recorded_at": "2026-09-13T08:46:42.060133+00:00",
+    "valid_until": "2026-09-13T10:46:42.060136+00:00",
+    "source": {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/decisions.md",
+      "sha256": "5c65097f05242587513090e4db050e34b9e95e7ee6d949e19756a0bf46a057d8"
+    },
+    "constraints": {
+      "release_owner": "01a0877c-9b5d-7a91-bae6-873969d508ca",
+      "cross_company_sharing": "disclosure review required"
+    }
+  },
+  {
+    "id": "current_work-20260913",
+    "company_id": "utern",
+    "kind": "current_work",
+    "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+    "recorded_at": "2026-09-13T08:46:42.060206+00:00",
+    "valid_until": "2026-09-13T10:46:42.060209+00:00",
+    "source": {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/current-work.md",
+      "sha256": "87352c5a18e146b7aec63abf554e274d2986e8000fbd85d82875d8086b77cc5f"
+    },
+    "constraints": {
+      "candidate": "58b53b23; not deployed",
+      "open_dependencies": "authentication, controlled participants and calendar/receiving access"
+    }
+  },
+  {
+    "id": "explicit_instruction-20260913",
+    "company_id": "utern",
+    "kind": "explicit_instruction",
+    "reviewed_by": "Spark implementation task: operator-reviewed mapping",
+    "recorded_at": "2026-09-13T08:46:42.060274+00:00",
+    "valid_until": "2026-09-13T10:46:42.060276+00:00",
+    "source": {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    "constraints": {
+      "scope": "complete existing relationship system",
+      "context_required": "prior docs, conversations, decisions, current work; reconcile latest instructions",
+      "browser_owner": "01a0877c-9b5d-7a91-bae6-873969d508ca"
+    }
+  }
+]

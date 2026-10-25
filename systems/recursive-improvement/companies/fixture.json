@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "company_id": "sparktech-fixture",
+  "display_name": "SparkTech controlled fixture",
+  "relationship": "internal-fixture",
+  "enabled": true,
+  "goal": "One Add one click increments the counter by exactly one.",
+  "source": "../fixtures/counter",
+  "source_files": ["index.html"],
+  "editable_files": ["index.html"],
+  "permissions": {"browser": true, "implement": true, "local_release": true},
+  "budgets": {"max_commands": 8, "max_seconds": 120, "command_seconds": 25, "max_output_bytes": 262144},
+  "worker_kind": "deterministic-fixture-repair",
+  "commands": {
+    "probe": ["node", "{system}/adapters/browser.cjs"],
+    "worker": ["python3", "{system}/adapters/fixture_worker.py"],
+    "test": ["python3", "{system}/adapters/fixture_test.py"]
+  },
+  "environment": {},
+  "secret_env": []
+}

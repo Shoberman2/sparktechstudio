@@ -1,0 +1,1 @@
+Operator record of user authorization relayed by origin task: finish a bounded local observation, diagnosis, isolated repair, tests, local release, measurement, retain or owned rollback, and recorded lesson. Reuse existing code and context. No production deployment or company-success claim. Routine user updates muted.

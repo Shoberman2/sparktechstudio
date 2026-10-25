@@ -1,0 +1,2 @@
+# Decisions retained
+A STOP from either relationship participant pauses assisted booking and messages; it does not establish calendar consent or cancel existing events. Cancellation and decline remain possible. Provider reachability, local model response, automated tests, authenticated user journeys and exact production releases are separate evidence classes. No private company lessons are automatically shared. Release operations belong to the designated audit owner; repair coordination precedes overlapping edits.

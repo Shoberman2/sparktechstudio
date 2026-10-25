@@ -1,0 +1,14 @@
+{
+  "scope": "existing-local-credential",
+  "captured_at": "2026-09-13T08:36:39.157Z",
+  "model": "gemini-3.8-flash",
+  "customer_data": false,
+  "max_output_tokens": 512,
+  "http_status": 200,
+  "status": "passed",
+  "synthetic_response": "OK",
+  "finish_reason": "STOP",
+  "provider_error_code": null,
+  "production_generation_verified": false,
+  "latency_ms": 949
+}

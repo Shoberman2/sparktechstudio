@@ -1,0 +1,53 @@
+{
+  "demonstration": "authored knowledge + deterministic repair + real browser QA",
+  "database": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/knowledge/.integrated-runs/integrated-5eb9d8b687/knowledge.db",
+  "source_id": "cb8b275c-a7f6-412a-80ae-7c6826b90dda",
+  "claim_id": "3cf83109-0ce3-440f-8bac-8747020f1943",
+  "proposal_id": "42786034-63a9-4b3d-ab0d-2f77e9696bfe",
+  "knowledge_review_id": "b95b9db2-c6b1-4c7d-857c-b55bcbdb70c5",
+  "rejected_without_execution_approval": "distinct explicit execution approval required",
+  "observed": {
+    "discover": "2",
+    "reproduce": "2",
+    "verify": "1"
+  },
+  "approval_id": "21e3c1f7-f6cc-45d7-9ec3-07c5dd41e9a2",
+  "attempt_id": "ad730266-efb5-43b3-b94b-c6b770961c2c",
+  "runner": {
+    "schema_version": 1,
+    "run_id": "20260910T223601-375c5a3b0a",
+    "company_id": "sparktech-fixture",
+    "status": "awaiting_release",
+    "commands_used": 5,
+    "worker_kind": "deterministic-fixture-repair",
+    "started_at": 1789094161.4839401,
+    "release_requested": false,
+    "updated_at": 1789094164.614072,
+    "changed_files": [
+      "index.html"
+    ],
+    "candidate_digest": "78dea8c3c789aa613c417e97299bd092cb452b48d8fae8cffa87f7c0ee3437a1",
+    "reason": "Verified candidate retained. Only an explicitly permitted local fixture release is supported.",
+    "elapsed_seconds": 3.132,
+    "run_path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/knowledge/.integrated-runs/integrated-5eb9d8b687/runs/sparktech-fixture/20260910T223601-375c5a3b0a"
+  },
+  "outcome": {
+    "proposal_id": "42786034-63a9-4b3d-ab0d-2f77e9696bfe",
+    "result": "supported",
+    "evidence_uri": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/knowledge/.integrated-runs/integrated-5eb9d8b687/runs/sparktech-fixture/20260910T223601-375c5a3b0a/evidence-manifest.json",
+    "observation": "Controlled counter QA runner returned awaiting_release; observations={\"discover\": \"2\", \"reproduce\": \"2\", \"verify\": \"1\"}; current review unchanged=True.",
+    "limitations": "Authored source and deterministic repair. Real browser verification of this fixture only; no AI extraction, AI repair, podcast retrieval, business effect, or production release.",
+    "run_id": "20260910T223601-375c5a3b0a",
+    "candidate_digest": "78dea8c3c789aa613c417e97299bd092cb452b48d8fae8cffa87f7c0ee3437a1",
+    "execution_approval_id": "21e3c1f7-f6cc-45d7-9ec3-07c5dd41e9a2",
+    "knowledge_health": {
+      "usable": true,
+      "reasons": []
+    },
+    "epistemic_status": "operator_reported_measurement",
+    "id": "bb6fbd7f-dab8-4cc2-8ed7-3b001ee9a894",
+    "kind": "outcome",
+    "tenant": "sparktech-fixture",
+    "recorded_at": "2026-09-11T02:36:04.619346+00:00"
+  }
+}

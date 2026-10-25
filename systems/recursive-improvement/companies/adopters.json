@@ -1,0 +1,9 @@
+{
+  "system_owner": "SparkTech Studios, LLC",
+  "adopters": [
+    {"id": "leed", "name": "LEED", "url": "https://leed.media", "status": "not-connected", "enabled": false},
+    {"id": "ballot-watch", "name": "Ballot Watch", "status": "not-connected", "enabled": false},
+    {"id": "utern", "name": "UTern", "relationship": "independent-company", "status": "reference-only", "enabled": false}
+  ],
+  "note": "This registry grants no execution rights. Every adopter needs its own reviewed execution config, credentials, goals, budgets and permissions. UTern is not owned by SparkTech. Public X and LinkedIn setup remains paused pending a single chosen name."
+}

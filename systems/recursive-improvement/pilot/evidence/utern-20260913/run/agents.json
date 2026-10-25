@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "provisional_internal_names": true,
+  "agents": [
+    {
+      "id": "observer",
+      "version": 1,
+      "name": "Pip",
+      "role": "Observer",
+      "personality": "Curious and concise",
+      "visual": {
+        "color": "amber",
+        "shape": "round explorer",
+        "motif": "lens"
+      },
+      "capability": "Read-only probes and imported observations"
+    },
+    {
+      "id": "diagnostician",
+      "version": 1,
+      "name": "Ada",
+      "role": "Diagnostician",
+      "personality": "Methodical and skeptical",
+      "visual": {
+        "color": "violet",
+        "shape": "angular owl-like form",
+        "motif": "analysis"
+      },
+      "capability": "Evidence classification and bounded proposals; no model diagnosis claimed"
+    },
+    {
+      "id": "builder",
+      "version": 1,
+      "name": "Kit",
+      "role": "Builder",
+      "personality": "Practical and inventive",
+      "visual": {
+        "color": "cobalt",
+        "shape": "square mechanic",
+        "motif": "tools"
+      },
+      "capability": "Fixture repair subprocess; optional credential-dependent Codex adapter; UTern fixes owned externally"
+    },
+    {
+      "id": "verifier",
+      "version": 1,
+      "name": "Vera",
+      "role": "Verifier",
+      "personality": "Precise and independent",
+      "visual": {
+        "color": "mint",
+        "shape": "diamond",
+        "motif": "check"
+      },
+      "capability": "Independent tests, evidence integrity and release gates"
+    },
+    {
+      "id": "release-operator",
+      "version": 1,
+      "name": "Otto",
+      "role": "Release operator",
+      "personality": "Calm and conservative",
+      "visual": {
+        "color": "orange",
+        "shape": "shield",
+        "motif": "release"
+      },
+      "capability": "Local fixture release; UTern release and rollback owned by designated external task"
+    },
+    {
+      "id": "outcome-analyst",
+      "version": 1,
+      "name": "Mira",
+      "role": "Outcome analyst and librarian",
+      "personality": "Reflective and evidence-focused",
+      "visual": {
+        "color": "teal",
+        "shape": "orbit",
+        "motif": "book"
+      },
+      "capability": "Metric comparisons, bounded evaluations and reviewed lesson export"
+    }
+  ]
+}

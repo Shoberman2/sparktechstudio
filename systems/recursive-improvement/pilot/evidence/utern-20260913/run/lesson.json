@@ -1,0 +1,70 @@
+{
+  "company_id": "utern",
+  "run_id": "run",
+  "decision": "awaiting_candidate_identity",
+  "source_evidence": [
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-catalog-1.json",
+      "sha256": "9f60919a81b2458987a731a4f34e438361191b51caa4bb0b65b9e3f2aec3fab6"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-catalog-1.json",
+      "sha256": "9f60919a81b2458987a731a4f34e438361191b51caa4bb0b65b9e3f2aec3fab6"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-mcp-2.json",
+      "sha256": "4d6912065f7446bc72e121d5a334a3435ef13f9bd986dee94fc8707b9977c5e0"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/probe-auth-reachability-3.json",
+      "sha256": "33ff8a653d0e135625e1807129b660191479d9f435ba010836be07afd5b520a1"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/owner-release-report.md",
+      "sha256": "e1bbd744e77bf70c0d61029f6e5ff8a31d391bd98958cf29e09d1575b1a03368"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/local-model-probe.json",
+      "sha256": "6d7f8afd18f4c3feb435670ebc7bd0c9e826eb458b9215ae452c1d7875e0aefa"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    },
+    {
+      "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/evidence/utern-20260913/latest-instructions.md",
+      "sha256": "1ad860a662bb11ec746b2d2b603b943aee91b155a7e67dcd03002cfee5e41fb5"
+    }
+  ],
+  "proposed_general_lesson": "Keep service reachability, authenticated journeys and release verification as separate gates.",
+  "disclosure_approved": false,
+  "epistemic_status": "bounded pilot evaluation; not universal fact"
+}

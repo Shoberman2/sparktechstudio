@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "node",
+    "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"
+  ],
+  "exit_code": 10,
+  "duration_seconds": 9.686,
+  "error": null
+}

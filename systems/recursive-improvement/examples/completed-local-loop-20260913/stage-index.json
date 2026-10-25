@@ -1,0 +1,172 @@
+[
+  {
+    "stage": "retrieve_context",
+    "actor": {
+      "id": "observer",
+      "version": 1,
+      "name": "Pip",
+      "role": "Observer",
+      "personality": "Curious and concise",
+      "visual": {
+        "color": "amber",
+        "shape": "round explorer",
+        "motif": "lens"
+      },
+      "capability": "Read-only probes and imported observations"
+    },
+    "evidence": "context.json"
+  },
+  {
+    "stage": "observe",
+    "actor": {
+      "id": "observer",
+      "version": 1,
+      "name": "Pip",
+      "role": "Observer",
+      "personality": "Curious and concise",
+      "visual": {
+        "color": "amber",
+        "shape": "round explorer",
+        "motif": "lens"
+      },
+      "capability": "Read-only probes and imported observations"
+    },
+    "evidence": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/cycles/sparktech-fixture/20260913T140237-d6c446f333/evidence/discover/result.json"
+  },
+  {
+    "stage": "diagnose",
+    "actor": {
+      "id": "diagnostician",
+      "version": 1,
+      "name": "Ada",
+      "role": "Diagnostician",
+      "personality": "Methodical and skeptical",
+      "visual": {
+        "color": "violet",
+        "shape": "angular owl-like form",
+        "motif": "analysis"
+      },
+      "capability": "Evidence classification and bounded proposals; no model diagnosis claimed"
+    },
+    "evidence": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/cycles/sparktech-fixture/20260913T140237-d6c446f333/evidence/reproduce/result.json"
+  },
+  {
+    "stage": "propose",
+    "actor": {
+      "id": "diagnostician",
+      "version": 1,
+      "name": "Ada",
+      "role": "Diagnostician",
+      "personality": "Methodical and skeptical",
+      "visual": {
+        "color": "violet",
+        "shape": "angular owl-like form",
+        "motif": "analysis"
+      },
+      "capability": "Evidence classification and bounded proposals; no model diagnosis claimed"
+    },
+    "evidence": "knowledge-records.json"
+  },
+  {
+    "stage": "implement",
+    "actor": {
+      "id": "builder",
+      "version": 1,
+      "name": "Kit",
+      "role": "Builder",
+      "personality": "Practical and inventive",
+      "visual": {
+        "color": "cobalt",
+        "shape": "square mechanic",
+        "motif": "tools"
+      },
+      "capability": "Fixture repair subprocess; optional credential-dependent Codex adapter; UTern fixes owned externally"
+    },
+    "evidence": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/cycles/sparktech-fixture/20260913T140237-d6c446f333/changes.patch"
+  },
+  {
+    "stage": "test",
+    "actor": {
+      "id": "verifier",
+      "version": 1,
+      "name": "Vera",
+      "role": "Verifier",
+      "personality": "Precise and independent",
+      "visual": {
+        "color": "mint",
+        "shape": "diamond",
+        "motif": "check"
+      },
+      "capability": "Independent tests, evidence integrity and release gates"
+    },
+    "evidence": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/cycles/sparktech-fixture/20260913T140237-d6c446f333/evidence/test/command.json"
+  },
+  {
+    "stage": "deploy",
+    "actor": {
+      "id": "release-operator",
+      "version": 1,
+      "name": "Otto",
+      "role": "Release operator",
+      "personality": "Calm and conservative",
+      "visual": {
+        "color": "orange",
+        "shape": "shield",
+        "motif": "release"
+      },
+      "capability": "Local fixture release; UTern release and rollback owned by designated external task"
+    },
+    "evidence": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/cycles/sparktech-fixture/current.json"
+  },
+  {
+    "stage": "measure",
+    "actor": {
+      "id": "outcome-analyst",
+      "version": 1,
+      "name": "Mira",
+      "role": "Outcome analyst and librarian",
+      "personality": "Reflective and evidence-focused",
+      "visual": {
+        "color": "teal",
+        "shape": "orbit",
+        "motif": "book"
+      },
+      "capability": "Metric comparisons, bounded evaluations and reviewed lesson export"
+    },
+    "evidence": "measurement.json"
+  },
+  {
+    "stage": "retain",
+    "actor": {
+      "id": "outcome-analyst",
+      "version": 1,
+      "name": "Mira",
+      "role": "Outcome analyst and librarian",
+      "personality": "Reflective and evidence-focused",
+      "visual": {
+        "color": "teal",
+        "shape": "orbit",
+        "motif": "book"
+      },
+      "capability": "Metric comparisons, bounded evaluations and reviewed lesson export"
+    },
+    "evidence": "measurement.json"
+  },
+  {
+    "stage": "learn",
+    "actor": {
+      "id": "outcome-analyst",
+      "version": 1,
+      "name": "Mira",
+      "role": "Outcome analyst and librarian",
+      "personality": "Reflective and evidence-focused",
+      "visual": {
+        "color": "teal",
+        "shape": "orbit",
+        "motif": "book"
+      },
+      "capability": "Metric comparisons, bounded evaluations and reviewed lesson export"
+    },
+    "evidence": "lesson.json"
+  }
+]

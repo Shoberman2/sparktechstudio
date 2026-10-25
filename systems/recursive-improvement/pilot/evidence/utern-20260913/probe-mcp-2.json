@@ -1,0 +1,8 @@
+{
+  "url": "https://utern.ai/api/mcp/health",
+  "captured_at": "2026-09-13T08:25:18.761689+00:00",
+  "http_status": 200,
+  "latency_ms": 176.99,
+  "available": null,
+  "oversize": false
+}

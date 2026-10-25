@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "fingerprint": null,
+  "expected": "1",
+  "actual": "1",
+  "errors": [],
+  "steps": [
+    "Open isolated loopback fixture",
+    "Click Add one once",
+    "Read counter"
+  ],
+  "source_sha256": "95b24f1c3b12a2f2b45f79d40f52f7235659314f6f7fcaaabf0e021428857fc1",
+  "artifacts": [
+    "page.png",
+    "trace.zip"
+  ],
+  "engine": "playwright-chromium"
+}

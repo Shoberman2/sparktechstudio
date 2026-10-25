@@ -1,0 +1,11 @@
+--- before/index.html
++++ after/index.html
+@@ -9,7 +9,7 @@
+ <script>
+ let count = 0;
+ document.querySelector('#increment').onclick = () => {
+-  count += 2;
++  count += 1;
+   document.querySelector('#count').textContent = count;
+ };
+ </script>

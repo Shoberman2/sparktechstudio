@@ -1,0 +1,14 @@
+{
+  "company_id": "utern",
+  "base_url": "https://utern.ai",
+  "display_identity": "UTern relationship assistant (public name pending)",
+  "actors": {},
+  "enabled_operations": [
+    "workspace",
+    "membership"
+  ],
+  "max_actions": 12,
+  "request_timeout_seconds": 20,
+  "note": "Populate only authorized test account IDs, bearer environment names, resource IDs and capability-token environment names. Audience descriptions are not recipient authorization. No live mutations enabled.",
+  "context_records": []
+}
