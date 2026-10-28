@@ -1,0 +1,65 @@
+/* Service, industry, location and hub pages. Inherits .fm (Form.css) for palette, type and the nav; adds one column of ruled sections. */
+.pg-head { padding:clamp(140px,22vh,220px) clamp(16px,4vw,48px) clamp(64px,10vh,110px); max-width:1240px; }
+.pg h1 { font-size:clamp(46px,7vw,120px); line-height:.92; letter-spacing:-.06em; animation:none; max-width:14ch; }
+.pg-lede { margin:32px 0 0; max-width:46ch; font-size:clamp(18px,1.5vw,22px); line-height:1.5; color:#55555c; }
+.pg-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:40px; }
+
+.pg-sec { display:grid; grid-template-columns:minmax(160px,.32fr) 1fr; gap:24px 48px; padding:48px clamp(16px,4vw,48px) 56px; border-top:1px solid var(--line); }
+.pg-sec-wide { display:block; }
+.pg-label { margin:6px 0 0; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); }
+.pg-sec-head h2 { margin:18px 0 0; font-weight:500; font-size:clamp(30px,3.4vw,52px); line-height:.95; letter-spacing:-.05em; }
+.pg-sec-body { min-width:0; }
+.pg-text { margin:0; font-size:19px; line-height:1.5; color:#3f3f46; max-width:52ch; }
+.pg-note { margin:20px 0 0; font-size:15px; line-height:1.55; color:var(--mute); max-width:60ch; }
+
+/* Ruled rows: name on the left, a sentence on the right */
+.pg-rows { list-style:none; margin:0; padding:0; }
+.pg-rows li { display:grid; grid-template-columns:minmax(180px,.4fr) 1fr; gap:8px 32px; padding:22px 0; border-top:1px solid var(--line); }
+.pg-rows li:first-child { border-top:0; padding-top:0; }
+.pg-rows h3 { margin:0; font-weight:500; font-size:clamp(20px,1.7vw,24px); letter-spacing:-.03em; line-height:1.15; }
+.pg-rows p { margin:0; font-size:17px; line-height:1.55; color:#55555c; max-width:52ch; }
+.pg-prices li { grid-template-columns:minmax(180px,.4fr) minmax(200px,.5fr) 1fr; align-items:baseline; }
+.pg-price { color:var(--ink) !important; }
+.pg-price span { display:block; margin-top:2px; font-size:14px; color:var(--mute); }
+.pg-price strong { white-space:nowrap; font-weight:500; font-size:clamp(22px,2vw,28px); letter-spacing:-.03em; }
+
+/* Case studies: big type rows */
+.pg-cases { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.pg-sec-body > .pg-cases:first-child { border-top:0; }
+.pg-cases a { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; grid-template-areas:'name line go' 'name meta go'; gap:4px 32px; align-items:center; padding:28px 0; border-bottom:1px solid var(--line); }
+.pg-cases strong { grid-area:name; font-weight:500; font-size:clamp(34px,4.4vw,72px); letter-spacing:-.055em; line-height:1; transition:color .3s; }
+.pg-case-line { grid-area:line; font-size:18px; color:var(--ink); }
+.pg-case-meta { grid-area:meta; font-size:14px; color:var(--mute); }
+.pg-case-go { grid-area:go; font-size:14px; color:var(--mute); border-bottom:1px solid var(--line); padding-bottom:2px; white-space:nowrap; }
+.pg-cases a:hover strong { color:var(--gold); }
+.pg-cases a:hover .pg-case-go { color:var(--ink); border-color:var(--ink); }
+
+/* How it runs: four short steps in a row */
+.pg-steps { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:32px; counter-reset:s; }
+.pg-steps li { position:relative; padding-top:22px; }
+.pg-steps li::before { content:''; position:absolute; left:0; top:0; width:36px; height:2px; background:var(--gold); }
+.pg-steps h3 { margin:0 0 10px; font-weight:500; font-size:21px; letter-spacing:-.03em; }
+.pg-steps p { margin:0; font-size:16px; line-height:1.55; color:#55555c; }
+
+.pg-links { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:10px 28px; font-size:18px; }
+.pg-links a { border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color .3s,color .3s; }
+.pg-links a:hover { color:var(--gold); border-color:var(--gold); }
+
+.pg-ask { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px 32px; padding:56px clamp(16px,4vw,48px); border-top:1px solid var(--line); }
+.pg-ask p { margin:0; font-size:clamp(26px,3vw,44px); font-weight:500; letter-spacing:-.04em; }
+
+/* Missing proof, shown on purpose so nobody mistakes the page for finished */
+.pg-todo { display:flex; gap:16px; align-items:baseline; margin-top:24px; padding:18px 20px; border:1.5px dashed #c2410c; border-radius:10px; background:#fff7ed; color:#7c2d12; font-size:15px; line-height:1.5; max-width:72ch; }
+.pg-sec-body > .pg-todo:first-child { margin-top:0; }
+.pg-todo strong { flex:none; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px; letter-spacing:.14em; }
+
+.pg a:focus-visible { outline:2px solid var(--gold); outline-offset:4px; border-radius:4px; }
+
+@media (max-width:860px) {
+  .pg-sec { grid-template-columns:1fr; gap:20px; }
+  .pg-rows li,.pg-prices li { grid-template-columns:1fr; }
+  .pg-cases a { grid-template-columns:1fr; grid-template-areas:'name' 'line' 'meta' 'go'; gap:8px; }
+  .pg-case-go { justify-self:start; margin-top:6px; }
+  .pg-todo { flex-direction:column; gap:6px; }
+}
+@media (max-width:520px) { .pg-nav nav { gap:14px; font-size:13px; } }

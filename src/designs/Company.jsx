@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useLoop } from './useLoop'
-import { companies, EMAIL, CALENDLY, year } from './content.jsx'
+import { companies, studies, workSlugs, EMAIL, CALENDLY, year } from './content.jsx'
 import './buttons.css'
 import './Company.css'
 
@@ -140,10 +140,11 @@ export default function Company({ slug }) {
   useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [slug])
   if (!c) return <main className="co-page co-missing"><a href="/">Back</a></main>
   const Visual = visuals[c.visual]
+  const st = studies[c.slug]
   const bgStyle = c.bg ? { backgroundImage: `url(${c.bg})` } : { background: c.bgCss }
   return <div className={`co-page co-${c.slug}`} style={c.theme}>
     <header className="co-nav">
-      <a className="co-back" href="/"><span>←</span><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
+      <a className="co-back" href="/work"><span>←</span><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
       {c.url ? <a className="btn btn-ghost co-visit" href={c.url} target="_blank" rel="noreferrer">Visit {c.host}</a> : <span className="co-host">{c.host}</span>}
     </header>
     <main id="main">
@@ -160,12 +161,23 @@ export default function Company({ slug }) {
         <p className="co-line">{c.lede}</p>
       </div>
     </section>
-    <section className="co-section">
+    {st && <section className="co-section co-study" aria-labelledby="study-title">
+      <p className="co-label">Case study</p>
+      <h2 id="study-title">{c.name}, <em>start to live.</em></h2>
+      <dl className="co-facts">
+        <div><dt>The problem</dt><dd>{st.problem}</dd></div>
+        <div><dt>What we built</dt><dd><ul>{st.built.map(b => <li key={b}>{b}</li>)}</ul></dd></div>
+        <div><dt>Built with</dt><dd>{st.stack}</dd></div>
+        <div><dt>Where it stands</dt><dd>{st.status}</dd></div>
+        <div><dt>Results</dt><dd>{st.results || <aside className="co-todo" role="note"><strong>TODO</strong> No verified results yet. Add real numbers or a quote, with permission, before promoting this case study.</aside>}</dd></div>
+      </dl>
+    </section>}
+    {c.visionTitle && <section className="co-section">
       <p className="co-label">The vision</p>
       <h2>{c.visionTitle}</h2>
       {Visual && <div className="co-visual"><Visual c={c} /></div>}
       {c.note && <p className="co-note">{c.note}</p>}
-    </section>
+    </section>}
     {c.how && <section className="co-section co-how" aria-labelledby="how-title">
       <p className="co-label">How it works</p>
       <h2 id="how-title">{c.howTitle}</h2>
@@ -180,7 +192,7 @@ export default function Company({ slug }) {
     </section>
     </main>
     <nav className="co-others" aria-label="More work">
-      {companies.filter(x => x.slug !== slug).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
+      {workSlugs.filter(s => s !== slug).map(s => companies.find(x => x.slug === s)).map(x => <a key={x.slug} href={`/work/${x.slug}`}><strong>{x.name}</strong><span>{x.line}</span></a>)}
     </nav>
     <footer className="co-foot"><span className="co-foot-links"><a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a></span><span>© {year} SparkTech Studios, Inc. · <a href="/privacy">Privacy</a></span></footer>
   </div>

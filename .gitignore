@@ -25,3 +25,6 @@ dist-ssr
 .gstack/
 .vercel
 design-mockups/
+
+# Local QA screenshots
+screenshots/

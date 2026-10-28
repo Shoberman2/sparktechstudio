@@ -119,3 +119,16 @@
 .co-steps li::before { content:''; position:absolute; left:0; top:-1px; width:40px; height:2px; background:var(--c-accent); }
 .co-steps h3 { margin:0 0 12px; font-weight:500; font-size:clamp(22px,2vw,28px); letter-spacing:-.035em; line-height:1.1; }
 .co-steps p { margin:0; font-size:16px; line-height:1.55; color:var(--c-mute); max-width:30ch; }
+
+/* Case study facts: label on the left, the fact on the right, hairline between */
+.co-facts { margin:56px 0 0; border-top:1px solid var(--c-line); }
+.co-facts > div { display:grid; grid-template-columns:minmax(160px,.3fr) 1fr; gap:8px 32px; padding:24px 0; border-bottom:1px solid var(--c-line); }
+.co-facts dt { font-size:13px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--c-accent); padding-top:4px; }
+.co-facts dd { margin:0; font-size:18px; line-height:1.55; max-width:60ch; }
+.co-facts ul { margin:0; padding:0 0 0 1.1em; }
+.co-facts li { padding:3px 0; }
+.co-todo { display:block; padding:14px 16px; border:1.5px dashed #fb923c; border-radius:10px; background:rgba(251,146,60,.08); color:#fed7aa; font-size:15px; }
+.co-todo strong { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px; letter-spacing:.14em; margin-right:10px; }
+.co-others { grid-template-columns:repeat(3,1fr); }
+.co-figure.is-mark img[src$="validate/mark.svg"] { width:min(56%,300px); border-radius:22%; box-shadow:0 40px 120px rgba(74,222,128,.12); }
+@media (max-width:860px) { .co-facts > div { grid-template-columns:1fr; } .co-others { grid-template-columns:1fr; } }

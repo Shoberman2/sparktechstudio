@@ -7,11 +7,15 @@ import { pathToFileURL } from 'node:url'
 const dist = resolve('dist')
 const { render } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
 const { companies } = await import(pathToFileURL(resolve('dist-ssr/content.js')).href).catch(() => ({ companies: null }))
+const { pageRoutes } = await import(pathToFileURL(resolve('dist-ssr/pages.js')).href)
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
 const site = 'https://www.sparktechstudio.com'
 const routes = [
-  { path: '/', title: 'SparkTech Studio | We Build the Things Other People Only Talk About', description: 'An independent studio in New York. We build the things other people only talk about, then keep making them better.' },
+  { path: '/', title: 'SparkTech Studio | AI Web Apps, MVPs and Websites in New York', description: 'An independent studio in New York, NY. We build AI web apps and MVPs, and websites for law, finance and medical firms. Book a call.' },
+  { path: '/work', title: 'Work | SparkTech Studio', description: 'Case studies: UTern, Leed, BallotWatch and Validate-s. The problem, what we built, and what it runs on.' },
+  { path: '/services', title: 'Services | SparkTech Studio', description: 'AI app development, web apps, website design, startup MVPs and retainers, from an independent studio in New York.' },
+  ...pageRoutes,
 ]
 for (const c of companies || []) {
   const lede = String(c.lede || '').replace(/\s+/g, ' ')

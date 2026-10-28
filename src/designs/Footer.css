@@ -17,3 +17,7 @@
 .ft-bottom { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:20px; border-top:1px solid rgba(255,255,255,.12); font-size:13px; color:rgba(255,255,255,.5); }
 @media (max-width:900px) { .ft-grid { grid-template-columns:1fr 1fr; gap:36px; } }
 @media (max-width:520px) { .ft-grid { grid-template-columns:1fr; } }
+.ft .ft-places { flex-direction:row; }
+.ft-places { display:flex; flex-wrap:wrap; gap:8px 24px; padding:0 0 24px; font-size:14px; }
+.ft .ft-places a { color:rgba(255,255,255,.6); }
+.ft .ft-places a:hover { color:#d4b46a; }

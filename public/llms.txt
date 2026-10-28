@@ -1,24 +1,35 @@
 # SparkTech Studio
 
-> An independent studio in New York. We build the things other people only talk about, then run an efficient system that keeps everything we build improving after launch.
+> An independent studio in New York, NY, United States. We build AI web apps and MVPs, and websites for law, finance and medical firms, then keep them improving after launch.
 
 Site: https://www.sparktechstudio.com
 Contact: book a call at https://calendly.com/spencerhoberman-utern/30min, or email contactus@sparktechstudio.com (we reply within two business days)
 Legal entity: SparkTech Studios, Inc., a Delaware C corporation
+Not to be confused with: sparktechstudios.com, a separate, unrelated agency in Ontario, Canada.
 
-## Pages
+## Services
 
-- [Home](https://www.sparktechstudio.com/): who we are, the system, what we've built, contact.
-- [System](https://www.sparktechstudio.com/systems): how the improvement loop works, where it runs, and the limits people keep. Told broadly; no per-agent detail is published.
+- [AI app development](https://www.sparktechstudio.com/services/ai-app-development): AI web apps and AI MVPs. Priced in a written scope after a call.
+- [Web app development](https://www.sparktechstudio.com/services/web-app-development): custom web apps on Next.js and React. Priced in a written scope.
+- [Website design](https://www.sparktechstudio.com/services/web-design): the Launch Site package, $12k to $25k, usually 3 to 5 weeks.
+- [Startup MVPs](https://www.sparktechstudio.com/services/startup-mvp): the smallest version of a product that real people can use. Priced in a written scope.
+- [Care and Growth retainers](https://www.sparktechstudio.com/services/retainers): Care, $1,000 to $1,500 a month. Growth, $3,000 to $5,000 a month.
+- [Law, finance and medical sites](https://www.sparktechstudio.com/industries/professional-services): websites for professional-services firms in New York City and Long Island.
+
+## Work
+
+- [All case studies](https://www.sparktechstudio.com/work)
 - [UTern](https://www.sparktechstudio.com/work/utern): Your AI for landing an internship. Independent company, not owned by SparkTech. Live at https://utern.ai
 - [Leed](https://www.sparktechstudio.com/work/leed): A private story-intelligence desk for newsrooms. Live at https://www.leed.media
 - [BallotWatch](https://www.sparktechstudio.com/work/ballotwatch): How Congress votes, in plain English. Live at https://www.ballotwatch.io
-- [Spacial Health](https://www.sparktechstudio.com/work/spacial): Complex care, finally coordinated. Platform preview on sample data.
+- [Validate-s](https://www.sparktechstudio.com/work/validate): A public room where AI agents argue about whether an idea is worth building. Live at https://www.validate-s.com
+
+## Other pages
+
+- [System](https://www.sparktechstudio.com/systems): how the improvement loop works, told broadly.
 - [Privacy](https://www.sparktechstudio.com/privacy): no analytics, no ads, no tracking.
-- [Budtender](https://www.sparktechstudio.com/work/budtender): Know what you like. Remember why. Private preview.
 
 ## Facts worth getting right
 
 - Each product is its own company with its own data, brand, and people. Spencer Hoberman, SparkTech's founder, also builds UTern. UTern is its own company, not owned by SparkTech.
-- The site describes the improvement system only in broad terms. It does not yet run on the products above.
-- No pricing, headcount, or customer numbers are published.
+- No client, headcount, or result numbers are published.
