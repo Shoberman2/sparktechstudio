@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { useLoop } from './useLoop'
-import { built, CALENDLY } from './content.jsx'
+import { built, BOOK } from './content.jsx'
+import { services, industry } from './pages.jsx'
+import { SiteNav, Packages, Todo } from './Page.jsx'
 import Footer from './Footer.jsx'
 import './buttons.css'
 import './Form.css'
@@ -100,28 +102,41 @@ const tiles = {
   utern: { bg: '#101a2a url(/work/utern/mountain.webp) center 35% / cover no-repeat', img: '/work/utern/birdee.webp', cls: 'is-utern' },
   leed: { bg: '#0b0b09', img: '/work/leed/sherlock.svg', cls: 'is-leed' },
   ballotwatch: { bg: '#0c1626', img: '/work/ballotwatch/capitol-logo.svg', cls: 'is-bw' },
-  spacial: { bg: '#7255ff', cls: 'is-spacial' },
-  budtender: { bg: 'radial-gradient(90% 80% at 40% 40%,#3f8a5e,#143b27 70%,#0b2418)', img: '/work/budtender/budzy-phone.webp', cls: 'is-bud' },
+  validate: { bg: 'radial-gradient(90% 80% at 70% 30%,#1f3a26,#14140f 70%)', img: '/work/validate/mark.svg', cls: 'is-validate' },
 }
 const Arrow = () => <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M5 3h8v8" stroke="currentColor" strokeWidth="1.6" /></svg>
 
 export default function Form() {
   return <div className="fm">
-    <header className="fm-nav">
-      <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
-      <nav><a href="/systems">System</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
-    </header>
+    <SiteNav />
     <main id="main">
     <section className="fm-hero">
       <div className="fm-copy">
         <h1>We Build the Things Other People Only <em>Talk About.</em></h1>
-        <p>An independent studio in New York. We create the future, then keep making it better.</p>
+        <p>An independent New York studio building AI web apps and MVPs, and websites for law, finance and medical firms.</p>
         <div className="fm-hero-actions">
-          <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
-          <a className="btn btn-ghost" href="#work">See what we’ve built</a>
+          <a className="btn" {...BOOK}>Book a call</a>
+          <a className="btn btn-ghost" href="/work">See what we’ve built</a>
         </div>
       </div>
       <Cloud className="fm-canvas" />
+    </section>
+
+    <section className="pg-sec fm-services" id="services">
+      <div className="pg-sec-head"><p className="pg-label">Services</p><h2>What we <em>build.</em></h2></div>
+      <div className="pg-sec-body">
+        <ul className="pg-cases">{[...services, { path: industry.path, nav: 'Law, finance and medical sites', description: industry.description }].map(s => <li key={s.path}>
+          <a href={s.path}><strong>{s.nav}</strong><span className="pg-case-line">{s.description.split('. ')[0].replace(/\.$/, '')}.</span></a>
+        </li>)}</ul>
+      </div>
+    </section>
+
+    <section className="pg-sec" id="pricing">
+      <div className="pg-sec-head"><p className="pg-label">Pricing</p><h2>Plain <em>prices.</em></h2></div>
+      <div className="pg-sec-body">
+        <Packages keys={['launch', 'care', 'growth']} />
+        <p className="pg-note">AI apps, web apps and MVPs are priced in a written scope after a call.</p>
+      </div>
     </section>
 
     <section className="fm-sys" id="systems">
@@ -145,6 +160,18 @@ export default function Form() {
             <span className="fm-tile-text"><strong>{b.name}</strong><span>{b.line}</span></span>
           </a>
         })}
+      </div>
+    </section>
+
+    <section className="pg-sec fm-about" id="about">
+      <div className="pg-sec-head"><p className="pg-label">About</p><h2>Who’s <em>building it.</em></h2></div>
+      <div className="pg-sec-body fm-founder">
+        {/* TODO(Spencer): replace with a real photo. No stock image, no generated face. */}
+        <div className="fm-founder-photo" role="img" aria-label="Founder photo coming soon"><strong>TODO</strong><span>Photo of Spencer</span></div>
+        <div>
+          <p className="pg-text">I’m Spencer Hoberman. I founded SparkTech Studio in New York, and I also build UTern, which stays an independent company.</p>
+          <Todo>Founder bio from Spencer, in his words: his background and why he started the studio. No credentials, employers or numbers until he supplies them.</Todo>
+        </div>
       </div>
     </section>
 

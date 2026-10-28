@@ -1,7 +1,12 @@
 // Shared copy for the design directions and the company pages. Facts come from each company's own repo and live site (checked 2026-10-15).
 // Shipped and vision are kept apart on purpose. UTern is an independent company; nothing here asserts SparkTech ownership of any of them.
 export const EMAIL = 'contactus@sparktechstudio.com'
-export const CALENDLY = 'https://calendly.com/spencerhoberman-utern/30min'
+// The one booking link for the whole site. Every "Book a call" spreads BOOK, so setting CALENDLY_URL updates them all.
+// TODO(Spencer): paste the SparkTech Calendly link here. Until it's set, Book a call opens an email instead of a dead link.
+export const CALENDLY_URL = ''
+export const BOOK = CALENDLY_URL
+  ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer' }
+  : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}` }
 export const year = new Date().getFullYear()
 
 export const companies = [
@@ -88,31 +93,71 @@ export const companies = [
     visual: 'assemble',
   },
   {
-    slug: 'budtender', name: 'Budtender', host: 'Private preview', url: null, line: 'Know what you like. Remember why.',
-    theme: { '--c-bg': '#0f2a1d', '--c-accent': '#f28322', '--c-mute': 'rgba(236,244,238,.66)', '--c-scrim': 'radial-gradient(120% 90% at 25% 50%, rgba(66,140,96,.0) 0%, rgba(10,32,21,.35) 60%, rgba(8,26,17,.85) 100%)' },
-    bg: null, bgCss: 'radial-gradient(90% 80% at 28% 52%, #4f9e6f 0%, #2a6b47 38%, #143b27 72%, #0b2418 100%)', figure: '/work/budtender/budzy-phone.webp', figureAlt: 'Budzy on a phone', figureClass: 'is-phone',
-    kicker: 'Meet Budzy. He remembers.',
-    value: <>Know what you like. <em>Remember why.</em></>,
-    lede: 'Rank what you try. See what your friends love. Ask Budzy what’s next. He only reads the history you let him.',
-    visionTitle: <>Find the strains <em>you love.</em></>,
-    today: ['Log what you tried and how it felt', 'Your own rankings and lists', 'A page for every strain', 'Budzy, a personal AI that reads only the history you allow', 'Verified pages for dispensaries, growers, and labs'],
-    todayLabel: 'Built so far',
-    vision: ['Opt-in dispensary purchases, so your shelf fills itself. Planned, not live'],
-    howTitle: <>Every strain you try, <em>remembered.</em></>,
+    slug: 'validate', name: 'Validate-s', host: 'validate-s.com', url: 'https://www.validate-s.com', line: 'Is this idea worth building?',
+    theme: { '--c-bg': '#14140f', '--c-accent': '#4ade80', '--c-mute': 'rgba(247,246,243,.62)', '--c-scrim': 'radial-gradient(110% 90% at 30% 50%, rgba(74,222,128,.10) 0%, rgba(20,20,15,0) 60%)' },
+    bg: null, bgCss: '#14140f', figure: '/work/validate/mark.svg', figureAlt: 'Validate-s mark', figureClass: 'is-mark',
+    kicker: 'A public room where AI agents argue about ideas',
+    value: <>Post an idea. <em>Agents research it, argue it out, and write the record.</em></>,
+    lede: 'Five house agents look for who has already thought of an idea, who is building it, and where it breaks. People and outside agents can join any room.',
+    howTitle: <>From an idea <em>to an honest answer.</em></>,
     how: [
-      ['Every strain is a card', 'Look up any strain and see what’s in it: THC, CBD and terpenes from public state lab tests.'],
-      ['Three taps after a session', 'Say how it was: loved, fine or not for you. Then a few quick head-to-heads against strains you’ve already ranked.'],
-      ['Your list sorts itself', 'Every pick moves the strain into its place, and its place sets a 0 to 10 score. Your order is your opinion.'],
-      ['Share with the people you pick', 'Keep a log to yourself, send it to friends, or share a circle: a private list your friends can add to.'],
-      ['Budzy knows your list', 'Ask what to try next or what your favorites have in common. He answers from your lists, never the open internet.'],
+      ['Post an idea', 'A person or an AI agent posts it. Each idea gets its own room.'],
+      ['Research and argue', 'An Advocate, a Skeptic, a Cartographer, a Customer and a Verifier search the web and argue over three rounds.'],
+      ['Score it', 'Every agent scores the idea out of 10 next to its turn. No agent scores a room it opened.'],
+      ['Write the record', 'Who has built it, the strongest case for and against, open questions, and the cheapest next experiment.'],
+      ['Ask real people', 'Every room ends in a one-page test that says the product does not exist yet and asks visitors if they want it.'],
     ],
-    howNote: 'Private preview.',
-    visual: 'phone', note: 'Budtender is in private preview.',
   },
 ]
 
-// The short list the three design directions show
-export const built = companies.map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line }))
+
+// Case studies for the /work hub. Problem and built lists restate each product's own live copy; stacks were checked
+// against each repo or live bundle on 2026-10-27. `results` stays null until there is a real number or a quote with
+// permission, and the page shows a TODO in its place. Never fill it with an estimate.
+export const studies = {
+  utern: {
+    problem: 'Students apply to internships that don’t fit them, and companies can’t see what a student can actually do. UTern needed to match the two on evidence, not scores.',
+    built: ['Birdee, an AI that reads live internships every day and brings each student the few that fit', 'A record students build by talking through their projects, jobs and code', 'Side-by-side applications: Birdee drafts, the student edits and submits', 'Blind review for companies: no name or photo until the student says yes'],
+    stack: 'Next.js, Supabase, Claude, Stripe',
+    status: 'Live at utern.ai. UTern is an independent company.',
+    results: null,
+  },
+  leed: {
+    problem: 'Tips reach a newsroom everywhere at once: inboxes, DMs, voicemail. Reporters need to see which tips are about the same story while every source stays protected.',
+    built: ['Tip intake by guided chat, widget, email or SMS, with no account and no name', 'An AI brief for every tip: the claim, how to check it, the risk to the source', 'A board that groups tips about the same story', 'Source contact that stays sealed until the source says yes'],
+    stack: 'Next.js',
+    status: 'Live at leed.media.',
+    results: null,
+  },
+  ballotwatch: {
+    problem: 'Congressional votes are public, but they’re scattered and written for insiders. People wanted to see how their own representatives voted, with sources and without spin.',
+    built: ['Lookup of your House member and both senators by address', 'Every roll call vote, each linked to the official record', 'Bills summarized in plain English, full text one click away', 'A message tool that starts from the facts of a vote, and a public API'],
+    stack: 'React, Vite, Supabase',
+    status: 'Live at ballotwatch.io.',
+    results: null,
+  },
+  validate: {
+    problem: 'Building is cheap now, so the hard question is whether an idea is worth building at all. Founders needed an honest, sourced answer before spending the time.',
+    built: ['Five house agents that research an idea on the web and argue over three rounds', 'A score out of 10 from every agent, shown once three have scored', 'A written record: prior art, the case for and against, the cheapest next experiment', 'A one-page smoke test per idea, and an API and MCP server so outside agents can join'],
+    stack: 'React, Supabase, Claude',
+    status: 'Live at validate-s.com.',
+    results: null,
+  },
+}
+
+// The four case studies the /work hub, the home tiles and the footer show, in this order. Spacial Health keeps its page but is not listed.
+export const workSlugs = ['utern', 'leed', 'ballotwatch', 'validate']
+
+// Published prices from the 2026-10-27 rebuild plan, final numbers pending Spencer's confirmation (/pricing shows a TODO and is noindex until then).
+// Anything not listed here is priced in a written scope after a call.
+export const pricing = {
+  launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'A marketing site built to rank and to convert: design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.' },
+  care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.' },
+  growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.' },
+}
+
+// The short list the home tiles, footer and 404 show
+export const built = workSlugs.map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line }))
 
 // The recursive agentic systems. Status is what is true today: product fixes run on our own site; the other areas are the roadmap.
 export const systems = {

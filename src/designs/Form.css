@@ -58,9 +58,7 @@
 .fm-tile.is-bw:hover img { transform:translateX(-50%) translateY(-6px) scale(1.03); }
 .fm-tile-dots { left:50%; top:18%; transform:translateX(-50%); width:44%; fill:#fff; }
 .fm-tile.is-spacial:hover .fm-tile-dots { transform:translateX(-50%) translateY(-6px) scale(1.03); }
-.fm-tile.is-bud img { right:6%; top:6%; width:48%; }
 .fm-tile.is-spacial .fm-tile-text span { opacity:1; }
-.fm-tile.is-bud .fm-tile-text { max-width:50%; }
 
 :root:has(.fm), body:has(.fm) { background:#fff; }
 
@@ -82,3 +80,21 @@
 
 /* Hero buttons sit under the statement, centered */
 .fm-hero-actions { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:36px; animation:fm-in 1.2s .55s both cubic-bezier(.16,1,.3,1); }
+
+/* Validate-s: its own V mark on a dark ground, spanning two columns beside BallotWatch */
+.fm-tile.is-validate { grid-column:span 2; }
+.fm-tile.is-validate img { right:10%; top:50%; transform:translateY(-50%); width:min(34%,240px); border-radius:22%; box-shadow:0 30px 80px rgba(0,0,0,.45); }
+.fm-tile.is-validate:hover img { transform:translateY(calc(-50% - 6px)) scale(1.03); }
+.fm-tile.is-validate .fm-tile-text { max-width:50%; }
+@media (max-width:900px) { .fm-tile.is-validate { grid-column:auto; } .fm-tile.is-validate img { top:12%; transform:none; right:50%; translate:50% 0; } .fm-tile.is-validate:hover img { transform:translateY(-6px) scale(1.03); } .fm-tile.is-validate .fm-tile-text { max-width:none; } }
+/* Home services and pricing reuse the page rows */
+.fm .pg-sec { padding-top:clamp(56px,9vh,96px); padding-bottom:clamp(56px,9vh,96px); }
+.fm-services .pg-cases a { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); grid-template-areas:'name line'; padding:22px 0; }
+.fm-services .pg-cases strong { font-size:clamp(26px,3vw,44px); }
+@media (max-width:860px) { .fm-services .pg-cases a { grid-template-columns:1fr; grid-template-areas:'name' 'line'; } }
+
+/* Founder: a photo slot and one line of fact. Both slots show TODO until Spencer supplies the photo and bio. */
+.fm-founder { display:grid; grid-template-columns:200px 1fr; gap:32px; align-items:start; }
+.fm-founder-photo { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:6px; aspect-ratio:4/5; border:1.5px dashed #c2410c; border-radius:10px; background:#fff7ed; color:#7c2d12; font-size:14px; }
+.fm-founder-photo strong { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px; letter-spacing:.14em; }
+@media (max-width:860px) { .fm-founder { grid-template-columns:1fr; } .fm-founder-photo { width:160px; } }
