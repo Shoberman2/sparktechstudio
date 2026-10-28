@@ -112,7 +112,7 @@ export default function Form() {
     <main id="main">
     <section className="fm-hero">
       <div className="fm-copy">
-        <h1>We Build the Things Other People Only <em>Talk About.</em></h1>
+        <h1>From idea to launch, <em>fast.</em></h1>
         <p>An independent New York studio building AI web apps and MVPs, and websites for law, finance and medical firms.</p>
         <div className="fm-hero-actions">
           <a className="btn" {...BOOK}>Book a call</a>
