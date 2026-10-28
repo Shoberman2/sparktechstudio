@@ -3,6 +3,8 @@
 // No clients, testimonials or numbers are invented here. Where a page needs proof we don't have yet, `todo`
 // holds a note that renders as a visible TODO box, and the prerender marks that page noindex until it is filled.
 
+import { companies, studies, pricing } from './content.jsx'
+
 // How every project runs, from the 2026-10-15 offer pass. Terms beyond this are set in the written scope.
 export const process = [
   ['A call', 'We talk through what you want built and who it’s for. A real conversation, not a pitch.'],
@@ -29,7 +31,7 @@ export const services = [
   },
   {
     slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web app development',
-    title: 'Custom Web App Development in New York | Next.js Agency NYC | SparkTech Studio',
+    title: 'Custom Web App Development in New York | SparkTech Studio',
     description: 'Custom web app development in New York. We build fast, maintainable web apps on Next.js and React, with real accounts, data and payments.',
     kicker: 'Web app development',
     h1: <>Custom web apps, <em>built to last.</em></>,
@@ -44,7 +46,7 @@ export const services = [
   },
   {
     slug: 'web-design', path: '/services/web-design', nav: 'Website design',
-    title: 'Web Design Agency NYC | Premium Website Design in New York | SparkTech Studio',
+    title: 'Web Design Agency in New York City | SparkTech Studio',
     description: 'Premium website design and development in New York. A Launch Site package from $12k to $25k: design, build, CMS and SEO, usually in 3 to 5 weeks.',
     kicker: 'Website design and development',
     h1: <>A website that looks <em>like you mean it.</em></>,
@@ -59,7 +61,7 @@ export const services = [
   },
   {
     slug: 'startup-mvp', path: '/services/startup-mvp', nav: 'Startup MVPs',
-    title: 'MVP Development Company in NYC | Startup App Developers | SparkTech Studio',
+    title: 'MVP Development Company in NYC | SparkTech Studio',
     description: 'MVP development for startups in New York. We build the smallest version of your product that real people can use, then help you learn from it.',
     kicker: 'MVPs for startups',
     h1: <>The first version, <em>in real hands.</em></>,
@@ -74,7 +76,7 @@ export const services = [
   },
   {
     slug: 'retainers', path: '/services/retainers', nav: 'Care and Growth retainers',
-    title: 'Website Maintenance NYC | SEO and Growth Retainers | SparkTech Studio',
+    title: 'Website Maintenance and SEO in NYC | SparkTech Studio',
     description: 'Website maintenance and SEO retainers in New York. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
     kicker: 'Maintenance and growth retainers',
     h1: <>Launch is <em>day one.</em></>,
@@ -89,9 +91,49 @@ export const services = [
   },
 ]
 
+// A short FAQ per service page: cost, timeline, stack and code ownership. Prices come from `pricing`, stacks from the
+// case studies the page already names. Ownership and anything not published stay with the written scope (2026-10-15 offer pass).
+const scoped = 'It’s dated in the written scope after the call, because the timeline depends on what we’re building.'
+const ownership = ['Who owns the code?', 'Ownership, access and support are spelled out in the written scope, before any work starts.']
+const ran = slugs => slugs.map(s => `${companies.find(c => c.slug === s).name} runs on ${studies[s].stack}.`).join(' ')
+const price = k => `${pricing[k].name} is ${pricing[k].price} ${pricing[k].unit}`
+const faqs = {
+  'ai-app-development': [
+    ['What does an AI app cost?', 'AI apps are priced in a written scope after a call, because no two are the same size.'],
+    ['How long does it take?', scoped],
+    ['What do you build it on?', `We pick the model that fits the job and keep prompts and evaluations in the codebase, so the model can change without a rewrite. ${ran(['utern', 'validate'])}`],
+    ownership,
+  ],
+  'web-app-development': [
+    ['What does a web app cost?', 'Web apps are priced in a written scope after a call.'],
+    ['How long does it take?', scoped],
+    ['What do you build it on?', `Next.js and React, a stack your next hire already knows. ${ran(['leed', 'ballotwatch'])}`],
+    ownership,
+  ],
+  'web-design': [
+    ['What does a website cost?', `The ${pricing.launch.name} package is ${pricing.launch.price}: design, build, a CMS you can edit, and SEO set up from day one.`],
+    ['How long does it take?', 'Usually 3 to 5 weeks. The dates go in the written scope.'],
+    ['What do you build it on?', 'A stack named in the written scope, with a CMS for the pages you change often.'],
+    ownership,
+  ],
+  'startup-mvp': [
+    ['What does an MVP cost?', 'MVPs are priced in a written scope after a call.'],
+    ['How long does it take?', scoped],
+    ['What do you build it on?', `Real code on a real stack, so version two builds on version one. ${ran(['validate', 'leed'])}`],
+    ownership,
+  ],
+  retainers: [
+    ['What does a retainer cost?', `${price('care')}. ${price('growth')}.`],
+    ['How much time is included?', 'About 5 hours a month on Care and about 15 on Growth. The rest of the terms are set in the written scope.'],
+    ['What stack do you work on?', `The sites and apps we build. ${ran(['utern', 'ballotwatch'])} Anything else is settled in the written scope.`],
+    ownership,
+  ],
+}
+for (const s of services) s.faq = faqs[s.slug]
+
 export const industry = {
   slug: 'professional-services', path: '/industries/professional-services',
-  title: 'Law Firm Web Design NYC | Financial Advisor and Medical Practice Websites | SparkTech Studio',
+  title: 'Law, Finance and Medical Websites in NYC | SparkTech Studio',
   description: 'Websites for law firms, financial advisors and medical practices in New York City and Long Island. Launch Site package from $12k to $25k.',
   kicker: 'Law, finance and medical',
   h1: <>Websites for firms <em>people trust.</em></>,
@@ -126,19 +168,20 @@ export const locations = [
     'We’re a New York studio. We build AI web apps, MVPs and websites for companies across the five boroughs.', ['manhattan', 'brooklyn']),
   loc('manhattan', 'Manhattan', 'Manhattan Web Development Company', 'Manhattan web development company',
     'Websites and web apps for Manhattan companies and firms, from a studio in New York.', ['new-york-city', 'brooklyn']),
-  loc('brooklyn', 'Brooklyn', 'Web Design Brooklyn | Brooklyn App Developer', 'Web design and app development in Brooklyn',
+  loc('brooklyn', 'Brooklyn', 'Brooklyn Web Design and App Development', 'Web design and app development in Brooklyn',
     'Websites and apps for Brooklyn companies, studios and startups, from a studio in New York.', ['new-york-city', 'manhattan']),
-  loc('long-island', 'Long Island', 'Web Design and App Development on Long Island', 'Web design and app development on Long Island',
+  loc('long-island', 'Long Island', 'Long Island Web and App Development', 'Web design and app development on Long Island',
     'Websites and web apps for Long Island businesses in Nassau and Suffolk, from a studio in New York.', ['nassau-county', 'suffolk-county']),
-  loc('nassau-county', 'Nassau County', 'Web Design Nassau County | Garden City Web Developer', 'Web design in Nassau County',
+  loc('nassau-county', 'Nassau County', 'Nassau County Web Design and Development', 'Web design in Nassau County',
     'Websites and web apps for businesses in Nassau County, from Garden City to the North Shore.', ['long-island', 'suffolk-county']),
-  loc('suffolk-county', 'Suffolk County', 'Web Design Suffolk County | Huntington Web Design', 'Web design in Suffolk County',
+  loc('suffolk-county', 'Suffolk County', 'Suffolk County Web Design and Development', 'Web design in Suffolk County',
     'Websites and web apps for businesses in Suffolk County, from Huntington east.', ['long-island', 'nassau-county']),
 ]
 
 // Every page this module adds, for the router and the prerender
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
-  { path: industry.path, title: industry.title, description: industry.description, noindex: false },
+  // noindex while the page still shows a TODO box instead of a real professional-services case study
+  { path: industry.path, title: industry.title, description: industry.description, noindex: Boolean(industry.todo) },
   ...locations.map(l => ({ path: l.path, title: l.title, description: l.description, noindex: true })),
 ]

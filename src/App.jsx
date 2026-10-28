@@ -17,7 +17,7 @@ export default function App({ path = typeof window !== 'undefined' ? window.loca
   const parts = p.split('/')
   const slug = parts[1] === 'work' ? parts[2] : null
   const isHome = p === '/' || p === '/index.html'
-  useEffect(() => { if (isHome) document.title = 'SparkTech Studio | AI Web Apps, MVPs and Websites in New York' }, [isHome])
+  useEffect(() => { if (isHome) document.title = 'SparkTech Studio | AI Web Apps, MVPs and Websites in NYC' }, [isHome])
   if (slug && companies.some(c => c.slug === slug)) return <Company slug={slug} />
   if (p === '/work') return <WorkHub />
   if (p === '/services') return <ServicesHub />

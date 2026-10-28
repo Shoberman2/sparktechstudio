@@ -33,6 +33,8 @@ const serviceLd = (page, name, area = [{ '@type': 'City', name: 'New York' }, { 
   return { '@context': 'https://schema.org', '@type': 'Service', name, serviceType: name, url: `${SITE}${page.path}`, provider: { '@id': ORG }, areaServed: area, ...(keys.length ? { offers: keys.map(offer) } : {}) }
 }
 
+const faqLd = items => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) })
+
 function Shell({ title, children }) {
   useEffect(() => { document.title = title }, [title])
   useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [title])
@@ -106,6 +108,7 @@ export function ServicePage({ slug }) {
   return <Shell title={s.title}>
     <JsonLd data={serviceLd(s, s.kicker)} />
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
+    <JsonLd data={faqLd(s.faq)} />
     <Head kicker={s.kicker} h1={s.h1} lede={s.lede} />
     <Section label="What you get"><Points items={s.points} /></Section>
     <Section label="Pricing">
@@ -113,6 +116,7 @@ export function ServicePage({ slug }) {
     </Section>
     <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}><Cases slugs={s.cases} /></Section>
     <Section label="How it runs"><Process /></Section>
+    <Section label="Questions" title={<>The short <em>answers.</em></>}><Points items={s.faq} /></Section>
     <Ask />
     <Section label="Also"><>{otherServices(s.path)}</></Section>
   </Shell>
