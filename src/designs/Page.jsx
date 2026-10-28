@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { companies, studies, workSlugs, pricing, CALENDLY } from './content.jsx'
-import { services, industry, locations, process } from './pages.jsx'
+import { companies, studies, workSlugs, pricing, BOOK } from './content.jsx'
+import { services, industry, locations, process, pricingPage, partnersPage } from './pages.jsx'
 import Footer from './Footer.jsx'
 import './buttons.css'
 import './Form.css'
@@ -14,7 +14,7 @@ const ORG = `${SITE}/#org`
 export function SiteNav() {
   return <header className="fm-nav pg-nav">
     <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
-    <nav><a href="/services">Services</a><a href="/work">Work</a><a href="/systems">System</a><a href="#contact">Contact</a></nav>
+    <nav><a href="/services">Services</a><a href="/work">Work</a><a href="/partners">Partners</a><a href="/systems">System</a><a href="#contact">Contact</a></nav>
   </header>
 }
 
@@ -51,7 +51,7 @@ function Head({ kicker, h1, lede, cta = true }) {
     <h1>{h1}</h1>
     {lede && <p className="pg-lede">{lede}</p>}
     {cta && <div className="pg-actions">
-      <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+      <a className="btn" {...BOOK}>Book a call</a>
       <a className="btn btn-ghost" href="/work">See the work</a>
     </div>}
   </section>
@@ -69,11 +69,11 @@ function Section({ label, title, children, id }) {
 
 const Points = ({ items }) => <ul className="pg-rows">{items.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ul>
 
-export function Packages({ keys }) {
+export function Packages({ keys, scopes = {} }) {
   return <ul className="pg-rows pg-prices">{keys.map(k => { const p = pricing[k]; return <li key={k}>
     <h3>{p.name}</h3>
     <p className="pg-price"><strong>{p.price}</strong><span>{p.unit}</span></p>
-    <p>{p.scope}</p>
+    <p>{scopes[k] || p.scope}</p>
   </li> })}</ul>
 }
 
@@ -97,7 +97,7 @@ const Process = () => <ol className="pg-steps">{process.map(([h, p]) => <li key=
 function Ask({ line = 'Have something in mind?' }) {
   return <section className="pg-ask">
     <p>{line}</p>
-    <a className="btn" href={CALENDLY} target="_blank" rel="noreferrer">Book a call</a>
+    <a className="btn" {...BOOK}>Book a call</a>
   </section>
 }
 
@@ -180,5 +180,33 @@ export function ServicesHub() {
     <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /><p className="pg-note">AI apps, web apps and MVPs are priced in a written scope after a call.</p></Section>
     <Section label="How it runs"><Process /></Section>
     <Ask />
+  </Shell>
+}
+
+export function PricingPage() {
+  const s = pricingPage
+  return <Shell title={s.title}>
+    <JsonLd data={crumbs([['Home', '/'], ['Pricing', s.path]])} />
+    <Head kicker="Pricing" h1={<>Plain <em>prices.</em></>} lede="One website package and two monthly retainers. AI apps, web apps and MVPs are priced in a written scope after a call." />
+    <section className="pg-sec pg-sec-wide"><Todo>{s.todo}</Todo></section>
+    <Section label="Website"><Packages keys={['launch']} /></Section>
+    <Section label="Retainers" title={<>After <em>launch.</em></>}>
+      <Packages keys={['care', 'growth']} scopes={s.scopes} />
+    </Section>
+    <Section label="Everything else"><p className="pg-text">AI apps, web apps and MVPs are priced in a written scope after a call, because no two are the same size.</p></Section>
+    <Ask line="Want a number for your project?" />
+  </Shell>
+}
+
+export function PartnersPage() {
+  const s = partnersPage
+  return <Shell title={s.title}>
+    <JsonLd data={crumbs([['Home', '/'], ['Partners', s.path]])} />
+    <Head kicker={s.kicker} h1={s.h1} lede={s.lede} />
+    <Section label="Who it’s for"><Points items={s.who} /></Section>
+    <Section label="What we build"><ul className="pg-links">{services.map(x => <li key={x.slug}><a href={x.path}>{x.nav}</a></li>)}</ul></Section>
+    <Section label="How it runs"><ol className="pg-steps">{s.how.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol></Section>
+    <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}><Cases slugs={workSlugs} /></Section>
+    <Ask line="Have a client or a cohort in mind?" />
   </Shell>
 }

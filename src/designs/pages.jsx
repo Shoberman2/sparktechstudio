@@ -178,10 +178,48 @@ export const locations = [
     'Websites and web apps for businesses in Suffolk County, from Huntington east.', ['long-island', 'nassau-county']),
 ]
 
+// /pricing: the three published packages in one place. The numbers are from the rebuild plan and still need Spencer's
+// sign-off, so the page carries a TODO and stays noindex (and out of the nav and sitemap) until he confirms them.
+export const pricingPage = {
+  path: '/pricing',
+  title: 'Pricing | SparkTech Studio',
+  description: 'Launch Site from $12k to $25k. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month. Everything else is priced in a written scope.',
+  // How the retainers read on this page: Care is maintenance, Growth is SEO and AI features
+  scopes: {
+    care: 'Maintenance. Hosting oversight, updates, uptime checks and small fixes, so the site stays fast and keeps working. About 5 hours a month.',
+    growth: 'SEO and AI features. Everything in Care, plus new SEO pages and new AI features, each one checked against what it was meant to move. About 15 hours a month.',
+  },
+  todo: 'Final numbers pending Spencer’s confirmation. Don’t quote these prices to anyone yet. When he signs off, remove this note and the page leaves noindex on its own.',
+}
+
+// /partners: for design studios, agencies and accelerators that want a build partner. Terms are set per partner in a
+// written scope, so the page names none (no rev share, no discounts, no partner logos).
+export const partnersPage = {
+  path: '/partners',
+  title: 'Build Partner for Studios and Agencies | SparkTech Studio',
+  description: 'A build partner for design studios, agencies and accelerators. You bring the client or the cohort; we build the AI app, MVP or website. Book a call.',
+  kicker: 'Partners',
+  h1: <>Your clients, <em>our build.</em></>,
+  lede: 'For design studios, agencies and accelerators that need someone to build what they’ve designed or promised. You keep the relationship. We build it and keep it standing.',
+  who: [
+    ['Design studios', 'You made the brand and the screens. We build them as a real site or app, close to the pixel, so the work you sold is the work that ships.'],
+    ['Agencies', 'When a client asks for an AI feature, a web app or a site your team can’t take on, we build it alongside you.'],
+    ['Accelerators', 'Founders in your program need a first version people can use. We build MVPs and AI apps on a real stack they can keep.'],
+  ],
+  how: [
+    ['A call', 'We talk through the work, the client and how you want to run it. A real conversation, not a pitch.'],
+    ['A written scope', 'What we build, what it costs, when, and who talks to the client. Credit, ownership and support are spelled out here.'],
+    ['Build and launch', 'We design what’s left, build, test in a real browser, and ship. You see the work as it happens.'],
+    ['After launch', 'Optional. A Care or Growth retainer keeps it fixed and improving.'],
+  ],
+}
+
 // Every page this module adds, for the router and the prerender
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
   // noindex while the page still shows a TODO box instead of a real professional-services case study
   { path: industry.path, title: industry.title, description: industry.description, noindex: Boolean(industry.todo) },
   ...locations.map(l => ({ path: l.path, title: l.title, description: l.description, noindex: true })),
+  { path: pricingPage.path, title: pricingPage.title, description: pricingPage.description, noindex: Boolean(pricingPage.todo) },
+  { path: partnersPage.path, title: partnersPage.title, description: partnersPage.description },
 ]

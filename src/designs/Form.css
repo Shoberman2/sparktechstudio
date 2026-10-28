@@ -92,3 +92,9 @@
 .fm-services .pg-cases a { grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); grid-template-areas:'name line'; padding:22px 0; }
 .fm-services .pg-cases strong { font-size:clamp(26px,3vw,44px); }
 @media (max-width:860px) { .fm-services .pg-cases a { grid-template-columns:1fr; grid-template-areas:'name' 'line'; } }
+
+/* Founder: a photo slot and one line of fact. Both slots show TODO until Spencer supplies the photo and bio. */
+.fm-founder { display:grid; grid-template-columns:200px 1fr; gap:32px; align-items:start; }
+.fm-founder-photo { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:6px; aspect-ratio:4/5; border:1.5px dashed #c2410c; border-radius:10px; background:#fff7ed; color:#7c2d12; font-size:14px; }
+.fm-founder-photo strong { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px; letter-spacing:.14em; }
+@media (max-width:860px) { .fm-founder { grid-template-columns:1fr; } .fm-founder-photo { width:160px; } }

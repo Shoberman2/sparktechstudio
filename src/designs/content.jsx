@@ -1,7 +1,12 @@
 // Shared copy for the design directions and the company pages. Facts come from each company's own repo and live site (checked 2026-10-15).
 // Shipped and vision are kept apart on purpose. UTern is an independent company; nothing here asserts SparkTech ownership of any of them.
 export const EMAIL = 'contactus@sparktechstudio.com'
-export const CALENDLY = 'https://calendly.com/spencerhoberman-utern/30min'
+// The one booking link for the whole site. Every "Book a call" spreads BOOK, so setting CALENDLY_URL updates them all.
+// TODO(Spencer): paste the SparkTech Calendly link here. Until it's set, Book a call opens an email instead of a dead link.
+export const CALENDLY_URL = ''
+export const BOOK = CALENDLY_URL
+  ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer' }
+  : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}` }
 export const year = new Date().getFullYear()
 
 export const companies = [
@@ -143,7 +148,8 @@ export const studies = {
 // The four case studies the /work hub, the home tiles and the footer show, in this order. Spacial Health keeps its page but is not listed.
 export const workSlugs = ['utern', 'leed', 'ballotwatch', 'validate']
 
-// Published prices, set by Spencer on 2026-10-27. Anything not listed here is priced in a written scope after a call.
+// Published prices from the 2026-10-27 rebuild plan, final numbers pending Spencer's confirmation (/pricing shows a TODO and is noindex until then).
+// Anything not listed here is priced in a written scope after a call.
 export const pricing = {
   launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'A marketing site built to rank and to convert: design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.' },
   care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.' },

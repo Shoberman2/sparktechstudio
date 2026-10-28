@@ -3,7 +3,7 @@
 > An independent studio in New York, NY, United States. We build AI web apps and MVPs, and websites for law, finance and medical firms, then keep them improving after launch.
 
 Site: https://www.sparktechstudio.com
-Contact: book a call at https://calendly.com/spencerhoberman-utern/30min, or email contactus@sparktechstudio.com (we reply within two business days)
+Contact: email contactus@sparktechstudio.com (we reply within two business days)
 Legal entity: SparkTech Studios, Inc., a Delaware C corporation
 Not to be confused with: sparktechstudios.com, a separate, unrelated agency in Ontario, Canada.
 
@@ -26,6 +26,7 @@ Not to be confused with: sparktechstudios.com, a separate, unrelated agency in O
 
 ## Other pages
 
+- [Partners](https://www.sparktechstudio.com/partners): a build partner for design studios, agencies and accelerators.
 - [System](https://www.sparktechstudio.com/systems): how the improvement loop works, told broadly.
 - [Privacy](https://www.sparktechstudio.com/privacy): no analytics, no ads, no tracking.
 
