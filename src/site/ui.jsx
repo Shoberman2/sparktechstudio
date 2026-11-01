@@ -168,4 +168,4 @@ export const Prices = ({ keys, scopes = {} }) => <div className="prices reveal" 
 
 export const Faq = ({ items }) => <dl className="faq">{items.map(([q, a]) => <div key={q} className="reveal"><dt>{q}</dt><dd>{a}</dd></div>)}</dl>
 
-export const Links = ({ items }) => <ul className="links reveal">{items.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+export const Links = ({ items }) => <ul className="links reveal">{items.map(([label, href]) => <li key={label}><a href={href}>{label}</a></li>)}</ul>

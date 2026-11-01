@@ -136,7 +136,8 @@ html:has(.st), html:has(.st) body { background: #fff; }
 .st .duo p, .st .trio p { margin: 12px auto 0; max-width: 22em; font-size: 19px; color: var(--ink-2); }
 .st .duo .tl { display: inline-flex; min-height: 44px; align-items: center; margin-top: 8px; font-size: 17px; }
 .st .duo .amt { display: block; margin-top: 14px; color: var(--ink); font-size: clamp(26px, 2.8vw, 36px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; }
-@media (max-width: 760px) { .st .duo, .st .trio { grid-template-columns: 1fr; } }
+.st .duo.three { grid-template-columns: repeat(3, 1fr); max-width: 1080px; gap: 56px clamp(32px, 5vw, 72px); }
+@media (max-width: 760px) { .st .duo, .st .duo.three, .st .trio { grid-template-columns: 1fr; } }
 .st .say { max-width: 720px; margin-inline: auto; text-align: center; color: var(--ink); font-size: clamp(20px, 2vw, 24px); line-height: 1.45; }
 
 /* Two-column list: services, points, who-it's-for */

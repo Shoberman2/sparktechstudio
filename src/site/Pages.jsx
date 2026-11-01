@@ -8,7 +8,7 @@ const ORG = `${SITE}/#org`
 const crumbs = list => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: list.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE}${path}` })) })
 const offer = key => {
   const p = pricing[key], [lo, hi] = p.price.match(/[\d,]+k?/g).map(v => Number(v.replace(/,/g, '').replace('k', '000')))
-  return { '@type': 'Offer', name: p.name, priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD', minPrice: lo, maxPrice: hi, ...(p.unit === 'a month' ? { unitText: 'MONTH' } : {}) } }
+  return { '@type': 'Offer', name: p.name, priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD', ...(hi ? { minPrice: lo, maxPrice: hi } : { price: lo }), ...(p.unit === 'a month' ? { unitText: 'MONTH' } : {}) } }
 }
 const serviceLd = (page, name, area = [{ '@type': 'City', name: 'New York' }, { '@type': 'Place', name: 'Long Island, NY' }]) => {
   const keys = [page.package].flat().filter(Boolean)
@@ -51,7 +51,7 @@ export function ServicesHub() {
   return <Shell title="Services | SparkTech Studio" active="services">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
     <PageHead h1="What We Build" lede="Websites and AI agents, plus the apps around them." cta={false} />
-    <Sec><List items={allServices} /><p className="note reveal">Websites are {pricing.launch.price}. {scoped} <a className="tl" href="/pricing">All prices</a></p></Sec>
+    <Sec><List items={allServices} /><p className="note reveal">Websites are {pricing.launch.price}. Website updates are {pricing.updates.price} {pricing.updates.unit}. {scoped} <a className="tl" href="/pricing">All prices</a></p></Sec>
   </Shell>
 }
 
@@ -95,9 +95,9 @@ export function PricingPage() {
   const s = pricingPage
   return <Shell title={s.title} active="pricing" bandTitle="Want A Number For Your Project?">
     <JsonLd data={crumbs([['Home', '/'], ['Pricing', s.path]])} />
-    <PageHead h1="Plain Prices" lede="One website package and two monthly retainers." />
+    <PageHead h1="Plain Prices" lede="One website package and three monthly plans." />
     <Sec title="Website"><Prices keys={['launch']} scopes={{ launch: pricing.launch.scope }} /></Sec>
-    <Sec title="After Launch"><Prices keys={['care', 'growth']} scopes={s.scopes} /></Sec>
+    <Sec title="After Launch"><Prices keys={['updates', 'care', 'growth']} scopes={s.scopes} /></Sec>
     <Sec title="Everything Else"><p className="read center reveal" style={{ fontSize: 19 }}>{scoped} No two are the same size.</p></Sec>
   </Shell>
 }

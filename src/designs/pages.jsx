@@ -90,12 +90,12 @@ export const services = [
   {
     ...line('retainers'),
     title: 'Website Maintenance and SEO in NYC | SparkTech Studio',
-    description: 'Website maintenance and SEO retainers in New York. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
+    description: 'Website updates, maintenance and SEO in New York. Updates $500 a month. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
     name: 'Maintenance and growth retainers',
     h1: 'Launch Is Day One',
     lede: 'Sites and apps start aging the day they ship. A retainer keeps yours fast, fixed and getting better, with a set number of hours each month.',
     points: null,
-    package: ['care', 'growth'],
+    package: ['updates', 'care', 'growth'],
     cases: ['utern', 'ballotwatch'],
   },
 ]
@@ -138,7 +138,7 @@ const faqs = {
     ownership,
   ],
   retainers: [
-    ['What does a retainer cost?', `${price('care')}. ${price('growth')}.`],
+    ['What does a retainer cost?', `${price('updates')}. ${price('care')}. ${price('growth')}.`],
     ['What stack do you work on?', `The sites and apps we build. ${ran(['utern', 'ballotwatch'])} Anything else is settled in the written scope.`],
     ownership,
   ],
@@ -196,7 +196,7 @@ export const locations = [
 export const pricingPage = {
   path: '/pricing',
   title: 'Pricing | SparkTech Studio',
-  description: 'Launch Site from $12k to $25k. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month. Everything else is priced in a written scope.',
+  description: 'Launch Site from $12k to $25k. Website updates $500 a month. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month. Everything else is priced in a written scope.',
   // How the retainers read on this page: Care is maintenance, Growth is SEO and AI features
   scopes: {
     care: 'Maintenance. Hosting oversight, updates, uptime checks and small fixes, so the site stays fast and keeps working. About 5 hours a month.',

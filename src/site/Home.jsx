@@ -6,10 +6,11 @@ import { Shell, Book, Sec, ProductRows, Client } from './ui.jsx'
 const what = [
   ['Websites', 'A fast, clear site that gets you calls.', '/services', 'See services'],
   ['AI agents', 'AI that answers, sorts and follows up for you.', '/services/ai-agents', 'How AI agents work'],
+  ['Website updates', 'We edit your site and keep it current.', '/services/retainers', 'See monthly plans'],
 ]
 
 export default function Home() {
-  const site = pricing.launch
+  const site = pricing.launch, updates = pricing.updates
   return <Shell title="SparkTech Studio | Websites and AI Agents in New York" className="st-home">
     <section className="hero">
       <div>
@@ -20,7 +21,7 @@ export default function Home() {
     </section>
 
     <Sec id="services" title="What We Do">
-      <ul className="duo">{what.map(([h, p, href, label]) => <li key={h} className="reveal">
+      <ul className="duo three">{what.map(([h, p, href, label]) => <li key={h} className="reveal">
         <h3>{h}</h3><p>{p}</p><a className="tl" href={href}>{label}</a>
       </li>)}</ul>
     </Sec>
@@ -31,9 +32,10 @@ export default function Home() {
     </Sec>
 
     <Sec id="pricing" title="Pricing">
-      <ul className="duo">
+      <ul className="duo three">
         <li className="reveal"><h3>Website</h3><span className="amt num">{site.price}</span><p>One time. Usually 3 to 5 weeks.</p></li>
         <li className="reveal"><h3>AI agents</h3><span className="amt">After a call</span><p>Priced for the job you need done.</p></li>
+        <li className="reveal"><h3>{updates.name}</h3><span className="amt num">{updates.price}</span><p>A month. {updates.short}</p></li>
       </ul>
       <p className="note reveal"><a className="tl" href="/pricing">All prices</a></p>
     </Sec>
