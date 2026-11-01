@@ -2,11 +2,11 @@
 // Files in api/ that start with an underscore are not deployed as functions.
 export const SITE_CONTEXT = `
 SparkTech Studio is Spencer Hoberman's independent studio in New York, NY (legal name SparkTech Studios, Inc.). Website: https://www.sparktechstudio.com. Not affiliated with sparktechstudios.com (Ontario).
-It builds AI web apps, MVPs, websites and AI agent systems, and runs its own products.
+It builds websites and AI agents for businesses, plus AI web apps and MVPs, and runs its own products.
 
 Services (each has its own page):
 - AI app development (/services/ai-app-development): web apps where the AI is the product. Answers traceable to sources, people approve the steps that matter, model chosen for the job.
-- AI agents and agent swarms (/services/ai-agents): we design, wire and run AI agents and coordinated multi-agent systems that do real work for a business, with people approving the steps that matter and a record of every run.
+- AI agents (/services/ai-agents): we set up AI agents that answer questions, sort requests and follow up for a business, with the owner approving what they can touch.
 - Web app development (/services/web-app-development): dashboards, portals, marketplaces, internal tools on Next.js and React, with sign-in, permissions, data, payments and email.
 - Website design (/services/web-design): designed, not templated; SEO set up before launch; a CMS for pages you change often.
 - Startup MVPs (/services/startup-mvp): the smallest version real people can use, built on real code so version two builds on it.
@@ -18,7 +18,7 @@ Pricing (exact, do not change):
 - Launch Site: $12k to $25k one time, usually 3 to 5 weeks. Design, build, a CMS and SEO.
 - Care: $1,000 to $1,500 a month, about 5 hours a month. Updates, uptime checks, small fixes.
 - Growth: $3,000 to $5,000 a month, about 15 hours a month. Care plus SEO pages, analytics and conversion tests.
-- AI apps, web apps, MVPs and agent systems are priced in a written scope after a call. Never quote a number for those.
+- Apps, MVPs and AI agents are priced in a written scope after a call. Never quote a number for those.
 
 How a project runs: a call, a written scope (what, when, cost; ownership, access and support are spelled out there), build and launch, then optionally keep improving on a retainer.
 

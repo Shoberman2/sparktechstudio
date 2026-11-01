@@ -12,7 +12,7 @@ const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
 const site = 'https://www.sparktechstudio.com'
 const routes = [
-  { path: '/', title: 'SparkTech Studio | AI Web Apps, MVPs and Websites in NYC', description: 'An independent studio in New York, NY. We build AI web apps and MVPs, and websites for law, finance and medical firms. Book a call.' },
+  { path: '/', title: 'SparkTech Studio | Websites and AI Agents for Business', description: 'A New York studio. We build your website and set up AI agents that do real work for your business. Book a call.' },
   { path: '/work', title: 'Work | SparkTech Studio', description: 'Case studies: UTern, Leed, BallotWatch and Validate-s. The problem, what we built, and what it runs on.' },
   { path: '/services', title: 'Services | SparkTech Studio', description: 'AI app development, web apps, website design, startup MVPs and retainers, from an independent studio in New York.' },
   ...pageRoutes,
@@ -23,7 +23,7 @@ for (const c of companies || []) {
   const lede = String(c.lede || '').replace(/\s+/g, ' ')
   routes.push({ path: `/work/${c.slug}`, title: `${c.name} | SparkTech Studio`, description: `${c.line} ${lede}`.slice(0, 155).replace(/\s\S*$/, '').replace(/[,;:]$/, '').replace(/([^.])$/, lede.length > 120 ? '$1.' : '$1'), image: `/work/${c.slug}/og.jpg`, noindex: !workSlugs.includes(c.slug) })
 }
-routes.push({ path: '/systems', title: 'System | SparkTech Studio', description: 'Software that keeps getting better. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
+routes.push({ path: '/systems', title: 'System | SparkTech Studio', description: 'How we keep improving a site after launch. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
 routes.push({ path: '/privacy', title: 'Privacy | SparkTech Studio', description: 'No analytics, no ads, no tracking. What this site does with what you send.' })
 routes.push({ path: '/404', title: 'Not here | SparkTech Studio', description: 'That page is not here. Back to the studio.', noindex: true })
 

@@ -19,4 +19,4 @@ export const flow = [
 
 export const about = 'Spencer Hoberman founded SparkTech Studio in New York. He also builds UTern, an independent company.'
 
-export const scoped = 'AI apps, web apps, MVPs and agent systems are priced in a written scope after a call.'
+export const scoped = 'Apps, MVPs and AI agents are priced in a written scope after a call.'

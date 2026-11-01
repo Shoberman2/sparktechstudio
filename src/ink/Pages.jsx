@@ -1,48 +1,37 @@
 import { companies, studies, EMAIL } from '../designs/content.jsx'
 import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
-import { Shell, Statement, PageHead, Ask, List2, Flow, Prices, Work, Book, Btn, JsonLd } from './ui.jsx'
+import { Shell, Statement, PageHead, Ask, List2, Flow, Prices, Screens, Book, Btn, JsonLd } from './ui.jsx'
 import { crumbs, faqLd, serviceLd } from './ld.js'
-import { work, about, scoped } from './copy.js'
+import { work, scoped } from './copy.js'
 
-const BOLT = '/brand/sparktech-bolt-mark-256.png'
-
-// One line per service for the two-column lists
+// One short line per service
 const svcLines = {
-  'ai-app-development': 'Web apps where the AI does the work.',
-  'ai-agents': 'Agents and agent swarms that do real work for a business.',
-  'web-app-development': 'Dashboards, portals and tools on Next.js and React.',
-  'web-design': 'Sites that load fast and turn a visit into a call.',
-  'startup-mvp': 'The smallest version real people can use.',
-  retainers: 'Monthly hours that keep it fast and fixed.',
+  'ai-app-development': 'Apps where AI does the work.',
+  'ai-agents': 'Agents that do real work for your business.',
+  'web-app-development': 'Dashboards, portals and tools.',
+  'web-design': 'Fast sites that turn visits into calls.',
+  'startup-mvp': 'A first version real people can use.',
+  retainers: 'We keep it fast, fixed and up to date.',
 }
-const svcItems = () => [...services.map(s => [s.nav, svcLines[s.slug], s.path]), ['Law, finance and medical sites', 'Sites for firms that sell trust first.', industry.path]]
+const svcItems = () => services.map(s => [s.nav, svcLines[s.slug], s.path])
 
 export function Home() {
-  return <Shell path="/" title="SparkTech Studio | AI Web Apps, MVPs and Websites in NYC">
+  return <Shell path="/" title="SparkTech Studio | Websites and AI Agents for Business">
     <section className="hero">
       <div className="wrap">
-        <h1>From Idea to Launch, Fast.</h1>
-        <p className="lede">Built properly, so it holds up when people show up.</p>
-        <div className="actions"><Book /><Btn ghost href="/work">See the work</Btn></div>
-      </div>
-      <div className="banner">
-        <img src="/brand/spark-cloud.jpg" srcSet="/brand/spark-cloud-1200.jpg 1200w, /brand/spark-cloud.jpg 2400w" sizes="(max-width: 1180px) 100vw, 1180px" width="2400" height="960" alt="The SparkTech spark, drawn as a cloud of gold points" fetchPriority="high" />
+        <h1>Websites And AI Agents For Your Business</h1>
+        <p className="lede">We build your site and set up AI agents that do real work. New York studio.</p>
+        <div className="actions"><Book /><Btn ghost href="/work">See our work</Btn></div>
       </div>
     </section>
-    <Statement id="services" title="What We Build" line="AI first, and everything it needs around it.">
-      <List2 items={svcItems()} />
+    <Statement id="services" title="What We Do">
+      <List2 items={[['Websites', 'Fast sites that turn visits into calls.', '/services'], ['AI agents', 'Agents that answer, sort and follow up for you.', '/services/ai-agents']]} />
     </Statement>
-    <Statement id="work" title="What We’ve Built" line="Our own products, live today, and a client site.">
-      <Work withClient />
+    <Statement id="work" title="Our Work">
+      <Screens withClient />
     </Statement>
-    <Statement id="process" title="How It Runs" line="It starts with a conversation, not a pitch.">
-      <Flow />
-    </Statement>
-    <Statement id="pricing" title="Plain Prices" line={scoped}>
-      <Prices scopes={{ launch: 'Design, build, a CMS and SEO. Usually 3 to 5 weeks.', care: 'Updates, uptime and small fixes. About 5 hours a month.', growth: 'Care, plus SEO pages, analytics and tests. About 15 hours a month.' }} />
-    </Statement>
-    <Statement id="about" title="Who’s Behind It">
-      <div className="state"><img className="about-mark" src={BOLT} width="56" height="55" alt="" /><p style={{ marginTop: 0 }}>{about}</p></div>
+    <Statement id="pricing" title="Pricing" line={scoped}>
+      <Prices withScope={false} />
     </Statement>
     <Ask />
   </Shell>
@@ -54,6 +43,7 @@ const Links = ({ items }) => <nav className="links">{items.map(([l, h]) => <a ke
 
 export function ServicePage({ slug }) {
   const s = services.find(x => x.slug === slug)
+  if (slug === 'ai-agents') return <AgentsPage s={s} />
   const pkg = [s.package].flat().filter(Boolean)
   // With a price shown, the cost question would say the same thing twice
   const faq = pkg.length ? s.faq.slice(1) : s.faq
@@ -64,21 +54,29 @@ export function ServicePage({ slug }) {
     <PageHead h1={s.h1} lede={s.lede} />
     <Statement title="What You Get"><List2 items={s.points} /></Statement>
     {pkg.length > 0 && <Statement title="The Price"><Prices keys={pkg} withScope={false} /></Statement>}
-    <Statement title="Work Like This"><Work slugs={s.cases} /></Statement>
-    <Statement title="How It Runs"><Flow /></Statement>
+    <Statement title="Work Like This"><Screens slugs={s.cases} /></Statement>
     <Statement title="Questions"><Faq items={faq} /></Statement>
-    <Statement title="More We Build"><Links items={[...services.filter(x => x.path !== s.path).map(x => [x.nav, x.path]), ['Law, finance and medical sites', industry.path]]} /></Statement>
     <Ask />
+  </Shell>
+}
+
+function AgentsPage({ s }) {
+  return <Shell path={s.path} title={s.title}>
+    <JsonLd data={serviceLd(s, s.kicker)} />
+    <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
+    <PageHead h1={s.h1} lede={s.lede} />
+    <Statement title="What An Agent Can Do"><List2 three items={s.points} /></Statement>
+    <Statement title="How We Work" line="We start with one task, test it with you, and you approve what it can touch." />
+    <Statement title="Pricing" line={s.priceNote} />
+    <Ask title="Want An Agent On Your Team?" />
   </Shell>
 }
 
 export function ServicesHub() {
   return <Shell path="/services" title="Services | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
-    <PageHead h1="What We Build" lede="AI first. Then the web apps, sites and retainers around it." />
+    <PageHead h1="What We Do" lede="Websites and AI agents, plus the apps around them." />
     <Section><List2 items={svcItems()} /></Section>
-    <Statement title="Plain Prices" line={scoped}><Prices /></Statement>
-    <Statement title="How It Runs"><Flow /></Statement>
     <Ask />
   </Shell>
 }
@@ -91,7 +89,7 @@ export function IndustryPage() {
     <PageHead h1={s.h1} lede={s.lede} />
     <Statement title="Who It’s For" line={s.note}><List2 items={s.points} /></Statement>
     <Statement title="Plain Prices"><Prices /></Statement>
-    <Statement title="Work Like This" line={s.caseNote}><Work slugs={s.cases} /></Statement>
+    <Statement title="Work Like This" line={s.caseNote}><Screens slugs={s.cases} /></Statement>
     <Statement title="Where We Work"><Links items={locations.map(l => [l.place, l.path])} /></Statement>
     <Ask />
   </Shell>
@@ -106,7 +104,7 @@ export function LocationPage({ slug }) {
     <PageHead h1={l.h1} lede={l.lede} />
     <Section><List2 items={svcItems()} /></Section>
     <Statement title="Plain Prices" line={scoped}><Prices /></Statement>
-    <Statement title="Work Like This"><Work slugs={l.cases} /></Statement>
+    <Statement title="Work Like This"><Screens slugs={l.cases} /></Statement>
     <Statement title="Nearby"><Links items={l.near.map(n => { const x = locations.find(y => y.slug === n); return [x.place, x.path] })} /></Statement>
     <Ask />
   </Shell>
@@ -115,8 +113,8 @@ export function LocationPage({ slug }) {
 export function WorkHub() {
   return <Shell path="/work" title="Work | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work']])} />
-    <PageHead h1="What We’ve Built" lede="Our own products, live today, and client work." cta={false} />
-    <Section><Work withClient /></Section>
+    <PageHead h1="Our Work" lede="Our own products, live today, and a client site." cta={false} />
+    <Section><Screens withClient /></Section>
     <Ask title="Want Something Like This?" />
   </Shell>
 }
@@ -144,7 +142,7 @@ export function PartnersPage() {
     <PageHead h1={s.h1} lede={s.lede} />
     <Statement title="Who It’s For"><List2 items={s.who} /></Statement>
     <Statement title="How It Runs"><Flow steps={partnerFlow} /></Statement>
-    <Statement title="What We’ve Built"><Work /></Statement>
+    <Statement title="What We’ve Built"><Screens /></Statement>
     <Ask title="Have a Client or a Cohort in Mind?" />
   </Shell>
 }
@@ -154,7 +152,7 @@ const keeps = [['People set the limits', 'What it may touch, what it may spend, 
 export function SystemsPage() {
   return <Shell path="/systems" title="System | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['System', '/systems']])} />
-    <PageHead h1="Software That Keeps Getting Better" lede="Most software starts aging the day it launches. Ours runs in a loop that keeps improving it." />
+    <PageHead h1="We Keep Improving It After Launch" lede="After launch, we keep checking, fixing and testing your site." />
     <Statement title="One Loop, on Repeat" line="After the last step, it starts again."><Flow steps={loop} /></Statement>
     <Statement title="What Never Changes"><List2 items={keeps} /></Statement>
     <Statement title="Where This Stands" line="Today the loop runs on our own site. On October 11, 2026 it found a bug there, fixed it and shipped the fix. Our products are next, one at a time." />
@@ -163,10 +161,9 @@ export function SystemsPage() {
 }
 
 const marks = { utern: '/work/utern/birdee.webp', leed: '/brand/leed.svg', ballotwatch: '/brand/ballotwatch.svg', validate: '/brand/validate.svg' }
-const photos = { utern: ['/work/utern/mountain.webp', 'The UTern mountain at dusk'], leed: ['/work/leed/newsrooms.webp', 'Newsroom desks, where Leed tips arrive'], ballotwatch: ['/work/ballotwatch/hero-capitol.jpg', 'The United States Capitol'] }
 
 export function CaseStudy({ slug }) {
-  const c = companies.find(x => x.slug === slug), st = studies[slug], photo = photos[slug]
+  const c = companies.find(x => x.slug === slug), st = studies[slug], shot = st ? [`/work/${slug}/og.jpg`, `The ${c.name} site`] : null
   return <Shell path={`/work/${slug}`} title={`${c.name} | SparkTech Studio`}>
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work'], [c.name, `/work/${slug}`]])} />
     <section className="page-head">
@@ -177,12 +174,12 @@ export function CaseStudy({ slug }) {
         <div className="actions"><Book />{c.url && <Btn ghost href={c.url} target="_blank" rel="noreferrer">Visit {c.host}</Btn>}</div>
       </div>
     </section>
-    {photo && <div className="frame reveal"><img src={photo[0]} alt={photo[1]} loading="lazy" /></div>}
+    {shot && <div className="frame reveal"><img src={shot[0]} alt={shot[1]} width="1200" height="630" /></div>}
     {st ? <>
       <Statement title="The Problem" line={st.problem} />
       <Statement title="What We Built"><ul className="bullets">{st.built.map(b => <li key={b}>{b}</li>)}</ul></Statement>
       <Statement title="Built With" line={`${st.stack}. ${st.status}`} />
-      <Statement title="More Work"><Work slugs={work.filter(s => s !== slug)} /></Statement>
+      <Statement title="More Work"><Screens slugs={work.filter(s => s !== slug)} /></Statement>
     </> : <Statement title="In the Preview"><ul className="bullets">{c.today.map(b => <li key={b}>{b}</li>)}</ul></Statement>}
     <Ask title="Want Something Like This?" />
   </Shell>
@@ -215,6 +212,6 @@ export function NotFound() {
         <div className="actions"><Btn href="/">Back to the studio</Btn><Btn ghost href="/work">See the work</Btn></div>
       </div>
     </section>
-    <section className="sec"><div className="wrap"><Work /></div></section>
+    <section className="sec"><div className="wrap"><Screens /></div></section>
   </Shell>
 }

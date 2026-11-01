@@ -61,14 +61,14 @@ function Footer() {
       <div className="foot-top">
         <div>
           <a href="/" className="mark"><img src={BOLT} width="26" height="25" alt="" />SparkTech Studio</a>
-          <p>An independent studio in New York. AI web apps, MVPs, websites and agent systems.</p>
+          <p>A New York studio. Websites and AI agents for businesses.</p>
         </div>
         <Book />
       </div>
       <div className="foot-cols">
         <nav aria-labelledby="f-svc"><h2 id="f-svc">Services</h2>{svc.map(([l, h]) => <a key={h} href={h}>{l}</a>)}</nav>
         <nav aria-labelledby="f-work"><h2 id="f-work">Work</h2>{wk.map(([l, h]) => <a key={h} href={h}>{l}</a>)}</nav>
-        <nav aria-labelledby="f-studio"><h2 id="f-studio">Studio</h2><a href="/pricing">Pricing</a><a href="/partners">Partners</a><a href="/systems">System</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
+        <nav aria-labelledby="f-studio"><h2 id="f-studio">Studio</h2><a href="/pricing">Pricing</a><a href="/partners">Partners</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
         <nav aria-labelledby="f-legal"><h2 id="f-legal">Legal</h2><a href="/privacy">Privacy</a></nav>
       </div>
       <p className="foot-legal">{LEGAL}</p>
@@ -133,7 +133,7 @@ export function Ask({ title = 'Have Something in Mind?', line = 'We reply within
   </section>
 }
 
-export const List2 = ({ items }) => <ul className="list2">{items.map(([h, p, href]) => <li key={h}>{href ? <a href={href}><h3>{h}</h3><p>{p}</p></a> : <div><h3>{h}</h3><p>{p}</p></div>}</li>)}</ul>
+export const List2 = ({ items, three }) => <ul className={`list2${three ? " list3" : ""}`}>{items.map(([h, p, href]) => <li key={h}>{href ? <a href={href}><h3>{h}</h3><p>{p}</p></a> : <div><h3>{h}</h3><p>{p}</p></div>}</li>)}</ul>
 
 export const Flow = ({ steps = flow }) => <ol className="flow" style={{ '--n': steps.length }} aria-label="How a project runs">{steps.map(([h, p]) => <li key={h}><h3>{h}</h3>{p && <p>{p}</p>}</li>)}</ol>
 
@@ -160,6 +160,20 @@ export function Work({ slugs = work, withClient = false }) {
     {r.href && <a className="host" href={r.url} target="_blank" rel="noreferrer">{r.host}</a>}
     {!r.href && <span className="host" aria-hidden="true">{r.host}</span>}
   </li>)}</ul>
+}
+
+// Real work, shown as the product's own screen. The client has no screen here, so it gets a plain text row.
+export function Screens({ slugs = work, withClient = false }) {
+  return <div className="screens-wrap">
+    <ul className="screens">{slugs.map(s => { const c = companies.find(x => x.slug === s); return <li key={s}>
+      <a href={`/work/${s}`}>
+        <img src={`/work/${s}/og.jpg`} width="1200" height="630" alt={`The ${c.name} site`} loading="lazy" />
+        <h3>{c.name}</h3>
+        <p>{c.line}</p>
+      </a>
+    </li> })}</ul>
+    {withClient && <p className="client"><strong>Client: {client.name}.</strong> {client.line} <a href={client.url} target="_blank" rel="noreferrer">{client.host}</a></p>}
+  </div>
 }
 
 /* ---------- Assistant: the bolt in the corner, a real model behind it ---------- */
