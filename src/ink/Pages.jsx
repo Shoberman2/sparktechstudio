@@ -1,6 +1,6 @@
 import { companies, studies, EMAIL } from '../designs/content.jsx'
 import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
-import { Shell, Statement, PageHead, Ask, List2, Flow, Prices, Screens, Book, Btn, JsonLd } from './ui.jsx'
+import { Shell, Statement, PageHead, Ask, List2, Flow, Prices, Screens, TypeList, Book, Btn, JsonLd } from './ui.jsx'
 import { crumbs, faqLd, serviceLd } from './ld.js'
 import { work, scoped } from './copy.js'
 
@@ -28,7 +28,7 @@ export function Home() {
       <List2 items={[['Websites', 'Fast sites that turn visits into calls.', '/services'], ['AI agents', 'Agents that answer, sort and follow up for you.', '/services/ai-agents']]} />
     </Statement>
     <Statement id="work" title="Our Work">
-      <Screens withClient />
+      <TypeList withClient />
     </Statement>
     <Statement id="pricing" title="Pricing" line={scoped}>
       <Prices withScope={false} />
@@ -114,7 +114,7 @@ export function WorkHub() {
   return <Shell path="/work" title="Work | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work']])} />
     <PageHead h1="Our Work" lede="Our own products, live today, and a client site." cta={false} />
-    <Section><Screens withClient /></Section>
+    <Section><TypeList withClient shots /></Section>
     <Ask title="Want Something Like This?" />
   </Shell>
 }

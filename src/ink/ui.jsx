@@ -176,6 +176,22 @@ export function Screens({ slugs = work, withClient = false }) {
   </div>
 }
 
+// Type-led work list: one left-aligned row per product in a centered 760px column. Real transparent logo
+// (with no logo, the name alone is the wordmark), name, one line, domain as a gold link. `shots` adds the
+// product's real screen under its row (used on /work only).
+const typeLogos = { utern: ['/logo-utern.png', 'UTern logo'], leed: ['/logo-leed.svg', 'Leed logo'], ballotwatch: ['/logo-ballotwatch.svg', 'BallotWatch logo'] }
+export function TypeList({ slugs = work, withClient = false, shots = false }) {
+  const rows = slugs.map(s => { const c = companies.find(x => x.slug === s); return { key: s, name: c.name, line: c.line, href: `/work/${s}`, host: c.host, url: c.url, logo: typeLogos[s], shot: shots && `/work/${s}/og.jpg` } })
+  if (withClient) rows.push({ key: 'oasis', name: client.name, line: `Client work. ${client.line}`, host: client.host, url: client.url })
+  return <ul className="tlist">{rows.map(r => <li key={r.key}>
+    {r.logo && <span className="tl-logo"><img src={r.logo[0]} alt={r.logo[1]} height="40" loading="lazy" /></span>}
+    <h3>{r.href ? <a href={r.href}>{r.name}</a> : r.name}</h3>
+    <p>{r.line}</p>
+    <a className="tl-host" href={r.url} target="_blank" rel="noreferrer">{r.host}</a>
+    {r.shot && <a className="tl-shot" href={r.href} tabIndex={-1} aria-hidden="true"><img src={r.shot} width="1200" height="630" alt="" loading="lazy" /></a>}
+  </li>)}</ul>
+}
+
 /* ---------- Assistant: the bolt in the corner, a real model behind it ---------- */
 const HELLO = 'Ask about services, pricing, our work, or how a project starts.'
 export function Assistant() {

@@ -147,6 +147,21 @@ h3 { font-size: clamp(20px, 2vw, 26px); line-height: 1.2; letter-spacing: -0.02e
 .client a { color: var(--accent-text); font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 720px) { .screens { grid-template-columns: 1fr; } }
 
+/* Type list: one left-aligned row per product in a centered 760px column. No lines, no boxes. */
+.tlist { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; text-align: left; }
+.tl-logo { display: flex; align-items: center; height: 40px; margin-bottom: 16px; }
+.tl-logo img { height: 40px; width: auto; background: none; }
+.tlist h3 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.025em; }
+.tlist h3 a:hover { color: var(--accent-text); }
+.tlist p { margin-top: 6px; }
+.tl-host { display: inline-block; margin-top: 8px; color: var(--accent-text); font-weight: 500; }
+.tl-host:hover { text-decoration: underline; text-underline-offset: 4px; }
+.tl-shot { display: block; margin-top: 24px; }
+.tl-shot img { width: 100%; max-width: 760px; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 24px; background: var(--surface-dim); }
+
+/* Keep the What We Do column clear of the fixed bottom-right assistant on phones */
+@media (max-width: 520px) { #services .list2 { padding-right: 64px; } }
+
 /* Flow: one connected horizontal line with small gold dots */
 .flow { position: relative; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); max-width: 1040px; margin: 0 auto; }
 .flow::before { content: ''; position: absolute; top: 7px; left: calc(50% / var(--n, 4)); right: calc(50% / var(--n, 4)); height: 2px; background: var(--accent); border-radius: 2px; }
