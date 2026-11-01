@@ -33,8 +33,12 @@ if (long.length) throw new Error(`Titles over 60 characters:\n${long.map(r => ` 
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 for (const r of routes) {
-  const html = render(r.path)
+  // React hoists image preloads to the front of the markup; move them into <head> so the root matches what the client hydrates
+  const rendered = render(r.path)
+  const preloads = rendered.match(/^(<link [^>]*\/>)*/)[0]
+  const html = rendered.slice(preloads.length)
   let page = template.replace('<div id="root"></div>', () => `<div id="root">${html}</div>`)
+  if (preloads) page = page.replace('</head>', () => `  ${preloads}\n  </head>`)
   page = page.replace(/<title>[^<]*<\/title>/, () => `<title>${esc(r.title)}</title>`)
   page = page.replace(/(<meta name="description" content=")[^"]*(")/, (_, a, b) => a + esc(r.description) + b)
   page = page.replace(/(<meta property="og:title" content=")[^"]*(")/, (_, a, b) => a + esc(r.title) + b)
