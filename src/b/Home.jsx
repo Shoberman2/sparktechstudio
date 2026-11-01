@@ -1,6 +1,7 @@
-import { Shell, Book, Laptop, Phone, Flow, Prices, ServiceSentence } from './Site.jsx'
-import { products, client, about, scopedNote, screen } from './facts.js'
+import { Shell, Book, Laptop, Phone, Prices } from './Site.jsx'
+import { products, client, scopedNote, screen } from './facts.js'
 
+// One product, full width, its live screen in a device frame (used on /work)
 export function Product({ p, slug = p.slug, device = p.device, caseStudy = true }) {
   return <section className="sec product" id={slug}>
     <div className="wrap">
@@ -21,14 +22,33 @@ export function Product({ p, slug = p.slug, device = p.device, caseStudy = true 
   </section>
 }
 
+// The work as a grid of real screens: each one links to its case study, or out to the live site
+export function WorkGrid({ items = [...products, client] }) {
+  return <ul className="work-grid">{items.map(p => {
+    const href = p.slug === 'oasis' ? p.url : `/work/${p.slug}`
+    const ext = p.slug === 'oasis' ? { target: '_blank', rel: 'noreferrer' } : {}
+    return <li key={p.slug} className="reveal">
+      <a className="case" href={href} {...ext}>
+        <Laptop src={screen(p.slug, 'desktop')} alt={`The ${p.name} website, ${p.host}`} />
+        <h3>{p.name}</h3>
+        <p>{p.line}</p>
+      </a>
+    </li>
+  })}</ul>
+}
+
+const what = [
+  ['Websites', 'A fast site you can edit yourself.', '/services', 'See services'],
+  ['AI agents', 'AI that answers, sorts and follows up for you.', '/services/ai-agents', 'See AI agents'],
+]
+
 export default function Home() {
-  return <Shell path="/" title="SparkTech Studio | AI Web Apps, MVPs and Websites in NYC">
+  return <Shell path="/" title="SparkTech Studio | Websites and AI Agents in New York">
     <section className="hero">
       <div className="wrap">
-        <img className="hero-mark" src="/brand/sparktech-bolt-mark.png" width="512" height="500" alt="SparkTech Studio" fetchPriority="high" />
-        <h1>From Idea to Launch, Fast.</h1>
-        <p className="lede">An independent New York studio for AI web apps, MVPs, websites and agent systems.</p>
-        <div className="actions"><Book /><a className="btn btn-ghost" href="#work">See the work</a></div>
+        <h1>Websites And AI Agents For Your Business</h1>
+        <p className="lede">We build your site and set up AI agents that do real work. New York studio.</p>
+        <div className="actions"><Book /></div>
         <div className="showcase" aria-label="UTern on a laptop and BallotWatch on a phone">
           <Laptop src={screen('utern', 'desktop')} alt="The UTern website, utern.ai" eager />
           <Phone slug="ballotwatch" src={screen('ballotwatch', 'mobile')} alt="The BallotWatch website on a phone, ballotwatch.io" eager />
@@ -36,38 +56,29 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="sec work-intro center" id="work">
-      <div className="wrap reveal"><h2>What We've Built</h2></div>
-    </section>
-    {products.map(p => <Product key={p.slug} p={p} />)}
-    <Product p={client} slug="oasis" device="laptop" caseStudy={false} />
-
-    <section className="sec center" id="services">
+    <section className="sec" id="services">
       <div className="wrap">
-        <h2 className="reveal">Services</h2>
-        <ServiceSentence />
+        <h2 className="center reveal">What We Do</h2>
+        <ul className="what">{what.map(([h, p, href, cta]) => <li key={h} className="reveal">
+          <h3>{h}</h3>
+          <p>{p}</p>
+          <a className="tlink" href={href}>{cta}</a>
+        </li>)}</ul>
       </div>
     </section>
 
-    <section className="sec center" id="process">
+    <section className="sec" id="work">
       <div className="wrap">
-        <h2 className="reveal">How It Works</h2>
-        <Flow />
+        <h2 className="center reveal">Our Work</h2>
+        <WorkGrid />
       </div>
     </section>
 
     <section className="sec" id="pricing">
       <div className="wrap">
         <h2 className="center reveal">Pricing</h2>
-        <Prices />
+        <Prices short />
         <p className="note">{scopedNote} <a href="/pricing">See pricing</a></p>
-      </div>
-    </section>
-
-    <section className="sec center" id="about">
-      <div className="wrap reveal">
-        <h2>About</h2>
-        <p className="lede">{about}</p>
       </div>
     </section>
   </Shell>

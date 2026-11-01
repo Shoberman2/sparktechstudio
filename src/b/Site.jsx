@@ -6,11 +6,11 @@ import '@fontsource/geist-mono/400.css'
 import '@fontsource/geist-mono/500.css'
 import './theme.css'
 import { BOOK } from '../designs/content.jsx'
-import { pricing, flow, serviceList, products, replyNote } from './facts.js'
+import { pricing, serviceList, products, replyNote } from './facts.js'
 import Assistant from './Assistant.jsx'
 
 const BOLT = '/brand/sparktech-bolt-128.png'
-const LINKS = [['Services', '/services'], ['Work', '/work'], ['Pricing', '/pricing'], ['Partners', '/partners']]
+const LINKS = [['Services', '/services'], ['AI agents', '/services/ai-agents'], ['Work', '/work'], ['Pricing', '/pricing']]
 
 export const Book = ({ className = 'btn' }) => <a className={className} {...BOOK}>Book a call</a>
 
@@ -37,7 +37,7 @@ function Nav({ path }) {
     document.body.style.overflow = 'hidden'
     return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
   }, [open])
-  const cur = href => (path === href || path.startsWith(href + '/')) ? 'page' : undefined
+  const cur = href => (path === href || (path.startsWith(href + '/') && !LINKS.some(([, h]) => h !== href && path.startsWith(h)))) ? 'page' : undefined
   // The sheet sits outside the header: the header's backdrop-filter would otherwise trap a fixed child inside its 68px box
   return <>
   <header className="nav">
@@ -53,7 +53,7 @@ function Nav({ path }) {
         <a href="/" className="mark" onClick={() => setOpen(false)}><img src={BOLT} width="26" height="25" alt="" />SparkTech Studio</a>
         <button className="menu-btn" aria-expanded="true" aria-controls="menu" onClick={() => setOpen(false)} autoFocus>Close</button>
       </div>
-      <nav aria-label="Menu">{[['Home', '/'], ...LINKS, ['System', '/systems']].map(([t, h]) => <a key={h} href={h} aria-current={cur(h)} onClick={() => setOpen(false)}>{t}</a>)}</nav>
+      <nav aria-label="Menu">{[['Home', '/'], ...LINKS].map(([t, h]) => <a key={h} href={h} aria-current={cur(h)} onClick={() => setOpen(false)}>{t}</a>)}</nav>
       <Book />
     </div>}
   </>
@@ -62,8 +62,7 @@ function Nav({ path }) {
 const cols = [
   ['Services', [['All services', '/services'], ...serviceList.map(([t, h]) => [t, h])]],
   ['Work', [['All work', '/work'], ...products.map(p => [p.name, `/work/${p.slug}`])]],
-  ['Studio', [['About', '/#about'], ['Pricing', '/pricing'], ['Partners', '/partners'], ['System', '/systems']]],
-  ['Legal', [['Privacy', '/privacy']]],
+  ['Studio', [['Pricing', '/pricing'], ['Partners', '/partners'], ['Privacy', '/privacy']]],
 ]
 
 function Footer() {
@@ -72,7 +71,7 @@ function Footer() {
       <div className="foot-top">
         <div>
           <a href="/" className="mark"><img src={BOLT} width="26" height="25" alt="" />SparkTech Studio</a>
-          <p>An independent studio in New York.</p>
+          <p>Websites and AI agents. New York.</p>
         </div>
         <Book />
       </div>
@@ -100,7 +99,7 @@ export function Shell({ path, title, children, band = true }) {
 export function CtaBand() {
   return <section className="band">
     <div className="wrap reveal">
-      <h2>Have Something in Mind?</h2>
+      <h2>Let's Build Yours</h2>
       <p>{replyNote}</p>
       <div className="actions"><Book /></div>
     </div>
@@ -137,21 +136,20 @@ export function Phone({ slug, src, alt, eager }) {
 }
 
 
-export function Flow({ steps = flow }) {
-  return <ol className="flow reveal">{steps.map(([h, p]) => <li key={h}><span className="flow-node" aria-hidden="true" /><h3>{h}</h3><p>{p}</p></li>)}</ol>
-}
 
-export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {} }) {
+export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {}, short = false }) {
   return <div className={`prices reveal ${keys.length === 2 ? 'prices-2' : keys.length === 1 ? 'prices-1' : ''}`}>{keys.map(k => { const p = pricing[k]; return <div className="price" key={k}>
     <h3>{p.name}</h3>
     <div className="amt">{p.price}<span className="unit">{p.unit}</span></div>
-    <p className="scope">{scopes[k] || p.scope}</p>
+    {!short && <p className="scope">{scopes[k] || p.scope}</p>}
   </div> })}</div>
 }
 
-export function ServiceSentence({ skip }) {
-  const list = serviceList.filter(([, h]) => h !== skip)
-  return <p className="svc reveal">{list.map(([t, h], i) => <span key={h}><a href={h}>{t}</a>{i < list.length - 1 && <span className="dot" aria-hidden="true">·</span>} </span>)}</p>
+// One row per service: name and one plain line
+export function ServiceList({ skip, items = serviceList }) {
+  return <ul className="svc-list">{items.filter(([, h]) => h !== skip).map(([t, h, line]) => <li key={h} className="reveal">
+    <a href={h}><h3>{t}</h3><p>{line}</p></a>
+  </li>)}</ul>
 }
 
 export function Head({ h1, lede, cta = true }) {

@@ -5,8 +5,8 @@
   --surface-dim: #F4F4F2;
   --card-edge: #ECEEF1;
   --ink: #1A1A18;
-  --ink-2: #5A574F;
-  --ink-3: #6D6B63;
+  --ink-2: #45433D;
+  --ink-3: #5A574F;
   --accent: #b8860b;          /* button fill, focus, state */
   --accent-text: #8a6508;     /* gold for text on white (AA) */
   --accent-on: #1A1A18;       /* text on the gold pill (6:1) */
@@ -33,7 +33,7 @@ body { background: var(--bg); }
 
 .b {
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--ink-2);
   background: var(--bg);
@@ -135,9 +135,8 @@ html.rv .reveal:not(.in) { opacity: 0; transform: translateY(16px); }
 .showcase .phone { flex: 0 0 clamp(92px, 19vw, 230px); }
 
 /* ---------- Home hero ---------- */
-.hero { padding-top: clamp(56px, 8vw, 104px); text-align: center; }
-.hero-mark { width: clamp(88px, 11vw, 148px); height: auto; margin: 0 auto clamp(28px, 4vw, 44px); display: block; }
-.hero h1 { max-width: 12ch; margin-inline: auto; }
+.hero { padding-top: clamp(72px, 11vw, 144px); text-align: center; }
+.hero h1 { max-width: 14ch; margin-inline: auto; font-size: clamp(42px, 6.6vw, 96px); }
 
 /* ---------- Product sections ---------- */
 .product { text-align: center; }
@@ -148,30 +147,25 @@ html.rv .reveal:not(.in) { opacity: 0; transform: translateY(16px); }
 .product.sec { padding-block: clamp(56px, 7vw, 96px); }
 .work-intro { padding-bottom: 0; }
 
-/* ---------- Services sentence list ---------- */
-.svc { text-align: center; max-width: 1080px; margin: 48px auto 0; font-size: clamp(26px, 3.4vw, 46px); line-height: 1.25; font-weight: 600; letter-spacing: -0.03em; color: var(--ink-3); text-wrap: balance; }
-.svc a { color: var(--ink); transition: color .2s var(--ease); }
-.svc a:hover { color: var(--accent-text); }
-.svc .dot { color: var(--accent); padding: 0 .28em; }
+/* ---------- What we do: two items ---------- */
+.what { list-style: none; padding: 0; margin: 64px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(40px, 6vw, 96px); max-width: 920px; text-align: center; }
+.what h3 { font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.03em; }
+.what p { margin: 12px auto 0; max-width: 30ch; font-size: 19px; }
+.what .tlink { margin-top: 8px; }
+@media (max-width: 700px) { .what { grid-template-columns: 1fr; } }
 
-/* ---------- Flow diagram ---------- */
-.flow { list-style: none; padding: 0; margin: 64px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); position: relative; max-width: 1080px; }
-.flow::before { content: ''; position: absolute; top: 11px; left: 12.5%; right: 12.5%; height: 2px; background: var(--ink); opacity: .14; }
-.flow::after { content: ''; position: absolute; top: 11px; left: 12.5%; right: 12.5%; height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 1)); transition: transform 1.4s var(--ease); }
-html.rv .flow:not(.in)::after { --p: 0; }
-.flow li { position: relative; text-align: center; padding: 0 12px; }
-.flow-node { display: block; width: 24px; height: 24px; margin: 0 auto 28px; border-radius: 50%; background: #fff; border: 2px solid var(--accent); position: relative; z-index: 1; }
-.flow-node::after { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: var(--accent); }
-.flow h3 { margin-bottom: 8px; }
-.flow p { max-width: 24ch; margin: 0 auto; }
-@media (max-width: 760px) {
-  .flow { grid-template-columns: 1fr; gap: 40px; max-width: 420px; }
-  .flow::before, .flow::after { top: 12px; bottom: 12px; left: 11px; right: auto; width: 2px; height: auto; }
-  .flow::after { transform-origin: top; transform: scaleY(var(--p, 1)); }
-  .flow li { text-align: left; padding: 0 0 0 52px; }
-  .flow-node { position: absolute; left: 0; top: 2px; margin: 0; }
-  .flow p { margin: 0; }
-}
+/* ---------- Service rows: name and one line ---------- */
+.svc-list { list-style: none; padding: 0; margin: 48px auto 0; max-width: 760px; display: grid; gap: 8px; }
+.svc-list a { display: grid; grid-template-columns: minmax(180px, 1fr) 2fr; gap: 8px 32px; align-items: baseline; padding: 20px 0; color: inherit !important; }
+.svc-list h3 { transition: color .2s var(--ease); }
+.svc-list a:hover h3 { color: var(--accent-text); }
+.svc-list p { font-size: 18px; }
+@media (max-width: 640px) { .svc-list a { grid-template-columns: 1fr; } }
+
+/* ---------- Work grid: real screens only ---------- */
+.work-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(56px, 7vw, 96px) clamp(40px, 6vw, 80px); margin-top: 72px; }
+.work-grid li:last-child:nth-child(odd) { grid-column: 1 / -1; width: min(100%, calc(50% - clamp(20px, 3vw, 40px))); margin-inline: auto; }
+@media (max-width: 760px) { .work-grid { grid-template-columns: 1fr; } .work-grid li:last-child:nth-child(odd) { width: 100%; } }
 
 /* ---------- Pricing columns ---------- */
 .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 72px); margin-top: 64px; }
@@ -221,7 +215,7 @@ html.rv .flow:not(.in)::after { --p: 0; }
 .foot { padding-block: clamp(80px, 9vw, 120px) 48px; font-size: 16px; }
 .foot-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .foot-top p { margin-top: 8px; color: var(--ink-2); }
-.foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 72px; }
+.foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 72px; }
 .foot-cols h3 { font-size: 16px; letter-spacing: 0; color: var(--ink); margin-bottom: 12px; }
 .foot-cols ul { list-style: none; padding: 0; margin: 0; }
 .foot-cols a { color: var(--ink-2); display: inline-flex; min-height: 40px; align-items: center; }

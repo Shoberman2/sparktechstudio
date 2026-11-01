@@ -8,35 +8,29 @@ export const pricing = {
   care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.' },
   growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.' },
 }
-export const scopedNote = 'AI apps, web apps, MVPs and agent systems are priced in a written scope after a call.'
+export const scopedNote = 'AI agents and apps are priced after a call.'
 export const replyNote = 'We reply within two business days.'
 
 // The work, in the order the home page shows it. `device` picks the frame each product section uses.
 export const products = [
-  { slug: 'utern', name: 'UTern', host: 'utern.ai', url: 'https://utern.ai', line: 'AI for landing an internship, guided by Birdee.', device: 'phone' },
-  { slug: 'leed', name: 'Leed', host: 'leed.media', url: 'https://www.leed.media', line: 'Tip intake for newsrooms, with Sherlock on the desk.', device: 'laptop' },
+  { slug: 'utern', name: 'UTern', host: 'utern.ai', url: 'https://utern.ai', line: 'Helps students land an internship.', device: 'phone' },
+  { slug: 'leed', name: 'Leed', host: 'leed.media', url: 'https://www.leed.media', line: 'A tip line for newsrooms.', device: 'laptop' },
   { slug: 'ballotwatch', name: 'BallotWatch', host: 'ballotwatch.io', url: 'https://www.ballotwatch.io', line: 'How Congress votes, in plain English.', device: 'laptop' },
-  { slug: 'validate', name: 'Validate-s', host: 'validate-s.com', url: 'https://www.validate-s.com', line: 'Is this idea worth building?', device: 'phone' },
+  { slug: 'validate', name: 'Validate-s', host: 'validate-s.com', url: 'https://www.validate-s.com', line: 'Checks if an idea is worth building.', device: 'phone' },
 ]
-export const client = { name: 'Oasis VRX', host: 'oasisvrx.com', url: 'https://oasisvrx.com', line: 'A VR venue in New Jersey. We built their website.' }
+export const client = { slug: 'oasis', name: 'Oasis VRX', host: 'oasisvrx.com', url: 'https://oasisvrx.com', line: 'A VR venue in New Jersey. We built their website.', device: 'laptop' }
 
-// Service names as the home page's sentence-list shows them, in order, each linking to its page.
+// Services in order, each with one plain line. The home page shows only the first two ideas (websites, AI agents).
 export const serviceList = [
-  ['AI app development', '/services/ai-app-development'],
-  ['Agent harnessing and agent swarms', '/services/ai-agents'],
-  ['Web app development', '/services/web-app-development'],
-  ['Website design', '/services/web-design'],
-  ['Startup MVPs', '/services/startup-mvp'],
-  ['Care and Growth retainers', '/services/retainers'],
-  ['Law, finance and medical sites', '/industries/professional-services'],
+  ['Websites', '/services/web-design', 'A fast site you can edit yourself.'],
+  ['AI agents', '/services/ai-agents', 'AI that answers, sorts and follows up for you.'],
+  ['AI apps', '/services/ai-app-development', 'Apps where the AI does the main job.'],
+  ['Web apps', '/services/web-app-development', 'Portals, dashboards and tools for your team.'],
+  ['MVPs', '/services/startup-mvp', 'A first version you can put in front of people.'],
+  ['Care and Growth', '/services/retainers', 'Updates, fixes and new pages after launch.'],
+  ['Law, finance and medical', '/industries/professional-services', 'Sites for firms that need to look trusted.'],
 ]
 
-export const flow = [
-  ['Call', 'We talk through what you want built.'],
-  ['Written scope', 'What we build, what it costs, and when.'],
-  ['Build and launch', 'Designed, built, tested in a real browser, shipped.'],
-  ['Keep improving', 'Fixes, updates and new pages after launch.'],
-]
 
 export const about = 'Spencer Hoberman founded SparkTech Studio in New York. He also builds UTern, an independent company.'
 
@@ -47,9 +41,9 @@ export function assistantContext() {
 
 Facts you may use (do not invent anything beyond these):
 - SparkTech Studio is Spencer Hoberman's independent studio in New York. Legal entity: SparkTech Studios, Inc. It is not affiliated with sparktechstudios.com (Ontario).
-- It builds AI web apps, MVPs, websites and agent systems, and runs its own products.
+- It builds websites and sets up AI agents for businesses. It also builds AI apps, web apps and MVPs, and runs its own products.
 - Services: ${serviceList.map(s => s[0]).join('; ')}.
-- Agent harnessing and agent swarms: we design, wire and run AI agents and coordinated multi-agent systems that do real work for a business. People set the goals, budget and limits.
+- AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up. You decide what they can do and what they spend.
 - Products: ${products.map(x => `${x.name} (${x.host}): ${x.line}`).join(' ')} UTern is an independent company that Spencer also builds.
 - Client work: ${client.name} (${client.host}), a VR venue in New Jersey. SparkTech built their website. Say nothing more about it.
 - Pricing:

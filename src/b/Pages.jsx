@@ -1,8 +1,8 @@
-import { Shell, Head, JsonLd, Laptop, Flow, Prices, ServiceSentence } from './Site.jsx'
-import { Product } from './Home.jsx'
+import { Shell, Head, JsonLd, Laptop, Prices, ServiceList } from './Site.jsx'
+import { WorkGrid } from './Home.jsx'
 import { companies, studies, workSlugs, pricing, systems } from '../designs/content.jsx'
 import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
-import { products, scopedNote, EMAIL, screen } from './facts.js'
+import { products, client, scopedNote, EMAIL, screen } from './facts.js'
 
 const SITE = 'https://www.sparktechstudio.com'
 const ORG = `${SITE}/#org`
@@ -34,8 +34,27 @@ function Cases({ slugs, note }) {
   </>
 }
 
+// What an AI agent can do for a business, in plain words. Kept to what we can set up today.
+const agentJobs = [
+  ['Answer questions', 'Replies to customers from your own info, day or night.'],
+  ['Sort the inbox', 'Reads new requests and sends each one to the right person.'],
+  ['Follow up', 'Sends the reminders and next steps nobody has time for.'],
+]
+
+function AgentsPage({ s }) {
+  return <Shell path={s.path} title={s.title}>
+    <JsonLd data={serviceLd(s, 'AI agents')} />
+    <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], ['AI agents', s.path]])} />
+    <Head h1={s.h1} lede={s.lede} />
+    <Sec title="What an Agent Can Do"><Points items={agentJobs} /></Sec>
+    <Sec title="How We Work"><p className="lede center reveal">We pick one job, set up the agent, and you approve what it can do and spend.</p></Sec>
+    <Sec title="Pricing"><p className="lede center reveal">{s.priceNote}</p></Sec>
+  </Shell>
+}
+
 export function ServicePage({ slug }) {
   const s = services.find(x => x.slug === slug)
+  if (slug === 'ai-agents') return <AgentsPage s={s} />
   return <Shell path={s.path} title={s.title}>
     <JsonLd data={serviceLd(s, s.kicker)} />
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
@@ -46,19 +65,16 @@ export function ServicePage({ slug }) {
       {s.package ? <Prices keys={[s.package].flat()} /> : <p className="lede center reveal">{s.priceNote}</p>}
     </Sec>
     <Sec title="Work We've Built"><Cases slugs={s.cases} /></Sec>
-    <Sec title="How It Works"><Flow /></Sec>
     <Sec title="Questions"><QA items={s.faq} /></Sec>
-    <Sec title="Other Services"><ServiceSentence skip={s.path} /></Sec>
+    <Sec title="Other Services"><ServiceList skip={s.path} /></Sec>
   </Shell>
 }
 
 export function ServicesHub() {
   return <Shell path="/services" title="Services | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
-    <Head h1="Services" lede="AI web apps and MVPs first. Agent systems, websites, and retainers to keep them getting better." />
-    <section className="sec-tight"><div className="wrap"><ServiceSentence /></div></section>
-    <Sec title="Pricing"><Prices /><p className="note reveal">{scopedNote}</p></Sec>
-    <Sec title="How It Works"><Flow /></Sec>
+    <Head h1="Services" lede="Websites and AI agents, plus the apps and upkeep around them." cta={false} />
+    <section className="sec-tight"><div className="wrap"><ServiceList /></div></section>
   </Shell>
 }
 
@@ -79,8 +95,7 @@ export function PartnersPage() {
     <JsonLd data={crumbs([['Home', '/'], ['Partners', s.path]])} />
     <Head h1={s.h1} lede={s.lede} />
     <Sec title="Who It's For"><Points items={s.who} /></Sec>
-    <Sec title="What We Build"><ServiceSentence /></Sec>
-    <Sec title="How It Works"><Flow /></Sec>
+    <Sec title="What We Build"><ServiceList /></Sec>
     <Sec title="Work We've Built"><Cases slugs={['utern', 'ballotwatch']} /></Sec>
   </Shell>
 }
@@ -88,8 +103,8 @@ export function PartnersPage() {
 export function WorkHub() {
   return <Shell path="/work" title="Work | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work']])} />
-    <Head h1="What We've Built" lede="AI products and web apps, live and in use." cta={false} />
-    {products.map(p => <Product key={p.slug} p={p} />)}
+    <Head h1="Our Work" lede="Real products, live today, and a site we built for a client." cta={false} />
+    <section className="sec-tight"><div className="wrap"><WorkGrid items={[...products, client]} /></div></section>
   </Shell>
 }
 
@@ -137,7 +152,7 @@ export function LocationPage({ slug }) {
     <JsonLd data={serviceLd(l, `Web and AI app development in ${l.place}`, [area])} />
     <JsonLd data={crumbs([['Home', '/'], [l.place, l.path]])} />
     <Head h1={l.h1} lede={l.lede} />
-    <Sec title="What We Build"><ServiceSentence /></Sec>
+    <Sec title="What We Build"><ServiceList /></Sec>
     <Sec title="Pricing"><Prices /><p className="note reveal">{scopedNote}</p></Sec>
     <Sec title="Work We've Built"><Cases slugs={l.cases} /></Sec>
     <Sec title="Nearby"><div className="links reveal">{l.near.map(n => { const x = locations.find(y => y.slug === n); return <a key={n} className="tlink" href={x.path}>{x.place}</a> })}</div></Sec>
@@ -154,8 +169,8 @@ const loop = [
 export function Systems() {
   return <Shell path="/systems" title="System | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['System', '/systems']])} />
-    <Head h1="Software That Keeps Getting Better" lede={systems.lead} cta={false} />
-    <Sec title="The Loop"><Flow steps={loop} /></Sec>
+    <Head h1="How We Keep Your Product Working" lede="After launch, we watch your product, fix what breaks, and check every fix before it goes live." cta={false} />
+    <Sec title="The Steps"><Points items={loop} /></Sec>
     <Sec title="Where It Runs"><Points items={systems.areas.map(([h, p]) => [h, p])} /></Sec>
     <Sec title="Where It Stands">
       <div className="read reveal center" style={{ marginTop: 32 }}>

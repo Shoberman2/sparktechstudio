@@ -155,10 +155,10 @@ export { pricing } from '../b/facts.js'
 // The short list the home tiles, footer and 404 show
 export const built = workSlugs.map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line }))
 
-// The recursive agentic systems. Status is what is true today: product fixes run on our own site; the other areas are the roadmap.
+// The after-launch loop. Status is what is true today: product fixes run on our own site; the other areas are the roadmap.
 export const systems = {
-  title: 'Then it keeps getting better.',
-  lead: 'We build agentic systems that keep improving a product after launch. Next, they learn to improve themselves.',
+  title: 'Then we keep improving it.',
+  lead: 'We keep improving a product after launch.',
   broad: 'Most software starts aging the day it launches. Our systems keep the whole company moving forward: the product, the growth, the content, the support, the operations. Every run is recorded, and the next step is a system that learns from those runs and improves itself.',
   steps: ['Observe', 'Decide', 'Build', 'Verify', 'Learn'],
   areas: [
