@@ -2,7 +2,7 @@
 // Files in api/ that start with an underscore are not deployed as functions.
 export const SITE_CONTEXT = `
 SparkTech Studio is Spencer Hoberman's independent studio in New York, NY (legal name SparkTech Studios, Inc.). Website: https://www.sparktechstudio.com. Not affiliated with sparktechstudios.com (Ontario).
-It builds websites and AI agents for businesses, plus AI web apps and MVPs, and runs its own products.
+It builds websites and AI agents for businesses, edits and updates existing websites, plus AI web apps and MVPs, and runs its own products.
 
 Services (each has its own page):
 - AI app development (/services/ai-app-development): web apps where the AI is the product. Answers traceable to sources, people approve the steps that matter, model chosen for the job.
@@ -10,12 +10,14 @@ Services (each has its own page):
 - Web app development (/services/web-app-development): dashboards, portals, marketplaces, internal tools on Next.js and React, with sign-in, permissions, data, payments and email.
 - Website design (/services/web-design): designed, not templated; SEO set up before launch; a CMS for pages you change often.
 - Startup MVPs (/services/startup-mvp): the smallest version real people can use, built on real code so version two builds on it.
+- Website updates (/services/retainers): we edit and update a business's existing website, $500 a month.
 - Care and Growth retainers (/services/retainers).
 - Law, finance and medical sites (/industries/professional-services). The client's compliance team or counsel signs off on copy.
 - Partners (/partners): build partner for design studios, agencies and accelerators.
 
 Pricing (exact, do not change):
 - Launch Site: $12k to $25k one time, usually 3 to 5 weeks. Design, build, a CMS and SEO.
+- Website updates: $500 a month. Edits and updates to your site.
 - Care: $1,000 to $1,500 a month, about 5 hours a month. Updates, uptime checks, small fixes.
 - Growth: $3,000 to $5,000 a month, about 15 hours a month. Care plus SEO pages, analytics and conversion tests.
 - Apps, MVPs and AI agents are priced in a written scope after a call. Never quote a number for those.

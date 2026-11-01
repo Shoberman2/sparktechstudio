@@ -13,7 +13,7 @@ const svcLines = {
   'startup-mvp': 'A first version real people can use.',
   retainers: 'We keep it fast, fixed and up to date.',
 }
-const svcItems = () => services.map(s => [s.nav, svcLines[s.slug], s.path])
+const svcItems = () => [...services.map(s => [s.nav, svcLines[s.slug], s.path]), ['Website updates', 'We edit your site and keep it current.', '/services/retainers']]
 
 export function Home() {
   return <Shell path="/" title="SparkTech Studio | Websites and AI Agents for Business">
@@ -25,7 +25,7 @@ export function Home() {
       </div>
     </section>
     <Statement id="services" title="What We Do">
-      <List2 items={[['Websites', 'Fast sites that turn visits into calls.', '/services'], ['AI agents', 'Agents that answer, sort and follow up for you.', '/services/ai-agents']]} />
+      <List2 items={[['Websites', 'Fast sites that turn visits into calls.', '/services'], ['AI agents', 'Agents that answer, sort and follow up for you.', '/services/ai-agents'], ['Website updates', 'We edit your site and keep it current.', '/services/retainers']]} three />
     </Statement>
     <Statement id="work" title="Our Work">
       <TypeList withClient />
@@ -52,7 +52,7 @@ export function ServicePage({ slug }) {
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
     <JsonLd data={faqLd(faq)} />
     <PageHead h1={s.h1} lede={s.lede} />
-    <Statement title="What You Get"><List2 items={s.points} /></Statement>
+    <Statement title="What You Get"><List2 three={s.slug === 'retainers'} items={s.points} /></Statement>
     {pkg.length > 0 && <Statement title="The Price"><Prices keys={pkg} withScope={false} /></Statement>}
     <Statement title="Work Like This"><Screens slugs={s.cases} /></Statement>
     <Statement title="Questions"><Faq items={faq} /></Statement>

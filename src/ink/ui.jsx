@@ -137,7 +137,7 @@ export const List2 = ({ items, three }) => <ul className={`list2${three ? " list
 
 export const Flow = ({ steps = flow }) => <ol className="flow" style={{ '--n': steps.length }} aria-label="How a project runs">{steps.map(([h, p]) => <li key={h}><h3>{h}</h3>{p && <p>{p}</p>}</li>)}</ol>
 
-export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {}, withScope = true }) {
+export function Prices({ keys = ['launch', 'updates', 'care', 'growth'], scopes = {}, withScope = true }) {
   return <ul className="prices">{keys.map(k => { const p = pricing[k]; return <li key={k}>
     <h3>{p.name}</h3>
     <span className="num">{p.price}<small>{p.unit}</small></span>

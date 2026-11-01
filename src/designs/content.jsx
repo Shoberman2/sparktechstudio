@@ -152,6 +152,7 @@ export const workSlugs = ['utern', 'leed', 'ballotwatch', 'validate']
 // Anything not listed here is priced in a written scope after a call.
 export const pricing = {
   launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'A marketing site built to rank and to convert: design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.' },
+  updates: { name: 'Website updates', price: '$500', unit: 'a month', scope: 'Edits and updates to your site.' },
   care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.' },
   growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.' },
 }
