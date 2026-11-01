@@ -19,7 +19,7 @@ export const services = [
     title: 'AI App Development Agency in New York | SparkTech Studio',
     description: 'AI app development in New York. We design and build AI web apps and AI MVPs that people use every day, from the first call to launch.',
     kicker: 'AI app development',
-    h1: <>AI apps that do <em>real work.</em></>,
+    h1: 'AI Apps That Do Real Work',
     lede: 'We build web apps where the AI is the product, not a chat box bolted on. It reads, sorts, drafts and decides alongside the people using it, and it shows its sources.',
     points: [
       ['AI features people trust', 'Every answer can be traced back to what it was built from. People approve the steps that matter.'],
@@ -30,11 +30,26 @@ export const services = [
     cases: ['utern', 'validate'],
   },
   {
+    slug: 'ai-agents', path: '/services/ai-agents', nav: 'AI agents and agent swarms',
+    title: 'AI Agent Development and Agent Swarms | SparkTech Studio',
+    description: 'AI agent development in New York. We design, wire and run AI agents and coordinated multi-agent systems that do real work for a business.',
+    kicker: 'AI agents and agent swarms',
+    h1: 'AI Agents, Wired Into Your Business',
+    lede: 'We design, wire and run AI agents and coordinated multi-agent systems that take real work off your team, with people approving the steps that matter.',
+    points: [
+      ['Harnessing one agent', 'One agent with the right tools, the right data and clear limits on what it may touch.'],
+      ['Swarms that coordinate', 'Several agents, each with its own job, handing work to each other and checking each other.'],
+      ['Run, not just built', 'We watch the runs, fix what drifts and keep a record of what each agent did.'],
+    ],
+    priceNote: 'Agent systems are priced in the written scope after a call.',
+    cases: ['validate', 'utern'],
+  },
+  {
     slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web app development',
     title: 'Custom Web App Development in New York | SparkTech Studio',
     description: 'Custom web app development in New York. We build fast, maintainable web apps on Next.js and React, with real accounts, data and payments.',
     kicker: 'Web app development',
-    h1: <>Custom web apps, <em>built to last.</em></>,
+    h1: 'Custom Web Apps, Built to Last',
     lede: 'Dashboards, portals, marketplaces, internal tools. We build web apps on Next.js and React that stay fast and stay standing when the traffic shows up.',
     points: [
       ['Next.js and React', 'A stack your next hire already knows, so the code doesn’t trap you with us.'],
@@ -49,7 +64,7 @@ export const services = [
     title: 'Web Design Agency in New York City | SparkTech Studio',
     description: 'Premium website design and development in New York. A Launch Site package from $12k to $25k: design, build, CMS and SEO, usually in 3 to 5 weeks.',
     kicker: 'Website design and development',
-    h1: <>A website that looks <em>like you mean it.</em></>,
+    h1: 'A Website That Looks Like You Mean It',
     lede: 'Your site is the first meeting most people have with you. We design and build sites that load fast, read clearly, and turn a visit into a call.',
     points: [
       ['Designed, not templated', 'Type, layout and motion made for your company, then built by the same people who designed it.'],
@@ -64,7 +79,7 @@ export const services = [
     title: 'MVP Development Company in NYC | SparkTech Studio',
     description: 'MVP development for startups in New York. We build the smallest version of your product that real people can use, then help you learn from it.',
     kicker: 'MVPs for startups',
-    h1: <>The first version, <em>in real hands.</em></>,
+    h1: 'The First Version, in Real Hands',
     lede: 'An MVP is the smallest thing that tells you whether you’re right. We help you pick what to leave out, build the rest properly, and put it in front of real people.',
     points: [
       ['Scope that fits the question', 'We start from what you need to learn, then cut everything that doesn’t help you learn it.'],
@@ -79,12 +94,11 @@ export const services = [
     title: 'Website Maintenance and SEO in NYC | SparkTech Studio',
     description: 'Website maintenance and SEO retainers in New York. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
     kicker: 'Maintenance and growth retainers',
-    h1: <>Launch is <em>day one.</em></>,
+    h1: 'Launch Is Day One',
     lede: 'Sites and apps start aging the day they ship. A retainer keeps yours fast, fixed and getting better, with a set number of hours each month.',
     points: [
       ['Care', 'Hosting oversight, updates, uptime checks and small fixes.'],
       ['Growth', 'Care, plus new SEO pages, analytics and conversion tests that keep what works.'],
-      ['A set number of hours', 'About 5 hours a month on Care and 15 on Growth. The rest of the terms are set in the written scope.'],
     ],
     package: ['care', 'growth'],
     cases: ['utern', 'ballotwatch'],
@@ -102,6 +116,12 @@ const faqs = {
     ['What does an AI app cost?', 'AI apps are priced in a written scope after a call, because no two are the same size.'],
     ['How long does it take?', scoped],
     ['What do you build it on?', `We pick the model that fits the job and keep prompts and evaluations in the codebase, so the model can change without a rewrite. ${ran(['utern', 'validate'])}`],
+    ownership,
+  ],
+  'ai-agents': [
+    ['What does an agent system cost?', 'Agent systems are priced in a written scope after a call, because the size depends on the work they take on.'],
+    ['How long does it take?', scoped],
+    ['What do you build it on?', `The models and tools that fit the job, with every run logged. ${ran(['validate', 'utern'])}`],
     ownership,
   ],
   'web-app-development': [
@@ -136,7 +156,7 @@ export const industry = {
   title: 'Law, Finance and Medical Websites in NYC | SparkTech Studio',
   description: 'Websites for law firms, financial advisors and medical practices in New York City and Long Island. Launch Site package from $12k to $25k.',
   kicker: 'Law, finance and medical',
-  h1: <>Websites for firms <em>people trust.</em></>,
+  h1: 'Websites for Firms People Trust',
   lede: 'Law firms, financial advisors and medical practices sell trust before anything else. We build sites that look the part, explain what you do in plain English, and make the first call easy.',
   points: [
     ['Law firms', 'Practice areas and attorney pages that read clearly, and intake that asks only what it needs to.'],
@@ -157,7 +177,7 @@ const loc = (slug, place, title, keywords, intro, near) => ({
   title: `${title} | SparkTech Studio`,
   description: `${keywords}. SparkTech Studio is an independent web and AI app studio in New York. Book a call.`,
   kicker: place,
-  h1: <>Web and AI apps for <em>{place}.</em></>,
+  h1: `Web and AI Apps for ${place}`,
   lede: intro,
   cases: ['utern', 'ballotwatch'],
   todo: `Real local proof for ${place}: a client, partner or project here we can name with permission. Nothing published yet, so this page is noindex.`,
@@ -199,7 +219,7 @@ export const partnersPage = {
   title: 'Build Partner for Studios and Agencies | SparkTech Studio',
   description: 'A build partner for design studios, agencies and accelerators. You bring the client or the cohort; we build the AI app, MVP or website. Book a call.',
   kicker: 'Partners',
-  h1: <>Your clients, <em>our build.</em></>,
+  h1: 'Your Clients, Our Build',
   lede: 'For design studios, agencies and accelerators that need someone to build what they’ve designed or promised. You keep the relationship. We build it and keep it standing.',
   who: [
     ['Design studios', 'You made the brand and the screens. We build them as a real site or app, close to the pixel, so the work you sold is the work that ships.'],
