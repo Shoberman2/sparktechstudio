@@ -22,9 +22,9 @@ export function Product({ p, slug = p.slug, device = p.device, caseStudy = true 
   </section>
 }
 
-// The work as a grid of real screens: each one links to its case study, or out to the live site
+// The work, one product per full-width row: each links to its case study, or out to the live site
 export function WorkGrid({ items = [...products, client] }) {
-  return <ul className="work-grid">{items.map(p => {
+  return <ul className="work-list">{items.map(p => {
     const href = p.slug === 'oasis' ? p.url : `/work/${p.slug}`
     const ext = p.slug === 'oasis' ? { target: '_blank', rel: 'noreferrer' } : {}
     return <li key={p.slug} className="reveal">

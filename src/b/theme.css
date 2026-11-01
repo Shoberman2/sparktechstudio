@@ -162,10 +162,9 @@ html.rv .reveal:not(.in) { opacity: 0; transform: translateY(16px); }
 .svc-list p { font-size: 18px; }
 @media (max-width: 640px) { .svc-list a { grid-template-columns: 1fr; } }
 
-/* ---------- Work grid: real screens only ---------- */
-.work-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(56px, 7vw, 96px) clamp(40px, 6vw, 80px); margin-top: 72px; }
-.work-grid li:last-child:nth-child(odd) { grid-column: 1 / -1; width: min(100%, calc(50% - clamp(20px, 3vw, 40px))); margin-inline: auto; }
-@media (max-width: 760px) { .work-grid { grid-template-columns: 1fr; } .work-grid li:last-child:nth-child(odd) { width: 100%; } }
+/* ---------- Work: one product per full-width row, stacked and centered ---------- */
+.work-list { list-style: none; padding: 0; margin: 72px auto 0; max-width: 880px; display: flex; flex-direction: column; gap: clamp(96px, 12vw, 160px); }
+.work-list .case h3 { margin-top: 36px; }
 
 /* ---------- Pricing columns ---------- */
 .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 72px); margin-top: 64px; }
