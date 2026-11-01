@@ -44,13 +44,14 @@ export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {} }) {
   </div> })}</div>
 }
 
-// Case studies as rows with the product's image
+// Case studies as cards with the product's image. Eager at low priority (each og.jpg is under 110 KB) so cards
+// below the fold never render empty in full-page captures or when lazy loading doesn't fire.
 export function Cases({ slugs, note }) {
   return <>
     {note && <p className="note">{note}</p>}
     <ul className="cases">{slugs.map(s => { const c = companies.find(x => x.slug === s), st = studies[s]; return <li key={s}>
       <a href={`/work/${s}`}>
-        <img src={`/work/${s}/og.jpg`} alt="" loading="lazy" decoding="async" width="1200" height="630" />
+        <img src={`/work/${s}/og.jpg`} alt="" loading="eager" fetchPriority="low" decoding="async" width="1200" height="630" />
         <span className="case-text"><strong>{c.name}</strong><span>{c.line}</span>{st && <small>{st.stack}</small>}</span>
       </a>
     </li> })}</ul>
@@ -120,7 +121,7 @@ export function WorkHub() {
   return <Shell title="Work | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work']])} />
     <Head h1="What we’ve built." lede="AI products and web apps, live and in use. Each case study covers the problem, what we built, and what it runs on." cta={false} />
-    <Section><Cases slugs={[...workSlugs, 'spacial']} /></Section>
+    <Section><Cases slugs={workSlugs} /></Section>
     <Section title="Client work"><ul className="list">{clients.map(c => <li key={c.slug}><a href={c.url} target="_blank" rel="noreferrer"><strong>{c.name}</strong><span>{c.line}</span><small>{c.host}</small><Arrow /></a></li>)}</ul></Section>
     <Ask line="Want something built like this?" />
   </Shell>

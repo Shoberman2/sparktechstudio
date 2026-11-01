@@ -161,8 +161,8 @@ export const clients = [
   { slug: 'oasisvrx', name: 'Oasis VRX', host: 'oasisvrx.com', url: 'https://oasisvrx.com', line: 'A VR arcade in New Jersey. Client website build.' },
 ]
 
-// Everything we've built, for the home and /work lists: the four case studies, then Spacial Health (its page stays noindex).
-export const products = [...workSlugs, 'spacial'].map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: c.url, page: `/work/${c.slug}`, line: c.line }))
+// Everything we've built, for the home and /work lists: the four case studies. Spacial Health keeps its noindex page but is never listed or linked.
+export const products = workSlugs.map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: c.url, page: `/work/${c.slug}`, line: c.line }))
 
 // The short list the footer shows
 export const built = workSlugs.map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line }))

@@ -101,14 +101,18 @@
 /* ---------- Lists: rows that light up, no rules ---------- */
 .list { list-style: none; margin-inline: -20px; }
 .list a {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) auto 18px; gap: 8px 32px; align-items: baseline;
+  /* Fixed tracks (no auto) so name, description and domain start at the same x on every row */
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) 9rem 18px; gap: 8px 32px; align-items: baseline;
   padding: 24px 20px; border-radius: var(--radius);
   transition: background-color 200ms var(--ease);
 }
 .list a:hover { background: var(--surface); }
 .list strong { font-family: var(--display); font-weight: 500; font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.025em; line-height: 1.15; }
 .list span { color: var(--muted); }
-.list small { color: var(--faint); font-size: 14px; white-space: nowrap; }
+.list strong { grid-column: 1; }
+.list span { grid-column: 2; }
+.list small { grid-column: 3; color: var(--faint); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.list .arrow { grid-column: 4; }
 .arrow { color: var(--faint); align-self: center; transition: color 200ms var(--ease), transform 200ms var(--ease); }
 .list a:hover .arrow { color: var(--gold); transform: translate(2px, -2px); }
 .list a:hover strong { color: var(--text); }
@@ -117,7 +121,7 @@
   .list strong { grid-column: 1; }
   .list .arrow { grid-column: 2; grid-row: 1; }
   .list span, .list small { grid-column: 1 / -1; }
-  .list small { white-space: normal; }
+  .list small { white-space: normal; overflow: visible; }
 }
 
 /* Heading and paragraph side by side */
