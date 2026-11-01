@@ -1,17 +1,11 @@
-import { useEffect } from 'react'
-import { EMAIL, BOOK, year } from './content.jsx'
-import './buttons.css'
-import './NotFound.css'
+import { EMAIL } from './content.jsx'
+import { Shell, Head } from './Layout.jsx'
 
 // What this site actually does with data, and nothing more. Update if analytics, a form, or any third party is added.
 export default function Privacy() {
-  useEffect(() => { document.title = 'Privacy | SparkTech Studio' }, [])
-  return <div className="nf">
-    <header className="nf-nav"><a href="/" className="nf-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a></header>
-    <main id="main" className="nf-main nf-prose">
-      <p className="nf-kicker">Privacy</p>
-      <h1>Short version: <em>we keep it simple.</em></h1>
-      <p className="nf-lede">This site runs no analytics, no ads, and no tracking cookies.</p>
+  return <Shell title="Privacy | SparkTech Studio">
+    <Head h1="Privacy, kept simple." lede="This site runs no analytics, no ads, and no tracking cookies." cta={false} />
+    <section className="sec wrap prose">
       <h2>What we collect</h2>
       <p>Nothing while you browse. If you email us, we get what you send. If you book a call, Calendly collects your name, email, and the time you pick, under <a href="https://calendly.com/privacy" target="_blank" rel="noreferrer">Calendly’s privacy policy</a>, and shares the booking with us.</p>
       <h2>What we do with it</h2>
@@ -20,8 +14,6 @@ export default function Privacy() {
       <p>The site is hosted on Vercel, which keeps standard server logs. Fonts load from Google Fonts.</p>
       <h2>Deleting your data</h2>
       <p><a href={`mailto:${EMAIL}`}>Email us</a> and we will delete what we hold.</p>
-      <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" {...BOOK}>Book a call</a></div>
-    </main>
-    <footer className="nf-foot">© {year} SparkTech Studios, Inc. · Not affiliated with sparktechstudios.com (Ontario)</footer>
-  </div>
+    </section>
+  </Shell>
 }

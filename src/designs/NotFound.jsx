@@ -1,20 +1,15 @@
-import { useEffect } from 'react'
-import { built, BOOK, year } from './content.jsx'
-import './buttons.css'
-import './NotFound.css'
+import { BOOK } from './content.jsx'
+import { Shell, Section } from './Layout.jsx'
+import { WorkList } from './Page.jsx'
 
-// Served for any route that is not the home page or a known company page; the build also writes it as 404.html.
+// Served for any route the router doesn't know; the build also writes it as 404.html.
 export default function NotFound() {
-  useEffect(() => { document.title = 'Not here | SparkTech Studio' }, [])
-  return <div className="nf">
-    <header className="nf-nav"><a href="/" className="nf-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a></header>
-    <main id="main" className="nf-main">
-      <p className="nf-kicker">404</p>
-      <h1>That page<br />isn’t <em>here.</em></h1>
-      <p className="nf-lede">It may have moved, or it never existed. Everything that does is a click away.</p>
-      <div className="nf-actions"><a className="btn" href="/">Back to the studio</a><a className="btn btn-ghost" {...BOOK}>Book a call</a></div>
-      <ul className="nf-work">{built.map(b => <li key={b.slug}><a href={b.url}><strong>{b.name}</strong><span>{b.line}</span></a></li>)}</ul>
-    </main>
-    <footer className="nf-foot">© {year} SparkTech Studios, Inc. · Not affiliated with sparktechstudios.com (Ontario)</footer>
-  </div>
+  return <Shell title="Not here | SparkTech Studio">
+    <section className="head wrap">
+      <h1>That page isn’t here.</h1>
+      <p className="lede">It may have moved, or it never existed. Everything that does is a click away.</p>
+      <div className="actions"><a className="btn btn-primary" href="/">Back to the studio</a><a className="btn btn-line" {...BOOK}>Book a call</a></div>
+    </section>
+    <Section title="What we’ve built"><WorkList /></Section>
+  </Shell>
 }

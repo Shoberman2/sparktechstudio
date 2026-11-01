@@ -1,25 +1,8 @@
-import { useEffect } from 'react'
-import { companies, studies, workSlugs, pricing, BOOK } from './content.jsx'
+import { companies, studies, workSlugs, products, clients, pricing, BOOK } from './content.jsx'
 import { services, industry, locations, process, pricingPage, partnersPage } from './pages.jsx'
-import Footer from './Footer.jsx'
-import './buttons.css'
-import './Form.css'
-import './Page.css'
+import { Shell, Head, Section, JsonLd, SITE, ORG } from './Layout.jsx'
 
-// The white page shell for the service, industry, location and hub pages: the site nav, one column of ruled sections, the dark footer.
-// Bare on purpose (DESIGN.md): big type, hairline rules, pill buttons, no cards or imagery.
-const SITE = 'https://www.sparktechstudio.com'
-const ORG = `${SITE}/#org`
-
-export function SiteNav() {
-  return <header className="fm-nav pg-nav">
-    <a href="/" className="fm-mark"><img src="/logo.svg" width="18" height="18" alt="" />SparkTech Studio</a>
-    <nav><a href="/services">Services</a><a href="/work">Work</a><a href="/partners">Partners</a><a href="/systems">System</a><a href="#contact">Contact</a></nav>
-  </header>
-}
-
-// Structured data rendered into the page itself, so the prerendered HTML carries it
-const JsonLd = ({ data }) => <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />
+// The service, industry, location, hub, pricing and partner pages, plus the lists the home page reuses.
 
 const crumbs = list => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: list.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE}${path}` })) })
 
@@ -35,73 +18,55 @@ const serviceLd = (page, name, area = [{ '@type': 'City', name: 'New York' }, { 
 
 const faqLd = items => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) })
 
-function Shell({ title, children }) {
-  useEffect(() => { document.title = title }, [title])
-  useEffect(() => { if (window.location.hash === '') window.scrollTo(0, 0) }, [title])
-  return <div className="fm pg">
-    <SiteNav />
-    <main id="main">{children}</main>
-    <Footer />
-  </div>
-}
+const Arrow = () => <svg className="arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 13 13 5M6.5 5H13v6.5" stroke="currentColor" strokeWidth="1.5" /></svg>
 
-function Head({ kicker, h1, lede, cta = true }) {
-  return <section className="pg-head">
-    <p className="fm-eyebrow">{kicker}</p>
-    <h1>{h1}</h1>
-    {lede && <p className="pg-lede">{lede}</p>}
-    {cta && <div className="pg-actions">
-      <a className="btn" {...BOOK}>Book a call</a>
-      <a className="btn btn-ghost" href="/work">See the work</a>
-    </div>}
-  </section>
-}
+// Two-column rows: a short heading and a short paragraph
+export const Rows = ({ items }) => <ul className="rows">{items.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ul>
 
-// A visible, deliberately ugly marker for proof we don't have yet. Never replace it with made-up copy.
-export const Todo = ({ children }) => <aside className="pg-todo" role="note"><strong>TODO</strong><span>{children}</span></aside>
+const allServices = [...services, { slug: 'professional-services', path: industry.path, nav: 'Law, finance and medical sites', description: industry.description, lede: industry.lede }]
+const firstLine = d => `${d.split('. ')[0].replace(/\.$/, '')}.`
 
-function Section({ label, title, children, id }) {
-  return <section className="pg-sec" id={id}>
-    <div className="pg-sec-head"><p className="pg-label">{label}</p>{title && <h2>{title}</h2>}</div>
-    <div className="pg-sec-body">{children}</div>
-  </section>
-}
+export const ServiceList = ({ exclude }) => <ul className="list">{allServices.filter(s => s.path !== exclude).map(s => <li key={s.path}>
+  <a href={s.path}><strong>{s.nav}</strong><span>{firstLine(s.lede)}</span><Arrow /></a>
+</li>)}</ul>
 
-const Points = ({ items }) => <ul className="pg-rows">{items.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ul>
+// Products and client work as plain rows: name, one line, where it lives
+export const WorkList = () => <ul className="list">
+  {products.map(p => <li key={p.slug}><a href={p.page}><strong>{p.name}</strong><span>{p.line}</span><small>{p.url ? p.host : 'Preview'}</small><Arrow /></a></li>)}
+  {clients.map(c => <li key={c.slug}><a href={c.url} target="_blank" rel="noreferrer"><strong>{c.name}</strong><span>{c.line}</span><small>{c.host}</small><Arrow /></a></li>)}
+</ul>
 
-export function Packages({ keys, scopes = {} }) {
-  return <ul className="pg-rows pg-prices">{keys.map(k => { const p = pricing[k]; return <li key={k}>
+export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {} }) {
+  return <div className="prices">{keys.map(k => { const p = pricing[k]; return <div key={k} className="price">
     <h3>{p.name}</h3>
-    <p className="pg-price"><strong>{p.price}</strong><span>{p.unit}</span></p>
+    <p className="price-num">{p.price}<span>{p.unit}</span></p>
     <p>{scopes[k] || p.scope}</p>
-  </li> })}</ul>
+  </div> })}</div>
 }
 
-// Two (or four) case studies as big ruled rows, each with what was built and what it runs on
+// Case studies as rows with the product's image
 export function Cases({ slugs, note }) {
   return <>
-    {note && <p className="pg-note">{note}</p>}
-    <ul className="pg-cases">{slugs.map(s => { const c = companies.find(x => x.slug === s), st = studies[s]; return <li key={s}>
+    {note && <p className="note">{note}</p>}
+    <ul className="cases">{slugs.map(s => { const c = companies.find(x => x.slug === s), st = studies[s]; return <li key={s}>
       <a href={`/work/${s}`}>
-        <strong>{c.name}</strong>
-        <span className="pg-case-line">{c.line}</span>
-        <span className="pg-case-meta">{st.stack} · {c.host}</span>
-        <span className="pg-case-go" aria-hidden="true">Read the case study</span>
+        <img src={`/work/${s}/og.jpg`} alt="" loading="lazy" decoding="async" width="1200" height="630" />
+        <span className="case-text"><strong>{c.name}</strong><span>{c.line}</span>{st && <small>{st.stack}</small>}</span>
       </a>
     </li> })}</ul>
   </>
 }
 
-const Process = () => <ol className="pg-steps">{process.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
+export const Steps = ({ items = process }) => <ol className="rows">{items.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
 
 function Ask({ line = 'Have something in mind?' }) {
-  return <section className="pg-ask">
-    <p>{line}</p>
-    <a className="btn" {...BOOK}>Book a call</a>
+  return <section className="ask wrap">
+    <h2>{line}</h2>
+    <div className="actions"><a className="btn btn-primary" {...BOOK}>Book a call</a></div>
   </section>
 }
 
-const otherServices = path => <ul className="pg-links">{services.filter(s => s.path !== path).map(s => <li key={s.slug}><a href={s.path}>{s.nav}</a></li>)}<li><a href={industry.path}>Law, finance and medical sites</a></li></ul>
+const Links = ({ items }) => <ul className="links">{items.map(([t, h]) => <li key={h}><a href={h}>{t}</a></li>)}</ul>
 
 export function ServicePage({ slug }) {
   const s = services.find(x => x.slug === slug)
@@ -109,16 +74,16 @@ export function ServicePage({ slug }) {
     <JsonLd data={serviceLd(s, s.kicker)} />
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
     <JsonLd data={faqLd(s.faq)} />
-    <Head kicker={s.kicker} h1={s.h1} lede={s.lede} />
-    <Section label="What you get"><Points items={s.points} /></Section>
-    <Section label="Pricing">
-      {s.package ? <Packages keys={[s.package].flat()} /> : <p className="pg-text">{s.priceNote}</p>}
+    <Head h1={s.h1} lede={s.lede} />
+    <Section title="What you get"><Rows items={s.points} /></Section>
+    <Section title="What it costs">
+      {s.package ? <Prices keys={[s.package].flat()} /> : <p className="text">{s.priceNote}</p>}
     </Section>
-    <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}><Cases slugs={s.cases} /></Section>
-    <Section label="How it runs"><Process /></Section>
-    <Section label="Questions" title={<>The short <em>answers.</em></>}><Points items={s.faq} /></Section>
+    <Section title="Work we’ve built"><Cases slugs={s.cases} /></Section>
+    <Section title="How it runs"><Steps /></Section>
+    <Section title="Short answers"><Rows items={s.faq} /></Section>
     <Ask />
-    <Section label="Also"><>{otherServices(s.path)}</></Section>
+    <Section title="Also"><Links items={allServices.filter(x => x.path !== s.path).map(x => [x.nav, x.path])} /></Section>
   </Shell>
 }
 
@@ -127,14 +92,11 @@ export function IndustryPage() {
   return <Shell title={s.title}>
     <JsonLd data={serviceLd(s, 'Website design for law firms, financial advisors and medical practices')} />
     <JsonLd data={crumbs([['Home', '/'], ['Law, finance and medical', s.path]])} />
-    <Head kicker={s.kicker} h1={s.h1} lede={s.lede} />
-    <Section label="Who it’s for"><Points items={s.points} /><p className="pg-note">{s.note}</p></Section>
-    <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /></Section>
-    <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}>
-      <Cases slugs={s.cases} note={s.caseNote} />
-      <Todo>{s.todo}</Todo>
-    </Section>
-    <Section label="Where"><ul className="pg-links">{locations.map(l => <li key={l.slug}><a href={l.path}>{l.place}</a></li>)}</ul></Section>
+    <Head h1={s.h1} lede={s.lede} />
+    <Section title="Who it’s for"><Rows items={s.points} /><p className="note">{s.note}</p></Section>
+    <Section title="What it costs"><Prices /></Section>
+    <Section title="Work we’ve built"><Cases slugs={s.cases} note={s.caseNote} /></Section>
+    <Section title="Where"><Links items={locations.map(l => [l.place, l.path])} /></Section>
     <Ask />
   </Shell>
 }
@@ -145,16 +107,11 @@ export function LocationPage({ slug }) {
   return <Shell title={l.title}>
     <JsonLd data={serviceLd(l, `Web and AI app development in ${l.place}`, [area])} />
     <JsonLd data={crumbs([['Home', '/'], [l.place, l.path]])} />
-    <Head kicker={l.kicker} h1={l.h1} lede={l.lede} />
-    <Section label={`In ${l.place}`}>
-      <Todo>{l.todo}</Todo>
-    </Section>
-    <Section label="What we build">
-      <ul className="pg-links">{services.map(s => <li key={s.slug}><a href={s.path}>{s.nav}</a></li>)}<li><a href={industry.path}>Law, finance and medical sites</a></li></ul>
-    </Section>
-    <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /><p className="pg-note">AI apps and MVPs are priced in a written scope after a call.</p></Section>
-    <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}><Cases slugs={l.cases} /></Section>
-    <Section label="Nearby"><ul className="pg-links">{l.near.map(n => { const x = locations.find(y => y.slug === n); return <li key={n}><a href={x.path}>{x.place}</a></li> })}</ul></Section>
+    <Head h1={l.h1} lede={l.lede} />
+    <Section title="What we build"><ServiceList /></Section>
+    <Section title="What it costs"><Prices /><p className="note">AI apps, agent systems and MVPs are priced in a written scope after a call.</p></Section>
+    <Section title="Work we’ve built"><Cases slugs={l.cases} /></Section>
+    <Section title="Nearby"><Links items={l.near.map(n => { const x = locations.find(y => y.slug === n); return [x.place, x.path] })} /></Section>
     <Ask />
   </Shell>
 }
@@ -162,8 +119,9 @@ export function LocationPage({ slug }) {
 export function WorkHub() {
   return <Shell title="Work | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work']])} />
-    <Head kicker="Work" h1={<>What we’ve <em>built.</em></>} lede="AI products and web apps, live and in use. Each case study covers the problem, what we built, and what it runs on." cta={false} />
-    <section className="pg-sec pg-sec-wide"><Cases slugs={workSlugs} /></section>
+    <Head h1="What we’ve built." lede="AI products and web apps, live and in use. Each case study covers the problem, what we built, and what it runs on." cta={false} />
+    <Section><Cases slugs={[...workSlugs, 'spacial']} /></Section>
+    <Section title="Client work"><ul className="list">{clients.map(c => <li key={c.slug}><a href={c.url} target="_blank" rel="noreferrer"><strong>{c.name}</strong><span>{c.line}</span><small>{c.host}</small><Arrow /></a></li>)}</ul></Section>
     <Ask line="Want something built like this?" />
   </Shell>
 }
@@ -171,14 +129,10 @@ export function WorkHub() {
 export function ServicesHub() {
   return <Shell title="Services | SparkTech Studio">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
-    <Head kicker="Services" h1={<>What we <em>build.</em></>} lede="AI web apps and MVPs first. Websites for law, finance and medical firms second. Retainers to keep both getting better." />
-    <section className="pg-sec pg-sec-wide">
-      <ul className="pg-cases">{[...services, { path: industry.path, nav: 'Law, finance and medical sites', description: industry.description }].map(s => <li key={s.path}>
-        <a href={s.path}><strong>{s.nav}</strong><span className="pg-case-line">{s.description.split('. ')[0].replace(/\.$/, '')}.</span></a>
-      </li>)}</ul>
-    </section>
-    <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /><p className="pg-note">AI apps, web apps and MVPs are priced in a written scope after a call.</p></Section>
-    <Section label="How it runs"><Process /></Section>
+    <Head h1="What we build." lede="AI web apps, MVPs and agent systems. Websites for law, finance and medical firms. Retainers to keep it all getting better." />
+    <Section><ServiceList /></Section>
+    <Section title="What it costs"><Prices /><p className="note">AI apps, agent systems, web apps and MVPs are priced in a written scope after a call.</p></Section>
+    <Section title="How it runs"><Steps /></Section>
     <Ask />
   </Shell>
 }
@@ -187,13 +141,9 @@ export function PricingPage() {
   const s = pricingPage
   return <Shell title={s.title}>
     <JsonLd data={crumbs([['Home', '/'], ['Pricing', s.path]])} />
-    <Head kicker="Pricing" h1={<>Plain <em>prices.</em></>} lede="One website package and two monthly retainers. AI apps, web apps and MVPs are priced in a written scope after a call." />
-    <section className="pg-sec pg-sec-wide"><Todo>{s.todo}</Todo></section>
-    <Section label="Website"><Packages keys={['launch']} /></Section>
-    <Section label="Retainers" title={<>After <em>launch.</em></>}>
-      <Packages keys={['care', 'growth']} scopes={s.scopes} />
-    </Section>
-    <Section label="Everything else"><p className="pg-text">AI apps, web apps and MVPs are priced in a written scope after a call, because no two are the same size.</p></Section>
+    <Head h1="Plain prices." lede="One website package and two monthly retainers. Everything else is priced in a written scope after a call." />
+    <Section><Prices scopes={s.scopes} /></Section>
+    <Section title="Everything else"><p className="text">AI apps, agent systems, web apps and MVPs are priced in a written scope after a call, because no two are the same size.</p></Section>
     <Ask line="Want a number for your project?" />
   </Shell>
 }
@@ -202,11 +152,11 @@ export function PartnersPage() {
   const s = partnersPage
   return <Shell title={s.title}>
     <JsonLd data={crumbs([['Home', '/'], ['Partners', s.path]])} />
-    <Head kicker={s.kicker} h1={s.h1} lede={s.lede} />
-    <Section label="Who it’s for"><Points items={s.who} /></Section>
-    <Section label="What we build"><ul className="pg-links">{services.map(x => <li key={x.slug}><a href={x.path}>{x.nav}</a></li>)}</ul></Section>
-    <Section label="How it runs"><ol className="pg-steps">{s.how.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol></Section>
-    <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}><Cases slugs={workSlugs} /></Section>
+    <Head h1={s.h1} lede={s.lede} />
+    <Section title="Who it’s for"><Rows items={s.who} /></Section>
+    <Section title="What we build"><ServiceList exclude={industry.path} /></Section>
+    <Section title="How it runs"><Steps items={s.how} /></Section>
+    <Section title="Work we’ve built"><Cases slugs={workSlugs} /></Section>
     <Ask line="Have a client or a cohort in mind?" />
   </Shell>
 }

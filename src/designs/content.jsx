@@ -15,12 +15,12 @@ export const companies = [
     theme: { '--c-bg': '#0d1420', '--c-accent': '#f0a24a', '--c-scrim': 'linear-gradient(90deg, rgba(8,14,24,.1) 0%, rgba(8,14,24,.35) 40%, rgba(8,14,24,.82) 75%, rgba(8,14,24,.88) 100%)' },
     bg: '/work/utern/mountain.webp', bgMobile: '/work/utern/mountain-mobile.webp', figure: '/work/utern/birdee.webp', figureAlt: 'Birdee, UTern’s AI',
     kicker: 'Your AI for landing an internship',
-    value: <>From enrollment <em>to employment.</em></>,
+    value: 'From enrollment to employment.',
     lede: 'Birdee, UTern’s AI, finds students real internships that fit and brings companies the students who fit their role. Companies see evidence, never scores.',
-    visionTitle: <>The climb, <em>start to summit.</em></>,
+    visionTitle: 'The climb, start to summit.',
     today: ['Only the internships that fit you', 'Everything you do becomes a skill', 'Prove it in a conversation with Birdee', 'Apply with Birdee, side by side', 'Just graduated? Full-time roles too', 'Companies come to you. You say yes before they see you'],
     vision: ['Classes, handled', 'Paid projects, for credit', 'Applications, sent once you approve them', 'Hire from real work, any role', 'One view for the career office', 'Your transcript, read'],
-    howTitle: <>Find, prove, apply. <em>Then companies come to you.</em></>,
+    howTitle: 'Find, prove, apply. Then companies come to you.',
     how: [
       ['Find', 'Birdee reads live internships every day and brings you the few that fit your record.'],
       ['Prove', 'Tell Birdee about a project, a job or your GitHub. It asks real questions and turns your answers into your record.'],
@@ -36,12 +36,12 @@ export const companies = [
     theme: { '--c-bg': '#0b0b09', '--c-accent': '#e9e4d6', '--c-mute': 'rgba(240,236,226,.6)' },
     bg: '/work/leed/newsrooms.webp', figure: '/work/leed/sherlock.svg', figureAlt: 'Sherlock, Leed’s desk agent', figureClass: 'is-sherlock',
     kicker: 'A private story-intelligence desk for newsrooms',
-    value: <>Every tip your newsroom gets, <em>read, sorted, and kept safe.</em></>,
+    value: 'Every tip your newsroom gets, read, sorted, and kept safe.',
     lede: 'Tips land everywhere: inboxes, DMs, voicemail. Leed pulls them into one private desk, groups the ones about the same story, and keeps every source sealed until they say yes.',
-    visionTitle: <>Scattered tips. <em>One private desk.</em></>,
+    visionTitle: 'Scattered tips. One private desk.',
     today: ['Sources send tips through a guided chat. No account, no name', 'AI turns every tip into a brief: the claim, how to check it, the risk to the source', 'Tips about the same story get grouped, so you see the pattern first', 'Reporters can ask to talk. The source says yes or no, and their name stays sealed until yes', 'Sherlock, the AI desk agent, ranks what moved overnight. It never contacts a source', 'One private workspace per newsroom, and a morning brief'],
     vision: ['Duplicate stories merged automatically', 'A mobile desk for reporters'],
-    howTitle: <>From a tip to a story, <em>with the source sealed.</em></>,
+    howTitle: 'From a tip to a story, with the source sealed.',
     how: [
       ['Intake', 'Guided chat, widget, email, or SMS. No account.'],
       ['Brief', 'The claim, how to verify it, and the risk to the source.'],
@@ -55,12 +55,12 @@ export const companies = [
     theme: { '--c-bg': '#0c1626', '--c-accent': '#c9a85c', '--c-scrim': 'linear-gradient(90deg, rgba(9,18,34,.9) 0%, rgba(9,18,34,.55) 50%, rgba(9,18,34,.75) 100%)' },
     bg: '/work/ballotwatch/hero-capitol.jpg', figure: '/work/ballotwatch/capitol-logo.svg', figureAlt: 'BallotWatch capitol mark', figureClass: 'is-mark',
     kicker: 'How did your representative vote this week?',
-    value: <>See how Congress votes. <em>Every fact linked to its official source.</em></>,
+    value: 'See how Congress votes. Every fact linked to its official source.',
     lede: 'Look up your senators and representative, see every vote they cast, and read bills in plain English.',
-    visionTitle: <>Every vote, <em>in plain English.</em></>,
+    visionTitle: 'Every vote, in plain English.',
     today: ['Find your senators and representative', 'Bills tracked in plain English', 'Every vote on the record, linked to its source', 'This week on the floor', 'Tell your rep, in your own words', 'A public API for developers and researchers'],
     vision: ['Bill alerts by email', 'Tools for congressional offices, in development and not for sale'],
-    howTitle: <>What you can do <em>on BallotWatch.</em></>,
+    howTitle: 'What you can do on BallotWatch.',
     how: [
       ['Know who speaks for you', 'Your address finds your House member and both senators. A ZIP code alone finds your senators.'],
       ['See exactly how they voted', 'Every roll call, this week’s and every one before it, with each yea or nay linked to the official record.'],
@@ -75,13 +75,13 @@ export const companies = [
     theme: { '--c-bg': '#243b73', '--c-accent': '#c9bdff', '--c-scrim': 'linear-gradient(90deg, rgba(36,59,115,.94) 0%, rgba(36,59,115,.84) 55%, rgba(36,59,115,.92) 100%)' },
     bg: '/work/spacial/ink-threads.jpg', figure: 'spacial-mark', figureAlt: 'Spacial Health mark', figureClass: 'is-mark',
     kicker: 'Complex care, finally coordinated',
-    value: <>Care that remembers <em>the whole person.</em></>,
+    value: 'Care that remembers the whole person.',
     lede: 'Spacial is building one physician-reviewed care journey: every record, specialist, and next step in one place, so patients feel known and care teams see the whole picture. The preview runs on sample data.',
-    visionTitle: <>One clinical story, <em>one living plan.</em></>,
+    visionTitle: 'One clinical story, one living plan.',
     today: ['A platform preview built alongside Dr. Douglas Jones’ allergy and immunology practice', 'One clinical story instead of scattered records', 'One connected care team and one living plan', 'The preview runs on representative sample data only'],
     vision: ['Spacial Clinical Intelligence: AI pulls every record into one picture, and a physician approves it before anything changes'],
     todayLabel: 'In the preview',
-    howTitle: <>Tell it once. See it whole. <em>Keep it moving.</em></>,
+    howTitle: 'Tell it once. See it whole. Keep it moving.',
     how: [
       ['Tell it once', 'The patient shares one guided story and brings the outside record into one secure place.'],
       ['Turn fragments into a whole', 'Records, symptoms, labs, and open evidence gaps become one source-linked picture.'],
@@ -97,9 +97,9 @@ export const companies = [
     theme: { '--c-bg': '#14140f', '--c-accent': '#4ade80', '--c-mute': 'rgba(247,246,243,.62)', '--c-scrim': 'radial-gradient(110% 90% at 30% 50%, rgba(74,222,128,.10) 0%, rgba(20,20,15,0) 60%)' },
     bg: null, bgCss: '#14140f', figure: '/work/validate/mark.svg', figureAlt: 'Validate-s mark', figureClass: 'is-mark',
     kicker: 'A public room where AI agents argue about ideas',
-    value: <>Post an idea. <em>Agents research it, argue it out, and write the record.</em></>,
+    value: 'Post an idea. Agents research it, argue it out, and write the record.',
     lede: 'Five house agents look for who has already thought of an idea, who is building it, and where it breaks. People and outside agents can join any room.',
-    howTitle: <>From an idea <em>to an honest answer.</em></>,
+    howTitle: 'From an idea to an honest answer.',
     how: [
       ['Post an idea', 'A person or an AI agent posts it. Each idea gets its own room.'],
       ['Research and argue', 'An Advocate, a Skeptic, a Cartographer, a Customer and a Verifier search the web and argue over three rounds.'],
@@ -113,7 +113,7 @@ export const companies = [
 
 // Case studies for the /work hub. Problem and built lists restate each product's own live copy; stacks were checked
 // against each repo or live bundle on 2026-10-27. `results` stays null until there is a real number or a quote with
-// permission, and the page shows a TODO in its place. Never fill it with an estimate.
+// permission, and the page leaves the row out. Never fill it with an estimate.
 export const studies = {
   utern: {
     problem: 'Students apply to internships that don’t fit them, and companies can’t see what a student can actually do. UTern needed to match the two on evidence, not scores.',
@@ -148,7 +148,7 @@ export const studies = {
 // The four case studies the /work hub, the home tiles and the footer show, in this order. Spacial Health keeps its page but is not listed.
 export const workSlugs = ['utern', 'leed', 'ballotwatch', 'validate']
 
-// Published prices from the 2026-10-27 rebuild plan, final numbers pending Spencer's confirmation (/pricing shows a TODO and is noindex until then).
+// Published prices from the 2026-10-27 rebuild plan, final numbers pending Spencer's confirmation (/pricing stays noindex until then).
 // Anything not listed here is priced in a written scope after a call.
 export const pricing = {
   launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'A marketing site built to rank and to convert: design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.' },
@@ -156,7 +156,15 @@ export const pricing = {
   growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.' },
 }
 
-// The short list the home tiles, footer and 404 show
+// Client work: sites built for other companies. Say only what is listed here.
+export const clients = [
+  { slug: 'oasisvrx', name: 'Oasis VRX', host: 'oasisvrx.com', url: 'https://oasisvrx.com', line: 'A VR arcade in New Jersey. Client website build.' },
+]
+
+// Everything we've built, for the home and /work lists: the four case studies, then Spacial Health (its page stays noindex).
+export const products = [...workSlugs, 'spacial'].map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: c.url, page: `/work/${c.slug}`, line: c.line }))
+
+// The short list the footer shows
 export const built = workSlugs.map(s => companies.find(c => c.slug === s)).map(c => ({ slug: c.slug, name: c.name, host: c.host, url: `/work/${c.slug}`, line: c.line }))
 
 // The recursive agentic systems. Status is what is true today: product fixes run on our own site; the other areas are the roadmap.
