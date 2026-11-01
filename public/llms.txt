@@ -10,6 +10,7 @@ Not to be confused with: sparktechstudios.com, a separate, unrelated agency in O
 ## Services
 
 - [AI app development](https://www.sparktechstudio.com/services/ai-app-development): AI web apps and AI MVPs. Priced in a written scope after a call.
+- [Agent harnessing and agent swarms](https://www.sparktechstudio.com/services/ai-agents): we design, wire and run AI agents and coordinated multi-agent systems that do real work for a business. Priced in a written scope.
 - [Web app development](https://www.sparktechstudio.com/services/web-app-development): custom web apps on Next.js and React. Priced in a written scope.
 - [Website design](https://www.sparktechstudio.com/services/web-design): the Launch Site package, $12k to $25k, usually 3 to 5 weeks.
 - [Startup MVPs](https://www.sparktechstudio.com/services/startup-mvp): the smallest version of a product that real people can use. Priced in a written scope.

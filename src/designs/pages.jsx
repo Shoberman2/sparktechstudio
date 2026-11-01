@@ -1,58 +1,72 @@
 // Copy for the service, industry and location pages (the 2026-10-27 rebuild plan, .rebuild-plan.md).
 // URLs and keywords come from the plan's SEO table. Every service page names two case studies from content.jsx.
-// No clients, testimonials or numbers are invented here. Where a page needs proof we don't have yet, `todo`
-// holds a note that renders as a visible TODO box, and the prerender marks that page noindex until it is filled.
+// No clients, testimonials or numbers are invented here. Pages that still need proof we don't have yet are noindex.
 
 import { companies, studies, pricing } from './content.jsx'
+import { serviceList } from '../site/facts.js'
 
 // How every project runs, from the 2026-10-15 offer pass. Terms beyond this are set in the written scope.
 export const process = [
-  ['A call', 'We talk through what you want built and who it’s for. A real conversation, not a pitch.'],
-  ['A written scope', 'What we’ll build, what it costs, and when. Ownership, access and support are spelled out here.'],
-  ['Build and launch', 'We design, build, test in a real browser, and ship.'],
-  ['After launch', 'Optional. A Care or Growth retainer keeps it fast, fixed and improving.'],
+  ['Call', 'We talk through what you want built and who it’s for.'],
+  ['Written scope', 'What we build, what it costs, and when.'],
+  ['Build and launch', 'Designed, built, tested in a real browser, shipped.'],
+  ['Keep improving', 'An optional Care or Growth retainer after launch.'],
 ]
 
+const line = slug => serviceList.find(x => x.slug === slug)
 export const services = [
   {
-    slug: 'ai-app-development', path: '/services/ai-app-development', nav: 'AI app development',
+    ...line('ai-app-development'),
     title: 'AI App Development Agency in New York | SparkTech Studio',
     description: 'AI app development in New York. We design and build AI web apps and AI MVPs that people use every day, from the first call to launch.',
-    kicker: 'AI app development',
-    h1: <>AI apps that do <em>real work.</em></>,
-    lede: 'We build web apps where the AI is the product, not a chat box bolted on. It reads, sorts, drafts and decides alongside the people using it, and it shows its sources.',
+    name: 'AI app development',
+    h1: 'AI Apps That Do Real Work',
+    lede: 'Web apps where the AI is the product, not a chat box bolted on. It reads, sorts, drafts and decides alongside the people using it, and it shows its sources.',
     points: [
-      ['AI features people trust', 'Every answer can be traced back to what it was built from. People approve the steps that matter.'],
-      ['Built on the models that fit', 'We pick the model for the job, keep prompts and evaluations in the codebase, and swap models without a rewrite.'],
+      ['AI people trust', 'Every answer traces back to what it was built from. People approve the steps that matter.'],
+      ['The model that fits', 'Prompts and evaluations live in the codebase, so the model can change without a rewrite.'],
       ['A real product around it', 'Accounts, data, payments and an interface that makes sense on day one.'],
     ],
-    priceNote: 'AI apps are priced in the written scope after a call, because no two are the same size.',
     cases: ['utern', 'validate'],
   },
   {
-    slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web app development',
+    ...line('ai-agents'),
+    title: 'AI Agent Development in New York | SparkTech Studio',
+    description: 'Agent harnessing and agent swarms in New York. We design, wire and run AI agents and multi-agent systems that do real work for a business.',
+    name: 'Agent harnessing and agent swarms',
+    h1: 'AI Agents, Wired Into Your Business',
+    lede: 'We design, wire and run AI agents, alone or as coordinated swarms, that take real work off your team.',
+    points: [
+      ['Harnessing', 'One agent with the right tools, clear limits, and a person approving the steps that matter.'],
+      ['Swarms', 'Several agents that split a job, check each other’s work and hand off, run as one system.'],
+      ['Run, not just built', 'Every run is logged, so you can see what each agent did and why.'],
+      ['Wired to your tools', 'Agents work inside the inbox, database and apps you already use, with access you set.'],
+    ],
+    cases: ['validate', 'leed'],
+  },
+  {
+    ...line('web-app-development'),
     title: 'Custom Web App Development in New York | SparkTech Studio',
     description: 'Custom web app development in New York. We build fast, maintainable web apps on Next.js and React, with real accounts, data and payments.',
-    kicker: 'Web app development',
-    h1: <>Custom web apps, <em>built to last.</em></>,
-    lede: 'Dashboards, portals, marketplaces, internal tools. We build web apps on Next.js and React that stay fast and stay standing when the traffic shows up.',
+    name: 'Web app development',
+    h1: 'Custom Web Apps, Built To Last',
+    lede: 'Dashboards, portals, marketplaces and internal tools that stay fast when the traffic shows up.',
     points: [
       ['Next.js and React', 'A stack your next hire already knows, so the code doesn’t trap you with us.'],
       ['The hard parts done properly', 'Sign-in, permissions, data, payments and email, set up once and set up right.'],
       ['Checked in a real browser', 'Every release is clicked through before it ships, not just compiled.'],
     ],
-    priceNote: 'Web apps are priced in the written scope after a call.',
     cases: ['leed', 'ballotwatch'],
   },
   {
-    slug: 'web-design', path: '/services/web-design', nav: 'Website design',
+    ...line('web-design'),
     title: 'Web Design Agency in New York City | SparkTech Studio',
     description: 'Premium website design and development in New York. A Launch Site package from $12k to $25k: design, build, CMS and SEO, usually in 3 to 5 weeks.',
-    kicker: 'Website design and development',
-    h1: <>A website that looks <em>like you mean it.</em></>,
+    name: 'Website design and development',
+    h1: 'A Website That Looks Like You Mean It',
     lede: 'Your site is the first meeting most people have with you. We design and build sites that load fast, read clearly, and turn a visit into a call.',
     points: [
-      ['Designed, not templated', 'Type, layout and motion made for your company, then built by the same people who designed it.'],
+      ['Designed, not templated', 'Type, layout and motion made for your company, built by the people who designed it.'],
       ['Found in search', 'Clean markup, real page titles, structured data and a sitemap, set up before launch.'],
       ['Yours to edit', 'A CMS for the pages you change often, so updates don’t wait on us.'],
     ],
@@ -60,32 +74,27 @@ export const services = [
     cases: ['ballotwatch', 'utern'],
   },
   {
-    slug: 'startup-mvp', path: '/services/startup-mvp', nav: 'Startup MVPs',
+    ...line('startup-mvp'),
     title: 'MVP Development Company in NYC | SparkTech Studio',
     description: 'MVP development for startups in New York. We build the smallest version of your product that real people can use, then help you learn from it.',
-    kicker: 'MVPs for startups',
-    h1: <>The first version, <em>in real hands.</em></>,
+    name: 'MVPs for startups',
+    h1: 'The First Version, In Real Hands',
     lede: 'An MVP is the smallest thing that tells you whether you’re right. We help you pick what to leave out, build the rest properly, and put it in front of real people.',
     points: [
-      ['Scope that fits the question', 'We start from what you need to learn, then cut everything that doesn’t help you learn it.'],
-      ['Built to keep, not to throw away', 'Real code on a real stack, so version two builds on version one.'],
+      ['Scope that fits the question', 'Start from what you need to learn, then cut everything that doesn’t help you learn it.'],
+      ['Built to keep', 'Real code on a real stack, so version two builds on version one.'],
       ['Measured from launch', 'You see who signs up, what they use and where they drop off.'],
     ],
-    priceNote: 'MVPs are priced in the written scope after a call.',
     cases: ['validate', 'leed'],
   },
   {
-    slug: 'retainers', path: '/services/retainers', nav: 'Care and Growth retainers',
+    ...line('retainers'),
     title: 'Website Maintenance and SEO in NYC | SparkTech Studio',
     description: 'Website maintenance and SEO retainers in New York. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
-    kicker: 'Maintenance and growth retainers',
-    h1: <>Launch is <em>day one.</em></>,
+    name: 'Maintenance and growth retainers',
+    h1: 'Launch Is Day One',
     lede: 'Sites and apps start aging the day they ship. A retainer keeps yours fast, fixed and getting better, with a set number of hours each month.',
-    points: [
-      ['Care', 'Hosting oversight, updates, uptime checks and small fixes.'],
-      ['Growth', 'Care, plus new SEO pages, analytics and conversion tests that keep what works.'],
-      ['A set number of hours', 'About 5 hours a month on Care and 15 on Growth. The rest of the terms are set in the written scope.'],
-    ],
+    points: null,
     package: ['care', 'growth'],
     cases: ['utern', 'ballotwatch'],
   },
@@ -102,6 +111,12 @@ const faqs = {
     ['What does an AI app cost?', 'AI apps are priced in a written scope after a call, because no two are the same size.'],
     ['How long does it take?', scoped],
     ['What do you build it on?', `We pick the model that fits the job and keep prompts and evaluations in the codebase, so the model can change without a rewrite. ${ran(['utern', 'validate'])}`],
+    ownership,
+  ],
+  'ai-agents': [
+    ['What does an agent system cost?', 'Agent systems are priced in a written scope after a call, because each one is wired to a different business.'],
+    ['How long does it take?', scoped],
+    ['What do you build it on?', `The model that fits each job, with the agents’ tools, limits and logs kept in your codebase. ${ran(['validate'])}`],
     ownership,
   ],
   'web-app-development': [
@@ -124,7 +139,6 @@ const faqs = {
   ],
   retainers: [
     ['What does a retainer cost?', `${price('care')}. ${price('growth')}.`],
-    ['How much time is included?', 'About 5 hours a month on Care and about 15 on Growth. The rest of the terms are set in the written scope.'],
     ['What stack do you work on?', `The sites and apps we build. ${ran(['utern', 'ballotwatch'])} Anything else is settled in the written scope.`],
     ownership,
   ],
@@ -135,8 +149,8 @@ export const industry = {
   slug: 'professional-services', path: '/industries/professional-services',
   title: 'Law, Finance and Medical Websites in NYC | SparkTech Studio',
   description: 'Websites for law firms, financial advisors and medical practices in New York City and Long Island. Launch Site package from $12k to $25k.',
-  kicker: 'Law, finance and medical',
-  h1: <>Websites for firms <em>people trust.</em></>,
+  name: 'Law, finance and medical sites',
+  h1: 'Websites For Firms People Trust',
   lede: 'Law firms, financial advisors and medical practices sell trust before anything else. We build sites that look the part, explain what you do in plain English, and make the first call easy.',
   points: [
     ['Law firms', 'Practice areas and attorney pages that read clearly, and intake that asks only what it needs to.'],
@@ -147,7 +161,8 @@ export const industry = {
   package: 'launch',
   cases: ['leed', 'ballotwatch'],
   caseNote: 'Not law or finance sites, but the same job: sensitive information handled with care, and every fact traceable to its source.',
-  todo: 'No professional-services case study yet. Add one real law, finance or medical client (with permission) before promoting this page.',
+  // No professional-services case study yet: noindex until a real law, finance or medical client can be named (TODOS.md)
+  noindex: true,
 }
 
 // Location pages. Each needs real local proof (a client, a partner, an office) before it is promoted.
@@ -156,11 +171,9 @@ const loc = (slug, place, title, keywords, intro, near) => ({
   slug, path: `/locations/${slug}`, place, near,
   title: `${title} | SparkTech Studio`,
   description: `${keywords}. SparkTech Studio is an independent web and AI app studio in New York. Book a call.`,
-  kicker: place,
-  h1: <>Web and AI apps for <em>{place}.</em></>,
+  h1: `Web And AI Apps For ${place}`,
   lede: intro,
   cases: ['utern', 'ballotwatch'],
-  todo: `Real local proof for ${place}: a client, partner or project here we can name with permission. Nothing published yet, so this page is noindex.`,
 })
 
 export const locations = [
@@ -189,7 +202,8 @@ export const pricingPage = {
     care: 'Maintenance. Hosting oversight, updates, uptime checks and small fixes, so the site stays fast and keeps working. About 5 hours a month.',
     growth: 'SEO and AI features. Everything in Care, plus new SEO pages and new AI features, each one checked against what it was meant to move. About 15 hours a month.',
   },
-  todo: 'Final numbers pending Spencer’s confirmation. Don’t quote these prices to anyone yet. When he signs off, remove this note and the page leaves noindex on its own.',
+  // Final numbers pending Spencer's confirmation, so the page stays noindex
+  noindex: true,
 }
 
 // /partners: for design studios, agencies and accelerators that want a build partner. Terms are set per partner in a
@@ -198,8 +212,7 @@ export const partnersPage = {
   path: '/partners',
   title: 'Build Partner for Studios and Agencies | SparkTech Studio',
   description: 'A build partner for design studios, agencies and accelerators. You bring the client or the cohort; we build the AI app, MVP or website. Book a call.',
-  kicker: 'Partners',
-  h1: <>Your clients, <em>our build.</em></>,
+  h1: 'Your Clients, Our Build',
   lede: 'For design studios, agencies and accelerators that need someone to build what they’ve designed or promised. You keep the relationship. We build it and keep it standing.',
   who: [
     ['Design studios', 'You made the brand and the screens. We build them as a real site or app, close to the pixel, so the work you sold is the work that ships.'],
@@ -207,10 +220,10 @@ export const partnersPage = {
     ['Accelerators', 'Founders in your program need a first version people can use. We build MVPs and AI apps on a real stack they can keep.'],
   ],
   how: [
-    ['A call', 'We talk through the work, the client and how you want to run it. A real conversation, not a pitch.'],
-    ['A written scope', 'What we build, what it costs, when, and who talks to the client. Credit, ownership and support are spelled out here.'],
-    ['Build and launch', 'We design what’s left, build, test in a real browser, and ship. You see the work as it happens.'],
-    ['After launch', 'Optional. A Care or Growth retainer keeps it fixed and improving.'],
+    ['Call', 'The work, the client, and how you want to run it.'],
+    ['Written scope', 'Cost, dates, credit, ownership and who talks to the client.'],
+    ['Build and launch', 'You see the work as it happens.'],
+    ['Keep improving', 'An optional Care or Growth retainer keeps it fixed and improving.'],
   ],
 }
 
@@ -218,8 +231,8 @@ export const partnersPage = {
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
   // noindex while the page still shows a TODO box instead of a real professional-services case study
-  { path: industry.path, title: industry.title, description: industry.description, noindex: Boolean(industry.todo) },
+  { path: industry.path, title: industry.title, description: industry.description, noindex: industry.noindex },
   ...locations.map(l => ({ path: l.path, title: l.title, description: l.description, noindex: true })),
-  { path: pricingPage.path, title: pricingPage.title, description: pricingPage.description, noindex: Boolean(pricingPage.todo) },
+  { path: pricingPage.path, title: pricingPage.title, description: pricingPage.description, noindex: pricingPage.noindex },
   { path: partnersPage.path, title: partnersPage.title, description: partnersPage.description },
 ]

@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useLoop } from './useLoop'
 import { built, BOOK } from './content.jsx'
 import { services, industry } from './pages.jsx'
-import { SiteNav, Packages, Todo } from './Page.jsx'
+import { SiteNav, Packages } from './Page.jsx'
 import Footer from './Footer.jsx'
 import './buttons.css'
 import './Form.css'
@@ -166,11 +166,8 @@ export default function Form() {
     <section className="pg-sec fm-about" id="about">
       <div className="pg-sec-head"><p className="pg-label">About</p><h2>Who’s <em>building it.</em></h2></div>
       <div className="pg-sec-body fm-founder">
-        {/* TODO(Spencer): replace with a real photo. No stock image, no generated face. */}
-        <div className="fm-founder-photo" role="img" aria-label="Founder photo coming soon"><strong>TODO</strong><span>Photo of Spencer</span></div>
         <div>
           <p className="pg-text">I’m Spencer Hoberman. I founded SparkTech Studio in New York, and I also build UTern, which stays an independent company.</p>
-          <Todo>Founder bio from Spencer, in his words: his background and why he started the studio. No credentials, employers or numbers until he supplies them.</Todo>
         </div>
       </div>
     </section>

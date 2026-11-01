@@ -58,7 +58,7 @@ function Head({ kicker, h1, lede, cta = true }) {
 }
 
 // A visible, deliberately ugly marker for proof we don't have yet. Never replace it with made-up copy.
-export const Todo = ({ children }) => <aside className="pg-todo" role="note"><strong>TODO</strong><span>{children}</span></aside>
+export const Todo = ({ children }) => <aside className="pg-todo" role="note"><strong>To do</strong><span>{children}</span></aside>
 
 function Section({ label, title, children, id }) {
   return <section className="pg-sec" id={id}>

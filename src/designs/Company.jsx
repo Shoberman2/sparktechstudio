@@ -169,7 +169,7 @@ export default function Company({ slug }) {
         <div><dt>What we built</dt><dd><ul>{st.built.map(b => <li key={b}>{b}</li>)}</ul></dd></div>
         <div><dt>Built with</dt><dd>{st.stack}</dd></div>
         <div><dt>Where it stands</dt><dd>{st.status}</dd></div>
-        <div><dt>Results</dt><dd>{st.results || <aside className="co-todo" role="note"><strong>TODO</strong> No verified results yet. Add real numbers or a quote, with permission, before promoting this case study.</aside>}</dd></div>
+        {st.results && <div><dt>Results</dt><dd>{st.results}</dd></div>}
       </dl>
     </section>}
     {c.visionTitle && <section className="co-section">
