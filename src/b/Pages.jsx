@@ -9,7 +9,7 @@ const ORG = `${SITE}/#org`
 
 const crumbs = list => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: list.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE}${path}` })) })
 const offer = key => {
-  const p = pricing[key], [lo, hi] = p.price.match(/[\d,]+k?/g).map(v => Number(v.replace(/,/g, '').replace('k', '000')))
+  const p = pricing[key], [lo, hi = lo] = p.price.match(/[\d,]+k?/g).map(v => Number(v.replace(/,/g, '').replace('k', '000')))
   return { '@type': 'Offer', name: p.name, priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD', minPrice: lo, maxPrice: hi, ...(p.unit === 'a month' ? { unitText: 'MONTH' } : {}) } }
 }
 const serviceLd = (page, name, area = [{ '@type': 'City', name: 'New York' }, { '@type': 'Place', name: 'Long Island, NY' }]) => {
@@ -82,9 +82,9 @@ export function PricingPage() {
   const s = pricingPage
   return <Shell path="/pricing" title={s.title}>
     <JsonLd data={crumbs([['Home', '/'], ['Pricing', s.path]])} />
-    <Head h1="Plain Prices" lede="One website package and two monthly retainers." />
+    <Head h1="Plain Prices" lede="One website package and three monthly plans." />
     <Sec title="Launch Site"><Prices keys={['launch']} /></Sec>
-    <Sec title="After Launch"><Prices keys={['care', 'growth']} scopes={s.scopes} /></Sec>
+    <Sec title="After Launch"><Prices keys={['updates', 'care', 'growth']} scopes={s.scopes} /></Sec>
     <Sec title="Everything Else"><p className="lede center reveal">{scopedNote}</p></Sec>
   </Shell>
 }

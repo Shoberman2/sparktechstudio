@@ -40,6 +40,7 @@ export function WorkGrid({ items = [...products, client] }) {
 const what = [
   ['Websites', 'A fast site you can edit yourself.', '/services', 'See services'],
   ['AI agents', 'AI that answers, sorts and follows up for you.', '/services/ai-agents', 'See AI agents'],
+  ['Website updates', 'We edit your site and keep it current.', '/services/retainers', 'See website updates'],
 ]
 
 export default function Home() {

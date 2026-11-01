@@ -5,6 +5,7 @@ export const EMAIL = 'contactus@sparktechstudio.com'
 
 export const pricing = {
   launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'Design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.' },
+  updates: { name: 'Website updates', price: '$500', unit: 'a month', scope: 'Edits and updates to your site.' },
   care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.' },
   growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.' },
 }
@@ -20,13 +21,14 @@ export const products = [
 ]
 export const client = { slug: 'oasis', name: 'Oasis VRX', host: 'oasisvrx.com', url: 'https://oasisvrx.com', line: 'A VR venue in New Jersey. We built their website.', device: 'laptop' }
 
-// Services in order, each with one plain line. The home page shows only the first two ideas (websites, AI agents).
+// Services in order, each with one plain line. The home page shows only websites, AI agents and website updates.
 export const serviceList = [
   ['Websites', '/services/web-design', 'A fast site you can edit yourself.'],
   ['AI agents', '/services/ai-agents', 'AI that answers, sorts and follows up for you.'],
   ['AI apps', '/services/ai-app-development', 'Apps where the AI does the main job.'],
   ['Web apps', '/services/web-app-development', 'Portals, dashboards and tools for your team.'],
   ['MVPs', '/services/startup-mvp', 'A first version you can put in front of people.'],
+  ['Website updates', '/services/retainers', 'We edit your site and keep it current.'],
   ['Care and Growth', '/services/retainers', 'Updates, fixes and new pages after launch.'],
   ['Law, finance and medical', '/industries/professional-services', 'Sites for firms that need to look trusted.'],
 ]
@@ -43,6 +45,7 @@ Facts you may use (do not invent anything beyond these):
 - SparkTech Studio is Spencer Hoberman's independent studio in New York. Legal entity: SparkTech Studios, Inc. It is not affiliated with sparktechstudios.com (Ontario).
 - It builds websites and sets up AI agents for businesses. It also builds AI apps, web apps and MVPs, and runs its own products.
 - Services: ${serviceList.map(s => s[0]).join('; ')}.
+- Website updates: $500 a month. We edit your site and keep it current, for businesses that just need changes made.
 - AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up. You decide what they can do and what they spend.
 - Products: ${products.map(x => `${x.name} (${x.host}): ${x.line}`).join(' ')} UTern is an independent company that Spencer also builds.
 - Client work: ${client.name} (${client.host}), a VR venue in New Jersey. SparkTech built their website. Say nothing more about it.

@@ -137,8 +137,8 @@ export function Phone({ slug, src, alt, eager }) {
 
 
 
-export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {}, short = false }) {
-  return <div className={`prices reveal ${keys.length === 2 ? 'prices-2' : keys.length === 1 ? 'prices-1' : ''}`}>{keys.map(k => { const p = pricing[k]; return <div className="price" key={k}>
+export function Prices({ keys = ['launch', 'updates', 'care', 'growth'], scopes = {}, short = false }) {
+  return <div className={`prices reveal ${keys.length === 4 ? 'prices-4' : keys.length === 2 ? 'prices-2' : keys.length === 1 ? 'prices-1' : ''}${short ? ' prices-short' : ''}`}>{keys.map(k => { const p = pricing[k]; return <div className="price" key={k}>
     <h3>{p.name}</h3>
     <div className="amt">{p.price}<span className="unit">{p.unit}</span></div>
     {!short && <p className="scope">{scopes[k] || p.scope}</p>}
@@ -147,7 +147,7 @@ export function Prices({ keys = ['launch', 'care', 'growth'], scopes = {}, short
 
 // One row per service: name and one plain line
 export function ServiceList({ skip, items = serviceList }) {
-  return <ul className="svc-list">{items.filter(([, h]) => h !== skip).map(([t, h, line]) => <li key={h} className="reveal">
+  return <ul className="svc-list">{items.filter(([, h]) => h !== skip).map(([t, h, line]) => <li key={t} className="reveal">
     <a href={h}><h3>{t}</h3><p>{line}</p></a>
   </li>)}</ul>
 }
