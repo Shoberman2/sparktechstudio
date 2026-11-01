@@ -2,6 +2,7 @@ import { companies, workSlugs, pricing, EMAIL, BOOK } from '../designs/content.j
 import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
 import { serviceList, clients, scoped, SITE } from './facts.js'
 import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd } from './ui.jsx'
+import { AgentMock, SearchMock } from './Mocks.jsx'
 
 // Interior pages for Direction A. Same nav, type, buttons and closing band as the home page.
 const ORG = `${SITE}/#org`
@@ -20,7 +21,7 @@ const allServices = serviceList.map(s => [s.nav, s.line, s.path])
 
 export function ServicePage({ slug }) {
   const s = services.find(x => x.slug === slug)
-  if (slug === 'ai-agents') return <AgentsPage s={s} />
+  if (slug === 'ai-agents' || slug === 'seo-aeo') return <ShortPage s={s} />
   const keys = [s.package].flat().filter(Boolean)
   return <Shell title={s.title} active="services">
     <JsonLd data={serviceLd(s, s.name)} />
@@ -34,23 +35,30 @@ export function ServicePage({ slug }) {
   </Shell>
 }
 
-// /services/ai-agents: what an agent does for a business in three lines, how we work in one, the price note, Book a call.
-function AgentsPage({ s }) {
-  return <Shell title={s.title} active="agents" bandTitle="Want An Agent On Your Team?">
+// The short service pages (/services/ai-agents, /services/seo-aeo): what it is, a picture of it, what we do, Book a call.
+// SEO and AEO has no published price, so it shows none.
+const short = {
+  'ai-agents': { Visual: AgentMock, active: 'agents', band: 'Want An Agent On Your Team?', what: 'What An Agent Can Do', price: 'Priced after a call, for the one job you want done first.' },
+  'seo-aeo': { Visual: SearchMock, active: 'services', band: 'Want People To Find You?', what: 'What We Do' },
+}
+function ShortPage({ s }) {
+  const x = short[s.slug]
+  return <Shell title={s.title} active={x.active} bandTitle={x.band}>
     <JsonLd data={serviceLd(s, s.name)} />
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
-    <JsonLd data={faqLd(s.faq)} />
+    {s.faq && <JsonLd data={faqLd(s.faq)} />}
     <PageHead h1={s.h1} lede={s.lede} cta={false} />
-    <Sec title="What An Agent Can Do"><ul className="trio">{s.points.map(([h, p]) => <li key={h} className="reveal"><h3>{h}</h3><p>{p}</p></li>)}</ul></Sec>
-    <Sec title="How We Work"><p className="say reveal">{s.how}</p></Sec>
-    <Sec title="Pricing"><p className="say reveal">Priced after a call, for the one job you want done first.</p></Sec>
+    <section className="sec mk-sec"><div className="wrap mk-solo reveal"><x.Visual /></div></section>
+    <Sec title={x.what}><ul className="trio">{s.points.map(([h, p]) => <li key={h} className="reveal"><h3>{h}</h3><p>{p}</p></li>)}</ul></Sec>
+    {s.how && <Sec title="How We Work"><p className="say reveal">{s.how}</p></Sec>}
+    {x.price && <Sec title="Pricing"><p className="say reveal">{x.price}</p></Sec>}
   </Shell>
 }
 
 export function ServicesHub() {
   return <Shell title="Services | SparkTech Studio" active="services">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
-    <PageHead h1="What We Build" lede="Websites and AI agents, plus the apps around them." cta={false} />
+    <PageHead h1="What We Build" lede="Websites, AI agents, updates and search, plus the apps around them." cta={false} />
     <Sec><List items={allServices} /><p className="note reveal">Websites are {pricing.launch.price}. Website updates are {pricing.updates.price} {pricing.updates.unit}. {scoped} <a className="tl" href="/pricing">All prices</a></p></Sec>
   </Shell>
 }
@@ -116,7 +124,7 @@ export function PartnersPage() {
 
 // What this site actually does with data, and nothing more. Update if analytics, a form, or any third party is added.
 export function Privacy() {
-  return <Shell title="Privacy | SparkTech Studio" band={false}>
+  return <Shell title="Privacy | SparkTech Studio" bandTitle="Questions About Your Data?" bandLine="Email us and a person will answer within two business days.">
     <PageHead h1="Privacy, Kept Simple" lede="This site runs no analytics, no ads, and no tracking cookies." cta={false} />
     <section className="sec"><div className="wrap prose">
       <h2>What We Collect</h2>

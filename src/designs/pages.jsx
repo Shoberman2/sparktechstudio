@@ -10,7 +10,7 @@ export const process = [
   ['Call', 'We talk through what you want built and who it’s for.'],
   ['Written scope', 'What we build, what it costs, and when.'],
   ['Build and launch', 'Designed, built, tested in a real browser, shipped.'],
-  ['Keep improving', 'An optional Care or Growth retainer after launch.'],
+  ['Keep improving', 'Optional monthly updates after launch.'],
 ]
 
 const line = slug => serviceList.find(x => x.slug === slug)
@@ -24,7 +24,7 @@ export const services = [
     lede: 'Web apps where the AI is the product, not a chat box bolted on. It reads, sorts, drafts and decides alongside the people using it, and it shows its sources.',
     points: [
       ['AI people trust', 'Every answer traces back to what it was built from. People approve the steps that matter.'],
-      ['The model that fits', 'Prompts and evaluations live in the codebase, so the model can change without a rewrite.'],
+      ['The model that fits', 'We can switch the AI model later without starting over.'],
       ['A real product around it', 'Accounts, data, payments and an interface that makes sense on day one.'],
     ],
     cases: ['utern', 'validate'],
@@ -43,6 +43,22 @@ export const services = [
     ],
     how: 'We start with one job, connect the agent to the tools you already use, and you approve anything that matters.',
     cases: ['validate', 'leed'],
+  },
+  {
+    ...line('seo-aeo'),
+    title: 'SEO and AEO in New York | SparkTech Studio',
+    description: 'SEO and AEO for businesses in New York. We help your site show up on Google and get named in AI answers like ChatGPT and Perplexity. Book a call.',
+    name: 'SEO and AEO',
+    h1: 'Get Found On Google And In AI Answers',
+    // What it is, in plain lines. No price is published for this service, and no rankings are promised.
+    lede: 'SEO gets your site found on Google. AEO gets your business named when people ask AI tools like ChatGPT and Perplexity. Both start with a site that says clearly what you do.',
+    points: [
+      ['Fix the basics', 'Fast pages, clear titles and a sitemap Google can read.'],
+      ['Answer real questions', 'Pages that answer what your customers ask, in plain words.'],
+      ['Make it easy to cite', 'Clear facts about your business that AI tools can quote and link to.'],
+    ],
+    bandTitle: 'Want People To Find You?',
+    cases: [],
   },
   {
     ...line('web-app-development'),
@@ -67,7 +83,7 @@ export const services = [
     lede: 'Your site is the first meeting most people have with you. We design and build sites that load fast, read clearly, and turn a visit into a call.',
     points: [
       ['Designed, not templated', 'Type, layout and motion made for your company, built by the people who designed it.'],
-      ['Found in search', 'Clean markup, real page titles, structured data and a sitemap, set up before launch.'],
+      ['Found in search', 'Clear page titles and a sitemap, set up before launch.'],
       ['Yours to edit', 'A CMS for the pages you change often, so updates don’t wait on us.'],
     ],
     package: 'launch',
@@ -93,7 +109,7 @@ export const services = [
     description: 'Website updates, maintenance and SEO in New York. Updates $500 a month. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
     name: 'Maintenance and growth retainers',
     h1: 'Launch Is Day One',
-    lede: 'Sites and apps start aging the day they ship. A retainer keeps yours fast, fixed and getting better, with a set number of hours each month.',
+    lede: 'Sites start aging the day they ship. A monthly plan keeps yours current, fixed and getting better.',
     points: null,
     package: ['updates', 'care', 'growth'],
     cases: ['utern', 'ballotwatch'],
@@ -110,13 +126,13 @@ const faqs = {
   'ai-app-development': [
     ['What does an AI app cost?', 'AI apps are priced in a written scope after a call, because no two are the same size.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `We pick the model that fits the job and keep prompts and evaluations in the codebase, so the model can change without a rewrite. ${ran(['utern', 'validate'])}`],
+    ['What do you build it on?', `We pick the AI model that fits the job, and we can switch it later without starting over. ${ran(['utern', 'validate'])}`],
     ownership,
   ],
   'ai-agents': [
     ['What does an AI agent cost?', 'AI agents are priced after a call, because each one is set up for a different business.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `The model that fits each job, with the agent’s tools, limits and logs kept in your codebase. ${ran(['validate'])}`],
+    ['What do you build it on?', `The AI model that fits the job, connected to the tools you already use. ${ran(['validate'])}`],
     ownership,
   ],
   'web-app-development': [
@@ -138,7 +154,7 @@ const faqs = {
     ownership,
   ],
   retainers: [
-    ['What does a retainer cost?', `${price('updates')}. ${price('care')}. ${price('growth')}.`],
+    ['What does a monthly plan cost?', `${price('updates')}. ${price('care')}. ${price('growth')}.`],
     ['What stack do you work on?', `The sites and apps we build. ${ran(['utern', 'ballotwatch'])} Anything else is settled in the written scope.`],
     ownership,
   ],
@@ -223,7 +239,7 @@ export const partnersPage = {
     ['Call', 'The work, the client, and how you want to run it.'],
     ['Written scope', 'Cost, dates, credit, ownership and who talks to the client.'],
     ['Build and launch', 'You see the work as it happens.'],
-    ['Keep improving', 'An optional Care or Growth retainer keeps it fixed and improving.'],
+    ['Keep improving', 'Optional monthly updates keep it fixed and improving.'],
   ],
 }
 

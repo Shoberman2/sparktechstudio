@@ -12,9 +12,9 @@ const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
 const site = 'https://www.sparktechstudio.com'
 const routes = [
-  { path: '/', title: 'SparkTech Studio | Websites and AI Agents in New York', description: 'We build your website and set up AI agents that do real work for your business. An independent studio in New York. Book a call.' },
+  { path: '/', title: 'SparkTech Studio | Websites and AI Agents in New York', description: 'We build your website, set up AI agents that do real work, keep your site updated, and get you found on Google and in AI answers. New York studio.' },
   { path: '/work', title: 'Work | SparkTech Studio', description: 'What we have built: UTern, Leed, BallotWatch and Validate-s, plus the Oasis VRX website.' },
-  { path: '/services', title: 'Services | SparkTech Studio', description: 'Websites and AI agents for businesses, plus AI apps, web apps and MVPs, from an independent studio in New York.' },
+  { path: '/services', title: 'Services | SparkTech Studio', description: 'Websites, AI agents, website updates, and SEO and AEO for businesses, plus AI apps, web apps and MVPs, from a studio in New York.' },
   ...pageRoutes,
 ]
 // Every company page is rendered, but only the listed case studies (workSlugs) are indexed and go in the sitemap.

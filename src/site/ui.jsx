@@ -56,7 +56,7 @@ function Footer() {
   return <footer className="ft">
     <div className="wrap">
       <div className="ft-top">
-        <div><Brand /><p>We build websites and set up AI agents for businesses. New York studio.</p></div>
+        <div><Brand /><p>We build websites, set up AI agents, and help people find you. New York studio.</p></div>
         <Book />
       </div>
       <div className="ft-cols">

@@ -10,13 +10,14 @@ export const pricing = {
   care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.', short: 'Updates, uptime checks and small fixes. About 5 hours a month.' },
   growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.', short: 'Care, plus SEO pages, analytics and tests. About 15 hours a month.' },
 }
-export const scoped = 'AI agents, apps and MVPs are priced after a call.'
+export const scoped = 'AI agents, SEO and AEO, apps and MVPs are priced after a call.'
 
 // The services, in the order the site lists them
 export const serviceList = [
   { slug: 'web-design', path: '/services/web-design', nav: 'Websites', line: 'A fast, clear site that gets you calls.' },
-  { slug: 'website-updates', path: '/services/retainers', nav: 'Website updates', line: 'We edit your site and keep it current.' },
   { slug: 'ai-agents', path: '/services/ai-agents', nav: 'AI agents', line: 'AI that answers, sorts and follows up for you.' },
+  { slug: 'website-updates', path: '/services/retainers', nav: 'Website updates', line: 'We edit your site and keep it current.' },
+  { slug: 'seo-aeo', path: '/services/seo-aeo', nav: 'SEO and AEO', line: 'Get found on Google and in AI answers like ChatGPT and Perplexity.' },
   { slug: 'ai-app-development', path: '/services/ai-app-development', nav: 'AI apps', line: 'Apps where the AI does the main job.' },
   { slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web apps', line: 'Dashboards, portals and tools.' },
   { slug: 'startup-mvp', path: '/services/startup-mvp', nav: 'MVPs', line: 'A first version real people can use.' },
@@ -45,15 +46,16 @@ export function knowledge() {
     'When someone wants a project, a quote or details, point them to the "Book a call" button on the page, or email ' + EMAIL + '.',
     '',
     'FACTS',
-    'SparkTech Studio is Spencer Hoberman\'s independent studio in New York, NY. Legal entity: SparkTech Studios, Inc. It builds websites and sets up AI agents for businesses, and runs its own products. Not affiliated with sparktechstudios.com (Ontario).',
+    'SparkTech Studio is Spencer Hoberman\'s independent studio in New York, NY. Legal entity: SparkTech Studios, Inc. It builds websites, sets up AI agents, and does SEO and AEO for businesses, and runs its own products. Not affiliated with sparktechstudios.com (Ontario).',
     'Spencer also builds UTern, which is an independent company.',
     'Services: ' + serviceList.map(s => `${s.nav} (${s.line})`).join('; ') + '.',
     'AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up, with a person approving what matters.',
     'Prices: ' + Object.values(pricing).map(p => `${p.name}, ${p.price} ${p.unit}: ${p.scope}`).join(' ') + ' ' + scoped,
     'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch, then keep improving with an optional Website updates, Care or Growth plan.',
+    'SEO and AEO: we help a business get found on Google (SEO) and named in AI answers from tools like ChatGPT and Perplexity (AEO). We fix the site basics, write pages that answer real customer questions, and make the business facts easy for AI tools to cite. No published price; it is priced after a call. Never promise rankings or results. Details on /services/seo-aeo.',
     'Website updates: $500 a month. We edit and update a business\'s website and keep it current. Details on /services/retainers and /pricing.',
     'Our products: ' + products.map(p => `${p.name} (${p.host}): ${p.line}`).join(' ') + ' Validate-s runs five AI agents that research and argue about an idea and score it out of 10.',
     'Client work: ' + clients.map(c => `${c.name} (${c.host}), ${c.line}`).join(' '),
-    'We reply within two business days. Pages: /services, /services/ai-agents, /services/retainers, /work, /pricing.',
+    'We reply within two business days. Pages: /services, /services/ai-agents, /services/seo-aeo, /services/retainers, /work, /pricing.',
   ].join('\n')
 }
