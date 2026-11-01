@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { BOOK, EMAIL, companies } from '../designs/content.jsx'
+import { BOOK, EMAIL } from '../designs/content.jsx'
 import { pricing, serviceList, products } from './facts.js'
 import Assistant from './Assistant.jsx'
 import './site.css'
 
 // Shared pieces for every page of Direction A (Spark Cloud). One button, one nav, one footer, one closing band.
 const MARK = '/brand/sparktech-bolt-mark.png'
-const LINKS = [['services', '/services', 'Services'], ['work', '/work', 'Work'], ['pricing', '/pricing', 'Pricing'], ['partners', '/partners', 'Partners']]
+const LINKS = [['services', '/services', 'Services'], ['agents', '/services/ai-agents', 'AI agents'], ['work', '/work', 'Work'], ['pricing', '/pricing', 'Pricing']]
 
 export const Book = ({ className = '' }) => <a className={`btn ${className}`.trim()} {...BOOK}>Book a call</a>
 
@@ -56,13 +56,13 @@ function Footer() {
   return <footer className="ft">
     <div className="wrap">
       <div className="ft-top">
-        <div><Brand /><p>An independent New York studio building AI web apps, MVPs, websites and agent systems.</p></div>
+        <div><Brand /><p>We build websites and set up AI agents for businesses. New York studio.</p></div>
         <Book />
       </div>
       <div className="ft-cols">
         <nav aria-label="Services"><h2>Services</h2><a href="/services">All services</a>{serviceList.map(s => <a key={s.slug} href={s.path}>{s.nav}</a>)}</nav>
         <nav aria-label="Work"><h2>Work</h2><a href="/work">All work</a>{products.map(p => <a key={p.slug} href={`/work/${p.slug}`}>{p.name}</a>)}</nav>
-        <nav aria-label="Studio"><h2>Studio</h2><a href="/pricing">Pricing</a><a href="/partners">Partners</a><a href="/systems">System</a><a href="/#about">About</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
+        <nav aria-label="Studio"><h2>Studio</h2><a href="/pricing">Pricing</a><a href="/partners">Partners</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
         <nav aria-label="Legal"><h2>Legal</h2><a href="/privacy">Privacy</a></nav>
       </div>
       <p className="ft-legal">© 2026 SparkTech Studios, Inc. · Not affiliated with sparktechstudios.com (Ontario)</p>
@@ -70,15 +70,9 @@ function Footer() {
   </footer>
 }
 
-// The signature background: the gold spark cloud, still, under a white scrim
-export const CloudBg = () => <picture aria-hidden="true">
-  <source media="(max-width: 700px)" srcSet="/brand/spark-cloud-mobile.webp" />
-  <img src="/brand/spark-cloud.webp" alt="" width="2400" height="1400" fetchPriority="high" />
-</picture>
-
+// Closing band: one statement, Book a call. Plain white, no art.
 export function Band({ title = 'Have Something To Build?', line = 'Book a call or email us. We reply within two business days.' }) {
-  return <section className="band cloud" aria-label="Book a call">
-    <CloudBg />
+  return <section className="band" aria-label="Book a call">
     <h2 className="reveal">{title}</h2>
     <p className="reveal">{line}</p>
     <div className="actions reveal"><Book /><a className="btn ghost" href={`mailto:${EMAIL}`}>Email us</a></div>
@@ -123,9 +117,9 @@ export function PageHead({ h1, lede, cta = true, children }) {
   </section>
 }
 
-export function Sec({ title, line, children, id, wide }) {
+export function Sec({ title, line, children, id }) {
   return <section className="sec" id={id}>
-    <div className={wide ? 'wrap' : 'wrap'}>
+    <div className="wrap">
       {title && <div className="head reveal"><h2>{title}</h2>{line && <p>{line}</p>}</div>}
       {children}
     </div>
@@ -139,15 +133,21 @@ export const Shot = ({ slug, name, href }) => {
 
 // Products as alternating rows: text, then a large real screen
 export function ProductRows({ slugs }) {
-  return <ul className="rows">{slugs.map(s => { const p = products.find(x => x.slug === s); const c = companies.find(x => x.slug === s); return <li key={s} className="row reveal">
+  return <ul className="rows">{slugs.map(s => { const p = products.find(x => x.slug === s); return <li key={s} className="row reveal">
     <div className="row-text">
       <h3>{p.name}</h3>
-      <p>{c.lede}</p>
-      <div className="row-links"><a className="tl" href={`/work/${s}`}>Read the case study</a><a className="tl" href={p.url} target="_blank" rel="noreferrer">{p.host}</a></div>
+      <p>{p.line}</p>
+      <div className="row-links"><a className="tl" href={`/work/${s}`}>See the project</a><a className="tl" href={p.url} target="_blank" rel="noreferrer">{p.host}</a></div>
     </div>
     <Shot slug={s} name={p.name} href={`/work/${s}`} />
   </li> })}</ul>
 }
+
+// Client work we can name: name, one line, link. No logo on file, so no image.
+export const Client = ({ c }) => <div className="client reveal">
+  <h3>{c.name}</h3>
+  <p>{c.line} <a className="tl" href={c.url} target="_blank" rel="noreferrer">{c.host}</a></p>
+</div>
 
 export const List = ({ items }) => <ul className="list">{items.map(([h, p, href]) => <li key={h} className="reveal">
   {href ? <a href={href}><h3>{h}</h3><p>{p}</p></a> : <><h3>{h}</h3><p>{p}</p></>}

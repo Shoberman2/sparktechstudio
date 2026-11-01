@@ -1,7 +1,7 @@
 import { companies, workSlugs, pricing, EMAIL, BOOK } from '../designs/content.jsx'
-import { services, industry, locations, process, pricingPage, partnersPage } from '../designs/pages.jsx'
+import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
 import { serviceList, clients, scoped, SITE } from './facts.js'
-import { Shell, PageHead, Sec, ProductRows, List, Flow, Prices, Faq, Links, JsonLd } from './ui.jsx'
+import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd } from './ui.jsx'
 
 // Interior pages for Direction A. Same nav, type, buttons and closing band as the home page.
 const ORG = `${SITE}/#org`
@@ -20,6 +20,7 @@ const allServices = serviceList.map(s => [s.nav, s.line, s.path])
 
 export function ServicePage({ slug }) {
   const s = services.find(x => x.slug === slug)
+  if (slug === 'ai-agents') return <AgentsPage s={s} />
   const keys = [s.package].flat().filter(Boolean)
   return <Shell title={s.title} active="services">
     <JsonLd data={serviceLd(s, s.name)} />
@@ -28,20 +29,29 @@ export function ServicePage({ slug }) {
     <PageHead h1={s.h1} lede={s.lede} />
     {s.points && <Sec title="What You Get"><List items={s.points} /></Sec>}
     {keys.length > 0 && <Sec title="Pricing"><Prices keys={keys} /></Sec>}
-    <Sec title="Work We’ve Built"><ProductRows slugs={s.cases} /></Sec>
-    <Sec title="How It Runs"><Flow steps={process} label="How a project runs" /></Sec>
+    <Sec title="Our Work"><ProductRows slugs={s.cases} /></Sec>
     <Sec title="Questions"><Faq items={s.faq} /></Sec>
-    <Sec title="Other Services"><Links items={serviceList.filter(x => x.path !== s.path).map(x => [x.nav, x.path])} /></Sec>
+  </Shell>
+}
+
+// /services/ai-agents: what an agent does for a business in three lines, how we work in one, the price note, Book a call.
+function AgentsPage({ s }) {
+  return <Shell title={s.title} active="agents" bandTitle="Want An Agent On Your Team?">
+    <JsonLd data={serviceLd(s, s.name)} />
+    <JsonLd data={crumbs([['Home', '/'], ['Services', '/services'], [s.nav, s.path]])} />
+    <JsonLd data={faqLd(s.faq)} />
+    <PageHead h1={s.h1} lede={s.lede} cta={false} />
+    <Sec title="What An Agent Can Do"><ul className="trio">{s.points.map(([h, p]) => <li key={h} className="reveal"><h3>{h}</h3><p>{p}</p></li>)}</ul></Sec>
+    <Sec title="How We Work"><p className="say reveal">{s.how}</p></Sec>
+    <Sec title="Pricing"><p className="say reveal">Priced after a call, for the one job you want done first.</p></Sec>
   </Shell>
 }
 
 export function ServicesHub() {
   return <Shell title="Services | SparkTech Studio" active="services">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
-    <PageHead h1="What We Build" lede="AI web apps, agent systems and MVPs first. Websites for law, finance and medical firms. Retainers after launch." />
-    <Sec><List items={allServices} /></Sec>
-    <Sec title="Plain Prices"><Prices keys={['launch', 'care', 'growth']} /><p className="note reveal">{scoped}</p></Sec>
-    <Sec title="How It Runs"><Flow steps={process} label="How a project runs" /></Sec>
+    <PageHead h1="What We Build" lede="Websites and AI agents, plus the apps around them." cta={false} />
+    <Sec><List items={allServices} /><p className="note reveal">Websites are {pricing.launch.price}. {scoped} <a className="tl" href="/pricing">All prices</a></p></Sec>
   </Shell>
 }
 
@@ -73,14 +83,11 @@ export function LocationPage({ slug }) {
 }
 
 export function WorkHub() {
-  const c = clients[0]
   return <Shell title="Work | SparkTech Studio" active="work" bandTitle="Want Something Built Like This?">
     <JsonLd data={crumbs([['Home', '/'], ['Work', '/work']])} />
-    <PageHead h1="What We’ve Built" lede="AI products and web apps, live and in use. Each case study covers the problem, what we built, and what it runs on." cta={false} />
+    <PageHead h1="Our Work" lede="Products we built and run, and sites we built for clients." cta={false} />
     <Sec><ProductRows slugs={workSlugs} /></Sec>
-    <Sec title="Client Work">
-      <div className="center reveal"><h3>{c.name}</h3><p style={{ marginTop: 12, fontSize: 19 }}>{c.line} <a className="tl" href={c.url} target="_blank" rel="noreferrer">{c.host}</a></p></div>
-    </Sec>
+    <Sec title="For Clients"><Client c={clients[0]} /></Sec>
   </Shell>
 }
 

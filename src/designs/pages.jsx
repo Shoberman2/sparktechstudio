@@ -32,16 +32,16 @@ export const services = [
   {
     ...line('ai-agents'),
     title: 'AI Agent Development in New York | SparkTech Studio',
-    description: 'Agent harnessing and agent swarms in New York. We design, wire and run AI agents and multi-agent systems that do real work for a business.',
-    name: 'Agent harnessing and agent swarms',
-    h1: 'AI Agents, Wired Into Your Business',
-    lede: 'We design, wire and run AI agents, alone or as coordinated swarms, that take real work off your team.',
+    description: 'AI agents for businesses in New York. We set up AI agents that answer customers, sort requests and follow up, inside the tools you already use.',
+    name: 'AI agents',
+    h1: 'AI Agents That Do Real Work',
+    lede: 'We set up AI agents that take busywork off your team.',
     points: [
-      ['Harnessing', 'One agent with the right tools, clear limits, and a person approving the steps that matter.'],
-      ['Swarms', 'Several agents that split a job, check each other’s work and hand off, run as one system.'],
-      ['Run, not just built', 'Every run is logged, so you can see what each agent did and why.'],
-      ['Wired to your tools', 'Agents work inside the inbox, database and apps you already use, with access you set.'],
+      ['Answer', 'Reply to customer questions any time of day.'],
+      ['Sort', 'Read new emails and forms, then send each one to the right person.'],
+      ['Follow up', 'Chase leads and reminders so nothing slips.'],
     ],
+    how: 'We start with one job, connect the agent to the tools you already use, and you approve anything that matters.',
     cases: ['validate', 'leed'],
   },
   {
@@ -114,9 +114,9 @@ const faqs = {
     ownership,
   ],
   'ai-agents': [
-    ['What does an agent system cost?', 'Agent systems are priced in a written scope after a call, because each one is wired to a different business.'],
+    ['What does an AI agent cost?', 'AI agents are priced after a call, because each one is set up for a different business.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `The model that fits each job, with the agents’ tools, limits and logs kept in your codebase. ${ran(['validate'])}`],
+    ['What do you build it on?', `The model that fits each job, with the agent’s tools, limits and logs kept in your codebase. ${ran(['validate'])}`],
     ownership,
   ],
   'web-app-development': [

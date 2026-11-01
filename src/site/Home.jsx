@@ -1,54 +1,41 @@
 import { workSlugs } from '../designs/content.jsx'
-import { process } from '../designs/pages.jsx'
-import { serviceList, clients, scoped } from './facts.js'
-import { Shell, Book, CloudBg, Sec, ProductRows, List, Flow, Prices, Faq } from './ui.jsx'
+import { pricing, clients } from './facts.js'
+import { Shell, Book, Sec, ProductRows, Client } from './ui.jsx'
 
-const faq = [
-  ['How long does a build take?', 'A website usually takes 3 to 5 weeks. Apps, MVPs and agent systems get their dates in the written scope.'],
-  ['Who owns the code?', 'Ownership, access and support are spelled out in the written scope, before any work starts.'],
-  ['What do you build on?', 'Next.js and React for most apps, with the AI model picked for each job.'],
-  ['Do you work with agencies?', 'Yes. Studios, agencies and accelerators bring us in to build what they’ve designed or promised.'],
+// Home, after Spencer's 2026-10-31 feedback: say what we do in one sentence, then show real work, a price, and Book a call.
+const what = [
+  ['Websites', 'A fast, clear site that gets you calls.', '/services', 'See services'],
+  ['AI agents', 'AI that answers, sorts and follows up for you.', '/services/ai-agents', 'How AI agents work'],
 ]
 
 export default function Home() {
-  const client = clients[0]
-  return <Shell title="SparkTech Studio | AI Web Apps, MVPs and Websites in NYC" className="st-home">
-    <section className="hero cloud">
-      <CloudBg />
+  const site = pricing.launch
+  return <Shell title="SparkTech Studio | Websites and AI Agents in New York" className="st-home">
+    <section className="hero">
       <div>
-        <h1>We Build AI Products That Work</h1>
-        <p>An independent New York studio. From idea to launch, fast.</p>
-        <div className="actions"><Book /><a className="btn ghost" href="/work">See our work</a></div>
+        <h1>Websites And AI Agents For Your Business</h1>
+        <p>We build your site and set up AI agents that do real work. New York studio.</p>
+        <div className="actions"><Book /></div>
       </div>
     </section>
 
-    <Sec id="work" title="What We’ve Built" line="All four are live and in use today.">
-      <ProductRows slugs={workSlugs} />
-      <div className="client reveal">
-        <h3>{client.name}</h3>
-        <p>{client.line} <a className="tl" href={client.url} target="_blank" rel="noreferrer">{client.host}</a></p>
-      </div>
-    </Sec>
-
     <Sec id="services" title="What We Do">
-      <List items={serviceList.map(s => [s.nav, s.line, s.path])} />
+      <ul className="duo">{what.map(([h, p, href, label]) => <li key={h} className="reveal">
+        <h3>{h}</h3><p>{p}</p><a className="tl" href={href}>{label}</a>
+      </li>)}</ul>
     </Sec>
 
-    <Sec title="How It Runs">
-      <Flow steps={process} label="How a project runs" />
+    <Sec id="work" title="Our Work">
+      <ProductRows slugs={workSlugs} />
+      <Client c={clients[0]} />
     </Sec>
 
-    <Sec id="pricing" title="Plain Prices">
-      <Prices keys={['launch', 'care', 'growth']} />
-      <p className="note reveal">{scoped} <a className="tl" href="/pricing">Pricing details</a></p>
-    </Sec>
-
-    <Sec id="about" title="Who Builds It">
-      <p className="read center reveal" style={{ fontSize: 21, color: 'var(--ink)' }}>Spencer Hoberman founded SparkTech Studio in New York. He also builds UTern, an independent company.</p>
-    </Sec>
-
-    <Sec title="Questions">
-      <Faq items={faq} />
+    <Sec id="pricing" title="Pricing">
+      <ul className="duo">
+        <li className="reveal"><h3>Website</h3><span className="amt num">{site.price}</span><p>One time. Usually 3 to 5 weeks.</p></li>
+        <li className="reveal"><h3>AI agents</h3><span className="amt">After a call</span><p>Priced for the job you need done.</p></li>
+      </ul>
+      <p className="note reveal"><a className="tl" href="/pricing">All prices</a></p>
     </Sec>
   </Shell>
 }

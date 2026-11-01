@@ -9,17 +9,17 @@ export const pricing = {
   care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.', short: 'Updates, uptime checks and small fixes. About 5 hours a month.' },
   growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.', short: 'Care, plus SEO pages, analytics and tests. About 15 hours a month.' },
 }
-export const scoped = 'AI apps, web apps, MVPs and agent systems are priced in a written scope after a call.'
+export const scoped = 'AI agents, apps and MVPs are priced after a call.'
 
 // The services, in the order the site lists them
 export const serviceList = [
-  { slug: 'ai-app-development', path: '/services/ai-app-development', nav: 'AI app development', line: 'Web apps where the AI is the product.' },
-  { slug: 'ai-agents', path: '/services/ai-agents', nav: 'Agent harnessing and swarms', line: 'AI agents, alone or in coordinated swarms, that do real work for a business.' },
-  { slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web app development', line: 'Dashboards, portals and tools on Next.js and React.' },
-  { slug: 'web-design', path: '/services/web-design', nav: 'Website design', line: 'Fast, clear sites that turn a visit into a call.' },
-  { slug: 'startup-mvp', path: '/services/startup-mvp', nav: 'Startup MVPs', line: 'The smallest version of a product that real people can use.' },
-  { slug: 'retainers', path: '/services/retainers', nav: 'Care and Growth retainers', line: 'Monthly hours for upkeep, SEO and new features.' },
-  { slug: 'professional-services', path: '/industries/professional-services', nav: 'Law, finance and medical sites', line: 'Sites for firms that sell trust first.' },
+  { slug: 'web-design', path: '/services/web-design', nav: 'Websites', line: 'A fast, clear site that gets you calls.' },
+  { slug: 'ai-agents', path: '/services/ai-agents', nav: 'AI agents', line: 'AI that answers, sorts and follows up for you.' },
+  { slug: 'ai-app-development', path: '/services/ai-app-development', nav: 'AI apps', line: 'Apps where the AI does the main job.' },
+  { slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web apps', line: 'Dashboards, portals and tools.' },
+  { slug: 'startup-mvp', path: '/services/startup-mvp', nav: 'MVPs', line: 'A first version real people can use.' },
+  { slug: 'retainers', path: '/services/retainers', nav: 'Monthly care', line: 'Updates, fixes and new pages after launch.' },
+  { slug: 'professional-services', path: '/industries/professional-services', nav: 'Law, finance and medical sites', line: 'Sites for firms clients need to trust.' },
 ]
 
 export const products = [
@@ -43,14 +43,14 @@ export function knowledge() {
     'When someone wants a project, a quote or details, point them to the "Book a call" button on the page, or email ' + EMAIL + '.',
     '',
     'FACTS',
-    'SparkTech Studio is Spencer Hoberman\'s independent studio in New York, NY. Legal entity: SparkTech Studios, Inc. It builds AI web apps, MVPs, websites and agent systems, and runs its own products. Not affiliated with sparktechstudios.com (Ontario).',
+    'SparkTech Studio is Spencer Hoberman\'s independent studio in New York, NY. Legal entity: SparkTech Studios, Inc. It builds websites and sets up AI agents for businesses, and runs its own products. Not affiliated with sparktechstudios.com (Ontario).',
     'Spencer also builds UTern, which is an independent company.',
     'Services: ' + serviceList.map(s => `${s.nav} (${s.line})`).join('; ') + '.',
-    'Agent harnessing and swarms: we design, wire and run AI agents and coordinated multi-agent systems that do real work for a business.',
+    'AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up, with a person approving what matters.',
     'Prices: ' + Object.values(pricing).map(p => `${p.name}, ${p.price} ${p.unit}: ${p.scope}`).join(' ') + ' ' + scoped,
     'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch, then keep improving with an optional Care or Growth retainer.',
     'Our products: ' + products.map(p => `${p.name} (${p.host}): ${p.line}`).join(' ') + ' Validate-s runs five AI agents that research and argue about an idea and score it out of 10.',
     'Client work: ' + clients.map(c => `${c.name} (${c.host}), ${c.line}`).join(' '),
-    'We reply within two business days. Pages: /services, /work, /pricing, /partners (for studios, agencies and accelerators), /systems.',
+    'We reply within two business days. Pages: /services, /services/ai-agents, /work, /pricing.',
   ].join('\n')
 }
