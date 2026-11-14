@@ -1,7 +1,7 @@
 import { companies, workSlugs, pricing, EMAIL, BOOK } from '../designs/content.jsx'
-import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
+import { services, industry, locations, pricingPage, partnersPage, localPage } from '../designs/pages.jsx'
 import { serviceList, clients, scoped, SITE } from './facts.js'
-import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd } from './ui.jsx'
+import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, Book, JsonLd } from './ui.jsx'
 import { AgentMock, SearchMock } from './Mocks.jsx'
 
 // Interior pages for Direction A. Same nav, type, buttons and closing band as the home page.
@@ -119,6 +119,17 @@ export function PartnersPage() {
     <Sec title="What We Build"><Links items={serviceList.map(x => [x.nav, x.path])} /></Sec>
     <Sec title="How It Runs"><Flow steps={s.how} label="How a partner project runs" /></Sec>
     <Sec title="Work We’ve Built"><ProductRows slugs={workSlugs} /></Sec>
+  </Shell>
+}
+
+export function LocalPage() {
+  const s = localPage
+  return <Shell title={s.title} band={false}>
+    <JsonLd data={crumbs([['Home', '/'], ['Local business', s.path]])} />
+    <PageHead h1={s.h1} lede={s.lede} cta={false}><div className="actions"><Book /></div></PageHead>
+    <Sec title={s.offer.title}><p className="say reveal">{s.offer.body}</p></Sec>
+    <Sec title={s.plan.title}><p className="say reveal">{s.plan.body}</p></Sec>
+    <Sec title={s.bandTitle}><p className="say reveal">{s.bandLine}</p><div className="actions reveal"><Book /></div></Sec>
   </Shell>
 }
 
