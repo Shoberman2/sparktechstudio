@@ -4,11 +4,12 @@
 import { EMAIL, pricing, clients } from '../site/facts.js'
 export { EMAIL, pricing, clients }
 // The one booking link for the whole site. Every "Book a call" spreads BOOK, so setting CALENDLY_URL updates them all.
-// TODO(Spencer): paste the SparkTech Calendly link here. Until it's set, Book a call opens an email instead of a dead link.
+// data-book lets src/lib/utm.js add the visitor's utm_* params to the link when it is clicked.
+// TODO(Spencer): paste the SparkTech Calendly link here (awaiting his SparkTech-named booking link). Until it's set, Book a call opens an email instead of a dead link.
 export const CALENDLY_URL = ''
 export const BOOK = CALENDLY_URL
-  ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer' }
-  : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}` }
+  ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer', 'data-book': '' }
+  : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}`, 'data-book': '' }
 export const year = new Date().getFullYear()
 
 export const companies = [

@@ -1,9 +1,9 @@
 import Home from './site/Home.jsx'
 import CaseStudy from './site/CaseStudy.jsx'
 import System from './site/System.jsx'
-import { ServicePage, IndustryPage, LocationPage, WorkHub, ServicesHub, PricingPage, PartnersPage, Privacy, NotFound } from './site/Pages.jsx'
+import { ServicePage, IndustryPage, LocationPage, WorkHub, ServicesHub, PricingPage, PartnersPage, LocalPage, Privacy, NotFound } from './site/Pages.jsx'
 import { companies } from './designs/content.jsx'
-import { services, industry, locations, pricingPage, partnersPage } from './designs/pages.jsx'
+import { services, industry, locations, pricingPage, partnersPage, localPage } from './designs/pages.jsx'
 
 // Direction A, Spark Cloud (src/site). Copy lives in designs/content.jsx, designs/pages.jsx and site/facts.js.
 // `path` is passed in so the same tree renders in the browser and in the build-time prerender (scripts/prerender.mjs).
@@ -17,6 +17,7 @@ export default function App({ path = typeof window !== 'undefined' ? window.loca
   if (p === '/services') return <ServicesHub />
   if (p === pricingPage.path) return <PricingPage />
   if (p === partnersPage.path) return <PartnersPage />
+  if (p === localPage.path) return <LocalPage />
   const service = services.find(s => s.path === p)
   if (service) return <ServicePage slug={service.slug} />
   if (p === industry.path) return <IndustryPage />

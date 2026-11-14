@@ -243,6 +243,20 @@ export const partnersPage = {
   ],
 }
 
+// /local: landing page for the local-business outreach (cold email, contact forms). Every line of copy is a placeholder
+// until Spencer approves it, and no price is shown. Not linked from the nav or footer.
+export const localPage = {
+  path: '/local',
+  title: 'Local Business | SparkTech Studio',
+  description: '[PLACEHOLDER – meta description, pending Spencer]',
+  h1: '[PLACEHOLDER – offer headline, pending Spencer]',
+  lede: '[PLACEHOLDER – one-sentence summary of the starter offer, pending Spencer]',
+  offer: { title: 'The Starter Offer', body: '[PLACEHOLDER – what the starter offer includes and who it is for, pending Spencer. No price until he sets one.]' },
+  plan: { title: 'Your Free Site Plan', body: '[PLACEHOLDER – what the free site plan is and what the business gets from it, pending Spencer]' },
+  bandTitle: '[PLACEHOLDER – closing line, pending Spencer]',
+  bandLine: '[PLACEHOLDER – booking invitation, pending Spencer]',
+}
+
 // Every page this module adds, for the router and the prerender
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
@@ -251,4 +265,5 @@ export const pageRoutes = [
   ...locations.map(l => ({ path: l.path, title: l.title, description: l.description, noindex: true })),
   { path: pricingPage.path, title: pricingPage.title, description: pricingPage.description, noindex: pricingPage.noindex },
   { path: partnersPage.path, title: partnersPage.title, description: partnersPage.description },
+  { path: localPage.path, title: localPage.title, description: localPage.description },
 ]

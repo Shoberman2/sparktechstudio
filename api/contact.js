@@ -3,6 +3,7 @@
 // Without the key the endpoint answers 503 and the form shows the direct email instead.
 
 const MAX = { name: 120, email: 200, message: 4000 };
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
 const recent = new Map(); // ip -> [timestamps], best-effort per-instance rate limit
 
 function tooMany(ip) {
@@ -35,12 +36,14 @@ export default async function handler(req, res) {
   const message = clean(body.message, MAX.message);
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, error: 'Enter a real email address' });
   if (message.length < 10) return res.status(400).json({ ok: false, error: 'Tell us a little more' });
+  // Optional outreach attribution (src/lib/utm.js getUtm()). Anything else in body.utm is ignored.
+  const utm = body.utm && typeof body.utm === 'object' ? UTM_KEYS.filter(k => clean(body.utm[k], 100)).map(k => `${k}: ${clean(body.utm[k], 100)}`) : [];
   const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
   if (tooMany(ip)) return res.status(429).json({ ok: false, error: 'Too many messages; try again later' });
 
   const to = process.env.CONTACT_TO || 'spencer@sparktechstudio.com';
   const from = process.env.CONTACT_FROM || 'SparkTech site <onboarding@resend.dev>';
-  const text = `From: ${name || '(no name)'} <${email}>\nIP: ${ip}\n\n${message}\n`;
+  const text = `From: ${name || '(no name)'} <${email}>\nIP: ${ip}\n${utm.length ? `${utm.join('\n')}\n` : ''}\n${message}\n`;
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
