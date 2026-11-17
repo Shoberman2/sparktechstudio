@@ -5,12 +5,9 @@ export const EMAIL = 'contactus@sparktechstudio.com'
 export const SITE = 'https://www.sparktechstudio.com'
 
 export const pricing = {
-  launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'A marketing site built to rank and to convert: design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.', short: 'Design, build, a CMS you can edit, and SEO.' },
-  updates: { name: 'Website updates', price: '$500', unit: 'a month', scope: 'Edits and updates to your site, so it stays current.', short: 'Edits and updates to your site.' },
-  care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.', short: 'Updates, uptime checks and small fixes. About 5 hours a month.' },
-  growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.', short: 'Care, plus SEO pages, analytics and tests. About 15 hours a month.' },
+  monthly: { name: 'SparkTech services', price: '$500', unit: 'a month', scope: 'A flat $500 a month per business for SparkTech\'s services, no matter what.', short: 'A flat $500 a month per business, no matter what.' },
 }
-export const scoped = 'AI agents, SEO and AEO, apps and MVPs are priced after a call.'
+export const flatRate = pricing.monthly.scope
 
 // The services, in the order the site lists them
 export const serviceList = [
@@ -50,10 +47,10 @@ export function knowledge() {
     'Spencer also builds UTern, which is an independent company.',
     'Services: ' + serviceList.map(s => `${s.nav} (${s.line})`).join('; ') + '.',
     'AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up, with a person approving what matters.',
-    'Prices: ' + Object.values(pricing).map(p => `${p.name}, ${p.price} ${p.unit}: ${p.scope}`).join(' ') + ' ' + scoped,
-    'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch, then keep improving with an optional Website updates, Care or Growth plan.',
-    'SEO and AEO: we help a business get found on Google (SEO) and named in AI answers from tools like ChatGPT and Perplexity (AEO). We fix the site basics, write pages that answer real customer questions, and make the business facts easy for AI tools to cite. No published price; it is priced after a call. Never promise rankings or results. Details on /services/seo-aeo.',
-    'Website updates: $500 a month. We edit and update a business\'s website and keep it current. Details on /services/retainers and /pricing.',
+    'Prices: ' + flatRate,
+    'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch, then keep improving.',
+    'SEO and AEO: we help a business get found on Google (SEO) and named in AI answers from tools like ChatGPT and Perplexity (AEO). We fix the site basics, write pages that answer real customer questions, and make the business facts easy for AI tools to cite. Never promise rankings or results. Details on /services/seo-aeo.',
+    'Website updates: we edit and update a business\'s website and keep it current. Details on /services/retainers and /pricing.',
     'Our products: ' + products.map(p => `${p.name} (${p.host}): ${p.line}`).join(' ') + ' Validate-s runs five AI agents that research and argue about an idea and score it out of 10.',
     'Client work: ' + clients.map(c => `${c.name} (${c.host}), ${c.line}`).join(' '),
     'We reply within two business days. Pages: /services, /services/ai-agents, /services/seo-aeo, /services/retainers, /work, /pricing.',

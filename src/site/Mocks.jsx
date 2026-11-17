@@ -22,7 +22,7 @@ export function AgentMock() {
     </div>
     <div className="mk-mail mk-reply">
       <p className="mk-from"><strong>Agent reply</strong><span>9:15 pm</span></p>
-      <p>Yes, we do. A new website is $12k to $25k and usually takes 3 to 5 weeks. Want to book a call to talk it through?</p>
+      <p>Yes, we do. SparkTech services are a flat $500 a month per business. Want to book a call to talk it through?</p>
     </div>
     <p className="mk-done"><Check />Lead logged: Dana Ruiz, restaurant website, wants a call</p>
   </figure>

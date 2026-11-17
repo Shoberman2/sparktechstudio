@@ -1,6 +1,6 @@
 import { companies, workSlugs, pricing, EMAIL, BOOK } from '../designs/content.jsx'
 import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
-import { serviceList, clients, scoped, SITE } from './facts.js'
+import { serviceList, clients, flatRate, SITE } from './facts.js'
 import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd } from './ui.jsx'
 import { AgentMock, SearchMock } from './Mocks.jsx'
 
@@ -36,10 +36,10 @@ export function ServicePage({ slug }) {
 }
 
 // The short service pages (/services/ai-agents, /services/seo-aeo): what it is, a picture of it, what we do, Book a call.
-// SEO and AEO has no published price, so it shows none.
+// SEO and AEO uses the same flat monthly rate as the other services.
 const short = {
-  'ai-agents': { Visual: AgentMock, active: 'agents', band: 'Want An Agent On Your Team?', what: 'What An Agent Can Do', price: 'Priced after a call, for the one job you want done first.' },
-  'seo-aeo': { Visual: SearchMock, active: 'services', band: 'Want People To Find You?', what: 'What We Do' },
+  'ai-agents': { Visual: AgentMock, active: 'agents', band: 'Want An Agent On Your Team?', what: 'What An Agent Can Do', price: flatRate },
+  'seo-aeo': { Visual: SearchMock, active: 'services', band: 'Want People To Find You?', what: 'What We Do', price: flatRate },
 }
 function ShortPage({ s }) {
   const x = short[s.slug]
@@ -59,7 +59,7 @@ export function ServicesHub() {
   return <Shell title="Services | SparkTech Studio" active="services">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
     <PageHead h1="What We Build" lede="Websites, AI agents, updates and search, plus the apps around them." cta={false} />
-    <Sec><List items={allServices} /><p className="note reveal">Websites are {pricing.launch.price}. Website updates are {pricing.updates.price} {pricing.updates.unit}. {scoped} <a className="tl" href="/pricing">All prices</a></p></Sec>
+    <Sec><List items={allServices} /><p className="note reveal">{flatRate} <a className="tl" href="/pricing">All prices</a></p></Sec>
   </Shell>
 }
 
@@ -70,7 +70,7 @@ export function IndustryPage() {
     <JsonLd data={crumbs([['Home', '/'], ['Law, finance and medical', s.path]])} />
     <PageHead h1={s.h1} lede={s.lede} />
     <Sec title="Who It’s For"><List items={s.points} /><p className="note reveal">{s.note}</p></Sec>
-    <Sec title="Plain Prices"><Prices keys={['launch', 'care', 'growth']} /></Sec>
+    <Sec title="Plain Prices"><Prices keys={['monthly']} /></Sec>
     <Sec title="Work We’ve Built" line={s.caseNote}><ProductRows slugs={s.cases} /></Sec>
     <Sec title="Where We Work"><Links items={locations.map(l => [l.place, l.path])} /></Sec>
   </Shell>
@@ -84,7 +84,7 @@ export function LocationPage({ slug }) {
     <JsonLd data={crumbs([['Home', '/'], [l.place, l.path]])} />
     <PageHead h1={l.h1} lede={l.lede} />
     <Sec title="What We Build"><List items={allServices} /></Sec>
-    <Sec title="Plain Prices"><Prices keys={['launch', 'care', 'growth']} /><p className="note reveal">{scoped}</p></Sec>
+    <Sec title="Plain Prices"><Prices keys={['monthly']} /></Sec>
     <Sec title="Work We’ve Built"><ProductRows slugs={l.cases} /></Sec>
     <Sec title="Nearby"><Links items={l.near.map(n => { const x = locations.find(y => y.slug === n); return [x.place, x.path] })} /></Sec>
   </Shell>
@@ -103,10 +103,8 @@ export function PricingPage() {
   const s = pricingPage
   return <Shell title={s.title} active="pricing" bandTitle="Want A Number For Your Project?">
     <JsonLd data={crumbs([['Home', '/'], ['Pricing', s.path]])} />
-    <PageHead h1="Plain Prices" lede="One website package and three monthly plans." />
-    <Sec title="Website"><Prices keys={['launch']} scopes={{ launch: pricing.launch.scope }} /></Sec>
-    <Sec title="After Launch"><Prices keys={['updates', 'care', 'growth']} scopes={s.scopes} /></Sec>
-    <Sec title="Everything Else"><p className="read center reveal" style={{ fontSize: 19 }}>{scoped} No two are the same size.</p></Sec>
+    <PageHead h1="Plain Prices" lede="A flat $500 a month per business." />
+    <Sec><Prices keys={['monthly']} scopes={{ monthly: 'For SparkTech\'s services, no matter what.' }} /></Sec>
   </Shell>
 }
 
