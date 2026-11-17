@@ -134,8 +134,7 @@ export default function Form() {
     <section className="pg-sec" id="pricing">
       <div className="pg-sec-head"><p className="pg-label">Pricing</p><h2>Plain <em>prices.</em></h2></div>
       <div className="pg-sec-body">
-        <Packages keys={['launch', 'care', 'growth']} />
-        <p className="pg-note">AI apps, web apps and MVPs are priced in a written scope after a call.</p>
+        <Packages keys={['monthly']} />
       </div>
     </section>
 
