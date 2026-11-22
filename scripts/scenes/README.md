@@ -40,3 +40,11 @@ Photographs in `photos/` are public domain (CC0), found through Openverse, no at
 `photos/google.svg` is the Google logo from Wikimedia Commons, shown only as part of a Google results page.
 
 `real/` holds captures of the live UTern, Leed and BallotWatch home pages at iPhone size (393x852 @3x), taken 2026-11-22. Recapture them when those sites change.
+
+## The gold river
+
+`public/home/river.jpg`, `river.webp` and `river-1200.webp` (phones) are a real photograph, not a render: NASA astronaut photograph ISS043-E-101700, "View of Peru", a river in sunglint (public domain, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ISS043-E-101700_-_View_of_Peru.jpg)). `river.py` turns it to flow down the page and tones it black and gold with a gradient map, kept dim so text stays readable:
+
+```sh
+python3 -I scripts/scenes/river.py ISS043-E-101700_-_View_of_Peru.jpg public/home 90
+```
