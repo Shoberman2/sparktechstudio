@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sparktech-rsei"
+version = "0.1.0"
+description = "Reusable company-scoped SparkTech automation tools"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+entra = ["msal>=1.31,<2"]
+
+[project.scripts]
+spark-outreach = "rsei.outreach:main"
+spark-public-site-audit = "rsei.public_site_audit:main"
+spark-public-adopter-snapshot = "rsei.public_adopter_snapshot:main"
+spark-email-preview = "rsei.email_preview:main"
+spark-email-review = "rsei.canary_review_web:main"
+spark-ops = "rsei.operations:main"
+
+[tool.setuptools]
+packages = ["rsei"]

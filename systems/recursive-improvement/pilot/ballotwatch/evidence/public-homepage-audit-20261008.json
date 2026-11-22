@@ -1,0 +1,47 @@
+{
+  "company_id": "ballotwatch",
+  "scope": "Public unauthenticated GET only; no customer data, API, login, or publication",
+  "captured_at": "2026-10-08T01:08:50.764790+00:00",
+  "status": "complete",
+  "base_url": "https://www.ballotwatch.io",
+  "robots": {
+    "status": 200,
+    "homepage_allowed_for_audit_agent": true,
+    "sha256": "125ce2ebee3e8ee19cd496208c1976acd6806cc54cb0b38fbbc2e843e1021b3b",
+    "declared_sitemap": "https://www.ballotwatch.io/sitemap.xml",
+    "http_freshness_seconds": 76853.764763
+  },
+  "sitemap": {
+    "status": 200,
+    "root_type": "sitemapindex",
+    "entries": 5,
+    "latest_lastmod": "2026-09-30",
+    "latest_lastmod_age_days": 8,
+    "http_freshness_seconds": 400.910099,
+    "sha256": "3776d9915091b37f43c9df7419e78792fe26c223888a0b34c36d7a1ad115fb39"
+  },
+  "homepage": {
+    "status": 200,
+    "bytes": 20897,
+    "sha256": "4226783f534a356c8a3edc9d89f3168ffb7b633e5747f076998d4adf8b27deb6",
+    "freshness_seconds_at_capture": 214.081179,
+    "title_characters": 58,
+    "meta_description_characters": 150,
+    "h1_count": 1,
+    "h2_count": 4,
+    "h3_count": 14,
+    "canonical_count": 1,
+    "canonical_is_self": true,
+    "robots_meta": "index, follow",
+    "jsonld_types": ["Dataset", "FAQPage", "Organization", "WebSite"],
+    "faq_question_count": 6,
+    "seo_findings": [],
+    "aeo_findings": []
+  },
+  "outbound_actions": 0,
+  "production_mutations": 0,
+  "limitations": [
+    "One point-in-time public homepage audit; no rankings, indexing, answer citations, political claim accuracy, or user outcomes were measured.",
+    "The apex URL listed by the project timed out from this environment; the verified www host was reachable and is the sitemap canonical host."
+  ]
+}

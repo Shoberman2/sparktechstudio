@@ -1,0 +1,14 @@
+{
+  "fixture-election-alpha": {
+    "name": "Example County Transit Measure",
+    "date": "2032-11-02",
+    "jurisdiction": "Example County",
+    "status": "certified"
+  },
+  "fixture-board-beta": {
+    "name": "Example City School Board",
+    "date": "2033-05-04",
+    "jurisdiction": "Example City",
+    "status": "scheduled"
+  }
+}

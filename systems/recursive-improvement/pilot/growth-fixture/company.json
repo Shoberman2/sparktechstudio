@@ -1,0 +1,11 @@
+{
+  "company_id": "sparktech-demo",
+  "freshness": {"max_source_age_days": 30},
+  "icps": [
+    {"id": "small-publisher", "required_signals": ["publishes_local_guides", "small_team"], "problem": "keeping local guides accurate", "message_category": "research_intro"},
+    {"id": "membership-product", "required_signals": ["paid_membership", "retention_team"], "problem": "understanding early member churn", "message_category": "product_intro"}
+  ],
+  "outreach": {"draft_cap_per_icp": 10},
+  "retention": {"target_rate": 0.7},
+  "permissions": {"outbound_send": false, "production_publish": false}
+}

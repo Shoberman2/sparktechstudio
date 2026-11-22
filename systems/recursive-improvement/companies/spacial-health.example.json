@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "company_id": "spacial-health",
+  "display_name": "Spacial Health SCI Demo",
+  "identity_evidence": {
+    "readme": "/Users/shoberman/Documents/Codex/2026-07-17/fix/work/vercel-migration.iLZpzR/spacial-health/README.md",
+    "verified_description": "Early investor-facing Spacial Clinical Intelligence demo for a Utah allergy and immunology practice; README says representative sample data only."
+  },
+  "enabled": false,
+  "execution": {
+    "runtime": "company-owned isolated runtime only",
+    "package": "sparktech-rsei",
+    "version_pin": "0.1.0 (source version; not yet published or installed)",
+    "workspace_root": "company-provided path after explicit owner setup",
+    "network": "disabled",
+    "outbound_messages": "disabled",
+    "deployment": "disabled",
+    "secrets": []
+  },
+  "data_policy": {
+    "allowed": ["synthetic demo fixtures", "public non-patient documentation explicitly allowlisted by Spacial Health owner"],
+    "prohibited": ["PHI", "patient or clinician account data", "EMR or outside records", "labs, biomarkers, imaging, wearable or symptom data", "messages or identifiers tied to a patient"],
+    "transmission": "No patient data collection or transmission. Synthetic local fixtures only."
+  },
+  "capability_allowlist": {
+    "allowed_skills": ["local fixture tests", "static source review", "documentation checks", "isolated code proposal and verification"],
+    "allowed_tools": ["read only on explicitly allowlisted local files", "offline test runner", "local evidence ledger"],
+    "denied_tools": ["clinical diagnosis or triage", "medical advice generation", "patient messaging", "EMR/API access", "external network", "deployment", "credential access"]
+  },
+  "approval_policy": {
+    "before_cycle": "named Spacial Health owner approves exact source snapshot, task, tools, data class, budget, and expiry",
+    "code_change": "human approval before candidate application; independent tests and reviewer before retained change",
+    "clinical_or_patient_facing_change": "disabled; no agent may make or apply an autonomous clinical or safety decision",
+    "release": "disabled in this example; separate explicit owner and clinical governance gates required"
+  },
+  "evidence_and_rollback": {
+    "required": ["source/config hashes", "approval receipt", "test output", "independent check", "change diff", "rollback pointer or restored snapshot"],
+    "retention": "company-defined before use; no patient content in SparkTech evidence"
+  },
+  "notes": [
+    "This disabled manifest is an example of project scoping, not a connection or permission grant.",
+    "The separate food-allergy app has not been identified as this repository and is not mapped here."
+  ]
+}

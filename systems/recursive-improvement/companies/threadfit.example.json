@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "company_id": "threadfit",
+  "project_name": "ThreadFit",
+  "identity_source": "owner-supplied mapping; read-only local README /Users/shoberman/clothes/README.md",
+  "repository": "https://github.com/Shoberman2/mensclothing",
+  "status": "disabled-example",
+  "enabled": false,
+  "runtime": {
+    "owner_managed": true,
+    "package": "sparktech-rsei",
+    "version_pin": "0.1.0 (source version; unpublished)",
+    "credentials": [],
+    "network": "disabled",
+    "deployment": "disabled",
+    "external_publishing": "disabled"
+  },
+  "scope": {
+    "allowed": [
+      "synthetic/local fixtures",
+      "static source review",
+      "local isolated tests",
+      "draft improvement proposals"
+    ],
+    "denied": [
+      "personal account/profile/order/return data",
+      "retailer account access",
+      "inventory or price claims without approved source",
+      "checkout, orders, purchases, transactions",
+      "external messages or publishing",
+      "secrets"
+    ]
+  },
+  "approval": {
+    "required": "named owner approves exact source/config hashes and bounded change before isolated application",
+    "verification": "independent checks, evidence record and rollback required",
+    "release": "disabled; separate owner approval and runtime/security review required"
+  },
+  "data_policy": {
+    "default": "synthetic only",
+    "prohibited": [
+      "personal identifiers",
+      "account history",
+      "orders and purchase/return records",
+      "private retailer/customer data"
+    ]
+  }
+}

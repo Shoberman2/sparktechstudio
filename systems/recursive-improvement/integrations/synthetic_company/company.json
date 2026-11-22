@@ -1,0 +1,28 @@
+{
+  "company_id": "sample-publisher",
+  "company_name": "Synthetic Publisher",
+  "brand_id": "sparktech",
+  "timezone": "UTC",
+  "sender": "sparktech-demo@example.invalid",
+  "daily_cap": 2,
+  "permissions": {"live_email": false},
+  "icps": [
+    {"id": "small-publisher", "name": "Small publisher", "signals": ["small_team", "local_guides"], "problem": "keeping useful local information current"}
+  ],
+  "sources": [
+    {"id": "approved-offer-note", "origin": "local://synthetic-publisher/offer", "fact": "We help small teams review their content operations.", "reviewer": "synthetic-owner"}
+  ],
+  "prospects": [
+    {"id": "fixture-prospect", "email": "alex@example.invalid", "name": "Alex Example", "icp_id": "small-publisher", "signals": ["small_team", "local_guides"]}
+  ],
+  "campaigns": [
+    {
+      "id": "research-introduction", "name": "Research introduction", "icp_id": "small-publisher", "source_id": "approved-offer-note",
+      "category": "research_intro", "daily_cap": 2, "window_start": "00:00", "window_end": "23:59",
+      "steps": [
+        {"delay_seconds": 0, "category": "research_intro", "subject": "A note about {problem}", "body": "Hi {first_name}, this is a synthetic sandbox draft. Our approved note says: {source_fact} We are exploring {problem}. Would a short conversation be useful?"},
+        {"delay_seconds": 86400, "category": "follow_up", "subject": "Following up, {first_name}", "body": "Hi {first_name}, this is a synthetic sandbox follow-up. Reply to stop the sequence."}
+      ]
+    }
+  ]
+}

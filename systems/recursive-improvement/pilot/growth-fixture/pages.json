@@ -1,0 +1,7 @@
+{
+  "company_id": "sparktech-demo",
+  "pages": [
+    {"company_id": "sparktech-demo", "page_id": "fixture-guide", "url": "https://example.invalid/guide", "captured_at": "2026-10-08T00:00:00+00:00", "title": "", "meta_description": "", "h1": "Local Guide", "faq": [], "suggested_title": "Example Local Guide | Fixture", "suggested_meta_description": "A synthetic example guide for local search testing.", "suggested_faq": [{"q": "What is this example?", "a": "A synthetic local search test fixture."}]},
+    {"company_id": "sparktech-demo", "page_id": "fixture-help", "url": "https://example.invalid/help", "captured_at": "2026-10-08T00:00:00+00:00", "title": "Example Help", "meta_description": "Example description", "h1": "Help", "faq": [{"q": "What is this?", "a": "A synthetic example."}]}
+  ]
+}

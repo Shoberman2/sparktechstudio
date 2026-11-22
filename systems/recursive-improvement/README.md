@@ -1,5 +1,9 @@
 # Recursive Self-Enterprise Improvement
 
+The isolated synthetic source-checking pilot for BallotWatch is documented in [`pilot/ballotwatch/README.md`](pilot/ballotwatch/README.md). It uses the existing RSEI Python package and keeps fixture evidence local.
+
+The local, no-network growth operations foundation is documented in [`pilot/GROWTH-OPS.md`](pilot/GROWTH-OPS.md). It prepares multi-ICP matches, outreach drafts, aggregate retention checks and SEO/AEO findings; only reviewed local page metadata changes can be staged.
+
 SparkTech's first reusable system is an executable QA improvement cycle. It launches a real browser probe, reproduces a finding, invokes an implementation subprocess against an isolated snapshot, checks the resulting changes, runs independent tests and browser verification, and optionally switches a company-local release pointer. A browser checks that released artifact. Failure restores the previous pointer. Evidence and lessons feed the next cycle.
 
 This is a local execution foundation, not an unattended production service. The included browser fixture and deterministic repair are real executions against deliberately broken code. The deterministic worker is explicitly **not an AI agent**. Optional Codex and Claude worker adapters are included; live model execution requires separately provisioned company credentials and has not been demonstrated here. No outside company is connected.
@@ -85,6 +89,16 @@ The worker makes one Anthropic Messages API request with no tools, no shell and 
 
 Paths are checked against the allowlist, duplicates and oversize content are rejected, and a `blocked` answer, a refusal, a truncated response or unparseable output leaves the workspace unchanged with a nonzero exit. There is no deterministic fallback. Independent tests and browser verification still decide whether the candidate is retained. The adapter is standard-library Python because the runner starts workers with a private HOME and a minimal PATH, so the system interpreter must be able to run it without installed packages. `ANTHROPIC_BASE_URL` is honoured only when it points at a loopback test double; the tests use one through the real subprocess cycle. `python3 finish_local.py --claude --output DIR` runs the full local proof with this worker. See `AI-WORKER-STATUS.md` for what has and has not been executed live.
 
+## Read-only preflight for any company config
+
+Before attempting a local cycle, inspect its config without starting browser, worker, or test commands:
+
+```sh
+python3 -m rsei.preflight --config companies/fixture.json
+```
+
+The JSON report names missing environment variables but never prints their values. It checks that listed source files are readable, flags sensitive-looking literals in `environment`, and reports disabled configurations as blocked. A `ready_to_attempt_local_cycle` result only says the local config, source files, and required environment variable names are present. It does not validate credentials, call a provider, run the repair, prove production access, or measure business improvement. Use the same command with a separately reviewed config for each company; an adopter registry entry is not execution approval.
+
 ## Budgets, recovery and limits
 
 `max_commands`, `max_seconds`, `command_seconds`, and `max_output_bytes` bound top-level command count, cycle/command execution time, and retained stdout/stderr. Timeout and output overflow terminate the process group, including ordinary child processes. Output is sampled every 25 ms and truncated after execution; disk use can briefly exceed the output limit. Browser traces, snapshots and source size are not quota-limited. Hosted use needs filesystem quotas and retention policies.
@@ -111,3 +125,9 @@ The knowledge/intelligence package owns source ingestion, source-backed techniqu
 The read-only UTern reference reports separated QA discovery, isolated implementation, focused tests, hosted release checks and runtime activation. They also reported a case where code changes could not restore a provider with exhausted credits. That informed the explicit infrastructure-failure path and the distinction between verified code and live provider readiness. No UTern commands, accounts or releases were changed.
 
 See `DEMONSTRATION.md` for the actual fixture run, saved browser artifacts, verification coverage and remaining activation requirements. All implementation lives under `systems/recursive-improvement/`; the marketing website is owned by a separate task.
+# Local email outreach sandbox
+
+The email-first local workflow, mock provider, brand-aware email previews,
+Microsoft Graph transport and its disabled-by-default gates are documented in
+[pilot/OUTREACH-MVP.md](pilot/OUTREACH-MVP.md). This checkout has no token
+provider or approved live policy; no email has been sent.

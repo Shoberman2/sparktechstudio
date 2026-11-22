@@ -52,12 +52,12 @@ def tree(root):
     return result
 
 
-def load_config(path):
+def load_config(path, *, allow_disabled=False):
     path = Path(path).resolve()
     c = json.loads(path.read_text())
     if c.get("schema_version") != 1 or not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,62}", c.get("company_id", "")):
         raise BoundaryError("Invalid config schema/company ID")
-    if c.get("enabled") is not True:
+    if c.get("enabled") is not True and not (allow_disabled and c.get("enabled") is False):
         raise BoundaryError("Company execution is disabled")
     if not c.get("goal") or not c.get("display_name") or not c.get("worker_kind"):
         raise BoundaryError("Company goal, display name and worker kind are required")

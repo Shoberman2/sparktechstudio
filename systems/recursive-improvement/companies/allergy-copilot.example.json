@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "company_id": "allergy-copilot",
+  "project_name": "Allergy Copilot",
+  "identity_source": "owner-supplied mapping; read-only local README /Users/shoberman/foodAllergyApp/README.md",
+  "repository": "https://github.com/Shoberman2/allergyApp",
+  "status": "disabled-example",
+  "enabled": false,
+  "runtime": {
+    "owner_managed": true,
+    "package": "sparktech-rsei",
+    "version_pin": "0.1.0 (source version; unpublished)",
+    "credentials": [],
+    "network": "disabled",
+    "deployment": "disabled",
+    "external_publishing": "disabled"
+  },
+  "scope": {
+    "allowed": [
+      "synthetic fixtures and Mock Mode",
+      "static code/document review",
+      "local isolated tests"
+    ],
+    "denied": [
+      "real patient or allergy profile data",
+      "live food/label safety evaluations or advice",
+      "image uploads",
+      "clinical decision, diagnosis, triage or treatment",
+      "health provider access or messaging",
+      "API/model calls",
+      "secrets"
+    ]
+  },
+  "approval": {
+    "clinical": "no clinical or food-safety output may be autonomously changed or issued; any future workflow requires separate qualified clinical and owner governance",
+    "change": "named owner approves exact source/config hashes for isolated nonclinical code change",
+    "verification": "independent checks and rollback required",
+    "release": "disabled"
+  },
+  "data_policy": {
+    "default": "synthetic only",
+    "prohibited": [
+      "PHI",
+      "patient identifiers",
+      "allergy profiles",
+      "food label images",
+      "clinical records"
+    ]
+  },
+  "relationship_note": "Separate from Spacial Health; no shared runtime, data, credentials, or clinical assumptions."
+}
