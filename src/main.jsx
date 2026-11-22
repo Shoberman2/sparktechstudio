@@ -2,7 +2,6 @@ import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { Analytics } from '@vercel/analytics/react'
 import './index.css'
-import { Analytics } from '@vercel/analytics/react'
 import App from './App.jsx'
 import { initUtm } from './lib/utm.js'
 
