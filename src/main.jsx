@@ -2,7 +2,9 @@ import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { Analytics } from '@vercel/analytics/react'
 import './index.css'
+import { Analytics } from '@vercel/analytics/react'
 import App from './App.jsx'
+import { initUtm } from './lib/utm.js'
 
 // The July 2026 concept lab stays reachable at /mockups. Everything else is the site.
 // The labs were drawn in Instrument Sans, which the site no longer loads, so they bring their own copy
@@ -13,6 +15,7 @@ const isLabPath = window.location.pathname.startsWith('/mockups')
 const DesignLab = lazy(() => labFont().then(() => import('./designs/DesignLab.jsx')))
 const isDesignPath = window.location.pathname.startsWith('/designs')
 
+initUtm()
 const root = document.getElementById('root')
 const tree = (
   <StrictMode>

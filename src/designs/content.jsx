@@ -7,9 +7,10 @@ export { EMAIL, pricing, clients }
 // Spencer, 2026-11-18: "link it to my Calendly". This is the booking link the live site already uses (BOOKING_URL on main).
 // If it is ever emptied, Book a call falls back to an email instead of a dead link.
 export const CALENDLY_URL = 'https://calendly.com/spencerhoberman-utern/30min'
+// data-book lets src/lib/utm.js add the visitor's utm_* params to the link when it is clicked (PR #4).
 export const BOOK = CALENDLY_URL
-  ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer' }
-  : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}` }
+  ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer', 'data-book': '' }
+  : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}`, 'data-book': '' }
 export const year = new Date().getFullYear()
 
 export const companies = [
