@@ -68,7 +68,7 @@ const hubFaq = [
   ['What does SparkTech Studios do?', 'We design, build and run websites and get them found on Google and in AI answers. We also build AI agents, AI apps, web apps and startup MVPs.'],
   ['What does it cost?', 'A flat $500 a month per business, month-to-month, no matter what you need. There is no build fee.'],
   ['What is included in the $500 a month?', 'The build, maintenance and your updates.'],
-  ['How do I start?', 'Book a call from any page, or use Email us. We reply within two business days. After the call we send a written scope: what we build, what it costs and when. Ownership, access and support are spelled out there.'],
+  ['How do I start?', 'Book a call from any page, or email us. We reply within two business days. After the call we send a written scope: what we build, what it costs and when. Ownership, access and support are spelled out there.'],
   ['Do you build AI apps and AI agents?', 'Yes. We set up AI agents that answer customers, sort requests and follow up, with a person approving what matters. We also build AI web apps where the AI does the main job.'],
   ['Do you promise first place on Google?', 'No. We fix what holds a site back, write pages that answer real questions and make your facts easy to cite. No rankings are promised.'],
 ]
