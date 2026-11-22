@@ -250,9 +250,13 @@ async function gradePage(input) {
 
   // AEO: who you are, as a fact an AI answer can quote. A business or organization entry with a name and a way to
   // reach or find it (url, phone, email or address).
-  const ENTITY = /(Organization|Business|Corporation|Store|Restaurant|Service|Practice|Agency|Physician|Dentist|Attorney|LegalService|Hotel|Clinic|Hospital|School|Bakery|Cafe|Shop|Contractor|Salon|Spa)$/i
-  const entity = nodes.find(n => [n['@type']].flat().some(t => ENTITY.test(String(t))) && n.name)
-  const reach = entity && ['url', 'telephone', 'email', 'address', 'sameAs'].filter(k => entity[k])
+  // A plain Service or Product is not the business itself, so only business-like types count (ProfessionalService and
+  // the other schema.org *Service business types do). When several match, the most complete one is used.
+  const ENTITY = /(Organization|Business|Corporation|Store|Restaurant|[A-Za-z]+Service|Practice|Agency|Physician|Dentist|Attorney|Hotel|Clinic|Hospital|School|Bakery|Cafe|Shop|Contractor|Salon|Spa)$/
+  const REACH = ['url', 'telephone', 'email', 'address', 'sameAs']
+  const entity = nodes.filter(n => [n['@type']].flat().some(t => ENTITY.test(String(t))) && n.name)
+    .sort((x, y) => REACH.filter(k => y[k]).length - REACH.filter(k => x[k]).length)[0]
+  const reach = entity && REACH.filter(k => entity[k])
   if (entity && reach.length >= 2) add('entity', 1, 'AI tools can tell exactly who you are', '', `${[entity['@type']].flat()[0]}: ${entity.name} (${reach.join(', ')})`)
   else if (entity) add('entity', 0.5, 'Your business details are thin', `Your structured data names ${entity.name} but gives little else. Add your website, phone, email and address (and social profiles as sameAs) so AI answers can quote the right facts and link to you.`)
   else add('entity', 0, 'AI tools cannot confirm who you are', 'Add an Organization or LocalBusiness entry to your structured data with your business name, website, phone, email and address. It is the fact sheet AI tools quote when they name a business.')

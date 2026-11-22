@@ -32,6 +32,9 @@ const devApi = () => ({
         res.status = code => { res.statusCode = code; return res }
         res.json = data => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(data)); return res }
         res.send = data => { res.end(typeof data === 'string' ? data : JSON.stringify(data)); return res }
+        // Always load the latest copy, so edits to the API show up without restarting the server
+        const mod = await server.moduleGraph.getModuleByUrl('/api/grade.js')
+        if (mod) server.moduleGraph.invalidateModule(mod)
         const { default: handler } = await server.ssrLoadModule('/api/grade.js')
         await handler(req, res)
       } catch (err) {
