@@ -119,47 +119,47 @@ const scoped = 'It’s dated in the written scope after the call, because the ti
 const ownership = ['Who owns the code?', 'Ownership, access and support are spelled out in the written scope, before any work starts.']
 const faqs = {
   'ai-app-development': [
-    ['What does an AI app cost?', 'AI apps are priced in a written scope after a call, because no two are the same size.'],
+    ['What does an AI app cost?', 'A flat $500 a month per business, no matter what you need.'],
     ['How long does it take?', scoped],
     ['What do you build it on?', `We pick the AI model that fits the job, and we can switch it later without starting over.`],
     ownership,
   ],
   'ai-agents': [
-    ['What does an AI agent cost?', 'AI agents are priced after a call, because each one is set up for a different business.'],
+    ['What does an AI agent cost?', 'A flat $500 a month per business, no matter what you need.'],
     ['How long does it take?', scoped],
     ['What do you build it on?', `The AI model that fits the job, connected to the tools you already use.`],
     ownership,
   ],
   'web-app-development': [
-    ['What does a web app cost?', 'Web apps are priced in a written scope after a call.'],
+    ['What does a web app cost?', 'A flat $500 a month per business, no matter what you need.'],
     ['How long does it take?', scoped],
     ['What do you build it on?', `Next.js and React, a stack your next hire already knows.`],
     ownership,
   ],
   'web-design': [
-    ['What does a website cost?', '$500 a month. That covers the build, maintenance and your updates, with no build fee.'],
+    ['What does a website cost?', 'A flat $500 a month. That covers the build, maintenance and your updates, with no build fee.'],
     ['How long does it take?', 'Days, not months. The dates go in the written scope.'],
     ['What do you build it on?', 'A stack named in the written scope, with a CMS for the pages you change often.'],
     ownership,
   ],
   'startup-mvp': [
-    ['What does an MVP cost?', 'MVPs are priced in a written scope after a call.'],
+    ['What does an MVP cost?', 'A flat $500 a month per business, no matter what you need.'],
     ['How long does it take?', scoped],
     ['What do you build it on?', `Real code on a real stack, so version two builds on version one.`],
     ownership,
   ],
   retainers: [
-    ['What does it cost?', 'It’s part of the same $500 a month plan as your site: maintenance and your updates included.'],
+    ['What does it cost?', 'It’s part of the same flat $500 a month: maintenance and your updates included.'],
     ['What stack do you work on?', `The sites and apps we build. Anything else is settled in the written scope.`],
     ownership,
   ],
 }
-// SEO and AEO questions (2026-11-21): plain answers, no promised rankings, no price (it is scoped on a call)
+// SEO and AEO questions (2026-11-21): plain answers, no promised rankings. Price is the flat $500 a month (PR #5).
 faqs['seo-aeo'] = [
   ['What is AEO?', 'Answer engine optimization. It helps AI tools like ChatGPT, Perplexity and Google’s AI answers find your business and name it when people ask.'],
   ['How is it different from SEO?', 'SEO helps you rank in Google’s results. AEO helps you get named inside AI answers. Both start with a fast site that says clearly what you do.'],
   ['Do you promise first place on Google?', 'No one honest can. We fix what holds a site back, write pages that answer real questions and make your facts easy to cite.'],
-  ['What does it cost?', 'SEO and AEO are priced after a call, once we’ve seen your site. Websites on the $500 a month plan get the basics built in.'],
+  ['What does it cost?', 'A flat $500 a month per business, no matter what you need.'],
   ['Can I check my site first?', 'Yes. Our free checker scores your site out of 100 and lists what to fix first, at sparktechstudio.com/grader.'],
 ]
 for (const s of services) s.faq = faqs[s.slug]
@@ -214,7 +214,7 @@ export const locations = [
 export const pricingPage = {
   path: '/pricing',
   title: 'Pricing | SparkTech Studios',
-  description: 'Every project is priced after a call, in a written scope.',
+  description: 'SparkTech services are a flat $500 a month per business, no matter what.',
   // Final numbers pending Spencer's confirmation, so the page stays noindex
   noindex: true,
 }

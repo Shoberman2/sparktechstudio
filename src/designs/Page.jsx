@@ -129,7 +129,7 @@ export function IndustryPage() {
     <JsonLd data={crumbs([['Home', '/'], ['Law, finance and medical', s.path]])} />
     <Head kicker={s.kicker} h1={s.h1} lede={s.lede} />
     <Section label="Who it’s for"><Points items={s.points} /><p className="pg-note">{s.note}</p></Section>
-    <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /></Section>
+    <Section label="Pricing"><Packages keys={['monthly']} /></Section>
     <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}>
       <Cases slugs={s.cases} note={s.caseNote} />
       <Todo>{s.todo}</Todo>
@@ -152,7 +152,7 @@ export function LocationPage({ slug }) {
     <Section label="What we build">
       <ul className="pg-links">{services.map(s => <li key={s.slug}><a href={s.path}>{s.nav}</a></li>)}<li><a href={industry.path}>Law, finance and medical sites</a></li></ul>
     </Section>
-    <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /><p className="pg-note">AI apps and MVPs are priced in a written scope after a call.</p></Section>
+    <Section label="Pricing"><Packages keys={['monthly']} /></Section>
     <Section label="Case studies" title={<>Work we’ve <em>built.</em></>}><Cases slugs={l.cases} /></Section>
     <Section label="Nearby"><ul className="pg-links">{l.near.map(n => { const x = locations.find(y => y.slug === n); return <li key={n}><a href={x.path}>{x.place}</a></li> })}</ul></Section>
     <Ask />
@@ -177,7 +177,7 @@ export function ServicesHub() {
         <a href={s.path}><strong>{s.nav}</strong><span className="pg-case-line">{s.description.split('. ')[0].replace(/\.$/, '')}.</span></a>
       </li>)}</ul>
     </section>
-    <Section label="Pricing"><Packages keys={['launch', 'care', 'growth']} /><p className="pg-note">AI apps, web apps and MVPs are priced in a written scope after a call.</p></Section>
+    <Section label="Pricing"><Packages keys={['monthly']} /></Section>
     <Section label="How it runs"><Process /></Section>
     <Ask />
   </Shell>
@@ -187,13 +187,8 @@ export function PricingPage() {
   const s = pricingPage
   return <Shell title={s.title}>
     <JsonLd data={crumbs([['Home', '/'], ['Pricing', s.path]])} />
-    <Head kicker="Pricing" h1={<>Plain <em>prices.</em></>} lede="One website package and two monthly retainers. AI apps, web apps and MVPs are priced in a written scope after a call." />
-    <section className="pg-sec pg-sec-wide"><Todo>{s.todo}</Todo></section>
-    <Section label="Website"><Packages keys={['launch']} /></Section>
-    <Section label="Retainers" title={<>After <em>launch.</em></>}>
-      <Packages keys={['care', 'growth']} scopes={s.scopes} />
-    </Section>
-    <Section label="Everything else"><p className="pg-text">AI apps, web apps and MVPs are priced in a written scope after a call, because no two are the same size.</p></Section>
+    <Head kicker="Pricing" h1={<>Plain <em>prices.</em></>} lede="A flat $500 a month per business." />
+    <Section label="Pricing"><Packages keys={['monthly']} /></Section>
     <Ask line="Want a number for your project?" />
   </Shell>
 }

@@ -37,9 +37,9 @@ export function ServicePage({ slug }) {
 }
 
 // The short service pages (/services/ai-agents, /services/seo-aeo): what it is, a picture of it, what we do, Book a call.
-// SEO and AEO has no published price, so it shows none.
+// Both state the flat $500 a month only through their FAQ (PR #5).
 const short = {
-  'ai-agents': { Visual: AgentMock, active: 'agents', band: 'Want An Agent On Your Team?', what: 'What An Agent Can Do', price: 'Priced after a call, for the one job you want done first.' },
+  'ai-agents': { Visual: AgentMock, active: 'agents', band: 'Want An Agent On Your Team?', what: 'What An Agent Can Do', price: 'A flat $500 a month per business, no matter what you need.' },
   'seo-aeo': { Visual: SearchMock, active: 'services', band: 'Want People To Find You?', what: 'What We Do' },
 }
 function ShortPage({ s }) {

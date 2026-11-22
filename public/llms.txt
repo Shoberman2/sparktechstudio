@@ -1,6 +1,6 @@
 # SparkTech Studios
 
-> SparkTech Studios designs, builds and runs small business websites for $500 a month and gets them found on Google and in AI answers. We also build AI agents, AI apps, web apps and startup MVPs.
+> SparkTech Studios designs, builds and runs websites and gets them found on Google and in AI answers. We also build AI agents, AI apps, web apps and startup MVPs. Every service is a flat $500 a month per business, no matter what.
 
 Site: https://www.sparktechstudio.com
 Contact: book a call from any page, or email contactus@sparktechstudio.com (we reply within two business days)
@@ -9,18 +9,18 @@ Not to be confused with: sparktechstudios.com, a separate, unrelated agency in O
 
 ## Pricing
 
-- Small business websites: $500 a month, all in. That covers designing and building the site, maintaining it and making your updates. There is no build fee.
-- Everything else (AI agents, SEO and AEO work, AI apps, web apps, MVPs) is priced in a written scope after a call.
+- SparkTech services are a flat $500 a month per business, no matter what: websites, SEO and AEO, AI agents, AI apps, web apps and MVPs.
+- It covers the build, maintenance and your updates. There is no build fee.
 
 ## Services
 
-- [Website design](https://www.sparktechstudio.com/services/web-design): we design and build the site, maintain it and make your updates. $500 a month.
-- [Website updates and maintenance](https://www.sparktechstudio.com/services/retainers): fixes and updates, part of the same $500 a month plan.
-- [SEO and AEO](https://www.sparktechstudio.com/services/seo-aeo): get found on Google and named in AI answers like ChatGPT and Perplexity. Priced after a call. No rankings are promised.
-- [AI agents](https://www.sparktechstudio.com/services/ai-agents): AI agents that answer customers, sort requests and follow up for a business, with a person approving what matters. Priced after a call.
-- [AI app development](https://www.sparktechstudio.com/services/ai-app-development): web apps where the AI does the main job. Priced in a written scope.
-- [Web app development](https://www.sparktechstudio.com/services/web-app-development): dashboards, portals and tools on Next.js and React. Priced in a written scope.
-- [Startup MVPs](https://www.sparktechstudio.com/services/startup-mvp): a first version real people can use. Priced in a written scope.
+- [Website design](https://www.sparktechstudio.com/services/web-design): we design and build the site, maintain it and make your updates.
+- [Website updates and maintenance](https://www.sparktechstudio.com/services/retainers): fixes and updates, part of the same flat $500 a month.
+- [SEO and AEO](https://www.sparktechstudio.com/services/seo-aeo): get found on Google and named in AI answers like ChatGPT and Perplexity. No rankings are promised.
+- [AI agents](https://www.sparktechstudio.com/services/ai-agents): AI agents that answer customers, sort requests and follow up for a business, with a person approving what matters.
+- [AI app development](https://www.sparktechstudio.com/services/ai-app-development): web apps where the AI does the main job.
+- [Web app development](https://www.sparktechstudio.com/services/web-app-development): dashboards, portals and tools on Next.js and React.
+- [Startup MVPs](https://www.sparktechstudio.com/services/startup-mvp): a first version real people can use.
 
 ## How a project runs
 

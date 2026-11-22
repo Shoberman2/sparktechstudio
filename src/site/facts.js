@@ -14,13 +14,13 @@ export const SOCIALS = [
   { name: 'TikTok', url: '' },
 ]
 
-// Spencer, 2026-11-11: $500 a month covers building, maintaining and updating a small-business website.
+// Spencer, 2026-11-16 (PR #5, merged 2026-11-21): SparkTech services are a flat $500 a month per business, no matter what.
 // Spencer, 2026-11-21: the price shows on the membership card, and every other source (FAQ, llms.txt, the assistant,
 // structured data) states it the same way. Service pages show no price section.
 export const pricing = {
-  site: { name: 'Small business website', price: '$500', unit: 'a month', scope: 'We build your website, maintain it and make your updates. One price covers all of it.', short: 'Build, maintenance and updates. One price.' },
+  site: { name: 'SparkTech services', price: '$500', unit: 'a month', scope: 'A flat $500 a month per business, no matter what. It covers the build, maintenance and your updates, with no build fee.', short: 'Build, maintenance and updates. One price.' },
 }
-export const scoped = 'Small business websites are $500 a month. Everything else is priced after a call.'
+export const scoped = 'Every service is a flat $500 a month per business, no matter what.'
 
 // The services, in the order the site lists them
 export const serviceList = [
@@ -58,10 +58,10 @@ export function knowledge() {
     'SparkTech Studios is an independent studio. Never name the founder or any person at the studio. Do not state a city or location for the studio. Legal entity: SparkTech Studios, Inc. It builds websites, sets up AI agents, and does SEO and AEO for businesses, and builds out startups. Not affiliated with sparktechstudios.com (Ontario).',
     'Services: ' + serviceList.map(s => `${s.nav} (${s.line})`).join('; ') + '.',
     'AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up, with a person approving what matters.',
-    'Prices: small business websites are $500 a month, covering the build, maintenance and updates, with no build fee. Everything else (AI agents, SEO and AEO, apps, MVPs) is priced after a call.',
+    'Prices: SparkTech services are a flat $500 a month per business, no matter what: websites, SEO and AEO, AI agents, AI apps, web apps and MVPs. It covers the build, maintenance and updates, with no build fee. Never quote any other price.',
     'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch. Maintenance and updates are part of the same monthly price.',
-    'SEO and AEO: we help a business get found on Google (SEO) and named in AI answers from tools like ChatGPT and Perplexity (AEO). We fix the site basics, write pages that answer real customer questions, and make the business facts easy for AI tools to cite. No published price; it is priced after a call. Never promise rankings or results. Details on /services/seo-aeo.',
-    'Small business websites: $500 a month, all in. That covers building the site, maintaining it and making updates. There is no separate build fee.',
+    'SEO and AEO: we help a business get found on Google (SEO) and named in AI answers from tools like ChatGPT and Perplexity (AEO). We fix the site basics, write pages that answer real customer questions, and make the business facts easy for AI tools to cite. Price: the flat $500 a month. Never promise rankings or results. Details on /services/seo-aeo.',
+    'The flat $500 a month covers building, maintaining and updating. There is no separate build fee.',
     'We build out startups. Do not name or list any product, startup or company we have built; if asked, say we can talk through past work on a call.',
     'Free SEO and AEO checker at /grader, which we built ourselves: enter a website address and get a score out of 100 with a ranked list of fixes. It gives an overall score plus an SEO score (Google) and an AEO score (AI answers). SEO checks: mobile setup, HTTPS, title and description, the main heading, image alt text, share preview tags, broken links and a clear way to contact the business. AEO checks: whether AI tools like ChatGPT, Claude and Perplexity are allowed to read the site, structured data, a business entry AI can quote, whether the words are readable without JavaScript, answers to customer questions (FAQ), and an llms.txt file. No email needed to see the score.',
     'We reply within two business days. Pages: /services, /services/ai-agents, /services/seo-aeo, /services/retainers, /grader.',

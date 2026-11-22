@@ -8,18 +8,19 @@ import { PlanCard } from './Plan.jsx'
 // No product list, no location, no person's name. Every number here is one the founder gave us.
 
 // Home FAQ (founder, 2026-11-21: "add an FAQ at the bottom"). Only facts the site already states. No promised rankings.
-// The $500 a month plan is stated the same way everywhere (card, FAQ, llms.txt, the assistant, structured data): founder, 2026-11-21.
+// The flat $500 a month per business is stated the same way everywhere (card, FAQ, llms.txt, the assistant, structured data):
+// founder, PR #5, merged 2026-11-21.
 const faq = [
   ['What does SparkTech Studios do?', 'We design and build websites, keep them running, and help them get found on Google and in AI answers. We also build AI agents, apps and startups.'],
   ['How does a project start?', 'You book a call. We send a written scope with what we’ll build, what it costs and when. Then we build it and launch it.'],
-  ['What does it cost?', 'Small business websites are $500 a month. That covers the build, maintenance and your updates, with no build fee. Bigger projects like apps and AI agents are priced after a call.'],
+  ['What does it cost?', 'A flat $500 a month per business, no matter what you need: a website, SEO and AEO, an AI agent or an app. It covers the build, maintenance and your updates, with no build fee.'],
   ['How fast can my site be live?', 'Days, not months. The dates go in the written scope.'],
   ['What are SEO and AEO?', 'SEO helps people find you on Google. AEO helps AI tools like ChatGPT and Perplexity name you in their answers.'],
   ['Who owns the site?', 'Ownership, access and support are spelled out in the written scope before any work starts.'],
 ]
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }
 // The plan on the card, for search engines and AI answers
-const planLd = { '@context': 'https://schema.org', '@type': 'Service', name: 'Small business website membership', serviceType: 'Website design, maintenance and updates', url: 'https://www.sparktechstudio.com/#pricing', provider: { '@id': 'https://www.sparktechstudio.com/#org' }, description: 'We design and build your website, maintain it and make your updates. No build fee.', offers: { '@type': 'Offer', priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', unitText: 'MONTH' } } }
+const planLd = { '@context': 'https://schema.org', '@type': 'Service', name: 'SparkTech membership', serviceType: 'Websites, SEO and AEO, AI agents and apps', url: 'https://www.sparktechstudio.com/#pricing', provider: { '@id': 'https://www.sparktechstudio.com/#org' }, description: 'A flat $500 a month per business for any SparkTech service: build, maintenance and updates. No build fee.', offers: { '@type': 'Offer', priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', unitText: 'MONTH' } } }
 
 export default function Home() {
   // Arriving from another page at /#services or /#pricing: the wheel only gets its full height once scripts run,
