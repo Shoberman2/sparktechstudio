@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
+import { track } from '@vercel/analytics'
 import { BOOK, EMAIL } from '../designs/content.jsx'
-import { pricing, serviceList, products } from './facts.js'
-import Assistant from './Assistant.jsx'
+import { pricing, products, SOCIALS, serviceList } from './facts.js'
 import './site.css'
 
 // Shared pieces for every page of Direction A (Spark Cloud). One button, one nav, one footer, one closing band.
-const MARK = '/brand/sparktech-bolt-mark.png'
-const LINKS = [['services', '/services', 'Services'], ['agents', '/services/ai-agents', 'AI agents'], ['work', '/work', 'Work'], ['pricing', '/pricing', 'Pricing']]
+// Services and Pricing are sections of the home page (the wheel and the subscription), not pages of their own
+const LINKS = [['services', '/#services', 'Services'], ['pricing', '/#pricing', 'Pricing'], ['grader', '/grader', 'SEO checker']]
 
-export const Book = ({ className = '' }) => <a className={`btn ${className}`.trim()} {...BOOK}>Book a call</a>
+// `from` names where the button sits, so analytics can tell which Book a call gets used
+export const Book = ({ className = '', from = 'page', label = 'Book a call' }) => <a className={`btn ${className}`.trim()} {...BOOK} onClick={() => track('book_call', { from })}>{label}</a>
 
 export const JsonLd = ({ data }) => <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />
 
 function Brand() {
-  return <a href="/" className="brand"><img src={MARK} width="26" height="25" alt="" /><span>SparkTech Studio</span></a>
+  return <a href="/" className="brand"><img src="/favicon-tab.svg" width="26" height="26" alt="" /><span>SparkTech Studios</span></a>
 }
 
 function Nav({ active }) {
@@ -38,7 +39,7 @@ function Nav({ active }) {
       <nav className="nav-links" aria-label="Main">
         {LINKS.map(([k, href, label]) => <a key={k} href={href} aria-current={active === k ? 'page' : undefined}>{label}</a>)}
       </nav>
-      <Book className="sm" />
+      <Book className="sm" from="nav" />
       <button ref={btn} type="button" className="menu-btn" aria-expanded={open} aria-controls="menu-sheet" onClick={() => setOpen(true)}>Menu</button>
     </div>
     {open && <div className="sheet" id="menu-sheet" role="dialog" aria-modal="true" aria-label="Menu">
@@ -47,35 +48,39 @@ function Nav({ active }) {
         <a href="/" onClick={() => setOpen(false)}>Home</a>
         {LINKS.map(([k, href, label]) => <a key={k} href={href} aria-current={active === k ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>)}
       </nav>
-      <Book />
+      <Book from="menu" />
     </div>}
   </header>
 }
 
+// Footer (2026-11-21): every page on the site is linked here, set in the nav's type. No button and no tagline (founder).
+// Four columns from the left: What we do (each service jumps to its place on the reel), Services (each service page), Studio, Contact, Legal (Privacy, Terms, Sitemap); then the logo with ©, centered.
+const SERVICES = [['seo', 'SEO'], ['aeo', 'AEO'], ['design', 'Modern design'], ['build', 'Builds'], ['maintain', 'Maintenance'], ['new-features', 'New features'], ['ai-agents', 'AI agents'], ['apps', 'Apps'], ['startups', 'Startups']]
+// One link per service page. "Website updates" and "Monthly care" share /services/retainers, so it is listed once.
+const PAGES = serviceList.filter((s, i, all) => all.findIndex(x => x.path === s.path) === i)
 function Footer() {
   return <footer className="ft">
-    <div className="wrap">
-      <div className="ft-top">
-        <div><Brand /><p>We build websites, set up AI agents, and help people find you. New York studio.</p></div>
-        <Book />
-      </div>
-      <div className="ft-cols">
-        <nav aria-label="Services"><h2>Services</h2><a href="/services">All services</a>{serviceList.map(s => <a key={s.slug} href={s.path}>{s.nav}</a>)}</nav>
-        <nav aria-label="Work"><h2>Work</h2><a href="/work">All work</a>{products.map(p => <a key={p.slug} href={`/work/${p.slug}`}>{p.name}</a>)}</nav>
-        <nav aria-label="Studio"><h2>Studio</h2><a href="/pricing">Pricing</a><a href="/partners">Partners</a><a href={`mailto:${EMAIL}`}>Email us</a></nav>
-        <nav aria-label="Legal"><h2>Legal</h2><a href="/privacy">Privacy</a></nav>
-      </div>
-      <p className="ft-legal">© 2026 SparkTech Studios, Inc. · Not affiliated with sparktechstudios.com (Ontario)</p>
+    <div className="ft-wide ft-in reveal">
+      <nav aria-label="What we do"><h2>What we do</h2>{SERVICES.map(([id, label]) => <a key={id} href={`/#${id}`}>{label}</a>)}</nav>
+      <nav aria-label="Services"><h2>Services</h2><a href="/services">All services</a>{PAGES.map(s => <a key={s.path} href={s.path}>{s.nav}</a>)}</nav>
+      <nav aria-label="Studio"><h2>Studio</h2><a href="/">Home</a><a href="/#pricing">Pricing</a><a href="/systems">System</a><a href="/grader">SEO checker</a><a href="/partners">Partners</a></nav>
+      <nav aria-label="Contact"><h2>Contact</h2><a {...BOOK} onClick={() => track('book_call', { from: 'footer-links' })}>Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a>{SOCIALS.filter(x => x.url).map(x => <a key={x.name} href={x.url} target="_blank" rel="noreferrer me">{x.name}</a>)}</nav>
+      <nav aria-label="Legal"><h2>Legal</h2><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/sitemap.xml">Sitemap</a></nav>
+    </div>
+    <div className="ft-wide ft-legal">
+      <a href="/" className="ft-mark"><img src="/favicon-tab.svg" width="22" height="22" alt="" /><span>© {new Date().getFullYear()} SparkTech Studios, Inc.</span></a>
     </div>
   </footer>
 }
 
-// Closing band: one statement, Book a call. Plain white, no art.
+// Closing band (2026-11-21): an outlined gold panel so the last call to action stands out. One statement, Book a call.
 export function Band({ title = 'Have Something To Build?', line = 'Book a call or email us. We reply within two business days.' }) {
   return <section className="band" aria-label="Book a call">
-    <h2 className="reveal">{title}</h2>
-    <p className="reveal">{line}</p>
-    <div className="actions reveal"><Book /><a className="btn ghost" href={`mailto:${EMAIL}`}>Email us</a></div>
+    <div className="band-box reveal">
+      <h2>{title}</h2>
+      <p>{line}</p>
+      <div className="actions"><Book className="lg" from="band" /><a className="btn ghost lg" href={`mailto:${EMAIL}`}>Email us</a></div>
+    </div>
   </section>
 }
 
@@ -96,13 +101,12 @@ function useReveal() {
 export function Shell({ title, active, band = true, bandTitle, bandLine, className = '', children }) {
   useEffect(() => { document.title = title }, [title])
   useReveal()
-  return <div className={`st ${className}`.trim()}>
+  return <div className={`st st-dark ${className}`.trim()}>
     <a className="skip" href="#main">Skip to content</a>
     <Nav active={active} />
     <main id="main">{children}</main>
     {band && <Band title={bandTitle} line={bandLine} />}
     <Footer />
-    <Assistant />
   </div>
 }
 
@@ -111,7 +115,7 @@ export function PageHead({ h1, lede, cta = true, children }) {
     <div className="wrap">
       <h1>{h1}</h1>
       {lede && <p>{lede}</p>}
-      {cta && <div className="actions"><Book /><a className="btn ghost" href="/work">See our work</a></div>}
+      {cta && <div className="actions"><Book /></div>}
       {children}
     </div>
   </section>
@@ -166,6 +170,8 @@ export const Prices = ({ keys, scopes = {} }) => <div className="prices reveal" 
   </div> })}
 </div>
 
-export const Faq = ({ items }) => <dl className="faq">{items.map(([q, a]) => <div key={q} className="reveal"><dt>{q}</dt><dd>{a}</dd></div>)}</dl>
+// Every FAQ is a dropdown (founder, 2026-11-21: "it should always be like that"). Native <details>, so it works without
+// JavaScript, with the keyboard and with a screen reader. The answers stay in the HTML for search engines.
+export const Faq = ({ items }) => <div className="faq">{items.map(([q, a]) => <details key={q} className="faq-item reveal"><summary><span>{q}</span><i aria-hidden="true" /></summary><p>{a}</p></details>)}</div>
 
 export const Links = ({ items }) => <ul className="links reveal">{items.map(([label, href]) => <li key={label}><a href={href}>{label}</a></li>)}</ul>

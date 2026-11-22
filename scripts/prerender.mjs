@@ -6,26 +6,21 @@ import { pathToFileURL } from 'node:url'
 
 const dist = resolve('dist')
 const { render } = await import(pathToFileURL(resolve('dist-ssr/entry-server.js')).href)
-const { companies, workSlugs } = await import(pathToFileURL(resolve('dist-ssr/content.js')).href).catch(() => ({ companies: null, workSlugs: [] }))
 const { pageRoutes } = await import(pathToFileURL(resolve('dist-ssr/pages.js')).href)
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
 const site = 'https://www.sparktechstudio.com'
 const routes = [
-  { path: '/', title: 'SparkTech Studio | Websites and AI Agents in New York', description: 'We build your website, set up AI agents that do real work, keep your site updated, and get you found on Google and in AI answers. New York studio.' },
-  { path: '/work', title: 'Work | SparkTech Studio', description: 'What we have built: UTern, Leed, BallotWatch and Validate-s, plus the Oasis VRX website.' },
-  { path: '/services', title: 'Services | SparkTech Studio', description: 'Websites, AI agents, website updates, and SEO and AEO for businesses, plus AI apps, web apps and MVPs, from a studio in New York.' },
+  { path: '/', title: 'SparkTech Studios', description: 'We design, build and run small business websites for $500 a month and get them found on Google and in AI answers like ChatGPT.' },
+  { path: '/grader', title: 'Free SEO and AEO Checker | SparkTech Studios', description: 'Check your website free. A score out of 100 and a plain-English fix list for speed, mobile, SEO, AI answers and broken links. No email needed.' },
+  { path: '/services', title: 'Services | SparkTech Studios', description: 'Websites, AI agents, website updates, and SEO and AEO for businesses, plus AI apps, web apps and MVPs.' },
   ...pageRoutes,
 ]
-// Every company page is rendered, but only the listed case studies (workSlugs) are indexed and go in the sitemap.
-// Spacial Health keeps its page at /work/spacial, noindex.
-for (const c of companies || []) {
-  const lede = String(c.lede || '').replace(/\s+/g, ' ')
-  routes.push({ path: `/work/${c.slug}`, title: `${c.name} | SparkTech Studio`, description: `${c.line} ${lede}`.slice(0, 155).replace(/\s\S*$/, '').replace(/[,;:]$/, '').replace(/([^.])$/, lede.length > 120 ? '$1.' : '$1'), image: `/work/${c.slug}/og.jpg`, noindex: !workSlugs.includes(c.slug) })
-}
-routes.push({ path: '/systems', title: 'System | SparkTech Studio', description: 'Software that keeps getting better. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
-routes.push({ path: '/privacy', title: 'Privacy | SparkTech Studio', description: 'No analytics, no ads, no tracking. What this site does with what you send.' })
-routes.push({ path: '/404', title: 'Not here | SparkTech Studio', description: 'That page is not here. Back to the studio.', noindex: true })
+// No /work pages: the site names no products or companies (Spencer, 2026-11-18). vercel.json sends the old URLs home.
+routes.push({ path: '/systems', title: 'System | SparkTech Studios', description: 'Software that keeps getting better. One loop, run on repeat, with people in charge of the goals, the budget, and the limits.' })
+routes.push({ path: '/privacy', title: 'Privacy | SparkTech Studios', description: 'No ads and no tracking cookies. What this site counts, and what it does with what you send.' })
+routes.push({ path: '/terms', title: 'Terms | SparkTech Studios', description: 'The ground rules for using the SparkTech Studios website. Project work is covered by its own written scope.' })
+routes.push({ path: '/404', title: 'Not here | SparkTech Studios', description: 'That page is not here. Back to the studio.', noindex: true })
 
 // Search results cut titles off around 60 characters, so the build fails rather than ship a longer one
 const long = routes.filter(r => r.title.length > 60)
@@ -58,5 +53,7 @@ for (const r of routes) {
 }
 
 // sitemap from the same route list
-writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.filter(r => !r.noindex).map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc></url>`).join('\n')}\n</urlset>\n`)
+// lastmod is the build date, so search engines and AI crawlers see when the site last changed
+const lastmod = new Date().toISOString().slice(0, 10)
+writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.filter(r => !r.noindex).map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`)
 rmSync(resolve('dist-ssr'), { recursive: true, force: true })

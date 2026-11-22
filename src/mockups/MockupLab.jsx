@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { projects } from '../data/projects'
+import { projects } from '../data/legacy-projects'
 import './MockupLab.css'
 
 const conceptMeta = [

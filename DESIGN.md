@@ -1,5 +1,85 @@
 # Design System — SparkTech Studio
 
+## Studio plus directory (2026-11-11, branch `redesign/studio-aggregator`)
+
+Built on Direction A (`src/site/site.css`: white, ink, Geist, one gold, the 8px button from the 2026-11-01 note). Tokens unchanged. Header and footer use the gold four-point spark and read SparkTech Studios; the bolt is the assistant face only. Third pass (Spencer: minimal, clear, concise, scrap what does not earn its place): home is three sections. A giant statement with the checker field directly under it, the work as large screenshot cards (first one featured across the full width), and the price as one oversized line. No section headings above the work, no logos beside names, no secondary links on cards, no video, no About block (the closing band names Spencer). Nav is three links; footer is three short columns. Category and status are plain words, never chips.
+
+### Fourth pass, same day (2026-11-18): one animated section per feature
+
+Spencer on the checklist pass: "way too static and doesn't really convey anything", "emphasize each individual feature more individually", "utilize animations and transitions", "I don't like the font", "more of a cool background", "we're not really in New York". This supersedes the checklist layout below (the no-named-products rule stands).
+
+- Font: Satoshi (400, 500, 700, 900), self-hosted in `public/fonts`. Geist is gone; Geist Mono stays for numbers.
+- Buttons: pills (999px), words only, 1px lift on hover. The 8px button from 2026-11-01 is retired.
+- Background: `Field.jsx`, a sheet of gold points rolling in perspective that bends under the pointer. Light under the hero, gold on ink for the one dark band ("We Build Out Startups Too").
+- Features (`Features.jsx`): six sections, each a name with a drawn gold tick, one claim, one line and a moving picture that plays on scroll in and resets on scroll out. SEO ("Number One On Google.", the business climbs from fourth to first), AEO ("Get Mentioned In AI Chats.", an AI answer names the business), Modern Design (old page wipes to new), We Build It (page assembles), We Maintain It (list ticks off), New Features (asked for, then it appears). Example text is generic ("Your Business"); no invented clients or numbers. Reduced motion and no-JS show the finished state.
+- Location: the site states no city anywhere (titles, footer, JSON-LD, llms.txt, assistant facts). `/locations/*` pages are unmounted and redirect home.
+
+### Twelfth pass (2026-11-21): the reel with the gold check is back
+
+The founder: "bring the checkmarks design back. Make sure it renders properly." The logo-and-lines diagram and the zoom to the price (eleventh pass, below) are removed. The pinned section is again the reel of service names turning past a fixed gold check, with the claim and device picture beside it, followed by the subscription card ("Only $500 / month"). The reel has no mask (Safari flattens 3D under one); names fade by their own opacity.
+
+### Eleventh pass (2026-11-20): the mark with a line per service, then a zoom into its circle for the price
+
+The founder: "make each thing we do (SEO, AEO, etc.) a line off the SparkTech Studio logo. Then make a high level design once every line is filled, zooming back into the circle when you scroll down and it saying the 500 price." Earlier the same day: "remove the 500 at the top. Don't say it outright like that. Put it at the bottom."
+
+- The slot reel is gone. The pinned section (`Features.jsx`, `#services`) shows the SparkTech mark in a gold-ringed circle with nine lines running off it, one per service, each named at its end. Scrolling fills the lines gold one at a time; the current service's claim and device picture show beside the diagram.
+- When all nine are full, a circle the size of the mark's grows until it covers the view and the price is inside it: "All of it, for only $500 / month", four included items, Book a call. `#pricing` is the end of this section, so the nav's Pricing link lands on the price.
+- The separate pricing card section is removed, and the hero no longer states the price.
+- On phones the diagram sits small at the top without names, and the current service's name shows above its claim.
+- All motion follows scroll. Without JavaScript or with reduced motion the services and the price read as a plain list.
+
+### Tenth pass, same day (2026-11-18): fewer words, a gold river, before and after
+
+The founder: delete "Website subscription", the pricing statement, the footer legal sentence ("just say © SparkTech Studios") and the "not a real business" caption; change the footer statement; "Try to say as little words as possible"; Modern Design becomes "a bakery with the old site and then the new one", the new one "very very high level"; and for the ground, "the gold is a river that flows down", with less contrast.
+
+- Ground: `public/home/fluid.svg` is one soft gold river meandering down a near-black page. It is laid over the full page height and scrolls with it.
+- Wheel copy is cut to a claim and a few words; notes beside devices are a title and two or three one- or two-word ticks.
+- Modern Design: the old bakery site as a small tilted "Before" card, the new site "After" on a laptop and phone, built around a bread photograph generated for this page (`public/home/bread.jpg`, Higgsfield, 2026-11-18).
+- Pricing is the card alone: "Only $500 / month", four items, Book a call. Footer statement: "Websites that get you found." Legal line: "© SparkTech Studios".
+
+### Ninth pass, same day (2026-11-18): device scenes, stronger gold, only $500
+
+The founder: "All the images in the slots bar are not high quality and don't describe it enough. Actually show an iPhone and a ChatGPT convo if necessary. Really illustrate it. Also emphasize it's only $500." and "Make the gold more of a contrast in the background."
+
+- Every wheel picture is now a device scene drawn in HTML (`Features.jsx`: `Phone`, `Mac`, `Notes`): an iPhone with a dynamic island and status bar, or a laptop, with a short gold-ticked explanation beside it on the glass. SEO: Google on the phone, search "utern", UTern first, a giant gold "#1". AEO: the ChatGPT app answering with a made-up bakery, labelled as an example. Modern Design: the photograph site on a laptop and a phone. We Build It: a finished site on a phone and the three steps. We Maintain It: the broken page on a phone behind, the fixed one in front. New Features: three requests, each "Live" and marked "New" on the site. AI Agents: a text thread with the business's agent. Apps: an orders tool on a laptop with an AI summary. Startups: version 1 of an app and its road from idea to launch.
+- On phones the notes are hidden and the device stands alone under the claim.
+- The fluid ground is brighter and sharper-edged gold on near-black.
+- Price: the hero ends "All for only $500 a month." in gold; the pricing statement reads "Everything, For Only $500 A Month." and the card says "Only $500 / month".
+
+### Eighth pass, same day (2026-11-18): gold and black home, services in the wheel, pricing as a section
+
+The founder's notes: hero "I hate this, link the Calendly first and change the statement"; "Actually show Google and UTern. Say this is a brand we work with, they're number one"; "make it look like ChatGPT. Not UTern though, make it a fake example"; "the site that looks high level doesn't look high level at all"; "Don't mention my name at all"; "Make the footer fit the screen better"; "Pricing page should be removed"; "Services should link to the scrolling wheel"; "Everything in the services should be in the wheel"; "Give the background a gold black fluid color".
+
+- Home is gold and black throughout over a still fluid gold ground (`public/home/fluid.svg`, fixed behind the page). Interior pages are still white.
+- Hero: "The Website That Gets You Found", one line, Book a call (Calendly) first, "Check my site free" second. No price, no checker field, no name.
+- Wheel (`#services`): nine names (SEO, AEO, Modern Design, We Build It, We Maintain It, New Features, AI Agents, Apps, Startups) with a faint gold rim behind the reel and each picture in a glass frame. SEO is a Google results page for the search "utern" with UTern first and a large gold "#1" (the only real brand named; the founder's own claim, confirm before launch). AEO is a ChatGPT-style chat about a made-up bakery, captioned as an example. Modern Design is a full-photograph site on a laptop and phone (`public/transistor.jpg`). The separate startups band is gone; it is the last wheel stop.
+- Pricing (`#pricing`): statement left, one glass subscription card with a gold edge right. The `/pricing` page is unmounted and redirects to `/#pricing`. Nav and footer Services and Pricing link to the two home sections.
+- Footer: one row (brand and button left, three link columns right), shorter.
+- No person is named anywhere on the site, in JSON-LD, `llms.txt` or the assistant's facts. Home's title is just "SparkTech Studios".
+
+### Seventh pass, same day (2026-11-18): far less motion
+
+Spencer: "It looks too animated." The only motion left is the reel turning with scroll, one short fade as each description swaps, the standard section fade-up and the button hover lift. Removed: the hero headline rise, the drifting gold light (now still), and every in-picture sequence (row climbing, typing dots, pieces assembling, error shake, ticks drawing, buttons popping). Pictures show their finished state.
+
+### Sixth pass, same day (2026-11-18): calmer type, no dot field, price as a subscription
+
+Spencer: "The font is too weird, let's change it. I also don't like that background. Make the font smaller, highlight the features in images better. Make the 500 price look more like a subscription and link it to my Calendly. Don't emphasize it the way you do."
+
+- Font: Instrument Sans (400 to 700), replacing Satoshi. Headlines are weight 600 and smaller: h1 tops out at 86px, the wheel claim at 42px, reel names at 54px. No 900 weight anywhere.
+- Background: the gold point field (`Field.jsx`) is deleted. The hero is plain white; the black wheel and startups band carry two soft gold lights that drift slowly.
+- Pictures call out the feature in gold: a "No. 1" badge on the business's search row, a "Fixed" badge on the repaired page, a gold ring on each new button.
+- Price: no giant "$500 A Month". A small subscription card (Website subscription, $500 / month, four included items, Book a call). Every Book a call now opens the Calendly link in `content.jsx` (`CALENDLY_URL`).
+
+### Fifth pass, same day (2026-11-18): the feature wheel on black and gold
+
+Spencer: "the checkmark looks more like a slot wheel and when you scroll it's a new option with a bigger description to the right. Use a gold and black background." Then: a far better Modern Design picture, maintenance shown as "an error message and it being fixed", and new features shown as "implementing anything the business wants fast". "Remember we are a very high level studio."
+
+The six feature sections became one pinned section (`Features.jsx`, `.wheel`): black ground with the gold point field. Left, the feature names turn on a 3D reel past a fixed gold check, dwelling on each and spinning quickly between; the landed name is gold. Right, a large white claim, one line and the feature's moving picture swap in. Scroll drives it. Pictures: Modern Design is one finished site on a laptop and a phone using our own sculpture image (`public/home/sculpture.jpg`); We Maintain It shows a page error, then "Error spotted, Fix shipped, Back online" and the page returning; New Features shows three asks each marked Live as its button lands on the site. The black runs straight into the "We Build Out Startups Too" band. Without JS or with reduced motion the reel is hidden and the features read as a plain list.
+
+### No named products, a checklist instead (2026-11-18)
+
+Spencer: "Take out Leed, UTern and all of that. Just say we build out startups (don't list them)." No product, startup or client is named or listed on any mounted page, in llms.txt or in the assistant's facts. Home is now: hero with the checker, "What We Do For Your Business" (SEO and AEO in giant type, each with a plain gold tick and its goal, then "We help you get there."; four smaller ticked items: Modern Design, We Build It, We Maintain It, New Features), one line "We Build Out Startups Too", the price. `/work` and `/work/<slug>` are unrouted and redirect home in `vercel.json`; `CaseStudy.jsx`, `WorkHub`, `Directory.jsx`, `ProductRows` and the data stay on disk, unmounted. Nav reads Services, Pricing, SEO checker. "Number one" is a goal we help toward, never a guarantee.
+
 ## Current Production Direction (2026-09-17, tenth pass): White sheet, giant type, the loop as a track
 
 User feedback on the ninth pass, minutes after seeing it: "it still has most of the same design. I want the whole thing changed. Do a white background." The dark pass kept the eighth pass's bones (two-column hero with a ring, centered section heads, workflow grid). This pass changes the composition, not just the paint.
@@ -198,3 +278,47 @@ User requested a Sisyphus video, then a site version, then “make it very cinem
 | 2026-09-03 | **Design pass: colors mixed, more motion, more polish** | Per user ("Change the design of the website. Mix the colors better, add more animations and transitions and make it look more professional"). Palette shifts to off-white + graphite with light/dark alternation (What we do becomes a dark band; the pipeline draws light-on-dark). Work cards invert to graphite on hover with a brighter spotlight. Eyebrows go uppercase with a leading dash; hairlines become gradients. New motion: two drifting graphite glows behind the hero, second headline line one step lighter (`--text-2`) for a two-tone title, a scroll cue at the hero's foot, logos grayscale-to-color, button shine sweep + lift, sliding nav underlines, service-column rules that draw in, process copy that slides in as steps activate, dark bands opening from an inset panel (`useScrollProgress`). |
 | 2026-09-05 | **"Way less AI, more natural": stone palette blended down the page, humanist type, asymmetric layouts, effects removed** | Per user. Dropped every generated-site tell listed under Anti-patterns above. New: Instrument Sans + one Instrument Serif italic word per heading; left-aligned hero with a live product list; sticky-intro two-column sections; ruled list instead of cards; vertical scroll-filled process; big email as the contact CTA; nav CTA is the email. Backgrounds are continuous gradients from `--paper` through four stone tones to a charcoal footer so no section has a hard edge. `src/components/fx/` deleted. Share card regenerated. |
 | 2026-09-05 | **"Even cooler", inside the natural direction** | Per user. No effects came back. Instead: type scale up (h1 to 5.7rem, h2 to 3.3rem, larger list titles), an 88svh hero, a fixed paper grain, a dark manifesto band whose words fill in with scroll (blended in and out of the stone with gradient edges), a huge ghosted serif wordmark clipped at the foot of the footer, and "What we do" trimmed to the three-item list with the lead moved into the manifesto. |
+
+### Thirteenth pass (2026-11-21): one theme everywhere, tighter hero, ticked reel, price
+- Every page now uses the black and gold theme (`Shell` adds `st-dark`); the fluid ground is fixed to the viewport.
+- Hero: "Be The Business People Find First" / "We design it, build it, run it and rank it." Secondary button "Score my site".
+- The reel ticks off: each name has a ring; the current one is a gold disc whose check draws in, passed ones stay ticked.
+- Footer has the nav's format (brand, the same links, Book a call), then one quiet row: © SparkTech Studios, Partners, Email us, socials, Privacy.
+- Price card: "Only" removed; "One plan. All of it.", $500 in large gold, "a month", gold check discs.
+
+### Fourteenth pass (2026-11-21): photographs in the reel, a 4K river behind every page
+- The nine reel pictures are now photoreal device shots generated with Higgsfield (gpt_image_2_6), upscaled to 3200px and saved at 1600px in `public/home/fx/`. The hand-drawn HTML device mockups were removed from `Features.jsx` (their CSS remains, unused).
+- Only UTern is real; Maple and Rye, Joe's Bakery, The Bakehouse and the names in the order list are invented examples.
+- The page ground is `public/home/river.jpg` (4K upscale, 3200px saved), fixed to the viewport under a 25% black veil. `public/home/fluid.svg` stays on disk, unused.
+
+### Fifteenth pass (2026-11-21)
+- Hero: "Your Website, Handled." / "Designed, built, kept running and found first."
+- Reel: the line under each claim is gone. Build's claim is "From A Call To A Live Site." SEO shows Maple and Rye Bakery (made up), not UTern. Startups shows the real UTern, Leed and BallotWatch phone screens (captured from the live sites, rendered onto phones with Higgsfield), at the founder's request.
+- Pricing: the brushed-gold membership card (`src/site/Plan.jsx`), picked by the founder 2026-11-21. Designs B (statement) and C (panel) and the `/plans` comparison page were deleted.
+- Footer: links every page on the site. What we do (reel anchors), Services (every service page plus All services), Studio (Home, Pricing, System, SEO checker, Partners), Contact; Privacy in the legal row.
+- Footer: full columns again (brand, Services, Studio, Contact, Legal) in the nav's type; every service link jumps to its place on the reel.
+
+### Sixteenth pass (2026-11-21)
+- No commas in any heading (founder). Hero (2026-11-21, fourth version): "We Make Your Business The One People Find." (founder preferred it over "Websites That Get You Found.") with "SparkTech Studios builds your site and gets it to the top of Google." Price card is level (no tilt) with no included list. Footer has no button.
+- Price A (on the home page): centered on one axis, card swings up with one light sweep, plain list with gold dots, no check marks, no second line.
+- Closing call to action: gold-outlined panel with a second outer frame (outline-offset), larger headline and buttons.
+- Footer: brand + Services, Studio, Contact columns; bottom bar © left, Privacy right.
+- Motion: page openings stagger in, reel pictures settle from a slight zoom, footer columns and inner lists stagger. Nothing loops; reduced motion turns it all off.
+
+## 2026-11-21 house-standard pass (founder)
+- No price anywhere on the site, its meta tags, llms.txt or the assistant. The pricing section is the gold membership card and one button, "Book a call to learn more". `facts.pricing` stays only for the unmounted pricing and location pages.
+- Hero is the headline and the buttons only. No line under it.
+- Footer: no button, no tagline, no lines. Four columns from the left (What we do, Services, Studio, Contact), 16px white labels. Bottom row: the spark logo with "© year SparkTech Studios, Inc.", then Privacy, Terms (/terms, new, marked for a lawyer's review) and Sitemap.
+- Buttons: the one word-only pill, gold with a soft top highlight and a warm glow on hover; ghost is clear glass with a fine white edge that fills white on hover.
+- Known: the SEO and New Features reel pictures still have pill-shaped labels baked into the images ("#1 on Google", "Bookings live").
+- Gold (2026-11-21, founder): the bright gold of the tab icon, `#ffd15c` (hover `#ffe08a`), for every button, accent and the membership card. Nav and footer logos use `public/favicon-tab.svg`; the card keeps the darker `favicon.svg` so it reads on gold.
+- Footer columns and the © row are centered under the page.
+- Home ends with a six-question FAQ (with FAQPage JSON-LD) before the closing band. No price in it.
+- The law, finance and medical page is removed; `/industries/*` redirects to `/services` (301).
+- Membership card (2026-11-21, later): black like the site with the gold fluid inside, a fine gold edge, white name, bright spark, gold chip and label. Leans up to 7° toward the mouse with a soft light under the pointer (mouse only, off with reduced motion). The founder asked for this tilt explicitly, an exception to the no-3D-tilt rule.
+- FAQ everywhere is a dropdown (native details). Footer has a Legal column (Privacy, Terms, Sitemap); the bottom row is only the logo and ©. The card shows "$500 / month" (the only place the price appears) and is layered 3D: 13° lean, lift, parallax face, moving shadow, finger drag on phones.
+- Membership card, final (2026-11-21): a real 3D card (src/site/Plan.jsx). Black brushed metal, gold foil type, EMV chip, contactless mark, a 7-layer gold edge you see when it turns, and a back (stripe, "Member" signature panel, sparktechstudio.com) on click or tap. The whole card turns up to 18° and drifts toward the pointer anywhere in the pricing section; nothing inside the card moves or changes light (founder disliked the pointer light). Shadow moves the other way.
+- SEO/AEO pass (2026-11-21): $500 a month stated identically on the card, home FAQ, web-design and retainers FAQs, Services note, llms.txt, assistant facts, meta descriptions and Service/Offer JSON-LD. SEO and AEO page has its own FAQ dropdown with FAQPage data. Sitemap carries lastmod. Reel pictures and the page ground are WebP (900w and 1600w via srcset; ground 2400w and 1200w for phones); the JPGs stay on disk as sources.
+- Home: card has no button; the closing band sits between the card and the FAQ (founder, 2026-11-21). Grader: a live six-stage workflow on a gold rail (Read your homepage, Search basics, AI answers, Links and contact, Phone speed, Your score), each ticking with its real result, then a score ring that counts up and fixes that rise in. Local dev serves /api/grade through a Vite plugin (vite.config.js) so the checker works without vercel dev.
+- Checker is SEO and AEO (2026-11-21): 16 checks in two groups (src/lib/grade.js). SEO 70 points; AEO 30 points: AI crawler access, structured data, a quotable business entity, words readable without JavaScript, answers to customer questions, llms.txt. Results show an overall ring plus SEO and AEO meters, and each fix is tagged SEO or AEO.
+- Checker, later (2026-11-21): phone speed is no longer tested (founder: "just leave it out of the test"). No Google PageSpeed call or key. Five stages; SEO re-weighted to 70 points across nine checks.

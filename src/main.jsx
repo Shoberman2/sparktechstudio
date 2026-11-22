@@ -1,5 +1,6 @@
 import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
+import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import App from './App.jsx'
 
@@ -26,6 +27,7 @@ const tree = (
     ) : (
       <App />
     )}
+    <Analytics />
   </StrictMode>
 )
 // Site pages arrive prerendered (scripts/prerender.mjs), so hydrate them; the labs still render from an empty root

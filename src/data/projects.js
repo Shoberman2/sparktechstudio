@@ -1,42 +1,76 @@
-// Single source of truth for projects. Drives the Showcase tree.
-// No screenshots: the work list is text-only by design.
-// Four products by request (2026-09-02). Do not add others back without asking.
-// status: 'live' | 'building' | 'soon'
+// Everything in the "What We've Built" grid on the home page comes from this one list.
+// To add a project, copy a block, change the words, save. That's it.
+//
+//   name      Spelled exactly as the brand spells it.
+//   line      One short sentence. What it is, in plain words.
+//   category  'Startup' | 'Client site' | 'AI agent'. A filter shows up for a category once one project uses it.
+//   status    'Live' | 'Beta'
+//   url       Where the link goes. host is the text of the link.
+//   image     A real screenshot of it in /public, 800px wide or more, about 1200 by 630 in shape.
+//   logo      A small square mark in /public. Leave '' and the card shows the name only.
+//   stat      A real number you can back up, or ''. If it is '' nothing is shown. Never estimate one.
+//   page      Optional. A case study on this site, like '/work/utern'.
+
+export const CATEGORIES = ['Startup', 'Client site', 'AI agent']
+
 export const projects = [
   {
-    key: 'utern',
-    name: 'utern.ai',
+    name: 'UTern',
+    line: 'Your AI for landing an internship.',
+    category: 'Startup',
+    status: 'Live',
     url: 'https://utern.ai',
+    host: 'utern.ai',
     logo: '/logo-utern.png',
-    status: 'live',
-    desc: 'Two AI agents run the internship hunt. One argues for the student, one screens for the recruiter.',
-    tags: ['career-tech', 'ai-agents', 'consumer'],
+    stat: 'About 3,000 users', // from Spencer, 2026-11-11
+    image: '/work/utern/card.jpg',
+    page: '/work/utern',
   },
   {
-    key: 'spacial-health',
-    name: 'spacialhealth.com',
-    url: 'https://spacialhealth.com',
-    logo: '/logo-spacialhealth.png',
-    status: 'live',
-    desc: 'Telehealth for food allergies. Real allergy doctors and at-home treatment, anywhere in the US.',
-    tags: ['health-tech', 'telehealth', 'consumer'],
-  },
-  {
-    key: 'ballotwatch',
-    name: 'ballotwatch.io',
-    url: 'https://ballotwatch.io',
+    name: 'BallotWatch',
+    line: 'How Congress votes, in plain English.',
+    category: 'Startup',
+    status: 'Live',
+    url: 'https://www.ballotwatch.io',
+    host: 'ballotwatch.io',
     logo: '/logo-ballotwatch.svg',
-    status: 'live',
-    desc: 'Local government, made legible. Bills, reps, and voting records in one place.',
-    tags: ['civic-tech', 'public-data', 'full-stack'],
+    stat: '',
+    image: '/work/ballotwatch/card.jpg',
+    page: '/work/ballotwatch',
   },
   {
-    key: 'leed',
-    name: 'leed.media',
+    name: 'Leed',
+    line: 'Every tip a newsroom gets, read and kept safe.',
+    category: 'Startup',
+    status: 'Live',
     url: 'https://www.leed.media',
+    host: 'leed.media',
     logo: '/logo-leed.svg',
-    status: 'live',
-    desc: 'Stocks for stories. Leads land on a public signal board, AI clusters them, and only verified journalists see the source.',
-    tags: ['journalism', 'ai', 'public-data'],
+    stat: '',
+    image: '/work/leed/card.jpg',
+    page: '/work/leed',
+  },
+  {
+    name: 'Validate-s',
+    line: 'Is this idea worth building?',
+    category: 'Startup',
+    status: 'Live',
+    url: 'https://www.validate-s.com',
+    host: 'validate-s.com',
+    logo: '/work/validate/mark.svg',
+    stat: '',
+    image: '/work/validate/card.jpg',
+    page: '/work/validate',
+  },
+  {
+    name: 'Oasis VRX',
+    line: 'A VR venue in New Jersey. We built its website.',
+    category: 'Client site',
+    status: 'Live',
+    url: 'https://oasisvrx.com',
+    host: 'oasisvrx.com',
+    image: '/work/oasisvrx/card.jpg', // the live homepage, captured 2026-11-11
+    logo: '',
+    stat: '',
   },
 ]

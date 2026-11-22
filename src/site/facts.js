@@ -4,13 +4,23 @@
 export const EMAIL = 'contactus@sparktechstudio.com'
 export const SITE = 'https://www.sparktechstudio.com'
 
+// Social accounts, shown in the footer. An entry with no url is left out.
+// When these are filled, also add them as "sameAs" on the Organization in index.html's JSON-LD.
+// TODO(Spencer): paste the real profile links. Do not guess them.
+export const SOCIALS = [
+  { name: 'LinkedIn', url: '' },
+  { name: 'X', url: '' },
+  { name: 'Instagram', url: '' },
+  { name: 'TikTok', url: '' },
+]
+
+// Spencer, 2026-11-11: $500 a month covers building, maintaining and updating a small-business website.
+// Spencer, 2026-11-21: the price shows on the membership card, and every other source (FAQ, llms.txt, the assistant,
+// structured data) states it the same way. Service pages show no price section.
 export const pricing = {
-  launch: { name: 'Launch Site', price: '$12k to $25k', unit: 'one time', scope: 'A marketing site built to rank and to convert: design, build, a CMS you can edit, and SEO set up from day one. Usually 3 to 5 weeks.', short: 'Design, build, a CMS you can edit, and SEO.' },
-  updates: { name: 'Website updates', price: '$500', unit: 'a month', scope: 'Edits and updates to your site, so it stays current.', short: 'Edits and updates to your site.' },
-  care: { name: 'Care', price: '$1,000 to $1,500', unit: 'a month', scope: 'Hosting oversight, updates, uptime checks and small fixes. About 5 hours a month.', short: 'Updates, uptime checks and small fixes. About 5 hours a month.' },
-  growth: { name: 'Growth', price: '$3,000 to $5,000', unit: 'a month', scope: 'Everything in Care, plus new SEO pages, analytics and conversion tests. About 15 hours a month.', short: 'Care, plus SEO pages, analytics and tests. About 15 hours a month.' },
+  site: { name: 'Small business website', price: '$500', unit: 'a month', scope: 'We build your website, maintain it and make your updates. One price covers all of it.', short: 'Build, maintenance and updates. One price.' },
 }
-export const scoped = 'AI agents, SEO and AEO, apps and MVPs are priced after a call.'
+export const scoped = 'Small business websites are $500 a month. Everything else is priced after a call.'
 
 // The services, in the order the site lists them
 export const serviceList = [
@@ -22,7 +32,6 @@ export const serviceList = [
   { slug: 'web-app-development', path: '/services/web-app-development', nav: 'Web apps', line: 'Dashboards, portals and tools.' },
   { slug: 'startup-mvp', path: '/services/startup-mvp', nav: 'MVPs', line: 'A first version real people can use.' },
   { slug: 'retainers', path: '/services/retainers', nav: 'Monthly care', line: 'Updates, fixes and new pages after launch.' },
-  { slug: 'professional-services', path: '/industries/professional-services', nav: 'Law, finance and medical sites', line: 'Sites for firms clients need to trust.' },
 ]
 
 export const products = [
@@ -40,22 +49,21 @@ export const clients = [
 // The system prompt for the bottom-right assistant, built from the same facts the pages show
 export function knowledge() {
   return [
-    'You are the assistant on sparktechstudio.com, the site of SparkTech Studio.',
+    'You are the assistant on sparktechstudio.com, the site of SparkTech Studios.',
     'Answer visitor questions in plain text, no markdown, in at most 80 words. Be direct and friendly. No em dashes.',
     'Only use the facts below. If something is not covered (team size, results, timelines for a specific project, anything else), say you do not know and suggest booking a call. Never invent clients, numbers, features or promises.',
     'When someone wants a project, a quote or details, point them to the "Book a call" button on the page, or email ' + EMAIL + '.',
     '',
     'FACTS',
-    'SparkTech Studio is Spencer Hoberman\'s independent studio in New York, NY. Legal entity: SparkTech Studios, Inc. It builds websites, sets up AI agents, and does SEO and AEO for businesses, and runs its own products. Not affiliated with sparktechstudios.com (Ontario).',
-    'Spencer also builds UTern, which is an independent company.',
+    'SparkTech Studios is an independent studio. Never name the founder or any person at the studio. Do not state a city or location for the studio. Legal entity: SparkTech Studios, Inc. It builds websites, sets up AI agents, and does SEO and AEO for businesses, and builds out startups. Not affiliated with sparktechstudios.com (Ontario).',
     'Services: ' + serviceList.map(s => `${s.nav} (${s.line})`).join('; ') + '.',
     'AI agents: we set up AI agents that do real work for a business, like answering questions, sorting requests and following up, with a person approving what matters.',
-    'Prices: ' + Object.values(pricing).map(p => `${p.name}, ${p.price} ${p.unit}: ${p.scope}`).join(' ') + ' ' + scoped,
-    'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch, then keep improving with an optional Website updates, Care or Growth plan.',
+    'Prices: small business websites are $500 a month, covering the build, maintenance and updates, with no build fee. Everything else (AI agents, SEO and AEO, apps, MVPs) is priced after a call.',
+    'How a project runs: a call, then a written scope (what we build, what it costs, when; ownership, access and support are spelled out there), then build and launch. Maintenance and updates are part of the same monthly price.',
     'SEO and AEO: we help a business get found on Google (SEO) and named in AI answers from tools like ChatGPT and Perplexity (AEO). We fix the site basics, write pages that answer real customer questions, and make the business facts easy for AI tools to cite. No published price; it is priced after a call. Never promise rankings or results. Details on /services/seo-aeo.',
-    'Website updates: $500 a month. We edit and update a business\'s website and keep it current. Details on /services/retainers and /pricing.',
-    'Our products: ' + products.map(p => `${p.name} (${p.host}): ${p.line}`).join(' ') + ' Validate-s runs five AI agents that research and argue about an idea and score it out of 10.',
-    'Client work: ' + clients.map(c => `${c.name} (${c.host}), ${c.line}`).join(' '),
-    'We reply within two business days. Pages: /services, /services/ai-agents, /services/seo-aeo, /services/retainers, /work, /pricing.',
+    'Small business websites: $500 a month, all in. That covers building the site, maintaining it and making updates. There is no separate build fee.',
+    'We build out startups. Do not name or list any product, startup or company we have built; if asked, say we can talk through past work on a call.',
+    'Free SEO and AEO checker at /grader, which we built ourselves: enter a website address and get a score out of 100 with a ranked list of fixes. It gives an overall score plus an SEO score (Google) and an AEO score (AI answers). SEO checks: mobile setup, HTTPS, title and description, the main heading, image alt text, share preview tags, broken links and a clear way to contact the business. AEO checks: whether AI tools like ChatGPT, Claude and Perplexity are allowed to read the site, structured data, a business entry AI can quote, whether the words are readable without JavaScript, answers to customer questions (FAQ), and an llms.txt file. No email needed to see the score.',
+    'We reply within two business days. Pages: /services, /services/ai-agents, /services/seo-aeo, /services/retainers, /grader.',
   ].join('\n')
 }

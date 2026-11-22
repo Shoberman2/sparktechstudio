@@ -1,4 +1,4 @@
-import { projects } from '../data/projects'
+import { projects } from '../data/legacy-projects'
 import './Footer.css'
 export default function Footer() {
   return <footer className="footer"><div className="wrap">

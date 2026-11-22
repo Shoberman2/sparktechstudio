@@ -1,38 +1,44 @@
-# SparkTech Studio
+# SparkTech Studios
 
-> An independent studio in New York, NY, United States. We build websites, set up AI agents, keep sites updated, and do SEO and AEO for businesses.
+> SparkTech Studios designs, builds and runs small business websites for $500 a month and gets them found on Google and in AI answers. We also build AI agents, AI apps, web apps and startup MVPs.
 
 Site: https://www.sparktechstudio.com
-Contact: email contactus@sparktechstudio.com (we reply within two business days)
+Contact: book a call from any page, or email contactus@sparktechstudio.com (we reply within two business days)
 Legal entity: SparkTech Studios, Inc., a Delaware C corporation
 Not to be confused with: sparktechstudios.com, a separate, unrelated agency in Ontario, Canada.
 
+## Pricing
+
+- Small business websites: $500 a month, all in. That covers designing and building the site, maintaining it and making your updates. There is no build fee.
+- Everything else (AI agents, SEO and AEO work, AI apps, web apps, MVPs) is priced in a written scope after a call.
+
 ## Services
 
-- [AI app development](https://www.sparktechstudio.com/services/ai-app-development): AI web apps and AI MVPs. Priced in a written scope after a call.
-- [AI agents](https://www.sparktechstudio.com/services/ai-agents): we set up AI agents that answer customers, sort requests and follow up for a business. Priced after a call.
-- [SEO and AEO](https://www.sparktechstudio.com/services/seo-aeo): get found on Google and named in AI answers like ChatGPT and Perplexity. Priced after a call.
-- [Web app development](https://www.sparktechstudio.com/services/web-app-development): custom web apps on Next.js and React. Priced in a written scope.
-- [Website design](https://www.sparktechstudio.com/services/web-design): the Launch Site package, $12k to $25k, usually 3 to 5 weeks.
-- [Startup MVPs](https://www.sparktechstudio.com/services/startup-mvp): the smallest version of a product that real people can use. Priced in a written scope.
-- [Website updates and retainers](https://www.sparktechstudio.com/services/retainers): Website updates, $500 a month. Care, $1,000 to $1,500 a month. Growth, $3,000 to $5,000 a month.
-- [Law, finance and medical sites](https://www.sparktechstudio.com/industries/professional-services): websites for professional-services firms in New York City and Long Island.
+- [Website design](https://www.sparktechstudio.com/services/web-design): we design and build the site, maintain it and make your updates. $500 a month.
+- [Website updates and maintenance](https://www.sparktechstudio.com/services/retainers): fixes and updates, part of the same $500 a month plan.
+- [SEO and AEO](https://www.sparktechstudio.com/services/seo-aeo): get found on Google and named in AI answers like ChatGPT and Perplexity. Priced after a call. No rankings are promised.
+- [AI agents](https://www.sparktechstudio.com/services/ai-agents): AI agents that answer customers, sort requests and follow up for a business, with a person approving what matters. Priced after a call.
+- [AI app development](https://www.sparktechstudio.com/services/ai-app-development): web apps where the AI does the main job. Priced in a written scope.
+- [Web app development](https://www.sparktechstudio.com/services/web-app-development): dashboards, portals and tools on Next.js and React. Priced in a written scope.
+- [Startup MVPs](https://www.sparktechstudio.com/services/startup-mvp): a first version real people can use. Priced in a written scope.
 
-## Work
+## How a project runs
 
-- [All case studies](https://www.sparktechstudio.com/work)
-- [UTern](https://www.sparktechstudio.com/work/utern): Your AI for landing an internship. Independent company, not owned by SparkTech. Live at https://utern.ai
-- [Leed](https://www.sparktechstudio.com/work/leed): A private story-intelligence desk for newsrooms. Live at https://www.leed.media
-- [BallotWatch](https://www.sparktechstudio.com/work/ballotwatch): How Congress votes, in plain English. Live at https://www.ballotwatch.io
-- [Validate-s](https://www.sparktechstudio.com/work/validate): A public room where AI agents argue about whether an idea is worth building. Live at https://www.validate-s.com
+1. Book a call.
+2. We send a written scope: what we build, what it costs and when. Ownership, access and support are spelled out there.
+3. We build it and launch it, usually in days for a small business website.
+4. Maintenance and updates continue on the same monthly plan.
 
 ## Other pages
 
+- [Free SEO and AEO checker](https://www.sparktechstudio.com/grader): built by us. Enter a website address and get a score out of 100, split into an SEO score (Google) and an AEO score (AI answers like ChatGPT), with a ranked list of fixes. No email needed.
 - [Partners](https://www.sparktechstudio.com/partners): a build partner for design studios, agencies and accelerators.
 - [System](https://www.sparktechstudio.com/systems): how the improvement loop works, told broadly.
-- [Privacy](https://www.sparktechstudio.com/privacy): no analytics, no ads, no tracking.
+- [Privacy](https://www.sparktechstudio.com/privacy): no ads and no tracking cookies. Page views are counted with cookieless Vercel Web Analytics.
+- [Terms](https://www.sparktechstudio.com/terms): the ground rules for using the site.
 
 ## Facts worth getting right
 
-- Each product is its own company with its own data, brand, and people. Spencer Hoberman, SparkTech's founder, also builds UTern. UTern is its own company, not owned by SparkTech.
-- No client, headcount, or result numbers are published.
+- The studio states no city or location.
+- No client, headcount, or result numbers are published, and no rankings are promised.
+- Names: "SparkTech Studios" (the studio), "SparkTech Studios, Inc." (the company).

@@ -1,0 +1,42 @@
+// Historical product list for the unmounted components and the /mockups concept lab. The live site reads src/data/projects.js.
+// No screenshots: the work list is text-only by design.
+// Four products by request (2026-09-02). Do not add others back without asking.
+// status: 'live' | 'building' | 'soon'
+export const projects = [
+  {
+    key: 'utern',
+    name: 'utern.ai',
+    url: 'https://utern.ai',
+    logo: '/logo-utern.png',
+    status: 'live',
+    desc: 'Two AI agents run the internship hunt. One argues for the student, one screens for the recruiter.',
+    tags: ['career-tech', 'ai-agents', 'consumer'],
+  },
+  {
+    key: 'spacial-health',
+    name: 'spacialhealth.com',
+    url: 'https://spacialhealth.com',
+    logo: '/logo-spacialhealth.png',
+    status: 'live',
+    desc: 'Telehealth for food allergies. Real allergy doctors and at-home treatment, anywhere in the US.',
+    tags: ['health-tech', 'telehealth', 'consumer'],
+  },
+  {
+    key: 'ballotwatch',
+    name: 'ballotwatch.io',
+    url: 'https://ballotwatch.io',
+    logo: '/logo-ballotwatch.svg',
+    status: 'live',
+    desc: 'Local government, made legible. Bills, reps, and voting records in one place.',
+    tags: ['civic-tech', 'public-data', 'full-stack'],
+  },
+  {
+    key: 'leed',
+    name: 'leed.media',
+    url: 'https://www.leed.media',
+    logo: '/logo-leed.svg',
+    status: 'live',
+    desc: 'Stocks for stories. Leads land on a public signal board, AI clusters them, and only verified journalists see the source.',
+    tags: ['journalism', 'ai', 'public-data'],
+  },
+]

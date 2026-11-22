@@ -1,57 +1,57 @@
-import { workSlugs } from '../designs/content.jsx'
-import { pricing, products, clients } from './facts.js'
-import { Shell, Book, Sec } from './ui.jsx'
-import { SiteMock, AgentMock, UpdateMock, SearchMock } from './Mocks.jsx'
+import { useEffect } from 'react'
+import { Shell, Book, Sec, Faq, JsonLd, Band } from './ui.jsx'
+import Features from './Features.jsx'
+import { PlanCard } from './Plan.jsx'
 
-// Home, Direction A built out (2026-11-01): hero, then one panel per service with a concrete picture of the work,
-// alternating text and visual. Work stays compact here (the full rows live on /work), then prices and Book a call.
-const panels = [
-  ['Websites', 'A fast, clear site that turns visits into calls.', '/services/web-design', 'See websites', SiteMock],
-  ['AI Agents', 'AI that answers customers, sorts requests and logs leads for you.', '/services/ai-agents', 'How AI agents work', AgentMock],
-  ['Website Updates', 'Send us a change and we make it. $500 a month.', '/services/retainers', 'See website updates', UpdateMock],
-  ['SEO And AEO', 'Get found on Google and in AI answers like ChatGPT and Perplexity.', '/services/seo-aeo', 'See SEO and AEO', SearchMock],
+// Home (2026-11-18, eighth pass). Gold and black throughout, over a still fluid gold ground (public/home/fluid.svg).
+// The statement with Book a call (Calendly) first, the services wheel, then the subscription card.
+// No product list, no location, no person's name. Every number here is one the founder gave us.
+
+// Home FAQ (founder, 2026-11-21: "add an FAQ at the bottom"). Only facts the site already states. No promised rankings.
+// The $500 a month plan is stated the same way everywhere (card, FAQ, llms.txt, the assistant, structured data): founder, 2026-11-21.
+const faq = [
+  ['What does SparkTech Studios do?', 'We design and build websites, keep them running, and help them get found on Google and in AI answers. We also build AI agents, apps and startups.'],
+  ['How does a project start?', 'You book a call. We send a written scope with what we’ll build, what it costs and when. Then we build it and launch it.'],
+  ['What does it cost?', 'Small business websites are $500 a month. That covers the build, maintenance and your updates, with no build fee. Bigger projects like apps and AI agents are priced after a call.'],
+  ['How fast can my site be live?', 'Days, not months. The dates go in the written scope.'],
+  ['What are SEO and AEO?', 'SEO helps people find you on Google. AEO helps AI tools like ChatGPT and Perplexity name you in their answers.'],
+  ['Who owns the site?', 'Ownership, access and support are spelled out in the written scope before any work starts.'],
 ]
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }
+// The plan on the card, for search engines and AI answers
+const planLd = { '@context': 'https://schema.org', '@type': 'Service', name: 'Small business website membership', serviceType: 'Website design, maintenance and updates', url: 'https://www.sparktechstudio.com/#pricing', provider: { '@id': 'https://www.sparktechstudio.com/#org' }, description: 'We design and build your website, maintain it and make your updates. No build fee.', offers: { '@type': 'Offer', priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', unitText: 'MONTH' } } }
 
 export default function Home() {
-  const site = pricing.launch, updates = pricing.updates
-  return <Shell title="SparkTech Studio | Websites and AI Agents in New York" className="st-home">
-    <section className="hero">
-      <div>
-        <h1>Websites And AI Agents For Your Business</h1>
-        <p>We build your site, set up AI that does real work, and help people find you. New York studio.</p>
-        <div className="actions"><Book /></div>
+  // Arriving from another page at /#services or /#pricing: the wheel only gets its full height once scripts run,
+  // so the browser's own jump lands in the wrong place. Jump again once the layout has settled.
+  useEffect(() => {
+    const id = window.location.hash.slice(1)
+    // Service ids on the reel (/#seo, /#apps...) are handled by Features.jsx, which lands the wheel on that service
+    if (!id || document.querySelector(`.wheel [id="${CSS.escape(id)}"]`)) return
+    const t = setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' }), 120)
+    return () => clearTimeout(t)
+  }, [])
+  return <Shell title="SparkTech Studios" className="st-home" band={false}>
+    <section className="hero hero-home">
+      <h1>We Make Your Business The One People Find.</h1>
+      <div className="actions"><Book from="hero" /><a className="btn ghost" href="/grader">Score my site</a></div>
+    </section>
+
+    <Features />
+
+    <section className="sec plan" id="pricing" aria-labelledby="price-title">
+      <div className="wrap plan-in">
+        <h2 id="price-title" className="sr">Pricing</h2>
+        <div className="reveal"><PlanCard /></div>
       </div>
     </section>
 
-    <section className="sec" id="services" aria-label="What we do">
-      <div className="wrap">
-        <ul className="rows panels">{panels.map(x => { const [h, p, href, label, Visual] = x; return <li key={h} className="row reveal">
-          <div className="row-text">
-            <h2>{h}</h2>
-            <p>{p}</p>
-            <div className="row-links"><a className="tl" href={href}>{label}</a></div>
-          </div>
-          <Visual />
-        </li> })}</ul>
-      </div>
-    </section>
+    {/* The closing band sits above the FAQ on the home page (founder, 2026-11-21) */}
+    <Band />
 
-    <Sec id="work" title="What We’ve Built" line="Our own products, plus sites for clients.">
-      <ul className="links reveal">
-        {workSlugs.map(s => { const p = products.find(x => x.slug === s); return <li key={s}><a href={`/work/${s}`}>{p.name}</a></li> })}
-        {clients.map(c => <li key={c.name}><a href={c.url} target="_blank" rel="noreferrer">{c.name}</a></li>)}
-      </ul>
-      <p className="note reveal"><a className="tl" href="/work">See all our work</a></p>
-    </Sec>
+    <JsonLd data={faqLd} />
+    <JsonLd data={planLd} />
+    <Sec title="Questions" id="faq"><Faq items={faq} /></Sec>
 
-    <Sec id="pricing" title="Pricing">
-      <ul className="duo">
-        <li className="reveal"><h3>Website</h3><span className="amt num">{site.price}</span><p>One time. Usually 3 to 5 weeks.</p></li>
-        <li className="reveal"><h3>{updates.name}</h3><span className="amt num">{updates.price}</span><p>A month. {updates.short}</p></li>
-        <li className="reveal"><h3>AI agents</h3><span className="amt">After a call</span><p>Priced for the job you need done.</p></li>
-        <li className="reveal"><h3>SEO and AEO</h3><span className="amt">After a call</span><p>Priced for your site and your market.</p></li>
-      </ul>
-      <p className="note reveal"><a className="tl" href="/pricing">All prices</a></p>
-    </Sec>
   </Shell>
 }

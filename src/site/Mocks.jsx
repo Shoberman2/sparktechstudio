@@ -14,7 +14,7 @@ export function SiteMock() {
 // AI agents: an inbox where the agent answers a question and logs the lead
 export function AgentMock() {
   return <figure className="mk mk-inbox" aria-label="An AI agent answering a customer email and logging the lead">
-    <div className="mk-head"><strong>Inbox</strong><span>SparkTech Studio</span></div>
+    <div className="mk-head"><strong>Inbox</strong><span>SparkTech Studios</span></div>
     <div className="mk-mail">
       <p className="mk-from"><strong>Dana Ruiz</strong><span>9:14 pm</span></p>
       <p className="mk-subj">Do you build sites for restaurants?</p>
@@ -22,7 +22,7 @@ export function AgentMock() {
     </div>
     <div className="mk-mail mk-reply">
       <p className="mk-from"><strong>Agent reply</strong><span>9:15 pm</span></p>
-      <p>Yes, we do. A new website is $12k to $25k and usually takes 3 to 5 weeks. Want to book a call to talk it through?</p>
+      <p>Yes, we do. We build the site, keep it running and make your updates. Want to book a call to talk it through?</p>
     </div>
     <p className="mk-done"><Check />Lead logged: Dana Ruiz, restaurant website, wants a call</p>
   </figure>
@@ -50,14 +50,14 @@ export function UpdateMock() {
 export function SearchMock() {
   return <figure className="mk mk-search" aria-label="A Google result and an AI answer, both citing the business site">
     <div className="mk-g">
-      <p className="mk-query">family dentist in Park Slope</p>
+      <p className="mk-query">family dentist near me</p>
       <p className="mk-site">yourpractice.com</p>
-      <p className="mk-title">Family Dentist in Park Slope, Brooklyn</p>
+      <p className="mk-title">Family Dentist, Open Saturdays</p>
       <p>Cleanings, fillings and kids’ visits. Most insurance taken. Book online.</p>
     </div>
     <div className="mk-ai">
       <p className="mk-label">AI answer</p>
-      <p>A family practice in Park Slope sees kids and adults, takes most insurance, and lets you book online.</p>
+      <p>A family practice near you sees kids and adults, takes most insurance, and lets you book online.</p>
       <p className="mk-cite">Source: <strong>yourpractice.com</strong></p>
     </div>
   </figure>

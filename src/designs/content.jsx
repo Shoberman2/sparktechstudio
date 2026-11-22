@@ -4,8 +4,9 @@
 import { EMAIL, pricing, clients } from '../site/facts.js'
 export { EMAIL, pricing, clients }
 // The one booking link for the whole site. Every "Book a call" spreads BOOK, so setting CALENDLY_URL updates them all.
-// TODO(Spencer): paste the SparkTech Calendly link here. Until it's set, Book a call opens an email instead of a dead link.
-export const CALENDLY_URL = ''
+// Spencer, 2026-11-18: "link it to my Calendly". This is the booking link the live site already uses (BOOKING_URL on main).
+// If it is ever emptied, Book a call falls back to an email instead of a dead link.
+export const CALENDLY_URL = 'https://calendly.com/spencerhoberman-utern/30min'
 export const BOOK = CALENDLY_URL
   ? { href: CALENDLY_URL, target: '_blank', rel: 'noreferrer' }
   : { href: `mailto:${EMAIL}?subject=${encodeURIComponent('Book a call')}` }

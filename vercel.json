@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/work", "destination": "/", "permanent": false },
+    { "source": "/work/:slug", "destination": "/", "permanent": false },
+    { "source": "/locations/:slug", "destination": "/", "permanent": false },
+    { "source": "/pricing", "destination": "/#pricing", "permanent": false },
+    { "source": "/industries/:slug", "destination": "/services", "permanent": true }
+  ],
   "headers": [
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
     { "source": "/work/(.*)\\.(webp|png|jpg|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },

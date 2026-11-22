@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 6000" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9c765"/><stop offset=".5" stop-color="#c9992a"/><stop offset="1" stop-color="#e9c765"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-5%" width="200%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.0012" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="140" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="46 60"/>
+    </filter>
+    <filter id="core" x="-50%" y="-5%" width="200%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.0016" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="90" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="18 26"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="6000" fill="#0a0a09"/>
+  <path id="r" d="M640 -200 C 940 420, 180 880, 400 1500 S 900 2380, 580 3000 S 100 3880, 460 4500 S 920 5380, 540 6200" fill="none" stroke="url(#g)" stroke-width="300" stroke-linecap="round" opacity=".3" filter="url(#soft)"/>
+  <path d="M640 -200 C 940 420, 180 880, 400 1500 S 900 2380, 580 3000 S 100 3880, 460 4500 S 920 5380, 540 6200" fill="none" stroke="url(#g)" stroke-width="90" stroke-linecap="round" opacity=".3" filter="url(#core)"/>
+</svg>

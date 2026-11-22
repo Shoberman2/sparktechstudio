@@ -2,7 +2,6 @@
 // URLs and keywords come from the plan's SEO table. Every service page names two case studies from content.jsx.
 // No clients, testimonials or numbers are invented here. Pages that still need proof we don't have yet are noindex.
 
-import { companies, studies, pricing } from './content.jsx'
 import { serviceList } from '../site/facts.js'
 
 // How every project runs, from the 2026-10-15 offer pass. Terms beyond this are set in the written scope.
@@ -17,8 +16,8 @@ const line = slug => serviceList.find(x => x.slug === slug)
 export const services = [
   {
     ...line('ai-app-development'),
-    title: 'AI App Development Agency in New York | SparkTech Studio',
-    description: 'AI app development in New York. We design and build AI web apps and AI MVPs that people use every day, from the first call to launch.',
+    title: 'AI App Development Agency | SparkTech Studios',
+    description: 'AI app development. We design and build AI web apps and AI MVPs that people use every day, from the first call to launch.',
     name: 'AI app development',
     h1: 'AI Apps That Do Real Work',
     lede: 'Web apps where the AI is the product, not a chat box bolted on. It reads, sorts, drafts and decides alongside the people using it, and it shows its sources.',
@@ -31,8 +30,8 @@ export const services = [
   },
   {
     ...line('ai-agents'),
-    title: 'AI Agent Development in New York | SparkTech Studio',
-    description: 'AI agents for businesses in New York. We set up AI agents that answer customers, sort requests and follow up, inside the tools you already use.',
+    title: 'AI Agent Development for Businesses | SparkTech Studios',
+    description: 'AI agents for businesses. We set up AI agents that answer customers, sort requests and follow up, inside the tools you already use.',
     name: 'AI agents',
     h1: 'AI Agents That Do Real Work',
     lede: 'We set up AI agents that take busywork off your team.',
@@ -46,8 +45,8 @@ export const services = [
   },
   {
     ...line('seo-aeo'),
-    title: 'SEO and AEO in New York | SparkTech Studio',
-    description: 'SEO and AEO for businesses in New York. We help your site show up on Google and get named in AI answers like ChatGPT and Perplexity. Book a call.',
+    title: 'SEO and AEO Services | SparkTech Studios',
+    description: 'SEO and AEO for businesses. We help your site show up on Google and get named in AI answers like ChatGPT and Perplexity. Book a call.',
     name: 'SEO and AEO',
     h1: 'Get Found On Google And In AI Answers',
     // What it is, in plain lines. No price is published for this service, and no rankings are promised.
@@ -62,10 +61,10 @@ export const services = [
   },
   {
     ...line('web-app-development'),
-    title: 'Custom Web App Development in New York | SparkTech Studio',
-    description: 'Custom web app development in New York. We build fast, maintainable web apps on Next.js and React, with real accounts, data and payments.',
+    title: 'Custom Web App Development | SparkTech Studios',
+    description: 'Custom web app development. We build fast, maintainable web apps on Next.js and React, with real accounts, data and payments.',
     name: 'Web app development',
-    h1: 'Custom Web Apps, Built To Last',
+    h1: 'Custom Web Apps Built To Last',
     lede: 'Dashboards, portals, marketplaces and internal tools that stay fast when the traffic shows up.',
     points: [
       ['Next.js and React', 'A stack your next hire already knows, so the code doesn’t trap you with us.'],
@@ -76,8 +75,8 @@ export const services = [
   },
   {
     ...line('web-design'),
-    title: 'Web Design Agency in New York City | SparkTech Studio',
-    description: 'Premium website design and development in New York. A Launch Site package from $12k to $25k: design, build, CMS and SEO, usually in 3 to 5 weeks.',
+    title: 'Web Design for Small Businesses | SparkTech Studios',
+    description: 'Website design and development for small businesses. We build it, maintain it and make your updates. Live in days.',
     name: 'Website design and development',
     h1: 'A Website That Looks Like You Mean It',
     lede: 'Your site is the first meeting most people have with you. We design and build sites that load fast, read clearly, and turn a visit into a call.',
@@ -86,15 +85,14 @@ export const services = [
       ['Found in search', 'Clear page titles and a sitemap, set up before launch.'],
       ['Yours to edit', 'A CMS for the pages you change often, so updates don’t wait on us.'],
     ],
-    package: 'launch',
     cases: ['ballotwatch', 'utern'],
   },
   {
     ...line('startup-mvp'),
-    title: 'MVP Development Company in NYC | SparkTech Studio',
-    description: 'MVP development for startups in New York. We build the smallest version of your product that real people can use, then help you learn from it.',
+    title: 'MVP Development Company | SparkTech Studios',
+    description: 'MVP development for startups. We build the smallest version of your product that real people can use, then help you learn from it.',
     name: 'MVPs for startups',
-    h1: 'The First Version, In Real Hands',
+    h1: 'Your First Version In Real Hands',
     lede: 'An MVP is the smallest thing that tells you whether you’re right. We help you pick what to leave out, build the rest properly, and put it in front of real people.',
     points: [
       ['Scope that fits the question', 'Start from what you need to learn, then cut everything that doesn’t help you learn it.'],
@@ -105,13 +103,12 @@ export const services = [
   },
   {
     ...line('retainers'),
-    title: 'Website Maintenance and SEO in NYC | SparkTech Studio',
-    description: 'Website updates, maintenance and SEO in New York. Updates $500 a month. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month.',
+    title: 'Website Maintenance and Updates | SparkTech Studios',
+    description: 'Website updates and maintenance. We build your site, maintain it and make your updates.',
     name: 'Maintenance and growth retainers',
     h1: 'Launch Is Day One',
-    lede: 'Sites start aging the day they ship. A monthly plan keeps yours current, fixed and getting better.',
+    lede: 'Sites start aging the day they ship. One monthly price keeps yours current, fixed and getting better.',
     points: null,
-    package: ['updates', 'care', 'growth'],
     cases: ['utern', 'ballotwatch'],
   },
 ]
@@ -120,51 +117,57 @@ export const services = [
 // case studies the page already names. Ownership and anything not published stay with the written scope (2026-10-15 offer pass).
 const scoped = 'It’s dated in the written scope after the call, because the timeline depends on what we’re building.'
 const ownership = ['Who owns the code?', 'Ownership, access and support are spelled out in the written scope, before any work starts.']
-const ran = slugs => slugs.map(s => `${companies.find(c => c.slug === s).name} runs on ${studies[s].stack}.`).join(' ')
-const price = k => `${pricing[k].name} is ${pricing[k].price} ${pricing[k].unit}`
 const faqs = {
   'ai-app-development': [
     ['What does an AI app cost?', 'AI apps are priced in a written scope after a call, because no two are the same size.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `We pick the AI model that fits the job, and we can switch it later without starting over. ${ran(['utern', 'validate'])}`],
+    ['What do you build it on?', `We pick the AI model that fits the job, and we can switch it later without starting over.`],
     ownership,
   ],
   'ai-agents': [
     ['What does an AI agent cost?', 'AI agents are priced after a call, because each one is set up for a different business.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `The AI model that fits the job, connected to the tools you already use. ${ran(['validate'])}`],
+    ['What do you build it on?', `The AI model that fits the job, connected to the tools you already use.`],
     ownership,
   ],
   'web-app-development': [
     ['What does a web app cost?', 'Web apps are priced in a written scope after a call.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `Next.js and React, a stack your next hire already knows. ${ran(['leed', 'ballotwatch'])}`],
+    ['What do you build it on?', `Next.js and React, a stack your next hire already knows.`],
     ownership,
   ],
   'web-design': [
-    ['What does a website cost?', `The ${pricing.launch.name} package is ${pricing.launch.price}: design, build, a CMS you can edit, and SEO set up from day one.`],
-    ['How long does it take?', 'Usually 3 to 5 weeks. The dates go in the written scope.'],
+    ['What does a website cost?', '$500 a month. That covers the build, maintenance and your updates, with no build fee.'],
+    ['How long does it take?', 'Days, not months. The dates go in the written scope.'],
     ['What do you build it on?', 'A stack named in the written scope, with a CMS for the pages you change often.'],
     ownership,
   ],
   'startup-mvp': [
     ['What does an MVP cost?', 'MVPs are priced in a written scope after a call.'],
     ['How long does it take?', scoped],
-    ['What do you build it on?', `Real code on a real stack, so version two builds on version one. ${ran(['validate', 'leed'])}`],
+    ['What do you build it on?', `Real code on a real stack, so version two builds on version one.`],
     ownership,
   ],
   retainers: [
-    ['What does a monthly plan cost?', `${price('updates')}. ${price('care')}. ${price('growth')}.`],
-    ['What stack do you work on?', `The sites and apps we build. ${ran(['utern', 'ballotwatch'])} Anything else is settled in the written scope.`],
+    ['What does it cost?', 'It’s part of the same $500 a month plan as your site: maintenance and your updates included.'],
+    ['What stack do you work on?', `The sites and apps we build. Anything else is settled in the written scope.`],
     ownership,
   ],
 }
+// SEO and AEO questions (2026-11-21): plain answers, no promised rankings, no price (it is scoped on a call)
+faqs['seo-aeo'] = [
+  ['What is AEO?', 'Answer engine optimization. It helps AI tools like ChatGPT, Perplexity and Google’s AI answers find your business and name it when people ask.'],
+  ['How is it different from SEO?', 'SEO helps you rank in Google’s results. AEO helps you get named inside AI answers. Both start with a fast site that says clearly what you do.'],
+  ['Do you promise first place on Google?', 'No one honest can. We fix what holds a site back, write pages that answer real questions and make your facts easy to cite.'],
+  ['What does it cost?', 'SEO and AEO are priced after a call, once we’ve seen your site. Websites on the $500 a month plan get the basics built in.'],
+  ['Can I check my site first?', 'Yes. Our free checker scores your site out of 100 and lists what to fix first, at sparktechstudio.com/grader.'],
+]
 for (const s of services) s.faq = faqs[s.slug]
 
 export const industry = {
   slug: 'professional-services', path: '/industries/professional-services',
-  title: 'Law, Finance and Medical Websites in NYC | SparkTech Studio',
-  description: 'Websites for law firms, financial advisors and medical practices in New York City and Long Island. Launch Site package from $12k to $25k.',
+  title: 'Law, Finance and Medical Websites | SparkTech Studios',
+  description: 'Websites for law firms, financial advisors and medical practices. Built, maintained and updated.',
   name: 'Law, finance and medical sites',
   h1: 'Websites For Firms People Trust',
   lede: 'Law firms, financial advisors and medical practices sell trust before anything else. We build sites that look the part, explain what you do in plain English, and make the first call easy.',
@@ -174,7 +177,6 @@ export const industry = {
     ['Medical practices', 'Services, locations and booking that patients can find on a phone, in a hurry.'],
   ],
   note: 'Your compliance team or counsel signs off on the copy. We build in room for the disclaimers and disclosures your bar, regulator or practice requires.',
-  package: 'launch',
   cases: ['leed', 'ballotwatch'],
   caseNote: 'Not law or finance sites, but the same job: sensitive information handled with care, and every fact traceable to its source.',
   // No professional-services case study yet: noindex until a real law, finance or medical client can be named (TODOS.md)
@@ -185,8 +187,8 @@ export const industry = {
 // We have none we can publish yet, so each carries a TODO and stays out of the index until it is filled.
 const loc = (slug, place, title, keywords, intro, near) => ({
   slug, path: `/locations/${slug}`, place, near,
-  title: `${title} | SparkTech Studio`,
-  description: `${keywords}. SparkTech Studio is an independent web and AI app studio in New York. Book a call.`,
+  title: `${title} | SparkTech Studios`,
+  description: `${keywords}. SparkTech Studios is an independent web and AI app studio in New York. Book a call.`,
   h1: `Web And AI Apps For ${place}`,
   lede: intro,
   cases: ['utern', 'ballotwatch'],
@@ -203,7 +205,7 @@ export const locations = [
     'Websites and web apps for Long Island businesses in Nassau and Suffolk, from a studio in New York.', ['nassau-county', 'suffolk-county']),
   loc('nassau-county', 'Nassau County', 'Nassau County Web Design and Development', 'Web design in Nassau County',
     'Websites and web apps for businesses in Nassau County, from Garden City to the North Shore.', ['long-island', 'suffolk-county']),
-  loc('suffolk-county', 'Suffolk County', 'Suffolk County Web Design and Development', 'Web design in Suffolk County',
+  loc('suffolk-county', 'Suffolk County', 'Suffolk County Web Design & Development', 'Web design in Suffolk County',
     'Websites and web apps for businesses in Suffolk County, from Huntington east.', ['long-island', 'nassau-county']),
 ]
 
@@ -211,13 +213,8 @@ export const locations = [
 // sign-off, so the page carries a TODO and stays noindex (and out of the nav and sitemap) until he confirms them.
 export const pricingPage = {
   path: '/pricing',
-  title: 'Pricing | SparkTech Studio',
-  description: 'Launch Site from $12k to $25k. Website updates $500 a month. Care from $1,000 to $1,500 a month. Growth from $3,000 to $5,000 a month. Everything else is priced in a written scope.',
-  // How the retainers read on this page: Care is maintenance, Growth is SEO and AI features
-  scopes: {
-    care: 'Maintenance. Hosting oversight, updates, uptime checks and small fixes, so the site stays fast and keeps working. About 5 hours a month.',
-    growth: 'SEO and AI features. Everything in Care, plus new SEO pages and new AI features, each one checked against what it was meant to move. About 15 hours a month.',
-  },
+  title: 'Pricing | SparkTech Studios',
+  description: 'Every project is priced after a call, in a written scope.',
   // Final numbers pending Spencer's confirmation, so the page stays noindex
   noindex: true,
 }
@@ -226,9 +223,9 @@ export const pricingPage = {
 // written scope, so the page names none (no rev share, no discounts, no partner logos).
 export const partnersPage = {
   path: '/partners',
-  title: 'Build Partner for Studios and Agencies | SparkTech Studio',
+  title: 'Build Partner for Studios and Agencies | SparkTech Studios',
   description: 'A build partner for design studios, agencies and accelerators. You bring the client or the cohort; we build the AI app, MVP or website. Book a call.',
-  h1: 'Your Clients, Our Build',
+  h1: 'Your Clients. Our Build.',
   lede: 'For design studios, agencies and accelerators that need someone to build what they’ve designed or promised. You keep the relationship. We build it and keep it standing.',
   who: [
     ['Design studios', 'You made the brand and the screens. We build them as a real site or app, close to the pixel, so the work you sold is the work that ships.'],
@@ -246,9 +243,5 @@ export const partnersPage = {
 // Every page this module adds, for the router and the prerender
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
-  // noindex while the page still shows a TODO box instead of a real professional-services case study
-  { path: industry.path, title: industry.title, description: industry.description, noindex: industry.noindex },
-  ...locations.map(l => ({ path: l.path, title: l.title, description: l.description, noindex: true })),
-  { path: pricingPage.path, title: pricingPage.title, description: pricingPage.description, noindex: pricingPage.noindex },
   { path: partnersPage.path, title: partnersPage.title, description: partnersPage.description },
 ]

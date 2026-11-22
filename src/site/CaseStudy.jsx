@@ -6,7 +6,7 @@ import { Shell, Sec, Shot, List, Links, JsonLd } from './ui.jsx'
 export default function CaseStudy({ slug }) {
   const c = companies.find(x => x.slug === slug), st = studies[slug]
   const others = workSlugs.filter(s => s !== slug).map(s => companies.find(x => x.slug === s))
-  return <Shell title={`${c.name} | SparkTech Studio`} active="work" bandTitle="Want Something Built Like This?">
+  return <Shell title={`${c.name} | SparkTech Studios`} active="work" bandTitle="Want Something Built Like This?">
     <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], ['Work', '/work'], [c.name, `/work/${slug}`]].map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE}${path}` })) }} />
     <section className="phead"><div className="wrap">
       <h1>{c.name}</h1>

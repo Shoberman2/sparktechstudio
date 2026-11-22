@@ -1,4 +1,4 @@
-import { projects } from '../data/projects'
+import { projects } from '../data/legacy-projects'
 import { ArrowOut } from './Icons'
 import './Work.css'
 export default function Work() {

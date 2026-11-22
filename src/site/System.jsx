@@ -16,9 +16,9 @@ const keeps = [
 ]
 
 export default function System() {
-  return <Shell title="System | SparkTech Studio">
+  return <Shell title="System | SparkTech Studios">
     <PageHead h1="Software That Keeps Getting Better" lede="Most software starts aging the day it launches. Ours runs in a loop that keeps improving it." />
-    <Sec title="One Loop, On Repeat"><Flow steps={loop} label="The improvement loop" /></Sec>
+    <Sec title="One Loop On Repeat"><Flow steps={loop} label="The improvement loop" /></Sec>
     <Sec title="Where It Points" line="Product first. The rest is what we are building toward."><List items={systems.areas.map(([h, p]) => [h, p])} /></Sec>
     <Sec title="What Never Changes"><List items={keeps} /><p className="note reveal">{systems.status}</p></Sec>
   </Shell>
