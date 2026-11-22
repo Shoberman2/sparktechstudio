@@ -1,14 +1,22 @@
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 from rsei.growth_ops import GrowthCycle
 
 FIX = Path(__file__).resolve().parents[1] / "pilot" / "growth-fixture"
+# The fixtures were captured on 2026-10-08 and sources go stale after 30 days, so the tests run on a fixed clock the
+# day after capture. Without it they pass or fail depending on the calendar (they started failing on 2026-11-07).
+FIXTURE_NOW = datetime(2026, 10, 9, tzinfo=timezone.utc)
 
 
 class GrowthOpsTests(unittest.TestCase):
     def setUp(self):
+        clock = mock.patch("rsei.growth_ops._now", return_value=FIXTURE_NOW)
+        clock.start()
+        self.addCleanup(clock.stop)
         self.tmp = tempfile.TemporaryDirectory()
         self.run = Path(self.tmp.name) / "company-run"
         self.cycle = GrowthCycle.init(FIX / "company.json", FIX, self.run)
