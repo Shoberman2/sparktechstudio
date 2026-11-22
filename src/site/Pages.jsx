@@ -57,11 +57,30 @@ function ShortPage({ s }) {
   </Shell>
 }
 
+// One short paragraph per service on the hub, taken from that service page's own lede (and its "how", where it has one).
+// Website updates and Monthly care share a page, so each page appears once.
+const hubServices = serviceList
+  .filter((x, i, all) => all.findIndex(y => y.path === x.path) === i)
+  .map(x => { const s = services.find(v => v.path === x.path); return [s.name[0].toUpperCase() + s.name.slice(1), [s.lede, s.how].filter(Boolean).join(' '), x.path] })
+
+// Hub FAQ: every answer restates facts already published elsewhere on the site (home, service pages, llms.txt).
+const hubFaq = [
+  ['What does SparkTech Studios do?', 'We design, build and run websites and get them found on Google and in AI answers. We also build AI agents, AI apps, web apps and startup MVPs.'],
+  ['What does it cost?', 'A flat $500 a month per business, month-to-month, no matter what you need. There is no build fee.'],
+  ['What is included in the $500 a month?', 'The build, maintenance and your updates.'],
+  ['How do I start?', 'Book a call from any page, or use Email us. We reply within two business days. After the call we send a written scope: what we build, what it costs and when. Ownership, access and support are spelled out there.'],
+  ['Do you build AI apps and AI agents?', 'Yes. We set up AI agents that answer customers, sort requests and follow up, with a person approving what matters. We also build AI web apps where the AI does the main job.'],
+  ['Do you promise first place on Google?', 'No. We fix what holds a site back, write pages that answer real questions and make your facts easy to cite. No rankings are promised.'],
+]
+
 export function ServicesHub() {
   return <Shell title="Services | SparkTech Studios" active="services">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
+    <JsonLd data={faqLd(hubFaq)} />
     <PageHead h1="What We Build" lede="Websites, AI agents, updates and search, plus the apps around them." cta={false} />
     <Sec><List items={allServices} /><p className="note reveal">{scoped}</p></Sec>
+    <Sec title="What Each One Is"><List items={hubServices} /></Sec>
+    <Sec title="Common Questions"><Faq items={hubFaq} /></Sec>
   </Shell>
 }
 
