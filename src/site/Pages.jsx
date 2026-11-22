@@ -173,7 +173,9 @@ export function Privacy() {
     <PageHead h1="Privacy Kept Simple" lede="No ads and no tracking cookies. We count page views without knowing who you are." cta={false} />
     <section className="sec"><div className="wrap prose">
       <h2>What We Collect</h2>
-      <p>While you browse, Vercel Web Analytics counts page views and button clicks. It sets no cookies and does not identify you. If you email us, we get what you send. If you book a call, Calendly collects your name, email, and the time you pick, under <a href="https://calendly.com/privacy" target="_blank" rel="noreferrer">Calendly’s privacy policy</a>, and shares the booking with us.</p>
+      <p>While you browse, Vercel Web Analytics counts page views, button clicks, whether the pricing comes into view, and finished bookings. It sets no cookies and does not identify you: a booking is counted with the button you used and the campaign link you arrived from, never your name or email. If you email us, we get what you send.</p>
+      <h2>Booking A Call</h2>
+      <p>Book a call opens Calendly’s booking window on top of this page. So it opens quickly, each page loads Calendly’s booking script in the background once it has finished loading; that is an ordinary web request to Calendly. If you book, Calendly collects your name, email, and the time you pick, under <a href="https://calendly.com/privacy" target="_blank" rel="noreferrer">Calendly’s privacy policy</a>, and shares the booking with us. Calendly may set its own cookies inside the booking window.</p>
       <h2>The Website Grader</h2>
       <p>When you grade a site, our server fetches that site’s public homepage, its robots.txt and its llms.txt. We don’t keep the address or the result. The full report is shown on the page, and we never ask for your email.</p>
       <h2>What We Do With It</h2>
