@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- New Features: the example bakery's owner asks SparkTech for gift cards in Messages; the gift card page is live on the site. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css"><link rel="stylesheet" href="msgs.css">
+<style>
+  .gc { position: absolute; inset: 0; padding: 70px 22px 0; background: #fbf8f3; color: #1f1a14; font-family: 'Instrument Sans', -apple-system, system-ui, sans-serif; }
+  .gc .top { display: flex; align-items: center; justify-content: space-between; }
+  .gc h1 { margin-top: 26px; font: 500 40px/1 ui-serif, 'New York', Georgia, serif; letter-spacing: -0.02em; }
+  .gc .lead { margin-top: 10px; color: #6b5f52; font-size: 17px; line-height: 1.4; }
+  .card { position: relative; margin-top: 22px; aspect-ratio: 1.586; border-radius: 18px; overflow: hidden; padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between; color: #fff;
+    background: #2b2117; box-shadow: 0 14px 30px rgba(43, 33, 23, .25); }
+  .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+  .card > :not(img) { position: relative; }
+  .card .w { font: 600 24px ui-serif, 'New York', Georgia, serif; }
+  .card .v { display: flex; justify-content: space-between; align-items: flex-end; font-size: 15px; font-weight: 500; }
+  .card .v b { font: 500 40px/1 ui-serif, 'New York', Georgia, serif; }
+  .amts { display: flex; gap: 10px; margin-top: 22px; }
+  .amts span { flex: 1; height: 48px; border-radius: 999px; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px #d9d0c2; font-size: 17px; font-weight: 600; }
+  .amts .on { background: #1f1a14; color: #fff; box-shadow: none; }
+  .gc label { display: block; margin-top: 18px; font-size: 15px; font-weight: 600; }
+  .gc .in { margin-top: 8px; height: 50px; border-radius: 14px; background: #f0ebe2; display: flex; align-items: center; padding: 0 16px; color: #8a7f72; font-size: 17px; }
+  .gc .buy { margin-top: 18px; height: 54px; border-radius: 999px; background: #1f1a14; color: #fff; display: grid; place-items: center; font-size: 17px; font-weight: 600; }
+  .gc .sbar { position: absolute; left: 0; right: 0; bottom: 0; height: 86px; padding: 8px 14px 0; background: rgba(249, 249, 249, .94); box-shadow: 0 -1px 0 rgba(0, 0, 0, .08); }
+  .gc .sbar div { height: 44px; border-radius: 14px; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .12); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font: 500 16px -apple-system, system-ui; color: #000; }
+</style><style>
+  /* Portrait (phones, 1080x1350) */
+  html.p .a1 { left:80px !important;top:228px !important; }
+  html.p .a1 > .phone, html.p .a1 > .mac { --z: 1 !important; }
+  html.p .a2 { left:578px !important;top:228px !important; }
+  html.p .a2 > .phone, html.p .a2 > .mac { --z: 1 !important; }
+</style>
+</head>
+<body>
+  <div class="at a1" style="left: 338px; top: 93px;">
+    <div class="phone" style="--z: 1" data-time="10:12">
+      <div class="m">
+        <div class="m-head">
+          <svg class="m-back" width="13" height="22" viewBox="0 0 13 22" fill="none" stroke="#007aff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2 2 11l9 9"/></svg>
+          <div class="m-av" style="background:#0a0a09"><img src="../../public/favicon.svg" alt="" width="30" height="30"></div>
+          <span class="m-name">SparkTech Studios <small>›</small></span>
+        </div>
+        <div class="m-list" style="position:absolute;left:0;right:0;bottom:88px">
+          <p class="m-when"><b>Mon</b> 4:20 PM</p>
+          <p class="b me">Can we sell gift cards on the site before the holidays?</p>
+          <p class="b them">Yes. We’ll have them live tomorrow.</p>
+          <p class="m-when"><b>Today</b> 10:12 AM</p>
+          <p class="b them">Gift cards are live on your site.</p>
+          <div class="link"><img src="photos/croissant-breakfast.jpg" alt=""><p>Gift Cards · Maple &amp; Rye<small>mapleandrye.com</small></p></div>
+          <p class="b me">Perfect, thank you.</p>
+          <p class="m-read">Read 10:13 AM</p>
+        </div>
+        <div class="m-bar"><span class="plus">+</span><span class="field">iMessage</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="at a2" style="left: 840px; top: 93px;">
+    <div class="phone" style="--z: 1" data-time="10:14">
+      <div class="gc">
+        <div class="top"><span style="font: 600 22px ui-serif, Georgia, serif">Maple &amp; Rye</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f1a14" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></div>
+        <h1>Gift Cards</h1>
+        <p class="lead">For the bread lover in your life. Sent by email, spent in store or online.</p>
+        <div class="card"><img src="photos/croissant-tray.jpg" alt=""><span class="w">Maple &amp; Rye</span><span class="v"><span>Gift card</span><b>$50</b></span></div>
+        <div class="amts"><span>$25</span><span class="on">$50</span><span>$100</span></div>
+        <label>Send to</label><div class="in">Their email</div>
+        <div class="buy">Buy a gift card</div>
+        <div class="sbar"><div><span style="font-size:15px">aA</span><span>mapleandrye.com/gift-cards</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+  <script src="scene.js"></script>
+</body></html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Apps: the example bakery's own orders app on a MacBook, with an AI summary of the day above today's pickups. Names are examples. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css">
+<style>
+  .app { position: absolute; inset: 0; display: grid; grid-template-columns: 250px 1fr; background: #fff; color: #1f1a14; font-family: 'Instrument Sans', -apple-system, system-ui, sans-serif; }
+  .side { background: #f7f4ef; padding: 26px 16px; display: flex; flex-direction: column; gap: 4px; font-size: 16px; }
+  .side .w { padding: 0 12px 22px; font: 600 23px ui-serif, 'New York', Georgia, serif; }
+  .side span { padding: 10px 12px; border-radius: 10px; color: #5b5146; font-weight: 500; }
+  .side .on { background: #ebe4d9; color: #1f1a14; font-weight: 600; }
+  .main { padding: 34px 44px; min-width: 0; }
+  .hd { display: flex; align-items: flex-end; justify-content: space-between; }
+  .hd h1 { font-size: 38px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+  .hd p { margin-top: 8px; color: #7a6f63; font-size: 17px; }
+  .hd .new { padding: 12px 22px; border-radius: 999px; background: #1f1a14; color: #fff; font-size: 16px; font-weight: 600; }
+  .sum { display: flex; gap: 14px; margin-top: 26px; padding: 18px 22px; border-radius: 16px; background: #f6f0e4; font-size: 17px; line-height: 1.5; }
+  .sum svg { flex: none; margin-top: 3px; }
+  .sum b { font-weight: 600; }
+  table { width: 100%; margin-top: 24px; border-collapse: collapse; font-size: 17px; }
+  th { padding: 0 0 12px; text-align: left; color: #8a7f72; font-size: 14px; font-weight: 600; letter-spacing: .02em; }
+  td { padding: 15px 0; border-top: 1px solid #efe9e0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.t { color: #7a6f63; font-variant-numeric: tabular-nums; width: 110px; }
+  .st { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; }
+  .ready { background: #e3f3e8; color: #1f7a4d; } .baking { background: #fbeedb; color: #9a5b06; } .new2 { background: #e5efff; color: #2457c5; } .deco { background: #f3e8f7; color: #7a3f8f; }
+</style><style>
+  /* Portrait (phones, 1080x1350) */
+  html.p .a1 { left:20px !important;top:230px !important; }
+  html.p .a1 > .phone, html.p .a1 > .mac { --z: .95 !important; }
+</style>
+</head>
+<body>
+  <div class="at a1" style="left: 69px; top: 92px;">
+    <div class="mac" style="--z: .86">
+      <div class="lid"><div class="display">
+        <i class="notch"></i>
+        <div class="menubar"><b>Safari</b><span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span class="r"><span>Sat Nov 28</span><span>7:05 AM</span></span></div>
+        <div class="safari">
+          <div class="bar"><div class="lights"><i></i><i></i><i></i></div><div class="url">orders.mapleandrye.com</div><div style="width:52px"></div></div>
+          <div class="page">
+            <div class="app" style="zoom: 1.22">
+              <div class="side"><span class="w">Maple &amp; Rye</span><span class="on">Today</span><span>Orders</span><span>Cakes</span><span>Customers</span><span>Menu</span><span>Gift cards</span></div>
+              <div class="main">
+                <div class="hd"><div><h1>Today</h1><p>Saturday, November 28</p></div><span class="new">New order</span></div>
+                <div class="sum">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#b8860b"><path d="M12 2l1.8 5.6L19.5 9.5l-5.7 1.9L12 17l-1.8-5.6L4.5 9.5l5.7-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+                  <p><b>Summary.</b> Six pickups this morning, two of them cakes. Ava Kim asked if her cake can say “Happy 30th”, and a reply is drafted for you.</p>
+                </div>
+                <table>
+                  <tr><th>Pickup</th><th>Customer</th><th>Order</th><th class="num">Total</th><th class="num">Status</th></tr>
+                  <tr><td class="t">7:30 AM</td><td>Emma Carter</td><td>Country Sourdough × 2</td><td class="num">$18.00</td><td class="num"><span class="st ready">Ready</span></td></tr>
+                  <tr><td class="t">8:00 AM</td><td>Liam Brooks</td><td>Croissants × 6</td><td class="num">$24.00</td><td class="num"><span class="st ready">Ready</span></td></tr>
+                  <tr><td class="t">9:15 AM</td><td>Sofia Reed</td><td>Pain au Chocolat × 4</td><td class="num">$18.00</td><td class="num"><span class="st baking">Baking</span></td></tr>
+                  <tr><td class="t">10:00 AM</td><td>Jordan Lee</td><td>Chocolate Cake, serves 12</td><td class="num">$42.00</td><td class="num"><span class="st deco">Decorating</span></td></tr>
+                  <tr><td class="t">11:30 AM</td><td>Ava Kim</td><td>Birthday Cake, serves 20</td><td class="num">$68.00</td><td class="num"><span class="st new2">New</span></td></tr>
+                  <tr><td class="t">12:00 PM</td><td>Noah Bennett</td><td>Country Sourdough</td><td class="num">$9.00</td><td class="num"><span class="st baking">Baking</span></td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div class="base"></div>
+    </div>
+  </div>
+  <script src="scene.js"></script>
+</body></html>

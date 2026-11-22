@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Modern Design: the example bakery's dated site in an old browser window, behind the new site on a MacBook and an iPhone. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css">
+<style>
+  .old { position: absolute; left: 64px; top: 196px; width: 540px; height: 430px; background: #c0c0c0; box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #404040, 0 30px 70px rgba(0, 0, 0, .5); font-family: Tahoma, Verdana, sans-serif; }
+  .old-title { display: flex; align-items: center; justify-content: space-between; height: 26px; margin: 3px; padding: 0 4px 0 8px; background: linear-gradient(90deg, #0a246a, #a6caf0); color: #fff; font-size: 13px; font-weight: 700; }
+  .old-title i { display: inline-block; width: 18px; height: 16px; margin-left: 2px; background: #c0c0c0; box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #404040; }
+  .old-addr { display: flex; align-items: center; gap: 8px; margin: 2px 6px 4px; font-size: 12px; color: #000; }
+  .old-addr span { flex: 1; height: 22px; padding: 3px 6px; background: #fff; box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff; }
+  .old-page { position: absolute; left: 6px; right: 6px; top: 64px; bottom: 6px; overflow: hidden; padding: 16px 20px; text-align: center; color: #000;
+    background: #fdf1d8 radial-gradient(#ecd3a4 1.2px, transparent 1.3px) 0 0 / 14px 14px; font-family: 'Times New Roman', Times, serif; box-shadow: inset 1px 1px 0 #808080; }
+  .old-page h1 { color: #a33b00; font: 700 30px/1.1 'Comic Sans MS', 'Chalkboard SE', cursive; text-shadow: 2px 2px 0 #f4c37b; }
+  .old-page .nav { margin: 12px 0; font-size: 16px; }
+  .old-page .nav a { color: #0000ee; text-decoration: underline; }
+  .old-page .row { display: flex; gap: 16px; align-items: flex-start; text-align: left; margin-top: 10px; }
+  .old-page .pic { flex: none; width: 150px; height: 110px; border: 4px ridge #b08040; overflow: hidden; }
+  .old-page .pic img { width: 50px; height: 37px; transform: scale(3); transform-origin: 0 0; image-rendering: pixelated; }
+  .old-page p { font-size: 16px; line-height: 1.3; }
+  .old-page .call { margin-top: 8px; color: #cc0000; font-weight: 700; }
+  .old-page .foot { margin-top: 14px; font-size: 13px; color: #555; }
+  .old-page hr { margin: 8px 0; border: 0; height: 2px; background: #b08040; }
+</style><style>
+  /* Portrait (phones, 1080x1350) */
+  html.p .a1 { left:30px !important;top:470px !important; }
+  html.p .a1 > .phone, html.p .a1 > .mac { --z: .72 !important; }
+  html.p .a2 { left:790px !important;top:760px !important; }
+  html.p .a2 > .phone, html.p .a2 > .mac { --z: .6 !important; }
+  html.p .old { left: 60px; top: 90px; }
+</style>
+</head>
+<body>
+  <div class="old">
+    <div class="old-title"><span>Maple &amp; Rye Bakery - Home Page</span><span><i></i><i></i><i></i></span></div>
+    <div class="old-addr">Address <span>http://www.mapleandrye.com/index.html</span></div>
+    <div class="old-page">
+      <h1>Welcome to Maple &amp; Rye Bakery!!</h1>
+      <div class="nav"><a>Home</a> | <a>Our Breads</a> | <a>Hours</a> | <a>Contact Us</a> | <a>Guestbook</a></div>
+      <hr>
+      <div class="row">
+        <div class="pic"><img src="photos/sourdough-board.jpg" alt=""></div>
+        <div><p>We have the BEST bread in town!!! Fresh every day. Come and visit us today.</p>
+          <p class="call">To order please call the store.</p></div>
+      </div>
+      <p class="foot">Best viewed in Internet Explorer at 800 x 600</p>
+    </div>
+  </div>
+
+  <div class="at a1" style="left: 470px; top: 262px;">
+    <div class="mac" style="--z: .62">
+      <div class="lid"><div class="display">
+        <i class="notch"></i>
+        <div class="menubar"><b>Safari</b><span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span class="r"><span>Sun Nov 22</span><span>9:41 AM</span></span></div>
+        <div class="safari">
+          <div class="bar"><div class="lights"><i></i><i></i><i></i></div><div class="url">mapleandrye.com</div><div style="width:52px"></div></div>
+          <div class="page" data-mr="desktop"></div>
+        </div>
+      </div></div>
+      <div class="base"></div>
+    </div>
+  </div>
+
+  <div class="at a2" style="left: 1318px; top: 548px;">
+    <div class="phone" style="--z: .5" data-status="light"><div data-mr="mobile"></div></div>
+  </div>
+  <script src="scene.js"></script>
+</body></html>

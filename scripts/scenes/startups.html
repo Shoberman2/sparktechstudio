@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Startups: the live UTern, Leed and BallotWatch sites on three iPhones. real/ holds screen captures of each live site
+     (393x852 @3x, captured 2026-11-22). Recapture them when those sites change. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css">
+<style>
+  .shot { position: absolute; left: 0; right: 0; top: 54px; bottom: 86px; overflow: hidden; }
+  .shot img { width: 100%; }
+  .sbar { position: absolute; left: 0; right: 0; bottom: 0; height: 86px; padding: 8px 14px 0; background: rgba(249, 249, 249, .94); box-shadow: 0 -1px 0 rgba(0, 0, 0, .08); }
+  .sbar div { height: 44px; border-radius: 14px; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .12); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font: 500 16px -apple-system, system-ui; color: #000; }
+  .sbar.dark { background: rgba(28, 28, 30, .94); box-shadow: 0 -1px 0 rgba(255, 255, 255, .08); }
+  .sbar.dark div { background: #3a3a3c; color: #fff; box-shadow: none; }
+</style><style>
+  /* Portrait (phones, 1080x1350) */
+  html.p .a1 { left:30px !important;top:326px !important; }
+  html.p .a1 > .phone, html.p .a1 > .mac { --z: .78 !important; }
+  html.p .a2 { left:375px !important;top:326px !important; }
+  html.p .a2 > .phone, html.p .a2 > .mac { --z: .78 !important; }
+  html.p .a3 { left:720px !important;top:326px !important; }
+  html.p .a3 > .phone, html.p .a3 > .mac { --z: .78 !important; }
+</style>
+</head>
+<body>
+  <div class="at a1" style="left: 190px; top: 137px;">
+    <div class="phone" style="--z: .9">
+      <div class="shot"><img src="real/utern.jpg" alt=""></div>
+      <div class="sbar"><div><span style="font-size:15px">aA</span><span>utern.ai</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg></div></div>
+    </div>
+  </div>
+  <div class="at a2" style="left: 610px; top: 137px;">
+    <div class="phone" style="--z: .9" data-status="light" data-bg="#000">
+      <div class="shot"><img src="real/leed.jpg" alt=""></div>
+      <div class="sbar dark"><div><span style="font-size:15px">aA</span><span>leed.media</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg></div></div>
+    </div>
+  </div>
+  <div class="at a3" style="left: 1030px; top: 137px;">
+    <div class="phone" style="--z: .9" data-bg="#f7f6f1">
+      <div class="shot"><img src="real/ballotwatch.jpg" alt=""></div>
+      <div class="sbar"><div><span style="font-size:15px">aA</span><span>ballotwatch.io</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg></div></div>
+    </div>
+  </div>
+  <script src="scene.js"></script>
+</body></html>
