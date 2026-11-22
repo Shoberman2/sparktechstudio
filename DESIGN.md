@@ -1,5 +1,9 @@
 # Design System — SparkTech Studio
 
+## Footer, one services column (2026-11-22)
+
+The "What we do" column (each service jumping to its place on the home reel) is merged into Services: it listed the same services again, and every one has its own page. The footer is now four centered columns: Services, Studio, Contact, Legal (two by two on phones). The reel still answers /#seo, /#apps and so on for links shared before.
+
 ## Real pictures, a real river (2026-11-22)
 
 The founder: "change the images to make them look less AI and improve the design as much as you can"; then, on the ground, "i liked the gold river. Let's make it look less AI".

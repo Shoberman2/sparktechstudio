@@ -55,14 +55,14 @@ function Nav({ active }) {
 }
 
 // Footer (2026-11-21): every page on the site is linked here, set in the nav's type. No button and no tagline (founder).
-// Four columns from the left: What we do (each service jumps to its place on the reel), Services (each service page), Studio, Contact, Legal (Privacy, Terms, Sitemap); then the logo with ©, centered.
-const SERVICES = [['seo', 'SEO'], ['aeo', 'AEO'], ['design', 'Modern design'], ['build', 'Builds'], ['maintain', 'Maintenance'], ['new-features', 'New features'], ['ai-agents', 'AI agents'], ['apps', 'Apps'], ['startups', 'Startups']]
+// Four columns: Services (each service page), Studio, Contact, Legal (Privacy, Terms, Sitemap); then the logo with ©, centered.
+// 2026-11-22: the "What we do" column (each service jumping to its place on the home reel) is merged into Services: it listed
+// the same services again, and every one has its own page. The reel still answers /#seo, /#apps and so on.
 // One link per service page. "Website updates" and "Monthly care" share /services/retainers, so it is listed once.
 const PAGES = serviceList.filter((s, i, all) => all.findIndex(x => x.path === s.path) === i)
 function Footer() {
   return <footer className="ft">
     <div className="ft-wide ft-in reveal">
-      <nav aria-label="What we do"><h2>What we do</h2>{SERVICES.map(([id, label]) => <a key={id} href={`/#${id}`}>{label}</a>)}</nav>
       <nav aria-label="Services"><h2>Services</h2><a href="/services">All services</a>{PAGES.map(s => <a key={s.path} href={s.path}>{s.nav}</a>)}</nav>
       <nav aria-label="Studio"><h2>Studio</h2><a href="/">Home</a><a href="/#pricing">Pricing</a><a href="/systems">System</a><a href="/grader">SEO checker</a><a href="/partners">Partners</a></nav>
       <nav aria-label="Contact"><h2>Contact</h2><a {...BOOK} data-from="footer-links" onClick={() => track('book_call', { from: 'footer-links' })}>Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a>{SOCIALS.filter(x => x.url).map(x => <a key={x.name} href={x.url} target="_blank" rel="noreferrer me">{x.name}</a>)}</nav>
