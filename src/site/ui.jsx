@@ -9,7 +9,8 @@ import './site.css'
 const LINKS = [['services', '/#services', 'Services'], ['pricing', '/#pricing', 'Pricing'], ['grader', '/grader', 'SEO checker']]
 
 // `from` names where the button sits, so analytics can tell which Book a call gets used
-export const Book = ({ className = '', from = 'page', label = 'Book a call' }) => <a className={`btn ${className}`.trim()} {...BOOK} onClick={() => track('book_call', { from })}>{label}</a>
+// data-from also tells src/lib/booking.js where a finished booking started (call_booked)
+export const Book = ({ className = '', from = 'page', label = 'Book a call' }) => <a className={`btn ${className}`.trim()} {...BOOK} data-from={from} onClick={() => track('book_call', { from })}>{label}</a>
 
 export const JsonLd = ({ data }) => <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />
 
@@ -64,7 +65,7 @@ function Footer() {
       <nav aria-label="What we do"><h2>What we do</h2>{SERVICES.map(([id, label]) => <a key={id} href={`/#${id}`}>{label}</a>)}</nav>
       <nav aria-label="Services"><h2>Services</h2><a href="/services">All services</a>{PAGES.map(s => <a key={s.path} href={s.path}>{s.nav}</a>)}</nav>
       <nav aria-label="Studio"><h2>Studio</h2><a href="/">Home</a><a href="/#pricing">Pricing</a><a href="/systems">System</a><a href="/grader">SEO checker</a><a href="/partners">Partners</a></nav>
-      <nav aria-label="Contact"><h2>Contact</h2><a {...BOOK} onClick={() => track('book_call', { from: 'footer-links' })}>Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a>{SOCIALS.filter(x => x.url).map(x => <a key={x.name} href={x.url} target="_blank" rel="noreferrer me">{x.name}</a>)}</nav>
+      <nav aria-label="Contact"><h2>Contact</h2><a {...BOOK} data-from="footer-links" onClick={() => track('book_call', { from: 'footer-links' })}>Book a call</a><a href={`mailto:${EMAIL}`}>Email us</a>{SOCIALS.filter(x => x.url).map(x => <a key={x.name} href={x.url} target="_blank" rel="noreferrer me">{x.name}</a>)}</nav>
       <nav aria-label="Legal"><h2>Legal</h2><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/sitemap.xml">Sitemap</a></nav>
     </div>
     <div className="ft-wide ft-legal">

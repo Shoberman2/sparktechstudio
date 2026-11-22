@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { track } from '@vercel/analytics'
 import { Shell, Book, Sec, Faq, JsonLd, Band } from './ui.jsx'
 import Features from './Features.jsx'
 import { PlanCard } from './Plan.jsx'
@@ -31,6 +32,19 @@ export default function Home() {
     if (!id || document.querySelector(`.wheel [id="${CSS.escape(id)}"]`)) return
     const t = setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' }), 120)
     return () => clearTimeout(t)
+  }, [])
+  // Funnel (2026-11-22): does the visitor reach the price? Sent once per visit to the page, with the screen type, so a
+  // change to the long reel above it (phones scroll past nine services first) can be judged against a baseline.
+  useEffect(() => {
+    const el = document.getElementById('pricing')
+    if (!el || !('IntersectionObserver' in window)) return
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return
+      track('price_seen', { screen: matchMedia('(max-width: 760px)').matches ? 'phone' : 'wide' })
+      io.disconnect()
+    }, { threshold: 0.4 })
+    io.observe(el)
+    return () => io.disconnect()
   }, [])
   return <Shell title="SparkTech Studios" className="st-home" band={false}>
     <section className="hero hero-home">
