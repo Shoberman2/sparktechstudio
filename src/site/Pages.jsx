@@ -156,7 +156,7 @@ export function Privacy() {
       <h2>What We Collect</h2>
       <p>While you browse, Vercel Web Analytics counts page views and button clicks. It sets no cookies and does not identify you. If you email us, we get what you send. If you book a call, Calendly collects your name, email, and the time you pick, under <a href="https://calendly.com/privacy" target="_blank" rel="noreferrer">Calendly’s privacy policy</a>, and shares the booking with us.</p>
       <h2>The Website Grader</h2>
-      <p>When you grade a site, our server fetches that site’s public homepage, its robots.txt and its llms.txt. We don’t keep the address or the result. If you ask for the full report, we get your email address and the result so we can send it.</p>
+      <p>When you grade a site, our server fetches that site’s public homepage, its robots.txt and its llms.txt. We don’t keep the address or the result. The full report is shown on the page, and we never ask for your email.</p>
       <h2>What We Do With It</h2>
       <p>We use it to reply and to talk about your project. We don’t sell it, rent it, or add you to a mailing list.</p>
       <h2>Hosting</h2>

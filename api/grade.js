@@ -4,19 +4,10 @@
 //   GET  /api/grade?url=example.com&part=page    reads the homepage (phone speed is not tested, founder 2026-11-21): HTTPS, mobile, title, description, H1, image alt text,
 //                                                Open Graph, structured data, AI crawler access (robots.txt and llms.txt),
 //                                                broken links, contact or call to action
-//   POST /api/grade  { email, url, score, fixes }  someone asked for the full report by email
 //
-// Env vars:
-//   RESEND_API_KEY     Sends the report request to the studio (same key api/contact.js uses). Without it POST answers 503
-//                      and the page offers a plain email link instead.
-//
-// TODO(Spencer): report requests are only emailed to the studio. To keep them in a database, connect Supabase or Upstash
-// Redis from the Vercel Marketplace and save { email, url, score, at } in saveLead() below.
-// TODO(Spencer): the full report is sent by hand for now. To send it automatically, verify sparktechstudio.com in Resend
-// and send to the visitor from saveLead().
+// The full report is shown on the page; nothing is emailed or stored (founder, 2026-11-21: "just show the report on the website").
 import { lookup } from 'node:dns/promises'
 import net from 'node:net'
-import { CHECKS } from '../src/lib/grade.js'
 
 export const config = { maxDuration: 90 }
 
@@ -308,51 +299,11 @@ function cleanInput(raw) {
   } catch { return null }
 }
 
-/* ---------- Report requests ---------- */
-
-const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
-const plain = (v, limit) => Array.from(String(v || '')).filter(ch => ch.charCodeAt(0) >= 32 || ch === '\n').join('').trim().slice(0, limit)
-
-async function saveLead(req, res) {
-  let body = req.body
-  if (typeof body === 'string') { try { body = JSON.parse(body) } catch { body = {} } }
-  body = body || {}
-  if (body.company_website) return res.status(200).json({ ok: true }) // honeypot
-  const email = plain(body.email, 200)
-  const site = cleanInput(body.url)
-  if (!isEmail(email)) return res.status(400).json({ ok: false, error: 'Enter a real email address' })
-  if (!site) return res.status(400).json({ ok: false, error: 'Grade a website first' })
-  const key = process.env.RESEND_API_KEY
-  if (!key) return res.status(503).json({ ok: false, error: 'Email is not set up yet' })
-
-  const score = Math.max(0, Math.min(100, Math.round(Number(body.score) || 0)))
-  const known = new Set(CHECKS.map(c => c.id))
-  const fixes = (Array.isArray(body.fixes) ? body.fixes : []).filter(f => f && known.has(f.id)).slice(0, CHECKS.length)
-    .map(f => `- ${plain(f.title, 160)}\n  ${plain(f.fix, 500)}${f.detail ? `\n  ${plain(f.detail, 1500).replace(/\n/g, '\n  ')}` : ''}`)
-  const to = process.env.CONTACT_TO || 'spencer@sparktechstudio.com'
-  const from = process.env.CONTACT_FROM || 'SparkTech site <onboarding@resend.dev>'
-  const message = `Website grader: full report requested\n\nSend to: ${email}\nSite: ${site}\nScore: ${score} out of 100\n\nFixes, ranked:\n${fixes.join('\n') || '(none)'}\n`
-  const r = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from, to: [to], reply_to: email, subject: `Grader report request: ${site} (${score})`, text: message }),
-  })
-  if (!r.ok) {
-    console.error('resend failed', r.status, (await r.text().catch(() => '')).slice(0, 300))
-    return res.status(502).json({ ok: false, error: 'Could not send right now' })
-  }
-  return res.status(200).json({ ok: true })
-}
-
 export default async function handler(req, res) {
   const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown'
-  if (req.method === 'POST') {
-    if (tooMany(`mail:${ip}`, 5)) return res.status(429).json({ ok: false, error: 'Too many requests. Try again later.' })
-    return saveLead(req, res)
-  }
   if (req.method !== 'GET') {
-    res.setHeader('Allow', 'GET, POST')
-    return res.status(405).json({ ok: false, error: 'GET or POST only' })
+    res.setHeader('Allow', 'GET')
+    return res.status(405).json({ ok: false, error: 'GET only' })
   }
   res.setHeader('Cache-Control', 'no-store')
   const input = cleanInput(req.query?.url)

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { track } from '@vercel/analytics'
-import { EMAIL } from './facts.js'
 import { grade, verdict } from '../lib/grade.js'
 import { Book } from './ui.jsx'
 
@@ -9,7 +8,8 @@ import { Book } from './ui.jsx'
 // tested, founder 2026-11-21). The workflow is honest: "Read the homepage" ticks when that call returns, then
 // the search, AI and links stages light up one after another with their real results (how many checks passed),
 // the score counts up last. Nothing ticks before its work is done.
-// The score never needs an email. The email field only appears after the score, for people who want the full report.
+// The full report is on the page: every fix with its details (which images, which links, what the title says), then
+// everything that passed with what we found. No email, nothing stored (founder, 2026-11-21).
 
 // The workflow, left to right. `ids` are the checks (src/lib/grade.js) each stage reports on.
 const STAGES = [
@@ -21,7 +21,6 @@ const STAGES = [
 ]
 const REVEAL = 420 // ms between the page stages lighting up once their results are in
 
-const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 const Check = () => <svg className="mk-check" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="10" /><path d="M5.5 10.2l3 3 6-6.4" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
 const still = () => typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches
 const wait = ms => new Promise(r => setTimeout(r, still() ? 0 : ms))
@@ -87,10 +86,6 @@ export default function Grader({ where = 'page' }) {
   const [host, setHost] = useState('')
   const [error, setError] = useState('')
   const [result, setResult] = useState(null)
-  const [email, setEmail] = useState('')
-  const [trap, setTrap] = useState('')
-  const [mail, setMail] = useState('idle') // idle | sending | sent | fallback | error
-  const [mailNote, setMailNote] = useState('')
   const out = useRef(null)
   const set = (k, state, note = '') => setStages(all => all.map(s => s.k === k ? { ...s, state, note } : s))
 
@@ -99,7 +94,7 @@ export default function Grader({ where = 'page' }) {
     const site = url.trim()
     if (!site || state === 'running') return
     setHost(site.replace(/^https?:\/\//, '').replace(/\/.*$/, ''))
-    setStages(fresh()); setState('running'); setError(''); setResult(null); setMail('idle'); setMailNote('')
+    setStages(fresh()); setState('running'); setError(''); setResult(null)
     track('grader_run', { where })
     try {
       const page = await ask(site, 'page')
@@ -122,23 +117,7 @@ export default function Grader({ where = 'page' }) {
     }
   }
 
-  async function send(e) {
-    e.preventDefault()
-    if (!isEmail(email.trim())) { setMail('error'); setMailNote('Enter a real email address.'); return }
-    setMail('sending'); setMailNote('')
-    const fixes = result.fixes.map(f => ({ id: f.id, title: f.title, fix: f.fix, detail: f.detail }))
-    try {
-      const r = await fetch('/api/grade', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email.trim(), url: result.url, score: result.score, fixes, company_website: trap }) })
-      if (r.ok) { setMail('sent'); track('grader_email', { where }); return }
-      if (r.status === 400 || r.status === 429) { const j = await r.json().catch(() => ({})); setMail('error'); setMailNote(j.error || 'Something is off. Try again.'); return }
-      throw new Error(String(r.status))
-    } catch {
-      setMail('fallback') // not configured or offline: offer a plain email instead of pretending it went through
-    }
-  }
-
   const shown = result ? result.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : ''
-  const mailto = result ? `mailto:${EMAIL}?subject=${encodeURIComponent(`Full website report for ${shown}`)}&body=${encodeURIComponent(`Please send me the full report for ${shown}. It scored ${result.score} out of 100.`)}` : ''
 
   return <div className="gr">
     <form className="gr-form" onSubmit={run}>
@@ -173,12 +152,13 @@ export default function Grader({ where = 'page' }) {
           <p className={`gr-impact is-${f.impact.split(' ')[0].toLowerCase()}`}>{f.impact}<span>{f.group === 'aeo' ? 'AEO' : 'SEO'}</span></p>
           <h4>{f.title}</h4>
           <p>{f.fix}</p>
+          {f.detail && <p className="gr-detail">{f.detail}</p>}
         </li>)}</ul>
       </> : <p className="gr-clean">Nothing to fix. Every check passed.</p>}
 
       {result.passed.length > 0 && <>
         <h3 className="gr-h">What Is Working</h3>
-        <ul className="gr-pass">{result.passed.map((p, i) => <li key={p.id} style={{ '--i': i }}><Check />{p.title}</li>)}</ul>
+        <ul className="gr-pass">{result.passed.map((p, i) => <li key={p.id} style={{ '--i': i }}><Check /><span>{p.title}{p.detail && <small className="gr-detail">{p.detail}</small>}</span></li>)}</ul>
       </>}
       {result.skipped.map(s => <p key={s.id} className="gr-skip">{s.title}, so it is left out of the score.</p>)}
 
@@ -187,17 +167,6 @@ export default function Grader({ where = 'page' }) {
         <div className="actions"><Book from={`grader-${where}`} /></div>
       </div>
 
-      {mail === 'sent' ? <p className="gr-mail-done" role="status">Thanks. We will email your full report within two business days.</p>
-        : mail === 'fallback' ? <p className="gr-mail-done" role="status">Email reports are not switched on yet. <a className="tl" href={mailto}>Email us</a> and we will send yours.</p>
-        : <form className="gr-mail" onSubmit={send} noValidate>
-          <label htmlFor={`gr-email-${where}`}>Want the full report by email? Optional.</label>
-          <div className="gr-form">
-            <input id={`gr-email-${where}`} type="email" inputMode="email" autoComplete="email" placeholder="you@yourbusiness.com" value={email} onChange={e => setEmail(e.target.value)} />
-            <input className="gr-hp" tabIndex={-1} autoComplete="off" aria-hidden="true" name="company_website" value={trap} onChange={e => setTrap(e.target.value)} />
-            <button className="btn ghost" type="submit" disabled={mail === 'sending'}>{mail === 'sending' ? 'Sending' : 'Send me the report'}</button>
-          </div>
-          {mail === 'error' && <p className="gr-error" role="alert">{mailNote}</p>}
-        </form>}
     </div>}
   </div>
 }

@@ -374,9 +374,6 @@ html:has(.st), html:has(.st) body { background: #fff; }
 .st .gr-cta { margin-top: 56px; text-align: center; }
 .st .gr-cta h3 { font-size: clamp(26px, 2.8vw, 36px); letter-spacing: -0.03em; }
 .st .gr-cta .actions { margin-top: 20px; }
-.st .gr-mail { margin-top: 48px; }
-.st .gr-mail label { display: block; margin-bottom: 10px; color: var(--ink); font-weight: 500; }
-.st .gr .gr-mail-done { margin-top: 48px; color: var(--ink); }
 @media (max-width: 560px) { .st .gr-form { flex-direction: column; } .st .gr-score { padding: 24px; } }
 
 /* Motion: fade-up on scroll only. Content is visible until JS opts in (html.rv), so slow JS never hides the page. */
@@ -1041,3 +1038,7 @@ html.rv .st .reveal.in .mc-wrap { animation: st-card 1.1s cubic-bezier(.2, .8, .
 .st .gr-impact span { margin-left: 10px; color: var(--ink-3); font-weight: 500; }
 .st .gr-score-text { flex: 1; min-width: 0; }
 @media (max-width: 760px) { .st .gr-parts { grid-template-columns: 1fr; text-align: left; } }
+/* Full report details (2026-11-21): what the check found, quiet under each result */
+.st .gr .gr-detail { margin-top: 10px; color: var(--ink-3); font-size: 16px; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
+.st .gr-pass li > span { display: grid; }
+.st .gr-pass .gr-detail { margin-top: 2px; }
