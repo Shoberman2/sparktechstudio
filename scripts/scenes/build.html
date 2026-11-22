@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- We Build It: the example bakery's site in a code editor, the terminal showing the production deploy, the live site on an iPhone. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css">
+<style>
+  .ed { position: absolute; top: 32px; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 52px 270px 1fr; grid-template-rows: 40px 1fr; background: #1f1f1f; color: #cccccc; font-family: -apple-system, system-ui, sans-serif; }
+  .ed-title { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 0 16px; background: #181818; border-bottom: 1px solid #2b2b2b; font-size: 13px; color: #9d9d9d; }
+  .ed-title span { flex: 1; text-align: center; margin-right: 60px; }
+  .ed-act { background: #181818; border-right: 1px solid #2b2b2b; display: flex; flex-direction: column; align-items: center; gap: 22px; padding-top: 16px; }
+  .ed-act svg { width: 26px; height: 26px; fill: none; stroke: #868686; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .ed-act svg:first-child { stroke: #e0e0e0; }
+  .ed-side { background: #181818; border-right: 1px solid #2b2b2b; padding: 12px 0; font-size: 14px; }
+  .ed-side p { padding: 4px 18px; white-space: nowrap; }
+  .ed-side .h { font-size: 11px; font-weight: 600; letter-spacing: .06em; color: #9d9d9d; padding-bottom: 10px; }
+  .ed-side .on { background: #37373d; color: #fff; }
+  .ed-side .d1 { padding-left: 32px; } .ed-side .d2 { padding-left: 48px; }
+  .ed-main { display: grid; grid-template-rows: 38px 1fr 330px; min-width: 0; }
+  .ed-tabs { display: flex; background: #181818; font-size: 14px; }
+  .ed-tabs span { padding: 10px 18px; color: #9d9d9d; border-right: 1px solid #2b2b2b; }
+  .ed-tabs .on { background: #1f1f1f; color: #fff; box-shadow: inset 0 1px 0 #0078d4; }
+  .code { padding: 14px 0; font: 20px/33px 'SF Mono', ui-monospace, Menlo, monospace; overflow: hidden; }
+  .code div { display: flex; white-space: pre; }
+  .code .n { width: 64px; padding-right: 22px; text-align: right; color: #6e7681; flex: none; }
+  .k { color: #569cd6; } .c { color: #c586c0; } .f { color: #dcdcaa; } .t { color: #569cd6; } .a { color: #9cdcfe; } .s { color: #ce9178; } .p { color: #808080; } .x { color: #d4d4d4; } .g { color: #4ec9b0; }
+  .term { border-top: 1px solid #2b2b2b; background: #181818; padding: 10px 24px; font: 19px/31px 'SF Mono', ui-monospace, Menlo, monospace; color: #cccccc; }
+  .term .tt { display: flex; gap: 26px; margin-bottom: 8px; font: 600 12px/26px -apple-system, system-ui; letter-spacing: .05em; color: #9d9d9d; }
+  .term .tt b { color: #e7e7e7; box-shadow: inset 0 -1px 0 #e7e7e7; font-weight: 600; }
+  .term .ok { color: #3fb950; } .term .dim { color: #8b949e; } .term .u { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+</style><style>
+  /* Portrait (phones, 1080x1350) */
+  html.p .a1 { left:20px !important;top:120px !important; }
+  html.p .a1 > .phone, html.p .a1 > .mac { --z: .85 !important; }
+  html.p .a2 { left:740px !important;top:680px !important; }
+  html.p .a2 > .phone, html.p .a2 > .mac { --z: .7 !important; }
+</style>
+</head>
+<body>
+  <div class="at a1" style="left: 96px; top: 132px;">
+    <div class="mac" style="--z: .72">
+      <div class="lid"><div class="display">
+        <i class="notch"></i>
+        <div class="menubar"><b>Code</b><span>File</span><span>Edit</span><span>Selection</span><span>View</span><span>Go</span><span>Terminal</span><span class="r"><span>Sun Nov 22</span><span>9:41 AM</span></span></div>
+        <div class="ed">
+          <div class="ed-title"><div class="lights"><i></i><i></i><i></i></div><span>Hero.jsx · maple-and-rye</span></div>
+          <div class="ed-act">
+            <svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+            <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 8v8M18 10c0 4-6 3-10 7"/></svg>
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1" transform="rotate(12 17.5 6.5)"/></svg>
+          </div>
+          <div class="ed-side">
+            <p class="h">EXPLORER</p>
+            <p>⌄ maple-and-rye</p>
+            <p class="d1">› public</p>
+            <p class="d1">⌄ src</p>
+            <p class="d2 on">Hero.jsx</p>
+            <p class="d2">Menu.jsx</p>
+            <p class="d2">Order.jsx</p>
+            <p class="d2">Visit.jsx</p>
+            <p class="d2">site.css</p>
+            <p class="d1">index.html</p>
+            <p class="d1">package.json</p>
+          </div>
+          <div class="ed-main">
+            <div class="ed-tabs"><span class="on">Hero.jsx</span><span>Order.jsx</span><span>site.css</span></div>
+            <div class="code">
+<div><span class="n">1</span><span><span class="c">export default</span> <span class="k">function</span> <span class="f">Hero</span><span class="x">() {</span></span></div>
+<div><span class="n">2</span><span class="x">  <span class="c">return</span> (</span></div>
+<div><span class="n">3</span><span>    <span class="p">&lt;</span><span class="t">section</span> <span class="a">className</span><span class="x">=</span><span class="s">"hero"</span><span class="p">&gt;</span></span></div>
+<div><span class="n">4</span><span>      <span class="p">&lt;</span><span class="t">img</span> <span class="a">src</span><span class="x">=</span><span class="s">"/photos/croissants.jpg"</span> <span class="a">alt</span><span class="x">=</span><span class="s">"Croissants on a tray"</span> <span class="p">/&gt;</span></span></div>
+<div><span class="n">5</span><span>      <span class="p">&lt;</span><span class="t">h1</span><span class="p">&gt;</span><span class="x">Baked Before Sunrise.</span><span class="p">&lt;/</span><span class="t">h1</span><span class="p">&gt;</span></span></div>
+<div><span class="n">6</span><span>      <span class="p">&lt;</span><span class="t">p</span><span class="p">&gt;</span><span class="x">Sourdough, croissants and cakes, out of the oven by 7am.</span><span class="p">&lt;/</span><span class="t">p</span><span class="p">&gt;</span></span></div>
+<div><span class="n">7</span><span>      <span class="p">&lt;</span><span class="t">div</span> <span class="a">className</span><span class="x">=</span><span class="s">"actions"</span><span class="p">&gt;</span></span></div>
+<div><span class="n">8</span><span>        <span class="p">&lt;</span><span class="g">Link</span> <span class="a">to</span><span class="x">=</span><span class="s">"/order"</span> <span class="a">className</span><span class="x">=</span><span class="s">"btn"</span><span class="p">&gt;</span><span class="x">Order ahead</span><span class="p">&lt;/</span><span class="g">Link</span><span class="p">&gt;</span></span></div>
+<div><span class="n">9</span><span>        <span class="p">&lt;</span><span class="g">Link</span> <span class="a">to</span><span class="x">=</span><span class="s">"/menu"</span> <span class="a">className</span><span class="x">=</span><span class="s">"btn ghost"</span><span class="p">&gt;</span><span class="x">See the menu</span><span class="p">&lt;/</span><span class="g">Link</span><span class="p">&gt;</span></span></div>
+<div><span class="n">10</span><span>      <span class="p">&lt;/</span><span class="t">div</span><span class="p">&gt;</span></span></div>
+<div><span class="n">11</span><span>    <span class="p">&lt;/</span><span class="t">section</span><span class="p">&gt;</span></span></div>
+<div><span class="n">12</span><span class="x">  )</span></div>
+<div><span class="n">13</span><span class="x">}</span></div>
+            </div>
+            <div class="term">
+              <div class="tt"><span>PROBLEMS</span><span>OUTPUT</span><b>TERMINAL</b><span>PORTS</span></div>
+              <div><span class="dim">~/maple-and-rye $</span> npm run build</div>
+              <div><span class="ok">✓</span> built in 1.84s</div>
+              <div><span class="dim">~/maple-and-rye $</span> vercel --prod</div>
+              <div><span class="ok">✓</span> Production: <span class="u">https://mapleandrye.com</span> <span class="dim">[6s]</span></div>
+              <div><span class="dim">~/maple-and-rye $</span> <span style="display:inline-block;width:10px;height:20px;vertical-align:-4px;background:#cccccc"></span></div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div class="base"></div>
+    </div>
+  </div>
+
+  <div class="at a2" style="left: 1262px; top: 468px;">
+    <div class="phone" style="--z: .56" data-status="light"><div data-mr="mobile"></div></div>
+  </div>
+  <script src="scene.js"></script>
+</body></html>

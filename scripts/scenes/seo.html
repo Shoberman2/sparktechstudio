@@ -1,0 +1,77 @@
+<!doctype html>
+<!-- SEO: Google on an iPhone, the search "bakery near me", the example bakery first. Maple & Rye is an example business. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css">
+<style>
+  .g { font-family: Arial, Helvetica, sans-serif; color: #202124; }
+  .g-head { display: flex; align-items: center; justify-content: space-between; height: 60px; margin-top: 54px; padding: 0 16px; }
+  .g-burger { width: 22px; display: grid; gap: 4px; } .g-burger i { height: 2px; background: #5f6368; border-radius: 1px; }
+  .g-logo { width: 84px; }
+  .g-me { width: 32px; height: 32px; border-radius: 50%; background: #7b5e3b; color: #fff; display: grid; place-items: center; font: 500 15px/1 Arial; }
+  .g-box { display: flex; align-items: center; gap: 12px; height: 48px; margin: 6px 14px 0; padding: 0 16px; border-radius: 24px; box-shadow: 0 1px 6px rgba(32, 33, 36, .28); font-size: 16px; }
+  .g-box span { flex: 1; }
+  .g-tabs { display: flex; gap: 22px; padding: 0 22px; margin-top: 14px; font-size: 14px; color: #5f6368; }
+  .g-tabs b { position: relative; color: #202124; font-weight: 400; }
+  .g-tabs b::after { content: ''; position: absolute; left: -2px; right: -2px; bottom: -12px; height: 3px; border-radius: 3px 3px 0 0; background: #202124; }
+  .g-sep { height: 1px; margin-top: 11px; background: #ebebeb; }
+  .g-res { padding: 18px 16px 18px; }
+  .g-res + .g-res { border-top: 8px solid #f1f3f4; }
+  .g-src { display: flex; align-items: center; gap: 12px; }
+  .g-fav { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: #f2ece2; box-shadow: inset 0 0 0 1px #e3dccf; }
+  .g-fav span { font: 600 11px/1 ui-serif, 'New York', Georgia, serif; color: #6b4e2a; letter-spacing: -0.02em; }
+  .g-src p { font-size: 14px; line-height: 20px; } .g-src small { display: block; font-size: 12px; line-height: 16px; color: #4d5156; }
+  .g-src .dots { margin-left: auto; color: #5f6368; font-size: 18px; letter-spacing: -1px; }
+  .g-title { margin-top: 10px; color: #1a0dab; font-size: 20px; line-height: 26px; }
+  .g-body { display: flex; gap: 14px; margin-top: 6px; }
+  .g-snip { flex: 1; color: #4d5156; font-size: 14px; line-height: 22px; }
+  .g-thumb { flex: none; width: 96px; height: 96px; border-radius: 10px; object-fit: cover; }
+  .g-chips { display: flex; gap: 8px; margin-top: 14px; }
+  .g-chips span { padding: 9px 14px; border-radius: 18px; box-shadow: inset 0 0 0 1px #dadce0; color: #1a0dab; font-size: 14px; }
+</style><style>
+  /* Portrait (phones, 1080x1350) */
+  html.p .a1 { left:234px !important;top:120px !important; }
+  html.p .a1 > .phone, html.p .a1 > .mac { --z: 1.45 !important; }
+</style>
+</head>
+<body>
+  <div class="at a1" style="left: 500px; top: 96px;">
+    <div class="phone" style="--z: 1.42">
+      <div class="g">
+        <div class="g-head">
+          <div class="g-burger"><i></i><i></i><i></i></div>
+          <img class="g-logo" src="photos/google.svg" alt="">
+          <div class="g-me">J</div>
+        </div>
+        <div class="g-box">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#9aa0a6" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <span>bakery near me</span>
+          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#70757a" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285f4" d="M12 15c1.66 0 3-1.31 3-2.97V5.97C15 4.31 13.66 3 12 3S9 4.31 9 5.97v6.06C9 13.69 10.34 15 12 15z"/><path fill="#34a853" d="M11 18.08h2V21h-2z"/><path fill="#fbbc04" d="M7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45.56 2.42 1.47 3.38v.32l-1.15 1.18-.27-.01z"/><path fill="#ea4335" d="M12 16.93a4.97 5.25 0 0 1-3.54-1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"/></svg>
+        </div>
+        <div class="g-tabs"><b>All</b><span>Maps</span><span>Images</span><span>Shopping</span><span>News</span></div>
+        <div class="g-sep"></div>
+
+        <div class="g-res">
+          <div class="g-src"><div class="g-fav"><span style="font-size:15px">M</span></div><p>Maple &amp; Rye Bakery<small>https://mapleandrye.com</small></p><span class="dots">⋮</span></div>
+          <p class="g-title">Maple &amp; Rye Bakery · Sourdough Baked Every Morning</p>
+          <div class="g-body">
+            <p class="g-snip">Sourdough, croissants and cakes, out of the oven by 7am. Order ahead online and pick up on your way in.</p>
+            <img class="g-thumb" src="photos/croissant-tray.jpg" alt="">
+          </div>
+          <div class="g-chips"><span>Menu</span><span>Order ahead</span><span>Cakes</span><span>Hours</span></div>
+        </div>
+
+        <div class="g-res">
+          <div class="g-src"><div class="g-fav" style="background:#e8eef5;box-shadow:inset 0 0 0 1px #d6dee8"><span style="color:#30506f;font-family:Arial">CL</span></div><p>Corner Loaf<small>https://cornerloaf.com › bakery</small></p><span class="dots">⋮</span></div>
+          <p class="g-title">Corner Loaf | Neighborhood Bread and Coffee</p>
+          <div class="g-body"><p class="g-snip">Bread, bagels and coffee on the corner since the early days. Walk in, no orders online.</p></div>
+        </div>
+
+        <div class="g-res">
+          <div class="g-src"><div class="g-fav" style="background:#eef3e9;box-shadow:inset 0 0 0 1px #dce5d4"><span style="color:#46613a;font-family:Arial">B</span></div><p>Brightside Bread Co.<small>https://brightsidebread.co</small></p><span class="dots">⋮</span></div>
+          <p class="g-title">Brightside Bread Co. · Wholesale and Retail</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="scene.js"></script>
+</body></html>

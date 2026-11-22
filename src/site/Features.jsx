@@ -5,7 +5,9 @@ import { useEffect, useRef, useState } from 'react'
 // The section pins while you scroll. On the left the service names turn on a reel past a fixed gold check;
 // on the right the claim and a device picture of the service swap in as each name lands.
 // All motion follows scroll; nothing plays on its own ("it looks too animated").
-// Real brands, at the founder's request: UTern, Leed and BallotWatch on the startups picture only. The bakeries and their customers are examples.
+// Real brands, at the founder's request: UTern, Leed and BallotWatch on the startups picture only. The bakery and its customers are examples.
+// The pictures (public/home/fx) are real UI rendered from scripts/scenes, with CC0 photographs and live-site captures (2026-11-22,
+// founder: "make them look less AI"). They replace the generated photographs. Edit a scene and run scripts/scenes/render.sh.
 // Without JavaScript or with reduced motion (no html.rv) the reel is hidden and the services read as a plain list.
 
 // A ticked box on the reel: an empty ring until its name comes up, then a gold disc whose check draws in
@@ -13,15 +15,15 @@ const Ring = () => <svg className="rc" viewBox="0 0 24 24" aria-hidden="true"><c
 const Tick = () => <svg className="fx-tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.8l5 5L19.5 7" /></svg>
 
 const items = [
-  { id: 'seo', name: 'SEO', claim: 'Number One On Google.', img: '/home/fx/seo.jpg', alt: 'An iPhone showing Maple and Rye Bakery, an example business, first on a Google search.' },
-  { id: 'aeo', name: 'AEO', claim: 'Get Mentioned In AI Chats.', img: '/home/fx/aeo.jpg', alt: 'ChatGPT on an iPhone recommending Maple and Rye Bakery by name, an example business.' },
-  { id: 'design', name: 'Modern Design', claim: 'A Site That Looks World Class.', img: '/home/fx/design.jpg', alt: 'A dated 1990s bakery site on an old monitor beside the new site on a MacBook and an iPhone.' },
-  { id: 'build', name: 'We Build It', claim: 'From A Call To A Live Site.', img: '/home/fx/build.jpg', alt: 'A bakery site being built in a code editor on a MacBook, with the finished site on an iPhone.' },
-  { id: 'maintain', name: 'We Maintain It', claim: 'It Breaks. We Fix It.', img: '/home/fx/maintain.jpg', alt: 'One iPhone shows a page error. The iPhone in front shows the same site back up, marked fixed.' },
-  { id: 'new-features', name: 'New Features', claim: 'Ask For It. We Ship It.', img: '/home/fx/features.jpg', alt: 'A bakery site on an iPhone with three new features, beside chips reading bookings, gift cards and menu live.' },
-  { id: 'ai-agents', name: 'AI Agents', claim: 'AI That Answers For You.', img: '/home/fx/agents.jpg', alt: 'A text conversation where a business\'s AI agent takes a birthday cake order at 9:14 PM.' },
-  { id: 'apps', name: 'Apps', claim: 'AI Apps And Web Apps.', img: '/home/fx/apps.jpg', alt: 'A business dashboard on a MacBook with orders and an AI summary of the day.' },
-  { id: 'startups', name: 'Startups', claim: 'We Build Out Startups Too.', img: '/home/fx/startups.jpg', alt: 'Three iPhones showing UTern, Leed and BallotWatch.' },
+  { id: 'seo', name: 'SEO', claim: 'Number One On Google.', img: '/home/fx/seo.jpg', alt: "Google on an iPhone: the search \"bakery near me\" shows Maple & Rye Bakery, an example business, as the first result." },
+  { id: 'aeo', name: 'AEO', claim: 'Get Mentioned In AI Chats.', img: '/home/fx/aeo.jpg', alt: "ChatGPT on an iPhone naming Maple & Rye Bakery, an example business, as the place to get sourdough, with its site as the source." },
+  { id: 'design', name: 'Modern Design', claim: 'A Site That Looks World Class.', img: '/home/fx/design.jpg', alt: "An example bakery's dated website in an old browser window, beside its new site on a MacBook and an iPhone." },
+  { id: 'build', name: 'We Build It', claim: 'From A Call To A Live Site.', img: '/home/fx/build.jpg', alt: "The example bakery's site in a code editor on a MacBook, the terminal showing it live in production, and the finished site on an iPhone." },
+  { id: 'maintain', name: 'We Maintain It', claim: 'It Breaks. We Fix It.', img: '/home/fx/maintain.jpg', alt: "One iPhone shows the bakery's order page down with a server error. The iPhone in front shows it working again, with a message that it is fixed." },
+  { id: 'new-features', name: 'New Features', claim: 'Ask For It. We Ship It.', img: '/home/fx/features.jpg', alt: "The bakery's owner asks SparkTech Studios for gift cards in Messages and hears they are live. Beside it, the new gift card page on the site." },
+  { id: 'ai-agents', name: 'AI Agents', claim: 'AI That Answers For You.', img: '/home/fx/agents.jpg', alt: "A text conversation at 9:14 PM where the bakery's AI agent shows its chocolate cake and takes a birthday cake order for Saturday." },
+  { id: 'apps', name: 'Apps', claim: 'AI Apps And Web Apps.', img: '/home/fx/apps.jpg', alt: "The bakery's orders app on a MacBook: an AI summary of the morning above today's pickups and their status." },
+  { id: 'startups', name: 'Startups', claim: 'We Build Out Startups Too.', img: '/home/fx/startups.jpg', alt: "The live UTern, Leed and BallotWatch websites on three iPhones." },
 ]
 
 const STEP = 26 // degrees between names on the reel
@@ -91,7 +93,11 @@ export default function Features() {
               <h3 className="wheel-name"><Tick />{x.name}</h3>
               <p className="fx-claim">{x.claim}</p>
             </div>
-            <figure className="fx-pic fx-shot"><img src={x.img.replace('.jpg', '.webp')} srcSet={`${x.img.replace('.jpg', '-900.webp')} 900w, ${x.img.replace('.jpg', '.webp')} 1600w`} sizes="(max-width: 760px) 92vw, 50vw" alt={x.alt} width="1600" height="1080" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" /></figure>
+            <figure className="fx-pic fx-shot"><picture>
+              {/* Phones get the portrait (4:5) render of the same scene, with the devices drawn larger */}
+              <source media="(max-width: 760px)" srcSet={x.img.replace('.jpg', '-m.webp')} width="1080" height="1350" />
+              <img src={x.img.replace('.jpg', '.webp')} srcSet={`${x.img.replace('.jpg', '-900.webp')} 900w, ${x.img.replace('.jpg', '.webp')} 1600w`} sizes="50vw" alt={x.alt} width="1600" height="1080" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+            </picture></figure>
           </article>)}
         </div>
       </div>

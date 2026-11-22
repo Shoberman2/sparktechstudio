@@ -1,0 +1,74 @@
+/* Scenes for the home page reel (public/home/fx/*). Each scene is a 1600x1080 page of real UI in a device frame,
+   rendered at 2x and exported by export.py. Real type, real layouts, real photographs (photos/, CC0), no generated art.
+   Devices are drawn at their true point sizes (iPhone 16 Pro 402x874, MacBook Pro 14" 1512x982) and sized with zoom. */
+
+@font-face { font-family: 'Instrument Sans'; font-weight: 400; src: url('../../node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 500; src: url('../../node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 600; src: url('../../node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 700; src: url('../../node_modules/@fontsource/instrument-sans/files/instrument-sans-latin-700-normal.woff2') format('woff2'); }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1600px; height: 1080px; overflow: hidden; }
+html.p, html.p body { width: 1080px; height: 1350px; }
+body { position: relative; background: #121211; font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #000; }
+img { display: block; }
+
+/* ---------- iPhone 16 Pro, natural titanium ---------- */
+.at { position: absolute; }
+.phone { position: relative; width: 422px; height: 894px; zoom: var(--z, 1); border-radius: 72px; padding: 4px;
+  background: linear-gradient(150deg, #a9a59d 0%, #6f6c66 18%, #4a4844 40%, #77746d 62%, #3f3d3a 82%, #8f8b83 100%);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, .08) inset, 0 50px 90px rgba(0, 0, 0, .55), 0 12px 28px rgba(0, 0, 0, .45); }
+.phone::after { content: ''; position: absolute; inset: 1px; border-radius: 71px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); pointer-events: none; }
+.phone .bezel { width: 100%; height: 100%; border-radius: 68px; padding: 6px; background: #050505; }
+.phone .screen { position: relative; width: 402px; height: 874px; border-radius: 62px; overflow: hidden; background: #fff; }
+.phone .key { position: absolute; width: 4px; border-radius: 2px; background: linear-gradient(90deg, #4a4844, #8f8b83); }
+.phone .key.a { left: -3px; top: 168px; height: 34px; }
+.phone .key.u { left: -3px; top: 230px; height: 62px; }
+.phone .key.d { left: -3px; top: 306px; height: 62px; }
+.phone .key.p { right: -3px; top: 250px; height: 96px; background: linear-gradient(90deg, #8f8b83, #4a4844); }
+.phone .key.c { right: -3px; top: 560px; height: 56px; background: linear-gradient(90deg, #8f8b83, #4a4844); }
+.island { position: absolute; z-index: 20; top: 11px; left: 50%; width: 126px; height: 37px; margin-left: -63px; border-radius: 20px; background: #000; }
+.status { position: absolute; z-index: 19; top: 0; left: 0; right: 0; height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 6px 30px 0 50px; font: 600 17px/1 -apple-system, system-ui; letter-spacing: -0.02em; color: #000; }
+.status.light { color: #fff; }
+.status .icons { display: flex; align-items: center; gap: 6px; }
+.status svg { display: block; fill: currentColor; }
+.homebar { position: absolute; z-index: 19; bottom: 8px; left: 50%; width: 140px; height: 5px; margin-left: -70px; border-radius: 3px; background: #000; }
+.homebar.light { background: #fff; }
+
+/* ---------- MacBook Pro 14", silver ---------- */
+.mac { position: relative; zoom: var(--z, 1); width: 1700px; }
+.mac .lid { position: relative; width: 1546px; margin-inline: auto; padding: 16px 17px 20px; border-radius: 26px 26px 10px 10px; background: #0b0b0b;
+  box-shadow: 0 0 0 2px #b6b6b9, 0 0 0 3px #8e8e91, 0 40px 90px rgba(0, 0, 0, .5); }
+.mac .display { position: relative; width: 1512px; height: 982px; overflow: hidden; border-radius: 10px 10px 2px 2px; background: #fff; }
+.mac .notch { position: absolute; z-index: 30; top: 0; left: 50%; width: 200px; height: 32px; margin-left: -100px; border-radius: 0 0 12px 12px; background: #0b0b0b; }
+.mac .base { position: relative; height: 28px; margin-top: 1px; border-radius: 2px 2px 26px 26px / 2px 2px 14px 14px;
+  background: linear-gradient(180deg, #e9e9eb 0%, #cfcfd2 30%, #a9a9ad 75%, #7d7d81 100%); box-shadow: 0 30px 60px rgba(0, 0, 0, .55); }
+.mac .base::before { content: ''; position: absolute; top: 0; left: 50%; width: 240px; height: 10px; margin-left: -120px; border-radius: 0 0 12px 12px; background: linear-gradient(180deg, #a3a3a7, #c6c6c9); }
+.menubar { position: absolute; z-index: 25; top: 0; left: 0; right: 0; height: 32px; display: flex; align-items: center; gap: 22px; padding: 0 20px; background: rgba(246, 246, 246, .92); font: 500 14px/1 -apple-system, system-ui; color: #1d1d1f; }
+.menubar b { font-weight: 700; }
+.menubar .r { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+
+/* Safari window chrome (desktop) */
+.safari { position: absolute; top: 32px; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; background: #fff; }
+.safari .bar { flex: none; height: 52px; display: flex; align-items: center; gap: 16px; padding: 0 18px; background: #f6f6f6; border-bottom: 1px solid #e3e3e3; }
+.lights { display: flex; gap: 8px; }
+.lights i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+.lights i:nth-child(2) { background: #febc2e; }
+.lights i:nth-child(3) { background: #28c840; }
+.safari .url { flex: 1; max-width: 520px; margin-inline: auto; height: 32px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; background: #e8e8e8; font: 500 14px/1 -apple-system, system-ui; color: #3a3a3c; }
+.safari .page { position: relative; flex: 1; overflow: hidden; }
+
+/* ---------- Maple & Rye, the example bakery's new site ---------- */
+.mr { position: relative; height: 100%; overflow: hidden; background: #fbf8f3; color: #1f1a14; font-family: 'Instrument Sans', -apple-system, system-ui, sans-serif; }
+.mr-word { font-family: ui-serif, 'New York', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+.mr-hero { position: relative; overflow: hidden; color: #fff; }
+.mr-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mr-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 14, 8, .45) 0%, rgba(20, 14, 8, .05) 35%, rgba(20, 14, 8, .15) 60%, rgba(20, 14, 8, .62) 100%); }
+.mr-hero > :not(img) { position: relative; z-index: 1; }
+.mr-nav { display: flex; align-items: center; justify-content: space-between; }
+.mr-btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: #fff; color: #1f1a14; font-weight: 600; white-space: nowrap; }
+.mr-btn.dark { background: #1f1a14; color: #fff; }
+.mr h1 { font-family: ui-serif, 'New York', Georgia, serif; font-weight: 500; letter-spacing: -0.025em; line-height: 1; }
+
+/* Shared iOS pieces */
+.ios { font-family: -apple-system, system-ui, sans-serif; }
