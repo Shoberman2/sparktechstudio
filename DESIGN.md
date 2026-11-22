@@ -1,5 +1,14 @@
 # Design System — SparkTech Studio
 
+## Real pictures, a real river (2026-11-22)
+
+The founder: "change the images to make them look less AI and improve the design as much as you can"; then, on the ground, "i liked the gold river. Let's make it look less AI".
+
+- **Reel pictures** (`public/home/fx/*`) are real UI rendered from HTML in `scripts/scenes` (see its README): Google, ChatGPT, Messages, Safari, a code editor and an orders app, drawn at true iPhone 16 Pro and MacBook Pro 14" sizes, sharp at 2x. One example business, Maple & Rye Bakery, runs through every picture; its photographs are real bread (CC0). The startups picture shows live captures of UTern, Leed and BallotWatch. No generated images, no glowing pills, no hands, no warped text. Phones get a portrait (4:5) render, `<name>-m.webp`, with the devices drawn larger. Change a picture by editing its scene and running `scripts/scenes/render.sh`.
+- **The gold river stays, and is now a real river**: a NASA astronaut photograph of a river in Peru in sunglint (ISS043-E-101700, public domain), turned to flow down the page and toned black and gold by `scripts/scenes/river.py`. It is kept dim so the white type and gold buttons stay the brightest things on the page. Same files (`public/home/river*`), same CSS.
+- **Glows that read as AI are gone**: the halo on the ticked reel name, the soft glow on the reel's gold arc (the line stays), the radial gold glow inside the closing panel (the gold double frame stays). Picture frames have a neutral edge instead of a gold ring.
+- `public/og.png` is regenerated from the current hero.
+
 ## Studio plus directory (2026-11-11, branch `redesign/studio-aggregator`)
 
 Built on Direction A (`src/site/site.css`: white, ink, Geist, one gold, the 8px button from the 2026-11-01 note). Tokens unchanged. Header and footer use the gold four-point spark and read SparkTech Studios; the bolt is the assistant face only. Third pass (Spencer: minimal, clear, concise, scrap what does not earn its place): home is three sections. A giant statement with the checker field directly under it, the work as large screenshot cards (first one featured across the full width), and the price as one oversized line. No section headings above the work, no logos beside names, no secondary links on cards, no video, no About block (the closing band names Spencer). Nav is three links; footer is three short columns. Category and status are plain words, never chips.
