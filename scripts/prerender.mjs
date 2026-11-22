@@ -37,7 +37,9 @@ for (const r of routes) {
   page = page.replace(/(<meta name="twitter:title" content=")[^"]*(")/, (_, a, b) => a + esc(r.title) + b)
   page = page.replace(/(<meta name="twitter:description" content=")[^"]*(")/, (_, a, b) => a + esc(r.description) + b)
   const url = `${site}${r.path === '/' ? '/' : r.path}`
-  page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => a + url + b)
+  // The 404 page is noindex and has no address of its own, so it carries no canonical
+  if (r.path === '/404') page = page.replace(/\s*<link rel="canonical"[^>]*>/, '')
+  else page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => a + url + b)
   page = page.replace(/(<meta property="og:url" content=")[^"]*(")/, (_, a, b) => a + url + b)
   if (r.image) page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, (_, a, b) => a + site + r.image + b)
   if (r.noindex) page = page.replace('</head>', '  <meta name="robots" content="noindex" />\n  </head>')
