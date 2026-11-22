@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "company_id": "leed",
+  "site": {
+    "name": "Leed",
+    "descriptor": "Story intelligence for media companies",
+    "title": "Leed | Story intelligence for newsrooms",
+    "description": "A local concept preview of Leed, a story intake and routing concept for newsrooms.",
+    "footer": "Local preview · no production connection",
+    "palette": {
+      "paper": "#faf8f3",
+      "ink": "#27231f",
+      "muted": "#625c55",
+      "accent": "#b83b28",
+      "line": "#ddd7ce"
+    }
+  },
+  "hero": {
+    "eyebrow": "Story intelligence for newsrooms",
+    "headline": "Bring reader tips into the newsroom story desk.",
+    "body": "Leed is designed to turn audience submissions into concise story briefs and help editors route leads by beat and geography, with source contact preferences kept in view.",
+    "primary_label": "Request a pilot",
+    "secondary_label": "See how it works",
+    "secondary_href": "#workflow",
+    "note": "Design concept only. No live tips, newsroom accounts, or routing connections.",
+    "inquiry": {
+      "label": "Talk about a pilot",
+      "href": "mailto:hello@leed.media?subject=Leed%20pilot%20for%20our%20media%20company"
+    }
+  },
+  "workflow": [
+    {"title": "Capture a reader tip", "body": "Collect a submission with its evidence, context, and contact preferences. The intake flow is not connected in this preview."},
+    {"title": "Prepare an editor brief", "body": "The design handoff shows a concise brief with what is checkable, sensitive, and still under review. No AI service runs here."},
+    {"title": "Route by beat and geography", "body": "The design describes matching against beat and location context. A reporter directory or routing service is not connected."}
+  ],
+  "features": [
+    {"title": "Source preferences stay visible", "body": "The design describes contact preferences and sensitivity flags alongside each lead. No source-contact request is processed here."},
+    {"title": "Give editors the signal", "body": "The concept compares public interest, verifiability, source context, and urgency while leaving editorial decisions with people."},
+    {"title": "Keep the context together", "body": "Evidence, place, beat, and source-safety context are shown together in the design concept, not linked to live newsroom data."}
+  ],
+  "screenshot": {
+    "path": "assets/desk-app-concept-synthetic.jpg",
+    "alt": "LEED newsroom desk design concept showing a queue of sample tips, with no live newsroom data.",
+    "caption": "Local LEED design handoff · synthetic sample records · not a live queue"
+  },
+  "policy": {
+    "network": false,
+    "model": false,
+    "publish": false,
+    "send": false,
+    "billing": false,
+    "max_stage_attempts": 2
+  }
+}

@@ -1,0 +1,10 @@
+{"at":"2026-10-09T23:26:11.487864+00:00","event":"created"}
+{"at":"2026-10-09T23:26:11.488338+00:00","attempt":1,"event":"step_started","step":"validate"}
+{"at":"2026-10-09T23:26:11.488434+00:00","attempt":1,"event":"step_completed","result":{"config_schema":1,"image_bytes":41700,"input_sha256":"d627c449a6c53563278d4a1b5a734c693533a7bd7fdf8fb25462da22aabfe029","network_used":false},"step":"validate"}
+{"at":"2026-10-09T23:26:11.488866+00:00","attempt":1,"event":"step_started","step":"render"}
+{"at":"2026-10-09T23:26:11.489673+00:00","attempt":1,"event":"step_completed","result":{"asset_sha256":"d24c525ac81ca0802dc748175d8263014535f568e296e0b5e197a719c99b0e13","html_bytes":9328,"html_sha256":"5942a6af0ca4c6469dcac96199e12465419eb3f03de63a40dc10083e062d8866"},"step":"render"}
+{"at":"2026-10-09T23:26:11.490043+00:00","attempt":1,"event":"step_started","step":"verify"}
+{"at":"2026-10-09T23:26:11.490673+00:00","attempt":1,"event":"step_failed","message":"intentional test fault after step entry; no external action ran","step":"verify","type":"InjectedFailure"}
+{"at":"2026-10-09T23:26:16.533075+00:00","attempt":2,"event":"step_started","step":"verify"}
+{"at":"2026-10-09T23:26:16.534233+00:00","attempt":2,"event":"step_completed","result":{"external_network_resources":0,"h1_count":1,"html_bytes":9328,"image_alt_present":true,"inquiry_transport":"mailto-only; no send performed","local_anchor_count":5,"mailto_link_count":3,"prototype_disclosure":true,"scripts":0,"sha256":"5942a6af0ca4c6469dcac96199e12465419eb3f03de63a40dc10083e062d8866"},"step":"verify"}
+{"at":"2026-10-09T23:26:16.534674+00:00","event":"run_completed"}

@@ -1,0 +1,41 @@
+# SparkTech systems: implementation checklist
+
+Status is based on local source/tests and saved records. “Live” means a real
+connected integration, not code that could call a provider.
+
+Latest canary implementation checks: 14/14 email-gate tests and 8/8 Graph
+adapter tests pass. The full local Python suite reports 127 passed and one
+unrelated time-boundary failure in the outreach daily-cap fixture. See
+[`EMAIL-CANARY-STATUS.md`](EMAIL-CANARY-STATUS.md) for the observed cause.
+
+| System | Implemented and locally tested | Data/evidence actually exercised | Live status and missing production dependencies | Next bounded milestone |
+|---|---|---|---|---|
+| RSEI QA/repair runner | Company-scoped local runner, isolated source snapshots, browser probe, deterministic fixture worker, independent tests, evidence, local release/rollback and recovery. Existing runner suite covers these paths. | Synthetic counter fixture and local Chromium/loopback runs. Optional AI adapters have mock/API-contract tests only. | No production company is connected; no production deploy path. Needs isolated company runtime, approved source/test/browser scope, authenticated approval, secret broker and owner release adapter. | Run a bounded pilot against an owner-selected staging source after the required runtime/security approvals. |
+| Knowledge/context | Local ledger/context reconciliation, source hash and staleness checks, QA bridge patterns. | Local markdown/JSON fixtures and test records. | No connected company meeting, podcast, transcript, CRM or document source. Needs source allowlist, identities, freshness, retention and owner review. | Approve one non-sensitive source class and a read-only ingestion contract. |
+| BallotWatch source checking | Synthetic citation checks, defect proposals, human gate, isolated apply, independent recheck, evidence, replay and rollback; tests cover fail/partial/repeat/denial. A separate fixed-target, one-shot public snapshot records only aggregate API schema, update timestamp, freshness and response hash. | Synthetic `clean.json`, `defective.json`, source fixtures; saved 2026-10-08 SEO/AEO audit. The new public snapshot tests use synthetic responses (5/5 pass); actual current GET was blocked by this execution environment's network (`URLError`). | Not connected to company data; no recurring fetcher, real-claim evaluation, deployed checker, or site mutation. Earlier one-off stats GET observation does not count as current adapter verification. Existing website audit has stopped on stale cached `robots.txt`. | Run the fixed public API snapshot from an approved network; owner review primary-source mapping and freshness rules before using real claims. |
+| LEED public site | Fixed-target, one-shot homepage metadata/hash probe; no page text retained and no arbitrary URL input. | Synthetic adapter tests only (shared 5-test suite); current GET was blocked by this execution environment's network (`URLError`). | No LEED source/API connection or private tip access. Public homepage probe is not a product integration; no crawl or intake access. | If LEED requests it, run one metadata-only snapshot from an approved network, then separately agree any source scope. |
+| Growth operations | Local ICP match rules, draft generation, aggregate cohort validation, SEO/AEO checklist and approved local metadata staging; fixture tests. | Synthetic prospects, retention rows, and local pages. | No CRM, analytics or campaign connection; sending and publishing disabled. Needs owner-approved data definitions and read-only adapter; any send/publish has separate approval. | Validate one company-owned, privacy-reviewed aggregate metric input. |
+| Email/outreach | Tenant-scoped SQLite queue, exact campaign/draft approvals, mock outbox, caps/windows, idempotency, suppression, ambiguous delivery holds, theme rendering. Graph transport has mock tests. `email_pilot.py` defines a plain-text, exact one-message boundary; `entra_review.py` adds optional MSAL OIDC reviewer authentication, `canary_review.py` a local approve/deny-only view, and `sqlite_canary_store.py` durable atomic claims. | Synthetic prospect and `example.invalid` addresses; in-memory mail/identity/store/HTTP fakes. | **No real email sent.** No tenant app registration, OAuth grant/token, live reviewer sign-in, provisioned production DB, live-enabled DB, inbound webhook, Mail.Read, or hosting. Entra/SQLite behavior is mock-tested only. | Configure the approved single-tenant Entra app/reviewer allowlist, separately approve delegated Mail.Send and secure token handling, and choose the explicit SQLite data path/retention. Review exact draft before any send. |
+| Customer onboarding | Deterministic requirement checklist and missing-item evaluator. | Caller-supplied local JSON only. | No customer accounts, identity, CRM, provisioning or connected completion source. | Select a synthetic onboarding schema and owner-approved completion evidence. |
+| Support | Approved same-company document overlap selector with citations and escalation. | Synthetic handbook fixture; draft only, send disabled. | No knowledge base connection, ticket queue, authenticated support-agent identity or response delivery. Matching is literal token overlap, not semantic/AI understanding. | Select one approved document source and manually check citation/escalation behavior. |
+| Feedback grouping | Normalized tag grouping, frequency/severity summaries and evidence IDs. | Synthetic JSON rows. | No survey, app-store or support-ticket feed. Prioritization remains a human decision. | Agree a consented export schema and deduplication rule. |
+| Reliability | Local recent-window event classification, stop signal and owner-recovery recommendation; existing runner has bounded timeout/recovery logic. | Synthetic incident rows and runner fixtures. | No monitoring/job provider integration and no automatic restart or production recovery. | Select one read-only monitor feed and a named recovery owner. |
+| Customer success | Threshold flags from aggregate activity timestamps; no outreach generated. | Synthetic aggregate activity. | No live product event stream, account data, customer-success platform or intervention outcome. | Owner approves a privacy-reviewed meaningful-activity definition and cohort sample. |
+| Experiments | Required hypothesis, primary metric, guardrails, sample floor and stop-condition validation. | Synthetic experiment design JSON. | No randomization, assignment, analytics, sample ingestion or experiment execution. | Validate one metric definition and stop rule with an owner; execution requires its own approval. |
+| Human evidence-backed handoffs | Local packet requires issue, evidence references, decision and named owner; waits for human. | Synthetic local evidence IDs. | No authenticated escalation roster or case-management queue; no outbound message. | Choose an owner-controlled queue and identity mapping. |
+| Multi-company boundary | Disabled example manifests, local company IDs, tenant-scoped tables and test rejection of mismatched companies. | Synthetic fixtures; adopter records are descriptive only. | No external company is connected; source version 0.1.0 is unpublished and no package install/deploy is evidenced. | Security review one adopter manifest and pin a commit inside a company-owned runtime. |
+| Finance operations | **Excluded by user direction.** | None. | No reconciliation, invoice tracking, forecast, or payment code added. | None in this scope. |
+
+## Honest overall readout
+
+SparkTech has useful local prototypes and meaningful synthetic test coverage.
+That does not mean “everything is working” as live company operations: there
+are no connected customer systems or hosted workers shown by these records.
+A saved BallotWatch public-site audit is historical read-only evidence; the
+new current probes were blocked by network restrictions. Mail, support,
+operations, and company data remain disconnected.
+
+For email, the next milestone is a product/security decision about reviewer
+identity and approved durable attempt storage, followed by separately approved
+Microsoft tenant/app/delegated Mail.Send setup. No live-send configuration or
+final canary message exists yet.

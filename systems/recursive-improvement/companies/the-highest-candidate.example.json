@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "candidate_id": "the-highest",
+  "project_identity": "owner-confirmed-from-read-only-local-README",
+  "possible_historical_name": "Cherry Picked (README product identity); The Highest is the owner-requested adopter label.",
+  "status": "disabled-example",
+  "enabled": false,
+  "source_repo": "https://github.com/Shoberman2/comp",
+  "source_hash": null,
+  "runtime": {
+    "owner_managed": true,
+    "package": "sparktech-rsei",
+    "version_pin": "0.1.0 (source version; unpublished)",
+    "credentials": [],
+    "network": "disabled",
+    "deployment": "disabled",
+    "external_publishing": "disabled"
+  },
+  "email_identity": {
+    "sender_display_name": "SparkTech Studio",
+    "project_brand_assets": null,
+    "brand_rendering": "use verified project theme only after owner provides or confirms its assets; no send while unverified"
+  },
+  "capability_allowlist": {
+    "proposed_skills": [
+      "public-source citation checking",
+      "human-reviewed outreach drafting",
+      "public SEO/AEO audit",
+      "isolated product improvement with independent tests"
+    ],
+    "proposed_tools": [
+      "synthetic/local fixtures",
+      "owner-allowlisted public GET only",
+      "local mock mail adapter",
+      "isolated test runner",
+      "local evidence ledger"
+    ],
+    "denied_tools": [
+      "partner account/API access",
+      "external email or social send",
+      "publish/deploy",
+      "regulated-goods transaction or purchase facilitation",
+      "secret access"
+    ],
+    "activation": "All capabilities remain disabled until separate project-owner identity, exact-source and permission approval."
+  },
+  "proposed_bounded_workflows": [
+    "partnership action tracking from owner-approved public or local sources",
+    "brand-reviewed outreach drafts with human approval before any send",
+    "public-source SEO/AEO audits",
+    "isolated product improvement with independent checks and rollback"
+  ],
+  "data_policy": {
+    "allowed": [
+      "synthetic fixtures",
+      "owner-allowlisted public non-sensitive project material"
+    ],
+    "prohibited": [
+      "unverified partner access",
+      "private partner/customer data without explicit scoped grant",
+      "regulated-goods transaction data",
+      "dispensary/POS data",
+      "purchase or transaction facilitation"
+    ],
+    "commercial_restrictions": [
+      "no cannabis purchase facilitation",
+      "no regulated-goods transactions",
+      "no assumption of High Times access, partnership, or licensing"
+    ]
+  },
+  "approval_policy": {
+    "identity_and_source": "owner must confirm exact repository, company/project relationship, current source, and public/private data boundary",
+    "outreach": "owner reviews exact brand-rendered message and recipient before a one-time send approval; no batch or campaign send by default",
+    "partnership_action": "track actions and drafts only; no partner system access, commitments, or messages without a separate exact grant",
+    "product_change": "exact source/config approval, isolated candidate, independent verification, evidence, rollback; human approves retention",
+    "release": "disabled until owner confirms adapter, permissions and release process"
+  },
+  "evidence_and_rollback": {
+    "required": [
+      "approved source/config hashes",
+      "reviewer and expiry",
+      "test results",
+      "independent verification",
+      "diff",
+      "rollback receipt"
+    ],
+    "storage": "project-owner controlled runtime; no private project data centralized by SparkTech"
+  },
+  "unverified_assumptions": [
+    "README describes a High Times direction but says no signed agreement exists; no partnership, license, account, or access is assumed."
+  ],
+  "identity_evidence": "Owner-supplied mapping; /Users/shoberman/weedcomp/README.md read-only inspection identifies Cherry Picked; repo reference is https://github.com/Shoberman2/comp."
+}
