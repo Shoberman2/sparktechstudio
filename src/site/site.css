@@ -892,7 +892,7 @@ html.rv .st .list li.reveal:nth-child(2n) { transition-delay: .08s; }
 
 /* Footer (2026-11-21, house standard): no button, no tagline, no lines. Four columns from the left, separated by space;
    plain 16px labels in white, links in grey that warm to gold. Bottom row: the logo with the copyright, then the legal pages. */
-.st .ft-in { grid-template-columns: repeat(5, minmax(0, 200px)); justify-content: center; gap: 48px clamp(32px, 6vw, 96px); }
+.st .ft-in { grid-template-columns: repeat(4, minmax(0, 220px)); justify-content: center; gap: 48px clamp(32px, 7vw, 120px); }
 .st .ft nav { display: flex; flex-direction: column; gap: 14px; }
 .st .ft nav h2 { margin: 0 0 4px; color: #fff; font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; line-height: 1.3; }
 .st .ft nav a { display: block; min-height: 0; color: var(--ink-2); font-size: 16px; font-weight: 400; line-height: 1.35; }
@@ -901,8 +901,7 @@ html.rv .st .list li.reveal:nth-child(2n) { transition-delay: .08s; }
 .st .ft-mark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink-3); }
 .st .ft-mark img { flex: none; }
 .st .ft-legal nav { flex-direction: row; flex-wrap: wrap; gap: 0 28px; }
-@media (max-width: 960px) { .st .ft-in { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .st .ft-in { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .st .ft-in { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .st .ft-in { gap: 40px 24px; } .st .ft nav { gap: 0; } .st .ft nav h2 { margin-bottom: 6px; } .st .ft nav a { padding: 11px 0; } .st .ft-legal { flex-direction: column; align-items: flex-start; gap: 16px; } .st .ft-legal nav a { display: inline-flex; min-height: 44px; align-items: center; } }
 
 /* Buttons, stylish pass (2026-11-21): still the one word-only pill. Primary is gold with a soft top highlight and a
