@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "company_id": "sparktech-claude-fixture",
+  "display_name": "SparkTech optional Claude fixture",
+  "relationship": "internal-fixture",
+  "enabled": false,
+  "goal": "One Add one click increments the counter by exactly one.",
+  "source": "../fixtures/counter",
+  "source_files": ["index.html"],
+  "editable_files": ["index.html"],
+  "permissions": {"browser": true, "implement": true, "local_release": false},
+  "budgets": {"max_commands": 6, "max_seconds": 360, "command_seconds": 300, "max_output_bytes": 1048576},
+  "worker_kind": "claude-messages",
+  "commands": {
+    "probe": ["node", "{system}/adapters/browser.cjs"],
+    "worker": ["python3", "{system}/adapters/claude_worker.py"],
+    "test": ["python3", "{system}/adapters/fixture_test.py"]
+  },
+  "environment": {},
+  "secret_env": ["ANTHROPIC_API_KEY"]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "20260913T140241-900dc3c90d",
+  "company_id": "sparktech-fixture",
+  "status": "healthy",
+  "commands_used": 1,
+  "worker_kind": "deterministic-fixture-repair",
+  "started_at": 1789322561.35107,
+  "release_requested": false,
+  "updated_at": 1789322562.12439,
+  "accepted_constraints": {
+    "workload": {
+      "value": "existing deliberately broken one-click counter; local fixture only",
+      "source_id": "product_doc"
+    },
+    "value": {
+      "value": "fixture functional improvement cannot establish company value or retention",
+      "source_id": "decision"
+    },
+    "utern_owner": {
+      "value": "UTern production is external-owner-only; no actions on UTern",
+      "source_id": "current_work"
+    },
+    "execution_scope": {
+      "value": "fresh isolated headless loopback fixture; deterministic worker; no external endpoints or user sessions",
+      "source_id": "explicit_instruction"
+    }
+  },
+  "elapsed_seconds": 0.774
+}

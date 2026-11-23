@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "company_id": "artstory",
+  "project_name": "ArtStory",
+  "identity_source": "owner-supplied mapping; read-only local README /Users/shoberman/artStory/README.md",
+  "repository": "https://github.com/Shoberman2/artStory",
+  "status": "disabled-example",
+  "enabled": false,
+  "runtime": {
+    "owner_managed": true,
+    "package": "sparktech-rsei",
+    "version_pin": "0.1.0 (source version; unpublished)",
+    "credentials": [],
+    "network": "disabled",
+    "deployment": "disabled",
+    "external_publishing": "disabled"
+  },
+  "scope": {
+    "allowed": [
+      "synthetic/local fixtures",
+      "static source review",
+      "local isolated tests",
+      "drafts for curator review"
+    ],
+    "denied": [
+      "museum APIs/network ingestion until exact owner allowlist and approval",
+      "publishing or deployment",
+      "unreviewed interpretive/art-historical claims",
+      "unverified image/text rights",
+      "Supabase/OpenAI credentials or calls",
+      "secrets"
+    ]
+  },
+  "source_policy": {
+    "candidate": "Met Open Access API as named in project README",
+    "enabled": false,
+    "condition": "owner allowlists exact public-domain Open Access fields and assets; verify license/attribution per item before any later ingestion"
+  },
+  "approval": {
+    "content": "human curator/rights review required for each interpretive or publication-bound change",
+    "change": "named owner approves exact source/config hashes; isolated application only",
+    "verification": "independent checks, evidence record and rollback required",
+    "release": "disabled"
+  },
+  "data_policy": {
+    "default": "synthetic only",
+    "prohibited": [
+      "private museum/customer data",
+      "unverified copyrighted material",
+      "unreviewed user data"
+    ]
+  }
+}

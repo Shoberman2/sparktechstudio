@@ -1,0 +1,7 @@
+{"time": 1789094161.484499, "status": "created"}
+{"time": 1789094161.486484, "status": "discover", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/discover"}}
+{"time": 1789094162.33713, "status": "reproduce", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/reproduce"}}
+{"time": 1789094163.1547542, "status": "implement", "active_command": {"argv": ["python3", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/fixture_worker.py"], "evidence": "evidence/implement"}}
+{"time": 1789094163.4923751, "status": "test", "active_command": {"argv": ["python3", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/fixture_test.py"], "evidence": "evidence/test"}}
+{"time": 1789094163.833368, "status": "verify", "active_command": {"argv": ["node", "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/adapters/browser.cjs"], "evidence": "evidence/verify"}}
+{"time": 1789094164.615414, "status": "awaiting_release", "reason": "Verified candidate retained. Only an explicitly permitted local fixture release is supported."}

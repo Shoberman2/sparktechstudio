@@ -1,0 +1,11 @@
+{
+  "company_id": "sparktech-fixture",
+  "run_id": "20260913T140237-d6c446f333",
+  "outcome": "completed",
+  "changed_files": [
+    "index.html"
+  ],
+  "evidence": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/cycles/sparktech-fixture/20260913T140237-d6c446f333/evidence",
+  "error": null,
+  "policy": "Evidence for the next cycle; does not expand permissions or prove provider health."
+}

@@ -1,0 +1,8 @@
+ RUN  v4.1.10 /private/tmp/utern-boardy-loop-20260913
+
+
+ Test Files  7 passed (7)
+      Tests  37 passed (37)
+   Start at  04:44:57
+   Duration  1.44s (transform 841ms, setup 0ms, import 1.62s, tests 73ms, environment 5.16s)
+

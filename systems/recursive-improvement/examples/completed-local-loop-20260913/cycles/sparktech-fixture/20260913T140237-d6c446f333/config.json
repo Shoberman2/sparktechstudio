@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "company_id": "sparktech-fixture",
+  "display_name": "SparkTech controlled fixture",
+  "relationship": "internal-fixture",
+  "enabled": true,
+  "goal": "One Add one click increments the counter by exactly one.",
+  "source": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/fixtures/counter",
+  "source_files": [
+    "index.html"
+  ],
+  "editable_files": [
+    "index.html"
+  ],
+  "permissions": {
+    "browser": true,
+    "implement": true,
+    "local_release": true
+  },
+  "budgets": {
+    "max_commands": 8,
+    "max_seconds": 120,
+    "command_seconds": 25,
+    "max_output_bytes": 262144
+  },
+  "worker_kind": "deterministic-fixture-repair",
+  "commands": {
+    "probe": [
+      "node",
+      "{system}/adapters/browser.cjs"
+    ],
+    "worker": [
+      "python3",
+      "{system}/adapters/fixture_worker.py"
+    ],
+    "test": [
+      "python3",
+      "{system}/adapters/fixture_test.py"
+    ]
+  },
+  "environment": {},
+  "secret_env": [],
+  "context_records": [
+    {
+      "id": "product_doc",
+      "company_id": "sparktech-fixture",
+      "kind": "product_doc",
+      "reviewed_by": "task operator using existing docs and relayed user authorization",
+      "recorded_at": "2026-09-13T18:02:37.001021+00:00",
+      "valid_until": "2026-09-13T20:02:37.001021+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/README.md",
+        "sha256": "c49b4988c49091dff2798fbc6cd9c1c0f1934ddd3b68c143a88fe214a009674d"
+      },
+      "constraints": {
+        "workload": "existing deliberately broken one-click counter; local fixture only"
+      }
+    },
+    {
+      "id": "decision",
+      "company_id": "sparktech-fixture",
+      "kind": "decision",
+      "reviewed_by": "task operator using existing docs and relayed user authorization",
+      "recorded_at": "2026-09-13T18:02:37.001021+00:00",
+      "valid_until": "2026-09-13T20:02:37.001021+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/VALUE-MEASUREMENT.md",
+        "sha256": "9ae909a4f73bb968ef1e9c440ef36fa9dbbb00c641c1233457d747e8b222f0e0"
+      },
+      "constraints": {
+        "value": "fixture functional improvement cannot establish company value or retention"
+      }
+    },
+    {
+      "id": "current_work",
+      "company_id": "sparktech-fixture",
+      "kind": "current_work",
+      "reviewed_by": "task operator using existing docs and relayed user authorization",
+      "recorded_at": "2026-09-13T18:02:37.001021+00:00",
+      "valid_until": "2026-09-13T20:02:37.001021+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/pilot/README.md",
+        "sha256": "bd676450ca4672a67b05701717c62dfd4527961e6031572c54597edeaa651f13"
+      },
+      "constraints": {
+        "utern_owner": "UTern production is external-owner-only; no actions on UTern"
+      }
+    },
+    {
+      "id": "explicit_instruction",
+      "company_id": "sparktech-fixture",
+      "kind": "explicit_instruction",
+      "reviewed_by": "task operator using existing docs and relayed user authorization",
+      "recorded_at": "2026-09-13T18:02:37.001021+00:00",
+      "valid_until": "2026-09-13T20:02:37.001021+00:00",
+      "source": {
+        "path": "/Users/shoberman/.codex/worktrees/8d1e/sparktech/systems/recursive-improvement/examples/completed-local-loop-20260913/accepted-instructions.md",
+        "sha256": "3e166f84e7ba4045124e382619fa3a84e07fe994fc006642e0572f1fe1c710e0"
+      },
+      "constraints": {
+        "execution_scope": "fresh isolated headless loopback fixture; deterministic worker; no external endpoints or user sessions"
+      }
+    }
+  ]
+}

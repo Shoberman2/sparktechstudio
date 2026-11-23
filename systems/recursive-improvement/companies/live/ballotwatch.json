@@ -1,0 +1,30 @@
+{
+  "schema_version": 2,
+  "company_id": "ballotwatch",
+  "display_name": "Ballot Watch",
+  "relationship": "intended-adopter",
+  "enabled": true,
+  "goal": "ballotwatch.io's public pages load clean for a visitor: no page errors, no failed same-origin requests, no broken internal links, no horizontal overflow on phones, sound document structure. Data correctness and political content are out of scope.",
+  "repo": "~/politicalapp",
+  "base_branch": "main",
+  "allowed_paths": ["src/**", "public/**", "api/prerender.js"],
+  "forbidden_paths": ["etl/**", "supabase/**", "shared/**", "api/_lib/**", "api/proxy/**", "vercel.json", "package.json", "package-lock.json", "public/openapi.yaml", "public/llms*.txt", "src/config/access.js", "CLAUDE.md", "DESIGN.md", "AGENTS.md"],
+  "repo_notes": "React 18 + Vite SPA with Vercel functions. Read CLAUDE.md and DESIGN.md first. public/openapi.yaml is generated; never edit it. Gated pages are listed once in shared/access.js; do not touch access rules. Record routes are prerendered by api/prerender.js.",
+  "commands": {
+    "test": ["npx", "vitest", "run"],
+    "build": ["npm", "run", "build"]
+  },
+  "probe": {
+    "kind": "browser",
+    "observe_url": "https://www.ballotwatch.io/",
+    "verify": {"kind": "vercel-preview"},
+    "routes": ["/", "/how-it-works", "/about", "/this-week"],
+    "max_pages": 12,
+    "ignore_console": []
+  },
+  "worker": {"model": "opus", "max_turns": 30, "max_budget_usd": 5, "max_seconds": 900},
+  "approval": {"mode": "policy", "basis": "Owner approved on 2026-10-10: the loop may propose fixes to Ballot Watch as pull requests only; nothing merges or deploys without the owner."},
+  "release": {"mode": "pull-request"},
+  "budgets": {"max_seconds": 2700, "command_seconds": 900},
+  "share_from_repo": ["node_modules", ".vercel"]
+}

@@ -1,0 +1,8 @@
+{
+  "fixture_notice": "Synthetic data. No real candidates, jurisdictions, or elections.",
+  "claims": [
+    {"id": "claim-alpha-date", "source_id": "fixture-election-alpha", "field": "date", "value": "2032-11-03"},
+    {"id": "claim-alpha-status", "source_id": "fixture-election-alpha", "field": "status", "value": "certified"},
+    {"id": "claim-beta-name", "source_id": "fixture-board-beta", "field": "name", "value": "Example City School Board"}
+  ]
+}

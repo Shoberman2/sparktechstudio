@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>RSEI controlled counter fixture</title>
+<h1>Controlled QA fixture</h1>
+<p>This deliberately broken counter is not a company product.</p>
+<button id="increment">Add one</button>
+<output id="count">0</output>
+<script>
+let count = 0;
+document.querySelector('#increment').onclick = () => {
+  count += 2;
+  document.querySelector('#count').textContent = count;
+};
+</script>
+</html>

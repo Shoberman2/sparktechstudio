@@ -1,0 +1,9 @@
+{
+  "company_id": "sparktech-demo",
+  "source_id": "synthetic-aggregate-retention",
+  "captured_at": "2026-10-08T00:00:00+00:00",
+  "cohorts": [
+    {"company_id": "sparktech-demo", "cohort": "fixture-2026-08", "eligible": 100, "retained": 62},
+    {"company_id": "sparktech-demo", "cohort": "fixture-2026-09", "eligible": 80, "retained": 56}
+  ]
+}

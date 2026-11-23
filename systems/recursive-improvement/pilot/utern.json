@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "company_id": "utern",
+  "relationship": "independent-company",
+  "mode": "external-owner",
+  "release_owner": "01a0877c-9b5d-7a91-bae6-873969d508ca",
+  "recovery_owner": "01a099a4-1189-7e32-b85c-87aa8e379f0c",
+  "max_evidence_age_seconds": 7200,
+  "max_probe_seconds": 20,
+  "max_probe_bytes": 2097152,
+  "max_probes": 4,
+  "catalog_latency_limit_ms": 15000,
+  "repair_permission": "external-owner-only",
+  "deployment_permission": "external-owner-only",
+  "rollback_permission": "external-owner-only",
+  "predeploy_metrics": [
+    "regression_suite",
+    "catalog_failure_ui"
+  ],
+  "retain_metrics": [
+    "auth_service",
+    "sign_in",
+    "model_generation",
+    "sandbox_apply_receipt",
+    "native_submit_preserved",
+    "meeting_flow",
+    "catalog_available",
+    "catalog_failure_ui",
+    "regression_suite",
+    "employer_needs_confirmed",
+    "student_preferences_confirmed",
+    "skills_provenance",
+    "explained_match",
+    "mutual_introduction_consent",
+    "stop_enforced"
+  ],
+  "metric_scopes": {
+    "infrastructure": [
+      "auth_service",
+      "catalog_available",
+      "catalog_failure_ui",
+      "regression_suite"
+    ],
+    "authenticated_app": [
+      "sign_in",
+      "model_generation"
+    ],
+    "internal_relationship": [
+      "employer_needs_confirmed",
+      "student_preferences_confirmed",
+      "skills_provenance",
+      "explained_match",
+      "mutual_introduction_consent",
+      "meeting_flow",
+      "stop_enforced"
+    ],
+    "external_apply": [
+      "sandbox_apply_receipt",
+      "native_submit_preserved"
+    ]
+  }
+}

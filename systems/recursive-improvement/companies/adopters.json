@@ -1,0 +1,14 @@
+{
+  "system_owner": "SparkTech Studios, LLC",
+  "adopters": [
+    {"id": "leed", "name": "LEED", "url": "https://leed.media", "status": "not-connected", "enabled": false},
+    {"id": "ballot-watch", "name": "Ballot Watch", "status": "not-connected", "enabled": false},
+    {"id": "spacial-health", "name": "Spacial Health SCI Demo", "relationship": "intended-adopter", "status": "not-connected", "enabled": false},
+    {"id": "threadfit", "name": "ThreadFit", "repository": "https://github.com/Shoberman2/mensclothing", "status": "not-connected", "enabled": false},
+    {"id": "artstory", "name": "ArtStory", "repository": "https://github.com/Shoberman2/artStory", "status": "not-connected", "enabled": false},
+    {"id": "allergy-copilot", "name": "AllergyCopilot", "repository": "https://github.com/Shoberman2/allergyApp", "status": "not-connected", "enabled": false},
+    {"id": "the-highest", "name": "The Highest (formerly CherryPicked)", "repository": "https://github.com/Shoberman2/comp", "status": "not-connected", "enabled": false},
+    {"id": "utern", "name": "UTern", "relationship": "independent-company", "status": "reference-only", "enabled": false}
+  ],
+  "note": "This registry grants no execution rights. Every adopter needs its own reviewed execution config, credentials, goals, budgets and permissions. UTern is not owned by SparkTech. Public X and LinkedIn setup remains paused pending a single chosen name."
+}

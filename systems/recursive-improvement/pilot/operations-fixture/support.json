@@ -1,0 +1,9 @@
+{
+  "company_id": "sparktech-demo",
+  "question": "How long do refund requests take?",
+  "minimum_overlap": 1,
+  "approved_docs": [
+    {"company_id": "sparktech-demo", "approved": true, "source_id": "synthetic-handbook-v2#refunds", "text": "Refund requests are reviewed by the support team within five business days."},
+    {"company_id": "sparktech-demo", "approved": false, "source_id": "unreviewed-note", "text": "Refunds are instant."}
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "company_id": "sparktech-demo",
+  "accounts": [
+    {"company_id": "sparktech-demo", "account_id": "fixture-account-a", "display_label": "Example Publisher", "signals": ["publishes_local_guides", "small_team"], "source_id": "synthetic-research-a", "captured_at": "2026-10-08T00:00:00+00:00"},
+    {"company_id": "sparktech-demo", "account_id": "fixture-account-b", "display_label": "Example Membership App", "signals": ["paid_membership", "retention_team"], "source_id": "synthetic-research-b", "captured_at": "2026-10-08T00:00:00+00:00"}
+  ]
+}

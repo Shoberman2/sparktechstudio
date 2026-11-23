@@ -1,0 +1,35 @@
+{
+  "company_id": "utern",
+  "commit": "58b53b234bd4d41d25fe085c272d236a6ca079d4",
+  "scope": "local source inspection; production aggregates unavailable",
+  "sources": [
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/lib/connector/server.ts",
+      "sha256": "f256fa2af8badb293bf2ddd291a146859ec05548ee2b365af9a4550ec8d71b7e"
+    },
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/lib/connector/scheduling.ts",
+      "sha256": "1d4860efc4fbcad2e0ff2423b1447d1ba07aa8be485d400c37a11e890c047416"
+    },
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/lib/enterprise/metrics.ts",
+      "sha256": "2f610b8920f2f27a73a6c823c131d7f703ff62af38a44d44741cb5e46675719a"
+    },
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/lib/agent/outcomeSync.ts",
+      "sha256": "2f9e1d92da768c36a5ffa20f6103192bceef2b4cb3aa17dfe3f09d3120c4a06b"
+    },
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/lib/agent/posthog.ts",
+      "sha256": "07aba7ca539e7d67517708e70b2b067ec0e399636a693943605a29204ece8f57"
+    },
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/app/api/agent/events/route.ts",
+      "sha256": "74370a4e844c8c9cca296b330b7987a4ec37f154516fa7f8b2448074c7ae77b0"
+    },
+    {
+      "path": "/private/tmp/utern-boardy-loop-20260913/src/app/api/admin/agent-metrics/route.ts",
+      "sha256": "381aca113c2126a04faa2db54d36f3a15419389774d706506e053b9a03962e6e"
+    }
+  ]
+}

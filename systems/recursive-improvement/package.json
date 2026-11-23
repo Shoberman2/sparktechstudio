@@ -1,0 +1,7 @@
+{
+  "name": "sparktech-recursive-improvement-browser",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Browser adapter for the local QA improvement cycle",
+  "dependencies": { "playwright": "1.62.1" }
+}
