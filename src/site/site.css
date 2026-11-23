@@ -740,6 +740,9 @@ html.rv .st .wheel { height: calc(100svh + (var(--n) - 1) * 62svh); }
 /* No mask on the reel: Safari flattens 3D under a mask. Each name fades by its own opacity instead. */
 .st .wheel-slot { display: none; }
 html.rv .st .wheel { height: calc(100svh + (var(--n) - 1) * 62svh); }
+/* Phones (2026-11-22): less scrolling per service, about 4.4 screens for the nine instead of about 6, so more people reach
+   the price. Judge it by price_seen {screen: phone} against the weeks before this shipped. */
+@media (max-width: 760px) { html.rv .st .wheel { height: calc(100svh + (var(--n) - 1) * 42svh); } }
 html.rv .st .wheel-in { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); }
 html.rv .st .wheel-slot { position: relative; display: block; height: min(72svh, 620px); -webkit-perspective: 900px; perspective: 900px; font-size: clamp(28px, 3.5vw, 54px); }
 html.rv .st .wheel-slot .fx-tick { position: absolute; left: 0; top: 50%; width: .78em; height: .78em; margin-top: -.39em; stroke-width: 3.4; }
