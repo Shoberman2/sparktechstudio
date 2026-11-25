@@ -28,3 +28,7 @@ design-mockups/
 
 # Local QA screenshots
 screenshots/
+
+# Whop website package (scripts/whop-site.mjs)
+.whop-build/
+.whop-build.zip

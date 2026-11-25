@@ -8,7 +8,8 @@
     "build": "vite build && vite build --config vite.ssr.config.js && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "whop:site": "node scripts/whop-site.mjs --deploy"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.3.0",
