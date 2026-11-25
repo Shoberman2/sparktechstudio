@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { track } from '@vercel/analytics'
 import { BOOK, EMAIL } from '../designs/content.jsx'
 import { pricing, products, SOCIALS, serviceList, WHOP } from './facts.js'
+import Ground from './Ground.jsx'
 import './site.css'
 
 // Shared pieces for every page of Direction A (Spark Cloud). One button, one nav, one footer, one closing band.
@@ -107,6 +108,7 @@ export function Shell({ title, active, band = true, bandTitle, bandLine, classNa
   useEffect(() => { document.title = title }, [title])
   useReveal()
   return <div className={`st st-dark ${className}`.trim()}>
+    <Ground />
     <a className="skip" href="#main">Skip to content</a>
     <Nav active={active} />
     <main id="main">{children}</main>

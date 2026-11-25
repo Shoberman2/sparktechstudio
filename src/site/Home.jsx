@@ -2,12 +2,14 @@ import { useEffect } from 'react'
 import { track } from '@vercel/analytics'
 import { Shell, Book, Sec, Faq, JsonLd, Band } from './ui.jsx'
 import Features from './Features.jsx'
+import Path from './Path.jsx'
 import { PlanCard } from './Plan.jsx'
 import { homeMeta } from '../designs/pages.jsx'
 import { membershipOffer, WHOP } from './facts.js'
 
 // Home (2026-11-18, eighth pass). Gold and black throughout, over a still fluid gold ground (public/home/fluid.svg).
 // The statement with Book a call (Calendly) first, the services wheel, then the subscription card.
+// 2026-11-25: a How It Works path (Path.jsx) between the hero and the wheel, four stops that tick as you scroll (Spencer).
 // No product list, no location, no person's name. Every number here is one the founder gave us.
 
 // Home FAQ (founder, 2026-11-21: "add an FAQ at the bottom"). Only facts the site already states. No promised rankings.
@@ -54,6 +56,8 @@ export default function Home() {
       <h1>We Make Your Business The One People Find.</h1>
       <div className="actions"><Book from="hero" /><a className="btn ghost" href="/grader">Score my site</a></div>
     </section>
+
+    <Path />
 
     <Features />
 

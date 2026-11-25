@@ -1,5 +1,31 @@
 # Design System — SparkTech Studio
 
+## The ground is a valley you fly (2026-11-25)
+
+Spencer compared three live backgrounds and picked this one, asking for "an even higher level design", "intricately detailed" and "I really want to showcase what I'm capable of".
+
+- **What it is**: the background of every page is a landscape drawn only in fine gold ridgelines (`255, 209, 92` on `#0a0a09`), seen from low above a river (`src/site/Ground.jsx`, `src/site/grounds/valley.js`, Canvas 2D, its own lazy chunk of about 9 KB, 4 KB gzipped). Ridges are drawn far to near and each hides what is behind it, so it reads as real terrain, not a pattern. Lines are hairline, heavier and brighter near, thinning out and fading to nothing before the horizon. No fills other than the page black, no glow, no text in the canvas.
+- **The journey, mountains to the sea**: geography is laid out along the flight relative to each page's length, so every page makes the same trip. The top of a page is high mountains in a narrow valley (the hero is the money shot: the walls frame the headline, the river enters at the bottom and winds under the buttons toward the horizon). Through the middle the mountains step down to rounded hills and the floor widens; then the land flattens into a delta of low islands and the river spreads; at the bottom of the page it is open sea to the horizon, fine broken ripple lines only. Short pages fly faster so they still make the whole trip.
+- **Why the calm water sits under the FAQ and footer**: the art is richest where the page is sparse (hero, How It Works, the wheel) and quietest where there is the most reading. On the home page the price sits over the low hills and delta, the FAQ and footer over the sea.
+- **One water language, the engraver's** (second pass, Spencer: lines along the river "read as a road"): all water, river, delta channels and sea, is fine, broken horizontal ripple strokes, dimmer and finer than the land's ridgelines, staggered pieces with soft ends that never line up into rungs, kept about 3px apart on screen at any distance. There are no lines along the current anywhere. Sun glitter is short, bright horizontal ticks down a loose, wandering path on the river; it thins out through the hills and is gone by the delta, so from the coast on the water is ripples only and the frosted footer and closing panel never show a soft gold blotch behind them. The shore is the land's own ragged edge (wandering, with the odd spit or sandbar) with a faint shoreline that wobbles with it. River, delta and sea are visibly the same water, widening. No line is drawn at the horizon.
+- **Haze**: a band of page black over the horizon (stronger on phones) keeps the distance quiet where headlines sit. It only darkens lines; no light or colour.
+- **Phones**: a higher horizon, a lower camera and a narrower view across, so the ridgelines rise to near the top of the screen and the river has land on both sides.
+- **Motion follows scroll only**: the camera follows the scroll position with a little weight (a critically damped ease that settles within about a quarter second) and drifts gently with the river's course. No roll, no bobbing, no auto-play, nothing follows the pointer. When the camera has settled nothing is drawn; nothing runs while the tab is hidden.
+- **Loading**: the page paints first on plain near-black; the valley mounts right after hydration and fades in once over .6s when its first frame is drawn. Without JavaScript the page stays plain near-black. With reduced motion it is one still frame of the top-of-page view, shown without the fade, and never moves.
+- **Retired**: the river photograph is no longer the page ground (`.st.st-dark::before` is plain `#0a0a09`); `public/home/river*` and `fluid.svg` stay on disk.
+- **Built, shown and not picked** (do not propose again): an engraved banknote-style river, and the river as molten gold.
+
+## Home, a How It Works path above the reel (2026-11-25)
+
+Spencer, on the bare stretch of river between the hero buttons and the services wheel: "add more information to the website here" and "make sure it is stylish", then "Put the How it Works above the different features".
+
+- A new section between the hero and the wheel (`src/site/Path.jsx`, `#how-it-works`): the heading "How It Works" over one thin line through four ringed stops: Book A Call (Tell us what you want built.), Written Scope (What we build, what it costs and when.), Live In Days (Designed, built, tested and launched.), Monthly Updates (Fixes and your changes, in the same monthly price.). No numbers, no price, no step labels, no panel or box behind it.
+- It is the reel's ring laid flat: the same `.rc` ring, empty until reached, then a gold disc with its check drawn in. The line is a 1px track with a 2px `#ffd15c` fill, no gradient or glow. Four columns on wide screens, one column running down the page at 760px and narrower. Labels stay on one line from 761px up (the h3 minimum is 18px for that).
+- All motion follows scroll, like the reel: the line fills and each ring ticks as the path rises, and everything is ticked by the time the path is centered on screen. Scrolling back un-fills it. Nothing plays on its own.
+- The finished state is the default: without JavaScript or with reduced motion the full gold line and all four ticks show.
+- The section's top padding mirrors the hero's min-height, so on laptop-height windows the first screen is still the hero alone.
+- The home page is now longer above the price, so the `price_seen` funnel baseline (see the comment in `Home.jsx`) shifts from this date.
+
 ## Footer, one services column (2026-11-22)
 
 The "What we do" column (each service jumping to its place on the home reel) is merged into Services: it listed the same services again, and every one has its own page. The footer is now four centered columns: Services, Studio, Contact, Legal (two by two on phones). The reel still answers /#seo, /#apps and so on for links shared before.
