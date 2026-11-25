@@ -11,6 +11,11 @@ export const WHOP = {
   store: 'https://whop.com/sparktech-studios/',
   product: 'https://whop.com/sparktech-studios/website-membership/',
   checkout: 'https://whop.com/checkout/plan_Ff0Shq1WiR7Ra',
+  // The switch for every way to pay on this site (the Start button, the "start it from the price" FAQ line, the Offer's
+  // link). Off while the plan still has a $500 initial price on top of the $500 a month: Whop charges both at checkout,
+  // so the first payment would be $1,000. Turn on once `initial_price_due` on
+  // https://api.whop.com/api/v1/products/prod_qhBSzw0h079F8 reads 500.00.
+  checkoutReady: false,
 }
 
 // Social accounts, shown in the footer. An entry with no url is left out.
@@ -39,7 +44,7 @@ export const membershipOffer = {
   '@id': `${SITE}/#membership`,
   name: 'Website Membership',
   description: pricing.site.scope,
-  url: WHOP.product,
+  url: WHOP.checkoutReady ? WHOP.product : `${SITE}/#pricing`,
   price: 500,
   priceCurrency: 'USD',
   priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', billingDuration: 'P1M', unitCode: 'MON', unitText: 'month' },

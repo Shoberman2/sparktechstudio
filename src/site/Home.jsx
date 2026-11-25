@@ -4,7 +4,7 @@ import { Shell, Book, Sec, Faq, JsonLd, Band } from './ui.jsx'
 import Features from './Features.jsx'
 import { PlanCard } from './Plan.jsx'
 import { homeMeta } from '../designs/pages.jsx'
-import { membershipOffer } from './facts.js'
+import { membershipOffer, WHOP } from './facts.js'
 
 // Home (2026-11-18, eighth pass). Gold and black throughout, over a still fluid gold ground (public/home/fluid.svg).
 // The statement with Book a call (Calendly) first, the services wheel, then the subscription card.
@@ -18,7 +18,7 @@ const faq = [
   ['How does a project start?', 'You book a call. We send a written scope with what we’ll build, what it costs and when. Then we build it and launch it.'],
   ['What does it cost?', 'A flat $500 a month per business, no matter what you need: a website, SEO and AEO, an AI agent or an app. It covers the build, maintenance and your updates, with no build fee.'],
   ['How fast can my site be live?', 'Days, not months. The dates go in the written scope.'],
-  ['How do I pay?', 'By card through Whop, month to month. You can cancel anytime. Start the membership from the price above, or book a call first.'],
+  ['How do I pay?', 'By card through Whop, month to month. You can cancel anytime.' + (WHOP.checkoutReady ? ' Start the membership from the price above, or book a call first.' : '')],
   ['What are SEO and AEO?', 'SEO helps people find you on Google. AEO helps AI tools like ChatGPT and Perplexity name you in their answers.'],
   ['Who owns the site?', 'Ownership, access and support are spelled out in the written scope before any work starts.'],
 ]

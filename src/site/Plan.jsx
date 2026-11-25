@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { pricing } from './facts.js'
+import { pricing, WHOP } from './facts.js'
 import { Join } from './ui.jsx'
 
 // The website plan as a membership card (the founder's pick, 2026-11-21). The closing "Have Something To Build?" band
@@ -89,7 +89,7 @@ export function PlanCard() {
         </div>
       </div>
     </div>
-    <div className="pl-buy"><Join from="price-card" /><p>Month to month through Whop. Cancel anytime.</p></div>
+    {WHOP.checkoutReady && <div className="pl-buy"><Join from="price-card" /><p>Month to month through Whop. Cancel anytime.</p></div>}
     <p className="sr">Website membership, {pricing.site.price} a month.</p>
   </div>
 }
