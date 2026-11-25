@@ -1,10 +1,11 @@
-# Get Found Fix ($97): how to deliver it, and the test it is part of
+# Get Found Fix ($47): how to deliver it, and the test it is part of
 
-Started 2026-11-25. Spencer picked this as the cheaper step before the $500 a month Website Membership.
+Started 2026-11-25. Spencer picked this as the cheaper step before the $500 a month Website Membership, at $97, then
+moved it to $47 the same night (the Whop price, the site and the credit code all say $47).
 
 - Whop page: https://whop.com/sparktech-studios/get-found-fix/ (product `prod_BhBXHPNJGlq53`)
-- Checkout: https://whop.com/checkout/plan_MlrNOWCL0lF7o (one payment of $97; it asks for "Your website address")
-- On the site: a second button, "Get the fixes for $97", in the free checker's results (`src/site/Grader.jsx`), shown only
+- Checkout: https://whop.com/checkout/plan_MlrNOWCL0lF7o (one payment of $47; it asks for "Your website address")
+- On the site: a second button, "Get the fixes for $47", in the free checker's results (`src/site/Grader.jsx`), shown only
   when the checker found something to fix. Book a call stays first.
 
 ## What the buyer was promised (the Whop listing, word for word where it matters)
@@ -16,7 +17,7 @@ Within 3 business days:
 - A check that AI tools are allowed to read the site, with the fix if they're not
 - A 10-minute video showing each fix and where it goes
 
-And: "Join within 30 days and your $97 counts toward your first month." No rankings are promised.
+And: "Join within 30 days and your $47 counts toward your first month." No rankings are promised.
 
 ## Delivering one order (by hand, no automation yet)
 
@@ -33,7 +34,7 @@ Aim for under an hour. Write down how long it really took (see the log).
    - `robots.txt`: if it blocks GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot or Google-Extended, the corrected file.
 5. **Record the video** (10 minutes or less): each fix and where it goes on their platform (WordPress, Wix, Squarespace,
    Shopify, Webflow or custom).
-6. **Make their credit code**: `WHOP_API_KEY=... node scripts/whop-credit-code.mjs` gives a one-use code for $97 off the
+6. **Make their credit code**: `WHOP_API_KEY=... node scripts/whop-credit-code.mjs` gives a one-use code for $47 off the
    membership's first month, valid 30 days.
 7. **Send it** (Whop chat or email): the files, the video link, the code, and one line: "Want us to put these in and keep
    them current? Book a call or start the membership with your code: https://whop.com/checkout/plan_Ff0Shq1WiR7Ra".
@@ -41,16 +42,16 @@ Aim for under an hour. Write down how long it really took (see the log).
 
 ## The test (Lean Startup)
 
-- **Value hypothesis:** owners of small business sites who just saw a low score in the free checker will pay $97 to get
+- **Value hypothesis:** owners of small business sites who just saw a low score in the free checker will pay $47 to get
   the fixes done for them, even though the checker itself is free.
 - **Growth hypothesis:** seeing their own fixes, some buyers will hand the work to us for $500 a month.
 - **Early customer:** the owner of a small local business (a practice, a contractor, a restaurant) with an existing,
   dated site, who ran the checker on it.
 
 Riskiest assumptions, in order:
-1. People pay $97 when the checker is free.
+1. People pay $47 when the checker is free.
 2. At least 1 in 5 buyers joins the membership within 30 days.
-3. One delivery takes under an hour, so $97 is worth doing by hand.
+3. One delivery takes under an hour, so $47 is worth doing by hand.
 
 Numbers to read (each tied to real people, compared week by week, never as running totals):
 - Vercel Analytics: `grader_done` (checks run), `fix_kit_click` with `score` (80+, 50-79, under-50) and `from`.

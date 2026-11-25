@@ -20,12 +20,12 @@ export const WHOP = {
   checkoutReady: true,
 }
 
-// The Get Found Fix (Spencer, 2026-11-25: the cheaper step before the membership). One payment of $97 on Whop for
+// The Get Found Fix (Spencer, 2026-11-25: the cheaper step before the membership). One payment of $47 on Whop for
 // ready-to-paste SEO and AEO fixes and a short video within 3 business days, delivered by hand (briefs/get-found-fix.md).
 // It counts toward the membership's first month if they join within 30 days. Offered only after the free checker finds
 // something to fix. Product prod_BhBXHPNJGlq53, variant plan_MlrNOWCL0lF7o (the checkout asks for their website).
 export const FIX_KIT = {
-  price: '$97',
+  price: '$47',
   product: 'https://whop.com/sparktech-studios/get-found-fix/',
   checkout: 'https://whop.com/checkout/plan_MlrNOWCL0lF7o',
 }
