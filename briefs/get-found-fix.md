@@ -1,10 +1,12 @@
 # Get Found Fix ($47): how to deliver it, and the test it is part of
 
 Started 2026-11-25. Spencer picked this as the cheaper step before the $500 a month Website Membership, at $97, then
-moved it to $47 the same night (the Whop price, the site and the credit code all say $47).
+moved it to $47 the same night (the Whop price, the site and the credit code all say $47). The first Whop product
+(`prod_BhBXHPNJGlq53`, route `get-found-fix`) was replaced the same night by the one below, because Whop showed no
+images on it (images added after creation never appeared on the public page). The old one is hidden, not deleted.
 
-- Whop page: https://whop.com/sparktech-studios/get-found-fix/ (product `prod_BhBXHPNJGlq53`)
-- Checkout: https://whop.com/checkout/plan_MlrNOWCL0lF7o (one payment of $47; it asks for "Your website address")
+- Whop page: https://whop.com/sparktech-studios/sparktech-get-found-fix/ (product `prod_DpJhIL7YjdVxt`)
+- Checkout: https://whop.com/checkout/plan_eVIf0MKH0Qn3N (one payment of $47; it asks for "Your website address")
 - On the site: a second button, "Get the fixes for $47", in the free checker's results (`src/site/Grader.jsx`), shown only
   when the checker found something to fix. Book a call stays first.
 
@@ -55,7 +57,7 @@ Riskiest assumptions, in order:
 
 Numbers to read (each tied to real people, compared week by week, never as running totals):
 - Vercel Analytics: `grader_done` (checks run), `fix_kit_click` with `score` (80+, 50-79, under-50) and `from`.
-- Whop: payments on `plan_MlrNOWCL0lF7o` (buyers); membership payments on `plan_Ff0Shq1WiR7Ra` made with a `FIX` code
+- Whop: payments on `plan_eVIf0MKH0Qn3N` (buyers); membership payments on `plan_Ff0Shq1WiR7Ra` made with a `FIX` code
   (upgrades).
 - This log: hours per delivery.
 
