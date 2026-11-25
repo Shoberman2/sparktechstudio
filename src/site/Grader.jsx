@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { track } from '@vercel/analytics'
 import { grade, verdict } from '../lib/grade.js'
 import { Book } from './ui.jsx'
+import { FIX_KIT } from './facts.js'
 
 // The free SEO and AEO checker: one field, a live workflow, a score out of 100 and a ranked fix list.
 // The work happens in api/grade.js, in one call that reads the homepage and runs every check (phone speed is not
@@ -162,9 +163,15 @@ export default function Grader({ where = 'page' }) {
       </>}
       {result.skipped.map(s => <p key={s.id} className="gr-skip">{s.title}, so it is left out of the score.</p>)}
 
+      {/* 2026-11-25: the $97 Get Found Fix sits beside Book a call, second, and only when there is something to fix.
+          fix_kit_click sends where it was and the score band, so we can see which scores buy (briefs/get-found-fix.md). */}
       <div className="gr-cta">
         <h3>Want Us To Fix These?</h3>
-        <div className="actions"><Book from={`grader-${where}`} /></div>
+        {result.fixes.length > 0 && <p>Or get the fixes ready to paste, with a short video, in 3 business days for {FIX_KIT.price}. It counts toward your first month if you join within 30 days.</p>}
+        <div className="actions">
+          <Book from={`grader-${where}`} />
+          {result.fixes.length > 0 && <a className="btn ghost" href={FIX_KIT.checkout} target="_blank" rel="noopener" onClick={() => track('fix_kit_click', { from: `grader-${where}`, score: result.score >= 80 ? '80+' : result.score >= 50 ? '50-79' : 'under-50' })}>Get the fixes for {FIX_KIT.price}</a>}
+        </div>
       </div>
 
     </div>}

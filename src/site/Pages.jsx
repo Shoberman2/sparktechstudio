@@ -193,7 +193,7 @@ export function Privacy() {
       <h2>Booking A Call</h2>
       <p>Book a call opens Calendly’s booking window on top of this page, or Calendly’s site in a new tab if the window has not loaded yet. So it opens quickly, each page loads Calendly’s small booking script in the background as it loads; that is an ordinary web request to Calendly. If you book, Calendly collects your name, email, and the time you pick, under <a href="https://calendly.com/privacy" target="_blank" rel="noreferrer">Calendly’s privacy policy</a>, and shares the booking with us. Calendly may set its own cookies inside the booking window.</p>
       <h2>Paying Through Whop</h2>
-      <p>Memberships are paid on Whop’s checkout. Whop takes your payment details and email under <a href="https://whop.com/privacy/" target="_blank" rel="noreferrer">Whop’s privacy policy</a> and tells us who joined, so we can start your project. If you use the Start for $500 a month button, we count the click, the same way we count the other buttons.</p>
+      <p>The membership and the Get Found Fix are paid on Whop’s checkout. Whop takes your payment details and email, and the website address you give for the Get Found Fix, under <a href="https://whop.com/privacy/" target="_blank" rel="noreferrer">Whop’s privacy policy</a>, and tells us who paid, so we can start your work. If you use a button that opens Whop, we count the click the same way we count the other buttons; for the Get Found Fix we also note the score range you got (for example 50 to 79), never your site.</p>
       <h2>The Website Grader</h2>
       <p>When you grade a site, our server fetches that site’s public homepage, its robots.txt and its llms.txt. We don’t keep the address or the result. The full report is shown on the page, and we never ask for your email.</p>
       <h2>What We Do With It</h2>
@@ -223,7 +223,7 @@ export function Terms() {
       <h2>Projects</h2>
       <p>Nothing on this site is an offer or a contract. What we build, what it costs, when, and who owns what are set in a written scope that we both agree to before work starts.</p>
       <h2>Links Elsewhere</h2>
-      <p>Some links go to other sites, like Calendly for booking a call and Whop for paying for a membership. Those sites have their own terms.</p>
+      <p>Some links go to other sites, like Calendly for booking a call and Whop for paying. Those sites have their own terms.</p>
       <h2>No Promises Beyond This Page</h2>
       <p>We work to keep the site accurate and up, but it’s provided as is, and we may change it or these terms at any time. The latest version always lives on this page.</p>
       <h2>Contact</h2>
