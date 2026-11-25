@@ -1,0 +1,28 @@
+name: Whop site
+# Keeps https://sparktech-studios.whop.site identical to sparktechstudio.com (Spencer, 2026-11-25): every push to main
+# builds the site and deploys that same build to the Whop website with scripts/whop-site.mjs, which checks it live and
+# rolls back if the home page doesn't come back. Needs the WHOP_BUILD_KEY secret (a Whop key with build access only).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: whop-site
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node scripts/whop-site.mjs --deploy
+        env:
+          WHOP_API_KEY: ${{ secrets.WHOP_BUILD_KEY }}
