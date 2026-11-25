@@ -12,11 +12,12 @@ export const WHOP = {
   product: 'https://whop.com/sparktech-studios/website-membership/',
   checkout: 'https://whop.com/checkout/plan_Ff0Shq1WiR7Ra',
   // The switch for every way to pay on this site (the Start button, the "start it from the price" FAQ line, the Offer's
-  // link). Off while the plan still has a $500 initial price on top of the $500 a month: Whop charges both at checkout,
-  // so the first payment would be $1,000. Turn on once `initial_price_due` on
+  // link, the footer link). On since 2026-11-24: the plan's initial price was set to $0 through the API, so Whop's checkout
+  // charges $500 today and $500 every 30 days. Before that it charged both a $500 initial price and the first $500 month.
+  // If the price is ever changed on Whop, check again before leaving this on: `initial_price_due` on
   // https://api.whop.com/api/v1/products/prod_qhBSzw0h079F8 (send the header `Api-Version-Date: 2026-11-23-3`; without it
   // the field may be missing) reads 500.00, and Whop's checkout page shows $500 due today.
-  checkoutReady: false,
+  checkoutReady: true,
 }
 
 // Social accounts, shown in the footer. An entry with no url is left out.
