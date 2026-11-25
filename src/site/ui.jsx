@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { track } from '@vercel/analytics'
 import { BOOK, EMAIL } from '../designs/content.jsx'
-import { pricing, products, SOCIALS, serviceList } from './facts.js'
+import { pricing, products, SOCIALS, serviceList, WHOP } from './facts.js'
 import './site.css'
 
 // Shared pieces for every page of Direction A (Spark Cloud). One button, one nav, one footer, one closing band.
@@ -11,6 +11,10 @@ const LINKS = [['services', '/#services', 'Services'], ['pricing', '/#pricing', 
 // `from` names where the button sits, so analytics can tell which Book a call gets used
 // data-from also tells src/lib/booking.js where a finished booking started (call_booked)
 export const Book = ({ className = '', from = 'page', label = 'Book a call' }) => <a className={`btn ${className}`.trim()} {...BOOK} data-from={from} onClick={() => track('book_call', { from })}>{label}</a>
+
+// Start the membership on Whop (Spencer, 2026-11-24: "Add it, keep Book a call first"). Always the second button, never
+// the first. It opens Whop's checkout for the $500 a month plan in a new tab, and sends whop_checkout {from}.
+export const Join = ({ className = '', from = 'page' }) => <a className={`btn ghost ${className}`.trim()} href={WHOP.checkout} target="_blank" rel="noopener" data-from={from} onClick={() => track('whop_checkout', { from })}>Start for {pricing.site.price} a month</a>
 
 export const JsonLd = ({ data }) => <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />
 

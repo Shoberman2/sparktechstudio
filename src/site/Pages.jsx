@@ -1,7 +1,7 @@
 import { workSlugs, pricing, EMAIL, BOOK } from '../designs/content.jsx'
 import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
-import { serviceList, clients, scoped, SITE } from './facts.js'
-import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd } from './ui.jsx'
+import { serviceList, clients, scoped, SITE, membershipOffer } from './facts.js'
+import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd, Book, Join } from './ui.jsx'
 import { AgentMock, SearchMock } from './Mocks.jsx'
 import Grader from './Grader.jsx'
 import { CHECKS } from '../lib/grade.js'
@@ -15,7 +15,8 @@ const offer = key => {
 }
 const serviceLd = (page, name, area) => {
   const keys = [page.package].flat().filter(Boolean)
-  return { '@context': 'https://schema.org', '@type': 'Service', name, serviceType: name, url: `${SITE}${page.path}`, provider: { '@id': ORG }, ...(area ? { areaServed: area } : {}), ...(keys.length ? { offers: keys.map(offer) } : {}) }
+  // Every service is the same flat membership, so a page with no package of its own offers that (2026-11-24)
+  return { '@context': 'https://schema.org', '@type': 'Service', name, serviceType: name, url: `${SITE}${page.path}`, ...(page.description ? { description: page.description } : {}), provider: { '@id': ORG }, ...(area ? { areaServed: area } : {}), offers: keys.length ? keys.map(offer) : membershipOffer }
 }
 const faqLd = items => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) })
 
@@ -69,6 +70,7 @@ const hubFaq = [
   ['What does it cost?', 'A flat $500 a month per business, month-to-month, no matter what you need. There is no build fee.'],
   ['What is included in the $500 a month?', 'The build, maintenance and your updates.'],
   ['How do I start?', 'Book a call from any page, or email us. We reply within two business days. After the call we send a written scope: what we build, what it costs and when. Ownership, access and support are spelled out there.'],
+  ['How do I pay?', 'By card through Whop, month to month. You can cancel anytime. Start the membership from this page or the price on the home page, or book a call first.'],
   ['Do you build AI apps and AI agents?', 'Yes. We set up AI agents that answer customers, sort requests and follow up, with a person approving what matters. We also build AI web apps where the AI does the main job.'],
   ['Do you promise first place on Google?', 'No. We fix what holds a site back, write pages that answer real questions and make your facts easy to cite. No rankings are promised.'],
 ]
@@ -78,7 +80,8 @@ export function ServicesHub() {
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
     <JsonLd data={faqLd(hubFaq)} />
     <PageHead h1="What We Build" lede="Websites, AI agents, updates and search, plus the apps around them." cta={false} />
-    <Sec><List items={allServices} /><p className="note reveal">{scoped}</p></Sec>
+    {/* 2026-11-24: Book a call first, then the Whop membership (Spencer: "Add it, keep Book a call first") */}
+    <Sec><List items={allServices} /><p className="note reveal">{scoped}</p><div className="actions reveal"><Book from="services-hub" /><Join from="services-hub" /></div></Sec>
     <Sec title="What Each One Is"><List items={hubServices} /></Sec>
     <Sec title="Common Questions"><Faq items={hubFaq} /></Sec>
   </Shell>
@@ -176,6 +179,8 @@ export function Privacy() {
       <p>While you browse, Vercel Web Analytics counts page views, button clicks, whether the pricing comes into view, and finished bookings. It sets no cookies and does not identify you: a booking is counted with the button you used and the campaign link you arrived from, never your name or email. If you email us, we get what you send.</p>
       <h2>Booking A Call</h2>
       <p>Book a call opens Calendly’s booking window on top of this page, or Calendly’s site in a new tab if the window has not loaded yet. So it opens quickly, each page loads Calendly’s small booking script in the background as it loads; that is an ordinary web request to Calendly. If you book, Calendly collects your name, email, and the time you pick, under <a href="https://calendly.com/privacy" target="_blank" rel="noreferrer">Calendly’s privacy policy</a>, and shares the booking with us. Calendly may set its own cookies inside the booking window.</p>
+      <h2>Paying Through Whop</h2>
+      <p>Start for $500 a month opens Whop’s checkout in a new tab. Whop takes your payment details and email under <a href="https://whop.com/privacy/" target="_blank" rel="noreferrer">Whop’s privacy policy</a> and tells us who joined, so we can start your project. We count the click on that button, the same way we count the other buttons.</p>
       <h2>The Website Grader</h2>
       <p>When you grade a site, our server fetches that site’s public homepage, its robots.txt and its llms.txt. We don’t keep the address or the result. The full report is shown on the page, and we never ask for your email.</p>
       <h2>What We Do With It</h2>
@@ -205,7 +210,7 @@ export function Terms() {
       <h2>Projects</h2>
       <p>Nothing on this site is an offer or a contract. What we build, what it costs, when, and who owns what are set in a written scope that we both agree to before work starts.</p>
       <h2>Links Elsewhere</h2>
-      <p>Some links go to other sites, like Calendly for booking a call. Those sites have their own terms.</p>
+      <p>Some links go to other sites, like Calendly for booking a call and Whop for paying for a membership. Those sites have their own terms.</p>
       <h2>No Promises Beyond This Page</h2>
       <p>We work to keep the site accurate and up, but it’s provided as is, and we may change it or these terms at any time. The latest version always lives on this page.</p>
       <h2>Contact</h2>

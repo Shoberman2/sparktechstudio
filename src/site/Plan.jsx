@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { pricing } from './facts.js'
+import { Join } from './ui.jsx'
 
-// The website plan as a membership card (the founder's pick, 2026-11-21). No button under it (founder, 2026-11-21): the
-// closing "Have Something To Build?" band sits right below it on the home page.
+// The website plan as a membership card (the founder's pick, 2026-11-21). The closing "Have Something To Build?" band
+// with Book a call sits right below it on the home page. 2026-11-24 (Spencer: "Add it, keep Book a call first"): one
+// outlined Whop button under the card, the only way to pay on the site; Book a call stays the main button everywhere.
 // 2026-11-21, final pass: "way higher-level design", "more actual 3D, more like an actual membership card", and "when my
 // mouse goes around it, I want the card to actually move, not the light or a gradient in the card".
 // So: a real object. A black brushed-metal card with gold foil, an EMV chip and the contactless mark, and a gold edge
@@ -87,6 +89,7 @@ export function PlanCard() {
         </div>
       </div>
     </div>
+    <div className="pl-buy"><Join from="price-card" /><p>Month to month through Whop. Cancel anytime.</p></div>
     <p className="sr">Website membership, {pricing.site.price} a month.</p>
   </div>
 }

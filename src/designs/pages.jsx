@@ -241,6 +241,13 @@ export const partnersPage = {
 }
 
 // Every page this module adds, for the router and the prerender
+// The home page's search title (2026-11-24). It used to be the bare brand, which told Google nothing about what we do.
+// Used by the prerender (the <title> crawlers read) and by Home.jsx (the tab title after the page loads).
+export const homeMeta = {
+  title: 'SparkTech Studios | Small Business Websites, $500 a Month',
+  description: 'We design, build and run small business websites for $500 a month and get them found on Google and in AI answers like ChatGPT.',
+}
+
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
   { path: partnersPage.path, title: partnersPage.title, description: partnersPage.description },

@@ -889,6 +889,9 @@ html.rv .st .list li.reveal:nth-child(2n) { transition-delay: .08s; }
 .st.st-dark .btn:not(.ghost):hover { box-shadow: 0 10px 30px rgba(255, 209, 92, .35); }
 .st .nav-links a { transition: color .2s, opacity .2s; }
 .st .pl-a { max-width: 960px; }
+/* Under the card (2026-11-24): the Whop button and one quiet line */
+.st .pl-buy { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: clamp(36px, 4vw, 56px); }
+.st .pl-buy p { color: var(--ink-3); font-size: 16px; }
 
 /* Footer (2026-11-21, house standard): no button, no tagline, no lines. Four columns from the left, separated by space;
    plain 16px labels in white, links in grey that warm to gold. Bottom row: the logo with the copyright, then the legal pages. */

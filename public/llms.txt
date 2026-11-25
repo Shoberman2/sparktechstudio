@@ -11,6 +11,7 @@ Not to be confused with: sparktechstudios.com, a separate, unrelated agency in O
 
 - SparkTech services are a flat $500 a month per business, no matter what: websites, SEO and AEO, AI agents, AI apps, web apps and MVPs.
 - It covers the build, maintenance and your updates. There is no build fee.
+- Paying: by card through Whop, month to month, cancel anytime. Start the membership at https://whop.com/sparktech-studios/website-membership/ or book a call first.
 
 ## Services
 
@@ -29,7 +30,15 @@ Not to be confused with: sparktechstudios.com, a separate, unrelated agency in O
 3. We build it and launch it, usually in days for a small business website.
 4. Maintenance and updates continue on the same monthly plan.
 
+You can also start the membership on Whop first and book the call after.
+
+## Profiles
+
+- [SparkTech Studios on Whop](https://whop.com/sparktech-studios/): the studio's official store, where the Website Membership ($500 a month) is sold.
+
 ## Other pages
+
+- [Full text of every page](https://www.sparktechstudio.com/llms-full.txt): this site in one plain-text file, rebuilt on every release.
 
 - [Free SEO and AEO checker](https://www.sparktechstudio.com/grader): built by us. Enter a website address and get a score out of 100, split into an SEO score (Google) and an AEO score (AI answers like ChatGPT), with a ranked list of fixes. No email needed.
 - [Partners](https://www.sparktechstudio.com/partners): a build partner for design studios, agencies and accelerators.

@@ -16,7 +16,8 @@ From the 2026-11-11 redesign (branch `redesign/studio-aggregator`). Same rule: r
 - [ ] **RESEND_API_KEY** in Vercel env (also powers `api/contact.js`). Without it "Send me the report" falls back to an email link.
 - [ ] **Report storage and auto-send** (`saveLead` in `api/grade.js`): requests are emailed to the studio and the report is sent by hand.
 - [ ] **Calendly link** (`CALENDLY_URL` in `src/designs/content.jsx`).
-- [ ] **Social links** (`SOCIALS` in `src/site/facts.js`), then add them as `sameAs` in the JSON-LD in `index.html`.
+- [ ] **Social links** (`SOCIALS` in `src/site/facts.js`), then add them as `sameAs` in the JSON-LD in `index.html`. Whop is done (2026-11-24); LinkedIn, X, Instagram and TikTok are still blank.
+- [ ] **Google Search Console and Bing Webmaster Tools**: no verification record was found on sparktechstudio.com (2026-11-24). Spencer signs in, verifies the domain, and submits https://www.sparktechstudio.com/sitemap.xml. Bing can import the Google property.
 - [ ] **What $500 a month includes**: the site says build, maintenance and updates, no build fee. Service pages still describe things like "a CMS you can edit"; confirm or trim (`src/designs/pages.jsx`).
 - [ ] **Old plan pages**: `/services/retainers` and the "Monthly care" footer link still exist, now showing the one $500 price. Decide whether to keep them.
 - [ ] **AI agents**: off the home page and out of the nav for now. `/services/ai-agents` still exists and is linked from `/services`.

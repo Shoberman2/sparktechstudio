@@ -4,10 +4,20 @@
 export const EMAIL = 'contactus@sparktechstudio.com'
 export const SITE = 'https://www.sparktechstudio.com'
 
+// Whop (Spencer, 2026-11-24: "I just connected it to Whop"). The studio's public Whop store sells the same membership,
+// plan_Ff0Shq1WiR7Ra at $500 a month. The store is also the studio's one public profile, so it is the "sameAs" in the
+// structured data (index.html), which tells Google and AI tools that the store and this site are the same business.
+export const WHOP = {
+  store: 'https://whop.com/sparktech-studios/',
+  product: 'https://whop.com/sparktech-studios/website-membership/',
+  checkout: 'https://whop.com/checkout/plan_Ff0Shq1WiR7Ra',
+}
+
 // Social accounts, shown in the footer. An entry with no url is left out.
-// When these are filled, also add them as "sameAs" on the Organization in index.html's JSON-LD.
+// When these are filled, also add them as "sameAs" on the Organization in index.html's JSON-LD (Whop is there already).
 // TODO(Spencer): paste the real profile links. Do not guess them.
 export const SOCIALS = [
+  { name: 'Whop', url: WHOP.store },
   { name: 'LinkedIn', url: '' },
   { name: 'X', url: '' },
   { name: 'Instagram', url: '' },
@@ -21,6 +31,21 @@ export const pricing = {
   site: { name: 'SparkTech services', price: '$500', unit: 'a month', scope: 'A flat $500 a month per business, no matter what. It covers the build, maintenance and your updates, with no build fee.', short: 'Build, maintenance and updates. One price.' },
 }
 export const scoped = 'Every service is a flat $500 a month per business, no matter what.'
+
+// The membership as a schema.org Offer, shared by the home page and every service page (every service is the same flat
+// price). billingDuration P1M and unitCode MON (UN/CEFACT "month") say it repeats monthly.
+export const membershipOffer = {
+  '@type': 'Offer',
+  '@id': `${SITE}/#membership`,
+  name: 'Website Membership',
+  description: pricing.site.scope,
+  url: WHOP.product,
+  price: 500,
+  priceCurrency: 'USD',
+  priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', billingDuration: 'P1M', unitCode: 'MON', unitText: 'month' },
+  availability: 'https://schema.org/InStock',
+  seller: { '@id': `${SITE}/#org` },
+}
 
 // The services, in the order the site lists them
 export const serviceList = [
