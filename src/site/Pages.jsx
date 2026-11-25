@@ -1,5 +1,5 @@
 import { workSlugs, pricing, EMAIL, BOOK } from '../designs/content.jsx'
-import { services, industry, locations, pricingPage, partnersPage } from '../designs/pages.jsx'
+import { services, industry, locations, pricingPage, partnersPage, steps } from '../designs/pages.jsx'
 import { serviceList, clients, scoped, SITE, membershipOffer, WHOP } from './facts.js'
 import { Shell, PageHead, Sec, ProductRows, Client, List, Flow, Prices, Faq, Links, JsonLd, Book, Join } from './ui.jsx'
 import { AgentMock, SearchMock } from './Mocks.jsx'
@@ -33,8 +33,17 @@ export function ServicePage({ slug }) {
     <PageHead h1={s.h1} lede={s.lede} />
     {s.points && <Sec title="What You Get"><List items={s.points} /></Sec>}
     {keys.length > 0 && <Sec title="Pricing"><Prices keys={keys} /></Sec>}
+    <Sec title="How It Works"><Flow steps={steps} label="How a project runs" /></Sec>
     <Sec title="Questions"><Faq items={s.faq} /></Sec>
+    <Related path={s.path} />
   </Shell>
+}
+
+// The other services, linked from inside each service page (2026-11-24), so search engines and readers see how they connect.
+// Website updates and Monthly care share a page, so each page is listed once.
+function Related({ path }) {
+  const others = serviceList.filter((x, i, all) => x.path !== path && all.findIndex(y => y.path === x.path) === i)
+  return <Sec title="More Services"><Links items={others.map(x => [x.nav, x.path])} /></Sec>
 }
 
 // The short service pages (/services/ai-agents, /services/seo-aeo): what it is, a picture of it, what we do, Book a call.
@@ -55,6 +64,7 @@ function ShortPage({ s }) {
     {s.how && <Sec title="How We Work"><p className="say reveal">{s.how}</p></Sec>}
     {x.price && <Sec title="Pricing"><p className="say reveal">{x.price}</p></Sec>}
     {s.faq && <Sec title="Questions"><Faq items={s.faq} /></Sec>}
+    <Related path={s.path} />
   </Shell>
 }
 
@@ -76,7 +86,7 @@ const hubFaq = [
 ]
 
 export function ServicesHub() {
-  return <Shell title="Services | SparkTech Studios" active="services">
+  return <Shell title="Website, SEO and AI Agent Services | SparkTech Studios" active="services">
     <JsonLd data={crumbs([['Home', '/'], ['Services', '/services']])} />
     <JsonLd data={faqLd(hubFaq)} />
     <PageHead h1="What We Build" lede="Websites, AI agents, updates and search, plus the apps around them." cta={false} />

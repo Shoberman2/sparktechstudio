@@ -13,7 +13,7 @@ const site = 'https://www.sparktechstudio.com'
 const routes = [
   { path: '/', ...homeMeta },
   { path: '/grader', title: 'Free SEO and AEO Checker | SparkTech Studios', description: 'Check your website free. A score out of 100 and a plain-English fix list for speed, mobile, SEO, AI answers and broken links. No email needed.' },
-  { path: '/services', title: 'Services | SparkTech Studios', description: 'Websites, AI agents, website updates, and SEO and AEO for businesses, plus AI apps, web apps and MVPs.' },
+  { path: '/services', title: 'Website, SEO and AI Agent Services | SparkTech Studios', description: 'Websites, SEO and AEO, AI agents and website updates for small businesses, plus AI apps, web apps and MVPs. A flat $500 a month.' },
   ...pageRoutes,
 ]
 // No /work pages: the site names no products or companies (Spencer, 2026-11-18). vercel.json sends the old URLs home.
@@ -26,6 +26,8 @@ routes.push({ path: '/404', title: 'Not here | SparkTech Studios', description: 
 const long = routes.filter(r => r.title.length > 60)
 if (long.length) throw new Error(`Titles over 60 characters:\n${long.map(r => `  ${r.title.length} ${r.path}: ${r.title}`).join('\n')}`)
 
+// lastmod is the build date, so search engines and AI crawlers see when the site last changed (sitemap and WebPage)
+const lastmod = new Date().toISOString().slice(0, 10)
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 for (const r of routes) {
   const html = render(r.path)
@@ -42,6 +44,11 @@ for (const r of routes) {
   else page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => a + url + b)
   page = page.replace(/(<meta property="og:url" content=")[^"]*(")/, (_, a, b) => a + url + b)
   if (r.image) page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, (_, a, b) => a + site + r.image + b)
+  // One WebPage node per page (2026-11-24): ties the page to the site and the studio, and dates it, for search engines and AI tools
+  if (!r.noindex) {
+    const webPage = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${url}#webpage`, url, name: r.title, description: r.description, isPartOf: { '@id': `${site}/#site` }, about: { '@id': `${site}/#org` }, inLanguage: 'en-US', dateModified: lastmod }
+    page = page.replace('</head>', () => `  <script type="application/ld+json">${JSON.stringify(webPage).replace(/</g, '\\u003c')}</script>\n  </head>`)
+  }
   if (r.noindex) page = page.replace(/(<meta name="robots" content=")[^"]*(")/, (_, a, b) => a + 'noindex' + b)
   if (r.path === '/') writeFileSync(resolve(dist, 'index.html'), page)
   else if (r.path === '/404') writeFileSync(resolve(dist, '404.html'), page)
@@ -55,8 +62,6 @@ for (const r of routes) {
 }
 
 // sitemap from the same route list
-// lastmod is the build date, so search engines and AI crawlers see when the site last changed
-const lastmod = new Date().toISOString().slice(0, 10)
 writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.filter(r => !r.noindex).map(r => `  <url><loc>${site}${r.path === '/' ? '/' : r.path}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`)
 // llms-full.txt (2026-11-24): the text of every indexable page in one plain file, for AI tools that read a site in one
 // fetch instead of crawling it. Built from the same prerendered HTML, so it can never say something the pages don't.
