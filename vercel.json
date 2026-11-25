@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     { "source": "/work", "destination": "/", "permanent": false },
     { "source": "/work/:slug", "destination": "/", "permanent": false },

@@ -104,13 +104,29 @@ export const services = [
   {
     ...line('retainers'),
     title: 'Website Maintenance and Updates | SparkTech Studios',
-    description: 'Website updates and maintenance. We build your site, maintain it and make your updates.',
+    description: 'Website maintenance and updates for small businesses. We fix what breaks, make your edits and keep your site current, in one monthly price.',
     name: 'Maintenance and growth retainers',
     h1: 'Launch Is Day One',
     lede: 'Sites start aging the day they ship. One monthly price keeps yours current, fixed and getting better.',
-    points: null,
+    // 2026-11-24 (SEO pass): the page was 106 words with no list. Each line restates what the membership already
+    // promises elsewhere (home reel, Whop listing, serviceList): fixes, updates, new pages and features, search.
+    points: [
+      ['Fixes', 'If something on your site breaks, we fix it.'],
+      ['Your updates', 'Send the change you want, like new text, photos, prices or a new page, and we make it.'],
+      ['New features', 'Ask for something new and we build it.'],
+      ['Found in search', 'We keep your titles, sitemap and business facts current for Google and AI answers.'],
+    ],
     cases: ['utern', 'ballotwatch'],
   },
+]
+
+// How every project runs, as shown on each service page (2026-11-24). Same facts as the home FAQ and the Whop listing;
+// maintenance and updates are part of the one monthly price, so the old "optional monthly updates" step is gone here.
+export const steps = [
+  ['Book a call', 'Tell us what you want built and who it’s for.'],
+  ['Written scope', 'What we build, what it costs and when.'],
+  ['Build and launch', 'Designed, built, tested in a real browser, shipped.'],
+  ['Maintain and update', 'Fixes and your updates continue in the same monthly price.'],
 ]
 
 // A short FAQ per service page: cost, timeline, stack and code ownership. Prices come from `pricing`, stacks from the
@@ -241,6 +257,13 @@ export const partnersPage = {
 }
 
 // Every page this module adds, for the router and the prerender
+// The home page's search title (2026-11-24). It used to be the bare brand, which told Google nothing about what we do.
+// Used by the prerender (the <title> crawlers read) and by Home.jsx (the tab title after the page loads).
+export const homeMeta = {
+  title: 'SparkTech Studios | Small Business Websites, $500 a Month',
+  description: 'We design, build and run small business websites for $500 a month and get them found on Google and in AI answers like ChatGPT.',
+}
+
 export const pageRoutes = [
   ...services.map(s => ({ path: s.path, title: s.title, description: s.description })),
   { path: partnersPage.path, title: partnersPage.title, description: partnersPage.description },

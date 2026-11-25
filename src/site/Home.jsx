@@ -3,6 +3,8 @@ import { track } from '@vercel/analytics'
 import { Shell, Book, Sec, Faq, JsonLd, Band } from './ui.jsx'
 import Features from './Features.jsx'
 import { PlanCard } from './Plan.jsx'
+import { homeMeta } from '../designs/pages.jsx'
+import { membershipOffer, WHOP } from './facts.js'
 
 // Home (2026-11-18, eighth pass). Gold and black throughout, over a still fluid gold ground (public/home/fluid.svg).
 // The statement with Book a call (Calendly) first, the services wheel, then the subscription card.
@@ -16,12 +18,13 @@ const faq = [
   ['How does a project start?', 'You book a call. We send a written scope with what we’ll build, what it costs and when. Then we build it and launch it.'],
   ['What does it cost?', 'A flat $500 a month per business, no matter what you need: a website, SEO and AEO, an AI agent or an app. It covers the build, maintenance and your updates, with no build fee.'],
   ['How fast can my site be live?', 'Days, not months. The dates go in the written scope.'],
+  ['How do I pay?', 'By card through Whop, month to month. You can cancel anytime.' + (WHOP.checkoutReady ? ' Start the membership from the price above, or book a call first.' : '')],
   ['What are SEO and AEO?', 'SEO helps people find you on Google. AEO helps AI tools like ChatGPT and Perplexity name you in their answers.'],
   ['Who owns the site?', 'Ownership, access and support are spelled out in the written scope before any work starts.'],
 ]
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }
 // The plan on the card, for search engines and AI answers
-const planLd = { '@context': 'https://schema.org', '@type': 'Service', name: 'SparkTech membership', serviceType: 'Websites, SEO and AEO, AI agents and apps', url: 'https://www.sparktechstudio.com/#pricing', provider: { '@id': 'https://www.sparktechstudio.com/#org' }, description: 'A flat $500 a month per business for any SparkTech service: build, maintenance and updates. No build fee.', offers: { '@type': 'Offer', priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', unitText: 'MONTH' } } }
+const planLd = { '@context': 'https://schema.org', '@type': 'Service', name: 'SparkTech Studios Website Membership', serviceType: 'Websites, SEO and AEO, AI agents and apps', url: 'https://www.sparktechstudio.com/#pricing', provider: { '@id': 'https://www.sparktechstudio.com/#org' }, description: 'A flat $500 a month per business for any SparkTech service: build, maintenance and updates. No build fee.', offers: membershipOffer }
 
 export default function Home() {
   // Arriving from another page at /#services or /#pricing: the wheel only gets its full height once scripts run,
@@ -46,7 +49,7 @@ export default function Home() {
     io.observe(el)
     return () => io.disconnect()
   }, [])
-  return <Shell title="SparkTech Studios" className="st-home" band={false}>
+  return <Shell title={homeMeta.title} className="st-home" band={false}>
     <section className="hero hero-home">
       <h1>We Make Your Business The One People Find.</h1>
       <div className="actions"><Book from="hero" /><a className="btn ghost" href="/grader">Score my site</a></div>

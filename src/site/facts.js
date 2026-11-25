@@ -4,10 +4,27 @@
 export const EMAIL = 'contactus@sparktechstudio.com'
 export const SITE = 'https://www.sparktechstudio.com'
 
+// Whop (Spencer, 2026-11-24: "I just connected it to Whop"). The studio's public Whop store sells the same membership,
+// plan_Ff0Shq1WiR7Ra at $500 a month. The store is also the studio's one public profile, so it is the "sameAs" in the
+// structured data (index.html), which tells Google and AI tools that the store and this site are the same business.
+export const WHOP = {
+  store: 'https://whop.com/sparktech-studios/',
+  product: 'https://whop.com/sparktech-studios/website-membership/',
+  checkout: 'https://whop.com/checkout/plan_Ff0Shq1WiR7Ra',
+  // The switch for every way to pay on this site (the Start button, the "start it from the price" FAQ line, the Offer's
+  // link). Off while the plan still has a $500 initial price on top of the $500 a month: Whop charges both at checkout,
+  // so the first payment would be $1,000. Turn on once `initial_price_due` on
+  // https://api.whop.com/api/v1/products/prod_qhBSzw0h079F8 (send the header `Api-Version-Date: 2026-11-23-3`; without it
+  // the field may be missing) reads 500.00, and Whop's checkout page shows $500 due today.
+  checkoutReady: false,
+}
+
 // Social accounts, shown in the footer. An entry with no url is left out.
-// When these are filled, also add them as "sameAs" on the Organization in index.html's JSON-LD.
+// When these are filled, also add them as "sameAs" on the Organization in index.html's JSON-LD (Whop is there already).
 // TODO(Spencer): paste the real profile links. Do not guess them.
 export const SOCIALS = [
+  // Hidden from the footer while the store's checkout still charges $1,000 up front (WHOP.checkoutReady)
+  { name: 'Whop', url: WHOP.checkoutReady ? WHOP.store : '' },
   { name: 'LinkedIn', url: '' },
   { name: 'X', url: '' },
   { name: 'Instagram', url: '' },
@@ -21,6 +38,22 @@ export const pricing = {
   site: { name: 'SparkTech services', price: '$500', unit: 'a month', scope: 'A flat $500 a month per business, no matter what. It covers the build, maintenance and your updates, with no build fee.', short: 'Build, maintenance and updates. One price.' },
 }
 export const scoped = 'Every service is a flat $500 a month per business, no matter what.'
+
+// The membership as a schema.org Offer, shared by the home page and every service page (every service is the same flat
+// price). The price is per one month (referenceQuantity, unitCode MON is UN/CEFACT "month"). No billingDuration: that
+// would read as a one-month contract, and the membership is month to month with no end date.
+export const membershipOffer = {
+  '@type': 'Offer',
+  '@id': `${SITE}/#membership`,
+  name: 'Website Membership',
+  description: pricing.site.scope,
+  url: WHOP.checkoutReady ? WHOP.product : `${SITE}/#pricing`,
+  price: 500,
+  priceCurrency: 'USD',
+  priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON', unitText: 'month' } },
+  availability: 'https://schema.org/InStock',
+  seller: { '@id': `${SITE}/#org` },
+}
 
 // The services, in the order the site lists them
 export const serviceList = [
