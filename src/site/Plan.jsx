@@ -90,6 +90,6 @@ export function PlanCard() {
       </div>
     </div>
     {WHOP.checkoutReady && <div className="pl-buy"><Join from="price-card" /><p>Month to month through Whop. Cancel anytime.</p></div>}
-    <p className="sr">Website membership, {pricing.site.price} a month.</p>
+    <p className="sr">Website membership, {pricing.site.price} a month. {pricing.site.scope}</p>
   </div>
 }

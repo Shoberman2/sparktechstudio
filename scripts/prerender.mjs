@@ -26,7 +26,7 @@ routes.push({ path: '/404', title: 'Not here | SparkTech Studios', description: 
 const long = routes.filter(r => r.title.length > 60)
 if (long.length) throw new Error(`Titles over 60 characters:\n${long.map(r => `  ${r.title.length} ${r.path}: ${r.title}`).join('\n')}`)
 
-// lastmod is the build date, so search engines and AI crawlers see when the site last changed (sitemap and WebPage)
+// lastmod is the build date, so search engines and AI crawlers see when the site last changed (sitemap)
 const lastmod = new Date().toISOString().slice(0, 10)
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 for (const r of routes) {
@@ -44,9 +44,10 @@ for (const r of routes) {
   else page = page.replace(/(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => a + url + b)
   page = page.replace(/(<meta property="og:url" content=")[^"]*(")/, (_, a, b) => a + url + b)
   if (r.image) page = page.replace(/(<meta property="og:image" content=")[^"]*(")/, (_, a, b) => a + site + r.image + b)
-  // One WebPage node per page (2026-11-24): ties the page to the site and the studio, and dates it, for search engines and AI tools
+  // One WebPage node per page (2026-11-24): ties the page to the site and the studio, for search engines and AI tools.
+  // No dateModified: every page would get the build date, which claims changes that didn't happen.
   if (!r.noindex) {
-    const webPage = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${url}#webpage`, url, name: r.title, description: r.description, isPartOf: { '@id': `${site}/#site` }, about: { '@id': `${site}/#org` }, inLanguage: 'en-US', dateModified: lastmod }
+    const webPage = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${url}#webpage`, url, name: r.title, description: r.description, isPartOf: { '@id': `${site}/#site` }, about: { '@id': `${site}/#org` }, inLanguage: 'en-US' }
     page = page.replace('</head>', () => `  <script type="application/ld+json">${JSON.stringify(webPage).replace(/</g, '\\u003c')}</script>\n  </head>`)
   }
   if (r.noindex) page = page.replace(/(<meta name="robots" content=")[^"]*(")/, (_, a, b) => a + 'noindex' + b)
@@ -66,7 +67,7 @@ writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8
 // llms-full.txt (2026-11-24): the text of every indexable page in one plain file, for AI tools that read a site in one
 // fetch instead of crawling it. Built from the same prerendered HTML, so it can never say something the pages don't.
 // The nav, footer, buttons, decorative pictures (aria-hidden) and scripts are left out.
-const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'])
+const VOID = new Set(['area', 'base', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'])
 const SKIP = new Set(['header', 'footer', 'script', 'style', 'svg', 'button', 'noscript', 'form'])
 const decode = s => s.replace(/&nbsp;/g, ' ').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
 function toText(html) {
@@ -77,11 +78,15 @@ function toText(html) {
     const [, close, rawName, attrs = '', selfClose, text] = m
     if (text !== undefined) { if (!skip) out.push(decode(text).replace(/\s+/g, ' ')); continue }
     const name = rawName.toLowerCase()
+    if (name === 'br') { if (!skip) out.push(li ? ' ' : '\n'); continue }
     if (VOID.has(name) || selfClose) continue
     const heading = /^h[1-6]$/.test(name)
     if (!close) {
       const hide = SKIP.has(name) || /aria-hidden="true"/.test(attrs) || /class="[^"]*\b(skip|actions|band)\b/.test(attrs)
-      stack.push(hide)
+      // The service pictures (src/site/Mocks.jsx) are made-up examples: keep their caption, never their sample names or sites
+      const example = !hide && /class="mk[ "]/.test(attrs)
+      stack.push(hide || example)
+      if (example) { if (!skip) out.push(`\n\n_Example illustration: ${decode((attrs.match(/aria-label="([^"]*)"/) || [])[1] || 'a sample of the work')}._`); skip++; continue }
       if (hide) { skip++; continue }
       if (skip) continue
       // Inside a list item, a heading is the item's bold lead-in and its paragraph follows on the same line
@@ -90,7 +95,7 @@ function toText(html) {
       else if (name === 'summary') out.push('\n\n#### ')
       else if (name === 'li') { li++; out.push('\n- ') }
       else if (['p', 'section', 'div', 'details', 'ul', 'ol', 'main'].includes(name)) out.push(li ? ' ' : '\n\n')
-      else if (name === 'a') { links.push([out.length, (attrs.match(/href="([^"]*)"/) || [])[1] || '']); out.push('') }
+      else if (name === 'a') { links.push([out.length, decode((attrs.match(/href="([^"]*)"/) || [])[1] || '')]); out.push('') }
       continue
     }
     const hidden = stack.pop()

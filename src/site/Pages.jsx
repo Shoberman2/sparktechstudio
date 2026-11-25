@@ -62,6 +62,7 @@ function ShortPage({ s }) {
     <section className="sec mk-sec"><div className="wrap mk-solo reveal"><x.Visual /></div></section>
     <Sec title={x.what}><ul className="trio">{s.points.map(([h, p]) => <li key={h} className="reveal"><h3>{h}</h3><p>{p}</p></li>)}</ul></Sec>
     {s.how && <Sec title="How We Work"><p className="say reveal">{s.how}</p></Sec>}
+    {!s.how && <Sec title="How It Works"><Flow steps={steps} label="How a project runs" /></Sec>}
     {x.price && <Sec title="Pricing"><p className="say reveal">{x.price}</p></Sec>}
     {s.faq && <Sec title="Questions"><Faq items={s.faq} /></Sec>}
     <Related path={s.path} />
@@ -177,6 +178,8 @@ export function GraderPage() {
     </PageHead>
     <Sec title="What We Check For Google"><List items={CHECKS.filter(c => c.group === 'seo').map(c => [c.label, checkNotes[c.id]])} /></Sec>
     <Sec title="What We Check For AI Answers"><List items={CHECKS.filter(c => c.group === 'aeo').map(c => [c.label, checkNotes[c.id]])} /></Sec>
+    {/* 2026-11-24: from the report to what we do about it */}
+    <Sec title="After The Report"><Links items={[['How we do SEO and AEO', '/services/seo-aeo'], ['Website updates', '/services/retainers'], ['All services', '/services']]} /></Sec>
   </Shell>
 }
 

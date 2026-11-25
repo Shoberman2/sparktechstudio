@@ -14,7 +14,8 @@ export const WHOP = {
   // The switch for every way to pay on this site (the Start button, the "start it from the price" FAQ line, the Offer's
   // link). Off while the plan still has a $500 initial price on top of the $500 a month: Whop charges both at checkout,
   // so the first payment would be $1,000. Turn on once `initial_price_due` on
-  // https://api.whop.com/api/v1/products/prod_qhBSzw0h079F8 reads 500.00.
+  // https://api.whop.com/api/v1/products/prod_qhBSzw0h079F8 (send the header `Api-Version-Date: 2026-11-23-3`; without it
+  // the field may be missing) reads 500.00, and Whop's checkout page shows $500 due today.
   checkoutReady: false,
 }
 
@@ -22,7 +23,8 @@ export const WHOP = {
 // When these are filled, also add them as "sameAs" on the Organization in index.html's JSON-LD (Whop is there already).
 // TODO(Spencer): paste the real profile links. Do not guess them.
 export const SOCIALS = [
-  { name: 'Whop', url: WHOP.store },
+  // Hidden from the footer while the store's checkout still charges $1,000 up front (WHOP.checkoutReady)
+  { name: 'Whop', url: WHOP.checkoutReady ? WHOP.store : '' },
   { name: 'LinkedIn', url: '' },
   { name: 'X', url: '' },
   { name: 'Instagram', url: '' },
@@ -38,7 +40,8 @@ export const pricing = {
 export const scoped = 'Every service is a flat $500 a month per business, no matter what.'
 
 // The membership as a schema.org Offer, shared by the home page and every service page (every service is the same flat
-// price). billingDuration P1M and unitCode MON (UN/CEFACT "month") say it repeats monthly.
+// price). The price is per one month (referenceQuantity, unitCode MON is UN/CEFACT "month"). No billingDuration: that
+// would read as a one-month contract, and the membership is month to month with no end date.
 export const membershipOffer = {
   '@type': 'Offer',
   '@id': `${SITE}/#membership`,
@@ -47,7 +50,7 @@ export const membershipOffer = {
   url: WHOP.checkoutReady ? WHOP.product : `${SITE}/#pricing`,
   price: 500,
   priceCurrency: 'USD',
-  priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', billingDuration: 'P1M', unitCode: 'MON', unitText: 'month' },
+  priceSpecification: { '@type': 'UnitPriceSpecification', price: 500, priceCurrency: 'USD', referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON', unitText: 'month' } },
   availability: 'https://schema.org/InStock',
   seller: { '@id': `${SITE}/#org` },
 }
